@@ -8,5 +8,17 @@ target :'PodsDemo' do
 platform :ios, '7.0'
 pod 'AFNetworking'
 pod 'SDWebImage'
+pod 'FMDB', '~> 2.6.2'
+pod 'MJRefresh', '~> 3.1.12'
 xcodeproj 'PodsDemo/PodsDemo.xcodeproj'
+end
+
+
+target :'CommonFrameWork' do
+    platform :ios, '7.0'
+    pod 'AFNetworking'
+    pod 'SDWebImage'
+    pod 'FMDB', '~> 2.6.2'
+    pod 'MJRefresh', '~> 3.1.12'
+    xcodeproj 'CommonFrameWork/CommonFrameWork.xcodeproj'
 end

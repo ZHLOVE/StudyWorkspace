@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:CommonFrameWork/CommonFrameWork.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:PodsDemo/PodsDemo.xcodeproj">
    </FileRef>
    <FileRef
