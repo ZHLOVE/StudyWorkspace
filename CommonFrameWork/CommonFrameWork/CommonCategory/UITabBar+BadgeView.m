@@ -8,7 +8,7 @@
 
 #import "UITabBar+BadgeView.h"
 
-#define TabbarItemNums 2.0    //tabbar的数量 如果是5个设置为5.0
+#define TabbarItemNums 4.0    //tabbar的数量 如果是5个设置为5.0
 
 @implementation UITabBar (BadgeView)
 

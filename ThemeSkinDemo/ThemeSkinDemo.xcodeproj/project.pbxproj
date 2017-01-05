@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A306935A1E1EACEE0023DE5E /* CommonFrameWork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A30693591E1EACEE0023DE5E /* CommonFrameWork.framework */; };
+		A306935B1E1EACEE0023DE5E /* CommonFrameWork.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A30693591E1EACEE0023DE5E /* CommonFrameWork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B57A66CD1E1E324400ACB5EC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B57A66CC1E1E324400ACB5EC /* main.m */; };
 		B57A66D01E1E324400ACB5EC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B57A66CF1E1E324400ACB5EC /* AppDelegate.m */; };
 		B57A66D81E1E324400ACB5EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B57A66D71E1E324400ACB5EC /* Assets.xcassets */; };
@@ -21,7 +23,22 @@
 		B57A66F61E1E412A00ACB5EC /* CCTabBar2VC.m in Sources */ = {isa = PBXBuildFile; fileRef = B57A66F51E1E412A00ACB5EC /* CCTabBar2VC.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		A306935C1E1EACEE0023DE5E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A306935B1E1EACEE0023DE5E /* CommonFrameWork.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		A30693591E1EACEE0023DE5E /* CommonFrameWork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CommonFrameWork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B57A66C81E1E324400ACB5EC /* ThemeSkinDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThemeSkinDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B57A66CC1E1E324400ACB5EC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B57A66CE1E1E324400ACB5EC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -49,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A306935A1E1EACEE0023DE5E /* CommonFrameWork.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +118,7 @@
 		B57A66CB1E1E324400ACB5EC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A30693591E1EACEE0023DE5E /* CommonFrameWork.framework */,
 				B57A66CC1E1E324400ACB5EC /* main.m */,
 			);
 			name = "Supporting Files";
@@ -115,6 +134,7 @@
 				B57A66C41E1E324400ACB5EC /* Sources */,
 				B57A66C51E1E324400ACB5EC /* Frameworks */,
 				B57A66C61E1E324400ACB5EC /* Resources */,
+				A306935C1E1EACEE0023DE5E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -296,6 +316,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../CommonFrameWork/**";
 				INFOPLIST_FILE = ThemeSkinDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -308,6 +329,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../CommonFrameWork/**";
 				INFOPLIST_FILE = ThemeSkinDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

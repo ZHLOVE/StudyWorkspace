@@ -16,7 +16,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.tableView.rowHeight = 80;
     
     //设置导航背景色
     [self setCustomNavBgColor:self.navigationController.navigationBar color:[UIColor whiteColor]];

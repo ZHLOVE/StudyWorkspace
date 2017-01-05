@@ -8,6 +8,7 @@
 
 #import "SecondViewController.h"
 #import "CCTabBar2VC.h"
+#import "UITabBar+BadgeView.h"
 
 @interface SecondViewController ()
 
@@ -18,6 +19,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    //设置小红点
+    [self.tabBarController.tabBar showBadgeOnItemIndex:0];
 }
 
 /**
