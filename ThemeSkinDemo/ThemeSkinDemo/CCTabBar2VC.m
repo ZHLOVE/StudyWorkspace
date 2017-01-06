@@ -7,6 +7,7 @@
 //
 
 #import "CCTabBar2VC.h"
+#import "ThirdViewController.h"
 
 #define ImageNamed(name)                [UIImage imageNamed:name]
 #define UIColorFromHex(rgbValue)        [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
@@ -28,27 +29,27 @@
 
 - (void)initTabBarVCS
 {
-    UIViewController *firstVC = [[UIViewController alloc] init];
+    ThirdViewController *firstVC = [[ThirdViewController alloc] init];
     UINavigationController *firstNav = [[UINavigationController alloc] initWithRootViewController:firstVC];
     firstVC.tabBarItem = [self createTabBarItemWithTitle:@"微信" imageName:@"icon_home1" selectedImage:@"icon_home2"];
     firstVC.title = @"微信";
-    firstVC.navigationItem.leftBarButtonItem = [self addBackBtnItem:firstVC];
+    firstVC.navigationItem.leftBarButtonItem = [self addBackBtnItem];
     
     
     
-    UIViewController *secondVc = [[UIViewController alloc] init];
+    ThirdViewController *secondVc = [[ThirdViewController alloc] init];
     UINavigationController *secondNav = [[UINavigationController alloc] initWithRootViewController:secondVc];
     secondVc.tabBarItem = [self createTabBarItemWithTitle:@"微博" imageName:@"tabbar_shop_nor" selectedImage:@"tabbar_shop_ser"];
     secondVc.title = @"微博";
-    secondVc.navigationItem.leftBarButtonItem = [self addBackBtnItem:firstVC];
+    secondVc.navigationItem.leftBarButtonItem = [self addBackBtnItem];
     
     
     
-    UIViewController *mineVC = [[UIViewController alloc] init];
+    ThirdViewController *mineVC = [[ThirdViewController alloc] init];
     UINavigationController *mineNav = [[UINavigationController alloc] initWithRootViewController:mineVC];
     mineVC.tabBarItem = [self createTabBarItemWithTitle:@"QQ" imageName:@"tabbar_cashier_nor" selectedImage:@"tabbar_cashier_ser"];
     mineVC.title = @"QQ";
-    mineVC.navigationItem.leftBarButtonItem = [self addBackBtnItem:firstVC];
+    mineVC.navigationItem.leftBarButtonItem = [self addBackBtnItem];
     
     
     [self setViewControllers:@[firstNav, secondNav, mineNav] animated:NO];
@@ -71,7 +72,7 @@
 /**
  * 设置返回按钮
  */
-- (UIBarButtonItem *)addBackBtnItem:(UIViewController *)viewController
+- (UIBarButtonItem *)addBackBtnItem
 {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setImage:ImageNamed(@"backBarButtonItemImage") forState:0];

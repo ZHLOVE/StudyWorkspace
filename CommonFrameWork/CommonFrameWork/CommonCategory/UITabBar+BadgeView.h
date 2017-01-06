@@ -13,10 +13,10 @@
 //显示小红点
 - (void)showBadgeOnItemIndex:(int)index;
 
-//隐藏小红点
-- (void)hideBadgeOnItemIndex:(int)index;
-
 //移除小红点
 - (void)removeBadgeOnItemIndex:(int)index;
+
+/** 刷新添加的小红点 */
+- (void)refreshTabBarRoundView;
 
 @end

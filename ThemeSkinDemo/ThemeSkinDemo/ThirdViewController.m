@@ -16,9 +16,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
     //设置导航背景色
-    [self setCustomNavBgColor:self.navigationController.navigationBar color:[UIColor whiteColor]];
+    [self setCustomNavBgColor:self.navigationController.navigationBar color:[[UIColor purpleColor] colorWithAlphaComponent:0.2]];
 }
 
 /**
@@ -47,7 +51,13 @@
     
     //在滚动时设置颜色
     self.bgNavView.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:percent];
-    
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    UIViewController *vc = [UIViewController new];
+    vc.title = @"UIViewController";
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - Table view data source
