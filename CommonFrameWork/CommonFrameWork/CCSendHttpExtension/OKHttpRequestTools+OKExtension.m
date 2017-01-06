@@ -8,7 +8,7 @@
 
 #import "OKHttpRequestTools+OKExtension.h"
 #import <AFNetworking.h>
-//#import <MBProgressHUD.h>
+#import "OKCommonTipView.h"
 #import "OKFMDBTool.h"
 #import "OKAlertController.h"
 
@@ -57,7 +57,7 @@
         
         //隐藏弹框
         if (requestModel.loadView && !requestModel.dataTableView) {
-            //[MBProgressHUD hideLoadingFromView:requestModel.loadView];
+            [MBProgressHUD hideLoadingFromView:requestModel.loadView];
         }
         
         //判断Token状态是否为失效
@@ -99,7 +99,7 @@
         requestModel.isCacheData = isCacheData;
         
         if (requestModel.loadView && !requestModel.dataTableView) { //防止页面上有其他弹框
-            //[MBProgressHUD hideLoadingFromView:requestModel.loadView];
+            [MBProgressHUD hideLoadingFromView:requestModel.loadView];
         }
         
         NSInteger code = [responseObject[kRequestCodeKey] integerValue];
@@ -154,7 +154,7 @@
     //是否显示请求转圈
     if (requestModel.loadView && !requestModel.dataTableView) {
         [requestModel.loadView endEditing:YES];
-        //[MBProgressHUD showLoadingWithView:requestModel.loadView text:RequestLoadingTip];
+        [MBProgressHUD showLoadingWithView:requestModel.loadView text:RequestLoadingTip];
     }
     
     __block NSURLSessionDataTask *sessionDataTask = nil;
