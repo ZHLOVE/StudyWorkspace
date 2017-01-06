@@ -79,8 +79,7 @@
         }
         
         //如果需要提示错误信息
-        if (!requestModel.forbidTipErrorInfo && !tableView) {
-            UIView *tipView = requestModel.loadView ? : [UIApplication sharedApplication].keyWindow;
+        if (!requestModel.forbidTipErrorInfo) {
             
             //错误码在200-500内才提示服务端错误信息
             if (error.code > kRequestTipsStatuesMin && error.code < kRequestTipsStatuesMax) {
@@ -144,7 +143,7 @@
     }
     
     //网络不正常,直接走返回失败
-    if ([AFNetworkReachabilityManager sharedManager].networkReachabilityStatus == AFNetworkReachabilityStatusNotReachable) {
+    if (![AFNetworkReachabilityManager sharedManager].reachable) {
         if (failureBlock) {
             failResultBlock([NSError errorWithDomain:NetworkConnectFailTip code:kCFURLErrorNotConnectedToInternet userInfo:nil]);
         }
