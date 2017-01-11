@@ -7,25 +7,21 @@
 //
 
 #import "FirstViewController.h"
-#import <UIImageView+WebCache.h>
-//#import "OKAlertController.h"
+#import "OKReachabilityManager.h"
 
 @interface FirstViewController ()
-
+@property (weak, nonatomic) IBOutlet UILabel *TextLabel;
 @end
 
 @implementation FirstViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    [OKReachabilityManager reachabilityChangeBlock:^(AFNetworkReachabilityStatus currentStatus, AFNetworkReachabilityStatus lastReachabilityStatus) {
+        
+        NSLog(@"监听网络改变回调===%zd===%zd",currentStatus,lastReachabilityStatus);
+    }];
 }
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 
 @end

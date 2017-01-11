@@ -44,21 +44,21 @@
     UINavigationController *firstNav = [[UINavigationController alloc] initWithRootViewController:firstVC];
     firstVC.tabBarItem = [self createTabBarItemWithTitle:@"首页" imageName:@"tabbar_home_n" selectedImage:@"tabbar_home_h"];
     firstVC.title = @"首页";
-    
+    firstVC.edgesForExtendedLayout = UIRectEdgeNone;
     
     
     SecondViewController *secondVc = [[SecondViewController alloc] init];
     UINavigationController *secondNav = [[UINavigationController alloc] initWithRootViewController:secondVc];
     secondVc.tabBarItem = [self createTabBarItemWithTitle:@"发现" imageName:@"tabbar_property_n" selectedImage:@"tabbar_property_h"];
     secondVc.title = @"发现";
-    
+    secondVc.edgesForExtendedLayout = UIRectEdgeNone;
     
     
     ThirdViewController *mineVC = [[ThirdViewController alloc] init];
     UINavigationController *mineNav = [[UINavigationController alloc] initWithRootViewController:mineVC];
-    mineVC.tabBarItem = [self createTabBarItemWithTitle:@"我的" imageName:@"tabbar_my_n" selectedImage:@"tabbar_my_h"];
+    mineVC.tabBarItem = [self createTabBarItemWithTitle:nil imageName:@"tabbar_my_n" selectedImage:@"tabbar_my_h"];
     mineVC.title = @"我的";
-    
+    mineVC.edgesForExtendedLayout = UIRectEdgeNone;
     
     [self setViewControllers:@[firstNav, secondNav, mineNav] animated:NO];
 }

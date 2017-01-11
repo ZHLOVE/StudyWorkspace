@@ -31,6 +31,7 @@
     }
     
     NSLog(@"textLabel2222===%@====%@",self.bgVidew,self.textLabel);
+    
 }
 
 - (void)viewDidLayoutSubviews
@@ -40,4 +41,10 @@
     NSLog(@"viewDidLayoutSubviews===%@====%@",self.bgVidew,self.textLabel);
 }
 
+- (void)updateViewConstraints
+{
+    [super updateViewConstraints];
+    
+    NSLog(@"updateViewConstraints===%@====%@",self.bgVidew,self.textLabel);
+}
 @end

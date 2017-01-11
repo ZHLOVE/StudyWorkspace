@@ -8,9 +8,10 @@
 
 #import "SecondViewController.h"
 #import "CCTabBar2VC.h"
+#import "ThirdViewController.h"
 
 @interface SecondViewController ()
-
+@property (nonatomic, strong) NSString *myAddress;
 @end
 
 @implementation SecondViewController
@@ -41,5 +42,13 @@
                     } completion:NULL];
 }
 
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    ThirdViewController *vc = [[ThirdViewController alloc] init];
+    vc.hidesBottomBarWhenPushed = YES;
+    vc.title = @"测试";
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 @end
