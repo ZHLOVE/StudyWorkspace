@@ -7,7 +7,6 @@
 //
 
 #import "UIImage+OKExtension.h"
-//#import "qrencode.h"
 
 @implementation UIImage (OKExtension)
 

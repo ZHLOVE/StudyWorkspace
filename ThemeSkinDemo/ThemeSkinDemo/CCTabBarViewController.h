@@ -10,4 +10,9 @@
 
 @interface CCTabBarViewController : UITabBarController
 
+/**
+ * 更换主题
+ */
+- (void)changeTabbarItemCustomImages:(NSArray *)customImageArr;
+
 @end

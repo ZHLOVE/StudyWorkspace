@@ -24,6 +24,20 @@
 }
 
 /**
+ * 监听重复点击tabBar按钮事件
+ */
+- (void)repeatTouchTabBarToViewController:(UIViewController *)touchVC
+{
+    NSLog(@"touchVC===%@===%@===%@",touchVC,self,self.tabBarController);
+    
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    self.tabBarController.selectedIndex = 1;
+}
+
+/**
  * 增加tabbar
  */
 - (IBAction)addTabbarAction:(UIButton *)sender
@@ -59,37 +73,7 @@
  */
 - (IBAction)reduceTabbarItem
 {
-    CCTabBarViewController * tabbarContr = (CCTabBarViewController *)self.tabBarController;
-    tabbarContr.tabBar.backgroundImage = [self imageWithColor:[UIColorFromHex(0x8CC63F) colorWithAlphaComponent:0.2]];
-    
-    NSMutableArray *newItemArr = [NSMutableArray arrayWithArray:tabbarContr.viewControllers];
-    
-    for (UINavigationController *nav in newItemArr) {
-        UITabBarItem *item = nav.viewControllers[0].tabBarItem;
-        item.titlePositionAdjustment = UIOffsetMake(0, -10);
-        item.imageInsets = UIEdgeInsetsMake(-20, 0, 20, 0);
-        [item setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:UIColorFromHex(0x282828), NSForegroundColorAttributeName, nil] forState:UIControlStateNormal];
-        [item setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:UIColorFromHex(0xfe9b00), NSForegroundColorAttributeName, nil] forState:UIControlStateSelected];
-    }
-    
-    self.tabBarItem.image = [[UIImage imageNamed:@"tabbar_cloudstore_n"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    self.tabBarItem.selectedImage = [[UIImage imageNamed:@"tabbar_cloudstore_h"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    self.tabBarItem.title = @"抢购";
-}
-
-- (UIImage *)imageWithColor:(UIColor *)color
-{
-    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
-    UIGraphicsBeginImageContext(rect.size);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    
-    CGContextSetFillColorWithColor(context, [color CGColor]);
-    CGContextFillRect(context, rect);
-    
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return image;
+    [(CCTabBarViewController *)self.tabBarController changeTabbarItemCustomImages:@[]];
 }
 
 @end

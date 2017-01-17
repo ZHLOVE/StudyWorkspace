@@ -7,15 +7,14 @@
 //
 
 #import "ThirdViewController.h"
-#import "FirstViewController.h"
-#import "SecondViewController.h"
-#import <UIView+OKExtension.h>
 #import "FourthViewController.h"
+#import "OKHttpRequestTools.h"
+#import "OKAlertController.h"
 
-@interface ThirdViewController ()<UITableViewDataSource,UITableViewDelegate>
+#define WEAKSELF(weakSelf)  __weak __typeof(&*self)weakSelf = self;
+
+@interface ThirdViewController ()
 @property (nonatomic, strong) FourthViewController *fourthVC;
-@property (nonatomic, strong) UITableView *plainTableView;
-@property (nonatomic, strong) UITableView *tableView;
 @end
 
 @implementation ThirdViewController
@@ -37,57 +36,106 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor grayColor];
+    
+    //初始化UI
     [self fourthVC];
     
-    self.plainTableView.tableHeaderView = self.fourthVC.view;
-}
-
-- (void)testMethod
-{
-    NSLog(@"ThirdViewController--------testMethod");
+    //请求所有数据
+    [self requestAllData];
 }
 
 /**
- *  初始化子控制球
+ * 监听重复点击tabBar按钮事件
+ */
+- (void)repeatTouchTabBarToViewController:(UIViewController *)touchVC
+{
+    [self.fourthVC scrollToTop];
+}
+
+#pragma Mark - 初始化UI
+
+/**
+ *  初始化子控制器，当做视图使用
  */
 - (FourthViewController *)fourthVC
 {
     if (!_fourthVC) {
         _fourthVC = [[FourthViewController alloc] init];
         _fourthVC.edgesForExtendedLayout = UIRectEdgeNone;
-        _fourthVC.view.size = CGSizeMake(self.view.width, 400);
+        [self.view addSubview:_fourthVC.view];
         [self addChildViewController:_fourthVC];
     }
     return _fourthVC;
 }
 
-- (UITableView *)plainTableView
+#pragma Mark - 请求所有数据
+
+/**
+ * 处理数据请求回调
+ */
+- (void)requestAllData
 {
-    if (!_plainTableView) {
-        _plainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height) style:UITableViewStylePlain];
-        _plainTableView.dataSource = self;
-        _plainTableView.delegate = self;
-        _plainTableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0.01)];
-        _plainTableView.tableFooterView = [UIView new];
-        [self.view addSubview:_plainTableView];
-    }
-    return _plainTableView;
+    WEAKSELF(weakSelf)
+    
+    //处理请求1回调
+    [self requestData1:^(id returnValue) {
+        [weakSelf.fourthVC refreshUI1WithData:returnValue];
+    }];
+    
+    
+    //处理请求2回调
+    [self requestData2:^(id returnValue) {
+        [weakSelf.fourthVC refreshUI2WithData:returnValue];
+    }];
+
+    
+    //处理请求3回调
+    [self requestData3:^(id returnValue) {
+        [weakSelf.fourthVC refreshUI3WithData:returnValue];
+    }];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+/**
+ * 请求数据1
+ */
+- (void)requestData1:(void(^)(id returnValue))block
 {
-    return 100;
+    [OKHttpRequestTools sendOKRequest:nil success:^(id returnValue) {
+        if (block) {
+            block(returnValue);
+        }
+    } failure:^(NSError *error) {
+        ShowAlertToast(error.domain);
+    }];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+/**
+ * 请求数据2
+ */
+- (void)requestData2:(void(^)(id returnValue))block
 {
-    static NSString *cellID = @"cellID";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
-    }
-    cell.textLabel.text = [NSString stringWithFormat:@"数据源---%zd",indexPath.row];
-    return cell;
+    [OKHttpRequestTools sendOKRequest:nil success:^(id returnValue) {
+        if (block) {
+            block(returnValue);
+        }
+    } failure:^(NSError *error) {
+        ShowAlertToast(error.domain);
+    }];
 }
+
+/**
+ * 请求数据3
+ */
+- (void)requestData3:(void(^)(id returnValue))block
+{
+    [OKHttpRequestTools sendOKRequest:nil success:^(id returnValue) {
+        if (block) {
+            block(returnValue);
+        }
+    } failure:^(NSError *error) {
+        ShowAlertToast(error.domain);
+    }];
+}
+
 
 @end

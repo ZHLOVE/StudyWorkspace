@@ -8,40 +8,92 @@
 
 #import "FourthViewController.h"
 #import "ThirdViewController.h"
+#import <UIView+OKExtension.h>
 
-@interface FourthViewController ()
+@interface FourthViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, weak) ThirdViewController *thirdVC;
+@property (nonatomic, strong) UITableView *plainTableView;
 @end
 
 @implementation FourthViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
-    
-    NSLog(@"FourthViewController初始化=====%@===%@",self.thirdVC,self.parentViewController);
-}
-
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    NSLog(@"%s",__func__);
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    NSLog(@"%s",__func__);
-    
     self.thirdVC = (ThirdViewController *)self.parentViewController;
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
-    NSLog(@"FourthViewController的父控制器=====%@===%@",self.thirdVC,self.parentViewController);
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
     
-    [self.thirdVC performSelector:@selector(testMethod) withObject:nil];
+    [self plainTableView];
 }
+
+//滚动到顶部
+- (void)scrollToTop
+{
+    [self.plainTableView scrollRectToVisible:CGRectMake(0, 0, self.view.width, self.view.height-49) animated:YES];
+}
+
+#pragma Mark - 初始化UI
+
+- (UITableView *)plainTableView
+{
+    if (!_plainTableView) {
+        _plainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height-49) style:UITableViewStylePlain];
+        _plainTableView.dataSource = self;
+        _plainTableView.delegate = self;
+        _plainTableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0.01)];
+        _plainTableView.tableFooterView = [UIView new];
+        [self.view addSubview:_plainTableView];
+    }
+    return _plainTableView;
+}
+
+#pragma Mark - 表格代理
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 100;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *cellID = @"cellID";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+    }
+    cell.textLabel.text = [NSString stringWithFormat:@"数据源---%zd",indexPath.row];
+    return cell;
+}
+
+#pragma mark - 刷新数据
+
+//刷新数据1
+- (void)refreshUI1WithData:(id)requestData
+{
+    
+}
+
+//刷新数据2
+- (void)refreshUI2WithData:(id)requestData
+{
+    
+}
+
+//刷新数据3
+- (void)refreshUI3WithData:(id)requestData
+{
+    
+}
+
 
 - (void)dealloc
 {

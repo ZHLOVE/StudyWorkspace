@@ -23,19 +23,9 @@
 		B57A66F21E1E32A000ACB5EC /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B57A66EC1E1E32A000ACB5EC /* ThirdViewController.m */; };
 		B57A66F31E1E32A000ACB5EC /* ThirdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B57A66ED1E1E32A000ACB5EC /* ThirdViewController.xib */; };
 		B57A66F61E1E412A00ACB5EC /* CCTabBar2VC.m in Sources */ = {isa = PBXBuildFile; fileRef = B57A66F51E1E412A00ACB5EC /* CCTabBar2VC.m */; };
+		B5F011141E2E094400371A4F /* CCTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F011131E2E094400371A4F /* CCTabBar.m */; };
+		B5F011171E2E23E500371A4F /* CCConst.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F011161E2E23E500371A4F /* CCConst.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXBuildRule section */
-		B59508401E262DB500197D38 /* PBXBuildRule */ = {
-			isa = PBXBuildRule;
-			compilerSpec = com.apple.compilers.proxy.script;
-			fileType = image.png;
-			isEditable = 1;
-			outputFiles = (
-			);
-			script = "# copypng\n";
-		};
-/* End PBXBuildRule section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		B5509ECE1E24FE3E008B50E3 /* Embed Frameworks */ = {
@@ -76,6 +66,10 @@
 		B57A66ED1E1E32A000ACB5EC /* ThirdViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ThirdViewController.xib; sourceTree = "<group>"; };
 		B57A66F41E1E412A00ACB5EC /* CCTabBar2VC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTabBar2VC.h; sourceTree = "<group>"; };
 		B57A66F51E1E412A00ACB5EC /* CCTabBar2VC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCTabBar2VC.m; sourceTree = "<group>"; };
+		B5F011121E2E094400371A4F /* CCTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTabBar.h; sourceTree = "<group>"; };
+		B5F011131E2E094400371A4F /* CCTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCTabBar.m; sourceTree = "<group>"; };
+		B5F011151E2E23E500371A4F /* CCConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCConst.h; sourceTree = "<group>"; };
+		B5F011161E2E23E500371A4F /* CCConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCConst.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +105,10 @@
 			children = (
 				B57A66CE1E1E324400ACB5EC /* AppDelegate.h */,
 				B57A66CF1E1E324400ACB5EC /* AppDelegate.m */,
+				B5F011151E2E23E500371A4F /* CCConst.h */,
+				B5F011161E2E23E500371A4F /* CCConst.m */,
+				B5F011121E2E094400371A4F /* CCTabBar.h */,
+				B5F011131E2E094400371A4F /* CCTabBar.m */,
 				B57A66E21E1E327600ACB5EC /* CCTabBarViewController.h */,
 				B57A66E31E1E327600ACB5EC /* CCTabBarViewController.m */,
 				B57A66F41E1E412A00ACB5EC /* CCTabBar2VC.h */,
@@ -157,7 +155,6 @@
 				B5509ECE1E24FE3E008B50E3 /* Embed Frameworks */,
 			);
 			buildRules = (
-				B59508401E262DB500197D38 /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -228,10 +225,12 @@
 			files = (
 				B5509EC91E24F508008B50E3 /* FourthViewController.m in Sources */,
 				B57A66F01E1E32A000ACB5EC /* SecondViewController.m in Sources */,
+				B5F011141E2E094400371A4F /* CCTabBar.m in Sources */,
 				B57A66E41E1E327600ACB5EC /* CCTabBarViewController.m in Sources */,
 				B57A66F61E1E412A00ACB5EC /* CCTabBar2VC.m in Sources */,
 				B57A66EE1E1E32A000ACB5EC /* FirstViewController.m in Sources */,
 				B57A66D01E1E324400ACB5EC /* AppDelegate.m in Sources */,
+				B5F011171E2E23E500371A4F /* CCConst.m in Sources */,
 				B57A66CD1E1E324400ACB5EC /* main.m in Sources */,
 				B57A66F21E1E32A000ACB5EC /* ThirdViewController.m in Sources */,
 			);
