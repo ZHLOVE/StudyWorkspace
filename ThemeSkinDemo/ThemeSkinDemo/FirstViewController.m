@@ -131,4 +131,29 @@
     return image;
 }
 
+
+/**
+ 请求icon数据
+ */
+- (void)requestIconData:(NSArray *)iconUrlArr
+{
+    iconUrlArr = [NSArray arrayWithObjects:@"http://www.iconpng.com/download/ico/99504",@"http://www.iconpng.com/download/png/100864",@"http://www.iconpng.com/download/png/70161", @"http://www.iconpng.com/download/ico/99504",nil];
+    
+    dispatch_group_t group = dispatch_group_create();
+    
+    NSMutableArray *downloadIconArr = [NSMutableArray array];
+    
+    for (NSString *iconUrlStr in iconUrlArr) {
+        dispatch_group_async(group, dispatch_get_global_queue(0, 0), ^{
+            UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:iconUrlStr]]];
+            NSLog(@"下载的图片===%@",image);
+            [downloadIconArr addObject:image];
+        });
+    }
+    
+    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+        NSLog(@"下载完成===%@",downloadIconArr);
+    });
+}
+
 @end
