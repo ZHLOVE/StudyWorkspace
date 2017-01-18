@@ -74,6 +74,27 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
+    [self.navigationController pushViewController:[UIViewController new] animated:YES];
+}
+
+#pragma Mark - 滚动代理
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGFloat offset = scrollView.contentOffset.y;
+    
+    CGFloat percent = (64-offset)/64;
+    
+    NSLog(@"scrollViewDidScroll===%.2f===%.2f",offset,percent);
+    
+    //在滚动时设置颜色
+    [self.thirdVC changeNavBgColor:percent];
+}
+
 #pragma mark - 刷新数据
 
 //刷新数据1
@@ -93,7 +114,6 @@
 {
     
 }
-
 
 - (void)dealloc
 {

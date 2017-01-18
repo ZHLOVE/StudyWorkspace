@@ -38,7 +38,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.view.backgroundColor = [UIColor grayColor];
     
     //初始化UI
@@ -80,7 +79,6 @@
 - (void)requestAllData
 {
     WEAKSELF
-    
     //处理请求1回调
     [self requestData1:^(id returnValue) {
         [weakSelf.fourthVC refreshUI1WithData:returnValue];
@@ -155,43 +153,10 @@
     }
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+- (void)changeNavBgColor:(CGFloat)percent
 {
-    CGFloat offset = scrollView.contentOffset.y;
-    
-    CGFloat percent = (64+offset)/64;
-    
-    NSLog(@"scrollViewDidScroll===%.2f===%.2f",offset,percent);
-    
-    //在滚动时设置颜色
     self.bgNavView.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:percent];
-}
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
-    UIViewController *vc = [UIViewController new];
-    vc.title = @"UIViewController";
-    [self.navigationController pushViewController:vc animated:YES];
-}
-
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 30;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *tableViewID = @"tableView";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:tableViewID];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:tableViewID];
-    }
-    cell.textLabel.text = [NSString stringWithFormat:@"数据源====%zd",indexPath.row];
-    return cell;
 }
 
 @end

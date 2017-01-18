@@ -10,4 +10,6 @@
 
 @interface ThirdViewController : UIViewController
 
+- (void)changeNavBgColor:(CGFloat)percent;
+
 @end

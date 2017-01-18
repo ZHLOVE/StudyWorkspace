@@ -134,15 +134,16 @@
             if (defaultNormolImageArr.count-1 < i) continue;
             
             //设置尺寸
-            UIImage *convertImage = [UIImage scaleToSize:iconImage size:CGSizeMake(31, 31)];
+            UIImage *convertImage = [UIImage scaleToSize:iconImage size:CGSizeMake(31*2, 31*2)];
             NSString *saveImagePath = [NSString stringWithFormat:@"%@/%@@2x.png",[OKUtils getTabBarDirectory],defaultNormolImageArr[i]];
             [UIImagePNGRepresentation(convertImage) writeToFile:saveImagePath atomically:NO];
+            
             NSLog(@"下载图片是否保存成功===%@",saveImagePath);
             
             OKTabBarInfoModel *infoModel = [[OKTabBarInfoModel alloc] init];
             infoModel.tabBarItemTitle = @"测试";
-            infoModel.tabBarNormolImage = convertImage;
-            infoModel.tabBarSelectedImage = convertImage;
+            infoModel.tabBarNormolImage = ImageNamed(saveImagePath)?:convertImage;
+            infoModel.tabBarSelectedImage = ImageNamed(saveImagePath)?:convertImage;
             infoModel.tabBarNormolTitleColor = UIColorFromHex(0x282828);
             infoModel.tabBarSelectedTitleColor = UIColorFromHex(0xfe9b00);
             infoModel.tabBarTitleOffset = -10;

@@ -8,11 +8,9 @@
 
 #import "SecondViewController.h"
 #import "OKOtherTabBarVC.h"
-#import "ThirdViewController.h"
-#import "UITabBar+BadgeView.h"
 
 @interface SecondViewController ()
-@property (nonatomic, strong) NSString *myAddress;
+
 @end
 
 @implementation SecondViewController
@@ -20,14 +18,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-}
-
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{    
-    ThirdViewController *vc = [[ThirdViewController alloc] init];
-    vc.hidesBottomBarWhenPushed = YES;
-    vc.title = @"测试";
-    [self.navigationController pushViewController:vc animated:YES];
 }
 
 /**

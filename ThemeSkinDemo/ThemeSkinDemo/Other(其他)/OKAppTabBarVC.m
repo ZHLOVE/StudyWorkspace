@@ -116,12 +116,12 @@
     NSArray *defaultNormolImageArr = @[@"tabbar_home_n",@"tabbar_property_n",@"tabbar_my_n"];
     NSArray *defaultSelectImageArr = @[@"tabbar_home_h",@"tabbar_property_h",@"tabbar_my_h"];
     
+    //先加载沙盒的tabBar图标
     for (int i=0; i<defaultNormolImageArr.count; i++) {
         NSString *iconPath = [NSString stringWithFormat:@"%@/%@@2x.png",[OKUtils getTabBarDirectory],defaultNormolImageArr[i]];
-        NSData *imageData = [NSData dataWithContentsOfFile:iconPath];
-        if (!imageData) continue;
         
-        UIImage *image = [UIImage imageWithData:imageData];
+        UIImage *image = [UIImage imageNamed:iconPath];
+        if (!image) continue;
         OKTabBarInfoModel *infoModel = [[OKTabBarInfoModel alloc] init];
         
         infoModel.tabBarItemTitle = defaultTitleArray[i];
@@ -135,6 +135,7 @@
         [tabBarImageArr addObject:infoModel];
     }
     
+    //数据不对就加载默认图标
     if (tabBarImageArr.count < self.childViewControllers.count) {
         [tabBarImageArr removeAllObjects];
         
