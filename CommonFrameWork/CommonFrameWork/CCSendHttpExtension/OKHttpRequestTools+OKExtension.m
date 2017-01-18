@@ -8,7 +8,7 @@
 
 #import "OKHttpRequestTools+OKExtension.h"
 #import <AFNetworking.h>
-//#import <MBProgressHUD.h>
+#import "OKCommonTipView.h"
 #import "OKFMDBTool.h"
 #import "OKAlertController.h"
 
@@ -57,7 +57,7 @@
         
         //隐藏弹框
         if (requestModel.loadView && !requestModel.dataTableView) {
-            //[MBProgressHUD hideLoadingFromView:requestModel.loadView];
+            [MBProgressHUD hideLoadingFromView:requestModel.loadView];
         }
         
         //判断Token状态是否为失效
@@ -79,8 +79,7 @@
         }
         
         //如果需要提示错误信息
-        if (!requestModel.forbidTipErrorInfo && !tableView) {
-            UIView *tipView = requestModel.loadView ? : [UIApplication sharedApplication].keyWindow;
+        if (!requestModel.forbidTipErrorInfo) {
             
             //错误码在200-500内才提示服务端错误信息
             if (error.code > kRequestTipsStatuesMin && error.code < kRequestTipsStatuesMax) {
@@ -99,7 +98,7 @@
         requestModel.isCacheData = isCacheData;
         
         if (requestModel.loadView && !requestModel.dataTableView) { //防止页面上有其他弹框
-            //[MBProgressHUD hideLoadingFromView:requestModel.loadView];
+            [MBProgressHUD hideLoadingFromView:requestModel.loadView];
         }
         
         NSInteger code = [responseObject[kRequestCodeKey] integerValue];
@@ -144,7 +143,7 @@
     }
     
     //网络不正常,直接走返回失败
-    if ([AFNetworkReachabilityManager sharedManager].networkReachabilityStatus == AFNetworkReachabilityStatusNotReachable) {
+    if (![AFNetworkReachabilityManager sharedManager].reachable) {
         if (failureBlock) {
             failResultBlock([NSError errorWithDomain:NetworkConnectFailTip code:kCFURLErrorNotConnectedToInternet userInfo:nil]);
         }
@@ -154,7 +153,7 @@
     //是否显示请求转圈
     if (requestModel.loadView && !requestModel.dataTableView) {
         [requestModel.loadView endEditing:YES];
-        //[MBProgressHUD showLoadingWithView:requestModel.loadView text:RequestLoadingTip];
+        [MBProgressHUD showLoadingWithView:requestModel.loadView text:RequestLoadingTip];
     }
     
     __block NSURLSessionDataTask *sessionDataTask = nil;

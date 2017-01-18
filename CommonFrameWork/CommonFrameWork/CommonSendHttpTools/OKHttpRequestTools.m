@@ -16,6 +16,12 @@ static char const * const kRequestUrlKey    = "kRequestUrlKey";
 
 @implementation OKHttpRequestTools
 
++ (void)load
+{
+    //开始监听网络
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+}
+
 /**
  *  创建请全局求管理者
  */
@@ -116,7 +122,7 @@ static char const * const kRequestUrlKey    = "kRequestUrlKey";
     };
     
     //网络不正常,直接走返回失败
-    if ([AFNetworkReachabilityManager sharedManager].networkReachabilityStatus == AFNetworkReachabilityStatusNotReachable) {
+    if (![AFNetworkReachabilityManager sharedManager].reachable) {
         if (failureBlock) {
             failResultBlock([NSError errorWithDomain:NetworkConnectFailTip code:kCFURLErrorNotConnectedToInternet userInfo:nil]);
         }

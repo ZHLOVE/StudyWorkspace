@@ -23,7 +23,7 @@
                     <rect key="frame" x="171.5" y="318.5" width="31" height="30"/>
                     <state key="normal" title="换肤"/>
                     <connections>
-                        <action selector="reduceTabbarItem" destination="-1" eventType="touchUpInside" id="Agr-8S-gnq"/>
+                        <action selector="reduceTabbarItem:" destination="-1" eventType="touchUpInside" id="7dm-Iz-9NP"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NPw-Cx-Z25">

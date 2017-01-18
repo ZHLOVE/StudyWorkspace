@@ -7,6 +7,25 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MBProgressHUD.h>
+
+@interface MBProgressHUD (Extension)
+
+/**
+ *  在指定view上显示转圈的MBProgressHUD (不会自动消失,需要手动调用隐藏方法,非模态)
+ *
+ *  @param tipStr 提示语
+ */
++ (void)showLoadingWithView:(UIView *)view text:(NSString *)tipStr;
+
+/**
+ *  隐藏指定view上创建的MBProgressHUD
+ */
++ (void)hideLoadingFromView:(UIView *)view;
+
+
+@end
+
 
 @interface OKCommonTipView : UIView
 

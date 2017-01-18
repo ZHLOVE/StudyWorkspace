@@ -7,10 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+
 		B5509EC91E24F508008B50E3 /* FourthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5509EC71E24F508008B50E3 /* FourthViewController.m */; };
 		B5509ECA1E24F508008B50E3 /* FourthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5509EC81E24F508008B50E3 /* FourthViewController.xib */; };
 		B5509ECC1E24FE3D008B50E3 /* CommonFrameWork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5509ECB1E24FE3D008B50E3 /* CommonFrameWork.framework */; };
 		B5509ECD1E24FE3D008B50E3 /* CommonFrameWork.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5509ECB1E24FE3D008B50E3 /* CommonFrameWork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+
+		A306935A1E1EACEE0023DE5E /* CommonFrameWork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A30693591E1EACEE0023DE5E /* CommonFrameWork.framework */; };
+		A306935B1E1EACEE0023DE5E /* CommonFrameWork.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A30693591E1EACEE0023DE5E /* CommonFrameWork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+
 		B57A66CD1E1E324400ACB5EC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B57A66CC1E1E324400ACB5EC /* main.m */; };
 		B57A66D01E1E324400ACB5EC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B57A66CF1E1E324400ACB5EC /* AppDelegate.m */; };
 		B57A66D81E1E324400ACB5EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B57A66D71E1E324400ACB5EC /* Assets.xcassets */; };
@@ -28,13 +33,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		B5509ECE1E24FE3E008B50E3 /* Embed Frameworks */ = {
+
+		A306935C1E1EACEE0023DE5E /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				B5509ECD1E24FE3D008B50E3 /* CommonFrameWork.framework in Embed Frameworks */,
+				A306935B1E1EACEE0023DE5E /* CommonFrameWork.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -42,10 +48,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+
 		B5509EC61E24F508008B50E3 /* FourthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FourthViewController.h; sourceTree = "<group>"; };
 		B5509EC71E24F508008B50E3 /* FourthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FourthViewController.m; sourceTree = "<group>"; };
 		B5509EC81E24F508008B50E3 /* FourthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FourthViewController.xib; sourceTree = "<group>"; };
 		B5509ECB1E24FE3D008B50E3 /* CommonFrameWork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CommonFrameWork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+
+		A30693591E1EACEE0023DE5E /* CommonFrameWork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CommonFrameWork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+
 		B57A66C81E1E324400ACB5EC /* ThemeSkinDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThemeSkinDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B57A66CC1E1E324400ACB5EC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B57A66CE1E1E324400ACB5EC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -77,7 +87,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5509ECC1E24FE3D008B50E3 /* CommonFrameWork.framework in Frameworks */,
+
+				A306935A1E1EACEE0023DE5E /* CommonFrameWork.framework in Frameworks */,
+
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,7 +148,9 @@
 		B57A66CB1E1E324400ACB5EC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				B5509ECB1E24FE3D008B50E3 /* CommonFrameWork.framework */,
+
+				A30693591E1EACEE0023DE5E /* CommonFrameWork.framework */,
+
 				B57A66CC1E1E324400ACB5EC /* main.m */,
 			);
 			name = "Supporting Files";
@@ -152,7 +166,9 @@
 				B57A66C41E1E324400ACB5EC /* Sources */,
 				B57A66C51E1E324400ACB5EC /* Frameworks */,
 				B57A66C61E1E324400ACB5EC /* Resources */,
-				B5509ECE1E24FE3E008B50E3 /* Embed Frameworks */,
+
+				A306935C1E1EACEE0023DE5E /* Embed Frameworks */,
+
 			);
 			buildRules = (
 			);
@@ -344,7 +360,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+
 				DEVELOPMENT_TEAM = W222R58V26;
+
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/../CommonFrameWork/**";
 				INFOPLIST_FILE = ThemeSkinDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -360,7 +378,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+
 				DEVELOPMENT_TEAM = "";
+
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/../CommonFrameWork/**";
 				INFOPLIST_FILE = ThemeSkinDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

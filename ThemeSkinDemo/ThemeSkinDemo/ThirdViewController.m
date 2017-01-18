@@ -15,6 +15,7 @@
 
 @interface ThirdViewController ()
 @property (nonatomic, strong) FourthViewController *fourthVC;
+@property (nonatomic, strong) UIView *bgNavView;
 @end
 
 @implementation ThirdViewController
@@ -26,15 +27,20 @@
     NSLog(@"%s",__func__);
 }
 
+
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
     NSLog(@"%s",__func__);
+    
+    //设置导航背景色
+    [self setCustomNavBgColor:self.navigationController.navigationBar color:[[UIColor purpleColor] colorWithAlphaComponent:0.2]];
 }
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.view.backgroundColor = [UIColor grayColor];
     
     //初始化UI
@@ -82,12 +88,10 @@
         [weakSelf.fourthVC refreshUI1WithData:returnValue];
     }];
     
-    
     //处理请求2回调
     [self requestData2:^(id returnValue) {
         [weakSelf.fourthVC refreshUI2WithData:returnValue];
     }];
-
     
     //处理请求3回调
     [self requestData3:^(id returnValue) {
@@ -137,5 +141,59 @@
     }];
 }
 
+/**
+ *  设置导航栏背景色
+ */
+-(void)setCustomNavBgColor:(UIView *)superView color:(UIColor *)color
+{
+    if ([superView isKindOfClass:NSClassFromString(@"_UIVisualEffectFilterView")]) {
+        //在这里可设置背景色，用一个变量引住导航背景view,方便在其他地方改变颜色
+        self.bgNavView = superView;
+        self.bgNavView.backgroundColor = color;
+    }
+    
+    for (UIView *view in superView.subviews) {
+        [self setCustomNavBgColor:view color:color];
+    }
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGFloat offset = scrollView.contentOffset.y;
+    
+    CGFloat percent = (64+offset)/64;
+    
+    NSLog(@"scrollViewDidScroll===%.2f===%.2f",offset,percent);
+    
+    //在滚动时设置颜色
+    self.bgNavView.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:percent];
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    UIViewController *vc = [UIViewController new];
+    vc.title = @"UIViewController";
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 30;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *tableViewID = @"tableView";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:tableViewID];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:tableViewID];
+    }
+    cell.textLabel.text = [NSString stringWithFormat:@"数据源====%zd",indexPath.row];
+    return cell;
+}
 
 @end
