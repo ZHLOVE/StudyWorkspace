@@ -141,7 +141,7 @@
             NSLog(@"下载图片是否保存成功===%@",saveImagePath);
             
             OKTabBarInfoModel *infoModel = [[OKTabBarInfoModel alloc] init];
-            infoModel.tabBarItemTitle = @"测试";
+            infoModel.tabBarItemTitle = [NSString stringWithFormat:@"测试%zd",i];
             infoModel.tabBarNormolImage = ImageNamed(saveImagePath)?:convertImage;
             infoModel.tabBarSelectedImage = ImageNamed(saveImagePath)?:convertImage;
             infoModel.tabBarNormolTitleColor = UIColorFromHex(0x282828);

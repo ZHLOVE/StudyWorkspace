@@ -10,7 +10,6 @@
 		34A6EA1E4FF2E264357F8499 /* libPods-PodsDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 629FE69316996003D0C87935 /* libPods-PodsDemo.a */; };
 		B50311A31E1E621400C11EC4 /* CommonFrameWork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B50311A21E1E621400C11EC4 /* CommonFrameWork.framework */; };
 		B50311A41E1E621400C11EC4 /* CommonFrameWork.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B50311A21E1E621400C11EC4 /* CommonFrameWork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B55A97B31E232C1D00525E4A /* OKReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B55A97B21E232C1D00525E4A /* OKReachabilityManager.m */; };
 		B57A67051E1E4B0200ACB5EC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B57A67041E1E4B0200ACB5EC /* main.m */; };
 		B57A67081E1E4B0200ACB5EC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B57A67071E1E4B0200ACB5EC /* AppDelegate.m */; };
 		B57A670B1E1E4B0200ACB5EC /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B57A670A1E1E4B0200ACB5EC /* FirstViewController.m */; };
@@ -37,8 +36,6 @@
 /* Begin PBXFileReference section */
 		629FE69316996003D0C87935 /* libPods-PodsDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PodsDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B50311A21E1E621400C11EC4 /* CommonFrameWork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CommonFrameWork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B55A97B11E232C1D00525E4A /* OKReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKReachabilityManager.h; sourceTree = "<group>"; };
-		B55A97B21E232C1D00525E4A /* OKReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OKReachabilityManager.m; sourceTree = "<group>"; };
 		B57A67001E1E4B0200ACB5EC /* PodsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PodsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B57A67041E1E4B0200ACB5EC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B57A67061E1E4B0200ACB5EC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -100,8 +97,6 @@
 			children = (
 				B57A67061E1E4B0200ACB5EC /* AppDelegate.h */,
 				B57A67071E1E4B0200ACB5EC /* AppDelegate.m */,
-				B55A97B11E232C1D00525E4A /* OKReachabilityManager.h */,
-				B55A97B21E232C1D00525E4A /* OKReachabilityManager.m */,
 				B57A67091E1E4B0200ACB5EC /* FirstViewController.h */,
 				B57A670A1E1E4B0200ACB5EC /* FirstViewController.m */,
 				B57A670C1E1E4B0200ACB5EC /* SecondViewController.h */,
@@ -271,7 +266,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B57A670E1E1E4B0200ACB5EC /* SecondViewController.m in Sources */,
-				B55A97B31E232C1D00525E4A /* OKReachabilityManager.m in Sources */,
 				B57A67081E1E4B0200ACB5EC /* AppDelegate.m in Sources */,
 				B57A670B1E1E4B0200ACB5EC /* FirstViewController.m in Sources */,
 				B57A67051E1E4B0200ACB5EC /* main.m in Sources */,

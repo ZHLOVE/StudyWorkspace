@@ -122,6 +122,8 @@
 		B50311971E1E607F00C11EC4 /* ZLPhotoPickerImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = B50311291E1E607F00C11EC4 /* ZLPhotoPickerImageView.h */; };
 		B50311981E1E607F00C11EC4 /* ZLPhotoPickerImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B503112A1E1E607F00C11EC4 /* ZLPhotoPickerImageView.m */; };
 		B50311991E1E607F00C11EC4 /* ZLPhotoPickerCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = B503112B1E1E607F00C11EC4 /* ZLPhotoPickerCommon.h */; };
+		B5E8BD2F1E2F55DD00D0F73D /* OKReachabilityManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B5E8BD2D1E2F55DD00D0F73D /* OKReachabilityManager.h */; };
+		B5E8BD301E2F55DD00D0F73D /* OKReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E8BD2E1E2F55DD00D0F73D /* OKReachabilityManager.m */; };
 		F742917AA1FF6DFCD98BDDB7 /* libPods-CommonFrameWork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 677F0A896830251DDCBB58F8 /* libPods-CommonFrameWork.a */; };
 /* End PBXBuildFile section */
 
@@ -244,6 +246,8 @@
 		B50311291E1E607F00C11EC4 /* ZLPhotoPickerImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLPhotoPickerImageView.h; sourceTree = "<group>"; };
 		B503112A1E1E607F00C11EC4 /* ZLPhotoPickerImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLPhotoPickerImageView.m; sourceTree = "<group>"; };
 		B503112B1E1E607F00C11EC4 /* ZLPhotoPickerCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLPhotoPickerCommon.h; sourceTree = "<group>"; };
+		B5E8BD2D1E2F55DD00D0F73D /* OKReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKReachabilityManager.h; sourceTree = "<group>"; };
+		B5E8BD2E1E2F55DD00D0F73D /* OKReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OKReachabilityManager.m; sourceTree = "<group>"; };
 		D75B7CE185F50916618B66A4 /* Pods-CommonFrameWork.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonFrameWork.release.xcconfig"; path = "../Pods/Target Support Files/Pods-CommonFrameWork/Pods-CommonFrameWork.release.xcconfig"; sourceTree = "<group>"; };
 		F265C7404E441C7D5E566E31 /* Pods-CommonFrameWork.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonFrameWork.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-CommonFrameWork/Pods-CommonFrameWork.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -290,6 +294,7 @@
 		B50310A81E1E5CB200C11EC4 /* CommonFrameWork */ = {
 			isa = PBXGroup;
 			children = (
+				B5E8BD2C1E2F55DD00D0F73D /* CommonUtils */,
 				B50310A91E1E5CB200C11EC4 /* CommonFrameWork.h */,
 				B50310B11E1E607F00C11EC4 /* CCSendHttpExtension */,
 				B50310BA1E1E607F00C11EC4 /* CommonCategory */,
@@ -514,6 +519,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		B5E8BD2C1E2F55DD00D0F73D /* CommonUtils */ = {
+			isa = PBXGroup;
+			children = (
+				B5E8BD2D1E2F55DD00D0F73D /* OKReachabilityManager.h */,
+				B5E8BD2E1E2F55DD00D0F73D /* OKReachabilityManager.m */,
+			);
+			path = CommonUtils;
+			sourceTree = "<group>";
+		};
 		EF2FB7CC0FE2F07364690512 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -580,6 +594,7 @@
 				A30693521E1E98C30023DE5E /* UITabBar+BadgeView.h in Headers */,
 				B503115F1E1E607F00C11EC4 /* OKFMDBTool.h in Headers */,
 				B50311721E1E607F00C11EC4 /* ZLPhotoRect.h in Headers */,
+				B5E8BD2F1E2F55DD00D0F73D /* OKReachabilityManager.h in Headers */,
 				B50311401E1E607F00C11EC4 /* NSMutableDictionary+OKExtension.h in Headers */,
 				B50311551E1E607F00C11EC4 /* UIImageView+OKExtension.h in Headers */,
 				B50311971E1E607F00C11EC4 /* ZLPhotoPickerImageView.h in Headers */,
@@ -719,6 +734,7 @@
 				B50311341E1E607F00C11EC4 /* Foundation+Log.m in Sources */,
 				B503114A1E1E607F00C11EC4 /* NSString+OKExtention.m in Sources */,
 				B503118E1E1E607F00C11EC4 /* ZLPhotoPickerViewController.m in Sources */,
+				B5E8BD301E2F55DD00D0F73D /* OKReachabilityManager.m in Sources */,
 				B50311311E1E607F00C11EC4 /* OKHttpRequestTools+OKExtension.m in Sources */,
 				B50311981E1E607F00C11EC4 /* ZLPhotoPickerImageView.m in Sources */,
 				B50311391E1E607F00C11EC4 /* NSArray+OKExtention.m in Sources */,
