@@ -1,13 +1,14 @@
 //
-//  OKPubilcHeadDefiner.h
+//  OKPubilcKeyDefiner.h
 //  ThemeSkinDemo
 //
 //  Created by mao wangxin on 2017/1/18.
 //  Copyright © 2017年 okdeer. All rights reserved.
 //
 
-#ifndef OKPubilcHeadDefiner_h
-#define OKPubilcHeadDefiner_h
+#ifndef OKPubilcKeyDefiner_h
+#define OKPubilcKeyDefiner_h
+
 
 //----------------------公共通用宏---------------------------
 
@@ -115,4 +116,6 @@ return model;\
 //一个宏实现自定义对象的NSCopy协议
 #define GJExtensionCopyImplementation  GJCopyImplementation
 
-#endif /* OKPubilcHeadDefiner_h */
+
+
+#endif /* OKPubilcKeyDefiner_h */

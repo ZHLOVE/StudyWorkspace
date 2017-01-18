@@ -71,11 +71,12 @@
 		B5BA5FF01E2F24CF000CF619 /* OKOtherTabBarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OKOtherTabBarVC.m; sourceTree = "<group>"; };
 		B5BA5FF11E2F24CF000CF619 /* OKAppTabBarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKAppTabBarVC.h; sourceTree = "<group>"; };
 		B5BA5FF21E2F24CF000CF619 /* OKAppTabBarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OKAppTabBarVC.m; sourceTree = "<group>"; };
-		B5BA60011E2F275D000CF619 /* OKPubilcHeadDefiner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OKPubilcHeadDefiner.h; sourceTree = "<group>"; };
 		B5BA60021E2F27AA000CF619 /* ThemeSkim.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeSkim.pch; sourceTree = "<group>"; };
 		B5BA60031E2F27ED000CF619 /* OKColorDefiner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OKColorDefiner.h; sourceTree = "<group>"; };
 		B5BA60041E2F2A86000CF619 /* OKPublicConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKPublicConst.h; sourceTree = "<group>"; };
 		B5BA60051E2F2A86000CF619 /* OKPublicConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OKPublicConst.m; sourceTree = "<group>"; };
+		B5BA60071E2F2B1A000CF619 /* OKFrameDefiner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OKFrameDefiner.h; sourceTree = "<group>"; };
+		B5BA60081E2F2B72000CF619 /* OKPubilcKeyDefiner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OKPubilcKeyDefiner.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,7 +159,8 @@
 			children = (
 				B5BA60041E2F2A86000CF619 /* OKPublicConst.h */,
 				B5BA60051E2F2A86000CF619 /* OKPublicConst.m */,
-				B5BA60011E2F275D000CF619 /* OKPubilcHeadDefiner.h */,
+				B5BA60081E2F2B72000CF619 /* OKPubilcKeyDefiner.h */,
+				B5BA60071E2F2B1A000CF619 /* OKFrameDefiner.h */,
 				B5BA60031E2F27ED000CF619 /* OKColorDefiner.h */,
 			);
 			path = "Mian(主要)";

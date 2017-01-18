@@ -124,8 +124,8 @@
         OKTabBarInfoModel *infoModel = [[OKTabBarInfoModel alloc] init];
         
         infoModel.tabBarItemTitle = defaultTitleArray[i];
-        infoModel.tabBarNormolImage = [UIImage imageNamed:defaultNormolImageArr[i]];
-        infoModel.tabBarSelectedImage = [UIImage imageNamed:defaultSelectImageArr[i]];
+        infoModel.tabBarNormolImage = ImageNamed(defaultNormolImageArr[i]);
+        infoModel.tabBarSelectedImage = ImageNamed(defaultSelectImageArr[i]);
         infoModel.tabBarNormolTitleColor = [UIColor blackColor];
         infoModel.tabBarSelectedTitleColor = UIColorFromHex(0x8CC63F);
         

@@ -3,13 +3,13 @@
 #import <UIKit/UIKit.h>
 
 /** tabBar item标题key */
-NSString * const CCTabBarItemTitleKey = @"CCTabBarItemTitleKey";
+NSString * const OKTabBarItemTitleKey = @"OKTabBarItemTitleKey";
 
 /** tabBar背景图片名字key */
-NSString * const CCTabBarBgImageKey = @"CCTabBarBgImageKey";
+NSString * const OKTabBarBgImageKey = @"OKTabBarBgImageKey";
 
 /** tabBar普通状态图片名字key */
-NSString * const CCTabBarNormolImageKey = @"CCTabBarNormolImageKey";
+NSString * const OKTabBarNormolImageKey = @"OKTabBarNormolImageKey";
 
 /** tabBar被选中状态图片名字key */
-NSString * const CCTabBarSelectedImageKey = @"CCTabBarSelectedImageKey";
+NSString * const OKTabBarSelectedImageKey = @"OKTabBarSelectedImageKey";
