@@ -7,11 +7,11 @@
 //
 
 #import "FirstViewController.h"
-#import "CCTabBarViewController.h"
+#import "OKAppTabBarVC.h"
 #import "UITabBar+BadgeView.h"
-
-// rgb颜色转换（16进制->10进制）
-#define UIColorFromHex(rgbValue)        [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+#import <OKHttpRequestTools.h>
+#import <OKAlertController.h>
+#import "OKTabBarInfoModel.h"
 
 @interface FirstViewController ()
 
@@ -30,12 +30,8 @@
 - (void)repeatTouchTabBarToViewController:(UIViewController *)touchVC
 {
     NSLog(@"touchVC===%@===%@===%@",touchVC,self,self.tabBarController);
-    
-}
-
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
-    self.tabBarController.selectedIndex = 1;
+    //设置小红点
+    [self.tabBarController.tabBar showBadgeOnItemIndex:0];
 }
 
 /**
@@ -45,7 +41,7 @@
 {
     sender.selected = !sender.selected;
     
-    CCTabBarViewController * tabbarContr = (CCTabBarViewController *)self.tabBarController;
+    OKAppTabBarVC * tabbarContr = (OKAppTabBarVC *)self.tabBarController;
     
     NSMutableArray *newItemArr = [NSMutableArray arrayWithArray:tabbarContr.viewControllers];
     
@@ -92,61 +88,16 @@
 - (IBAction)reduceTabbarItem:(UIButton *)button
 {
     button.selected = !button.selected;
-    [(CCTabBarViewController *)self.tabBarController changeTabbarItemCustomImages:@[]];
-
+    [self requestIconData:nil];
     
-    CCTabBarViewController * tabbarContr = (CCTabBarViewController *)self.tabBarController;
-    
-    NSMutableArray *newItemArr = [NSMutableArray arrayWithArray:tabbarContr.viewControllers];
-    
-    for (UINavigationController *nav in newItemArr) {
-        UITabBarItem *item = nav.viewControllers[0].tabBarItem;
+    OKHttpRequestModel *model = nil;
+    [OKHttpRequestTools sendOKRequest:model success:^(id returnValue) {
         
-        if (!button.selected) {
-            item.titlePositionAdjustment = UIOffsetMake(0, -10);
-            item.imageInsets = UIEdgeInsetsMake(-20, 0, 20, 0);
-            [item setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:UIColorFromHex(0x282828), NSForegroundColorAttributeName, nil] forState:UIControlStateNormal];
-            [item setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:UIColorFromHex(0xfe9b00), NSForegroundColorAttributeName, nil] forState:UIControlStateSelected];
-            
-        } else {
-            item.titlePositionAdjustment = UIOffsetMake(0, 0);
-            item.imageInsets = UIEdgeInsetsMake(0, 0, 0, 0);
-            
-            [item setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor blackColor], NSForegroundColorAttributeName, nil] forState:UIControlStateNormal];
-            [item setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:UIColorFromHex(0x8CC63F), NSForegroundColorAttributeName, nil] forState:UIControlStateSelected];
-        }
-    }
+    } failure:^(NSError *error) {
+        ShowAlertToast(error.domain);
     
-    if (!button.selected) {
-        self.tabBarItem.image = [[UIImage imageNamed:@"tabbar_cloudstore_n"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-        self.tabBarItem.selectedImage = [[UIImage imageNamed:@"tabbar_cloudstore_h"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-        self.tabBarItem.title = @"抢购";
-        tabbarContr.tabBar.backgroundImage = [self imageWithColor:[UIColorFromHex(0x8CC63F) colorWithAlphaComponent:0.2]];
-        
-    } else {
-        
-        self.tabBarItem.image = [[UIImage imageNamed:@"tabbar_home_n"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-        self.tabBarItem.selectedImage = [[UIImage imageNamed:@"tabbar_home_h"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-        self.tabBarItem.title = @"首页";
-        tabbarContr.tabBar.backgroundImage = nil;
-    }
+    }];
 }
-
-- (UIImage *)imageWithColor:(UIColor *)color
-{
-    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
-    UIGraphicsBeginImageContext(rect.size);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    
-    CGContextSetFillColorWithColor(context, [color CGColor]);
-    CGContextFillRect(context, rect);
-    
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return image;
-}
-
 
 /**
  请求icon数据
@@ -154,9 +105,9 @@
 - (void)requestIconData:(NSArray *)iconUrlArr
 {
     iconUrlArr = [NSArray arrayWithObjects:
-                  @"http://www.iconpng.com/download/ico/99504",
                   @"http://www.iconpng.com/download/png/100864",
                   @"http://www.iconpng.com/download/png/70161",
+                  @"http://www.iconpng.com/download/ico/99504",
                   @"http://www.iconpng.com/download/ico/99504",nil];
     
     dispatch_group_t group = dispatch_group_create();
@@ -172,7 +123,24 @@
     }
     
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
-        NSLog(@"下载完成===%@",downloadIconArr);
+        NSMutableArray *tabBarInfoArr = [NSMutableArray array];
+        
+        for (UIImage *iconImage in downloadIconArr) {
+            if (![iconImage isKindOfClass:[UIImage class]]) continue;
+            
+            OKTabBarInfoModel *infoModel = [[OKTabBarInfoModel alloc] init];
+            infoModel.tabBarItemTitle = @"测试";
+            infoModel.tabBarNormolImage = iconImage;
+            infoModel.tabBarSelectedImage = iconImage;
+            infoModel.tabBarNormolTitleColor = UIColorFromHex(0x282828);
+            infoModel.tabBarSelectedTitleColor = UIColorFromHex(0xfe9b00);
+            infoModel.tabBarTitleOffset = -10;
+            infoModel.tabBarImageOffset = -20;
+            
+            [tabBarInfoArr addObject:infoModel];
+        }
+        NSLog(@"下载完成===%@",tabBarInfoArr);
+        [(OKAppTabBarVC *)self.tabBarController changeTabbarItemCustomImages:tabBarInfoArr];
     });
 }
 

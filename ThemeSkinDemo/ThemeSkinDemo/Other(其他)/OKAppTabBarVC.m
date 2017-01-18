@@ -6,29 +6,19 @@
 //  Copyright © 2016年 okdeer. All rights reserved.
 //
 
-#import "CCTabBarViewController.h"
+#import "OKAppTabBarVC.h"
 #import "FirstViewController.h"
 #import "SecondViewController.h"
 #import "ThirdViewController.h"
-#import "CCTabBar.h"
-#import "CCConst.h"
+#import "OKTabBarInfoModel.h"
+#import "OKAppTabBar.h"
 
-//定义UIImage对象，图片多次被使用到
-#define ImageNamed(name)                [UIImage imageNamed:name]
-//rgb颜色
-#define RGB(r,g,b)                      [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f                                                                                 alpha:1.f]
-//rgb颜色,  a:透明度
-#define RGBA(r,g,b,a)                   [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f                                                                                 alpha:(a)]
-// rgb颜色转换（16进制->10进制）
-#define UIColorFromHex(rgbValue)        [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
-//主色 (黄色)
-#define Color_Main                      UIColorFromRGB(0xfe9b00)
 
-@interface CCTabBarViewController ()
-@property (nonatomic, strong) CCTabBar *appTabBar;
+@interface OKAppTabBarVC ()
+@property (nonatomic, strong) OKAppTabBar *appTabBar;
 @end
 
-@implementation CCTabBarViewController
+@implementation OKAppTabBarVC
 
 /** 可以设置UITabBarItem的通用主题
 + (void)initialize
@@ -60,7 +50,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSLog(@"app TabBar对象===%@",self);
+    NSLog(@"系统TabBar对象===%@",self);
     
     //初始化tabBar控制器
     [self initTabBarVC];
@@ -71,44 +61,53 @@
  */
 - (void)initTabBarVC
 {
-    //1. 添加子控制器: 首页, 发现, 我的
-    [self addTabBarChildVC:[FirstViewController new]];
-    [self addTabBarChildVC:[SecondViewController new]];
-    [self addTabBarChildVC:[ThirdViewController new]];
+    //添加子控制器: 首页
+    [self addTabBarChildVC:[FirstViewController new] navTitle:@"首页"];
     
-    //2. 更换tabBar
+    //添加子控制器: 发现
+    [self addTabBarChildVC:[SecondViewController new] navTitle:@"发现"];
+    
+    //添加子控制器: 我的
+    [self addTabBarChildVC:[ThirdViewController new] navTitle:@"我的"];
+    
+    //更换tabBar
     [self setValue:self.appTabBar forKeyPath:@"tabBar"];
 }
 
 /**
  * 自定义添加双击事件和主题图标
  */
-- (CCTabBar *)appTabBar
+- (OKAppTabBar *)appTabBar
 {
     if (!_appTabBar) {
-        _appTabBar = [[CCTabBar alloc] init];
+        _appTabBar = [[OKAppTabBar alloc] init];
+        //重复点击tabBar回调
+        WEAKSELF
+        [_appTabBar setRepeatTouchDownItemBlock:^(UITabBarItem *item) {
+            [weakSelf didRepeatTouchDownTabBarItem:item];
+        }];
+        NSLog(@"自定义TabBar对象===%@",_appTabBar);
     }
     return _appTabBar;
 }
 
-
 /**
- * 初始化子控制器tabBar默认图片
+ * 包装一个导航控制器, 添加导航控制器为tabbarcontroller的子控制器
  */
-- (void)addTabBarChildVC:(UIViewController *)vc
+- (void)addTabBarChildVC:(UIViewController *)vc navTitle:(NSString *)navTitle
 {
-    // 设置文字和图片
-    vc.edgesForExtendedLayout = UIRectEdgeNone;
-    
-    //设置tabBar文字颜色
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:UIColorFromHex(0x8CC63F),NSForegroundColorAttributeName, nil];
-    [vc.tabBarItem setTitleTextAttributes:dic forState:UIControlStateSelected];
-    
-    // 包装一个导航控制器, 添加导航控制器为tabbarcontroller的子控制器
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+    
+    // 设置控制器起始位置和标题
+    vc.edgesForExtendedLayout = UIRectEdgeNone;
+    vc.navigationItem.title = navTitle;
+    
+    //设置tabBar默认文字颜色
+    [vc.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:UIColorFromHex(0x8CC63F)}
+                                 forState:UIControlStateSelected];
+    
     [self addChildViewController:nav];
 }
-
 
 /**
  * 设置默认tabBar图片
@@ -121,21 +120,18 @@
     NSArray *defaultNormolImageArr = @[@"tabbar_home_n",@"tabbar_property_n",@"tabbar_my_n"];
     NSArray *defaultSelectImageArr = @[@"tabbar_home_h",@"tabbar_property_h",@"tabbar_my_h"];
     
-    NSInteger index = 0;
-    for (UINavigationController *childNav in self.childViewControllers) {
-        UIViewController *childVC = [childNav.viewControllers firstObject];
-        childVC.navigationItem.title = defaultTitleArray[index];
-        childNav.tabBarItem.title = defaultTitleArray[index];
+    for (int i = 0; i<self.childViewControllers.count; i++) {
+        OKTabBarInfoModel *infoModel = [[OKTabBarInfoModel alloc] init];
         
-        NSMutableDictionary *infoDic = [NSMutableDictionary dictionary];
-        infoDic[CCTabBarItemTitleKey] = defaultTitleArray[index];
-        infoDic[CCTabBarNormolImageKey] = [UIImage imageNamed:defaultNormolImageArr[index]];
-        infoDic[CCTabBarSelectedImageKey] = [UIImage imageNamed:defaultSelectImageArr[index]];
+        infoModel.tabBarItemTitle = defaultTitleArray[i];
+        infoModel.tabBarNormolImage = [UIImage imageNamed:defaultNormolImageArr[i]];
+        infoModel.tabBarSelectedImage = [UIImage imageNamed:defaultSelectImageArr[i]];
+        infoModel.tabBarNormolTitleColor = [UIColor blackColor];
+        infoModel.tabBarSelectedTitleColor = UIColorFromHex(0x8CC63F);
         
-        [defaultTabBarImageArr addObject:infoDic];
-        index++;
+        [defaultTabBarImageArr addObject:infoModel];
     }
-    [self.appTabBar setTabBarItemImages:defaultTabBarImageArr];
+    [self changeTabbarItemCustomImages:defaultTabBarImageArr];
 }
 
 #pragma mark - 监听tabBar双击事件

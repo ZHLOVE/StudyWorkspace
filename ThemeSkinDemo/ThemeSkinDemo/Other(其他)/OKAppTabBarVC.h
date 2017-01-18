@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CCTabBarViewController : UITabBarController
+@interface OKAppTabBarVC : UITabBarController
 
 /**
  * 更换主题

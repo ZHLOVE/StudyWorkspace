@@ -7,7 +7,7 @@
 //
 
 #import "SecondViewController.h"
-#import "CCTabBar2VC.h"
+#import "OKOtherTabBarVC.h"
 #import "ThirdViewController.h"
 #import "UITabBar+BadgeView.h"
 
@@ -23,10 +23,7 @@
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
-    //设置小红点
-    [self.tabBarController.tabBar showBadgeOnItemIndex:0];
-    
+{    
     ThirdViewController *vc = [[ThirdViewController alloc] init];
     vc.hidesBottomBarWhenPushed = YES;
     vc.title = @"测试";
@@ -45,7 +42,7 @@
                         BOOL oldState = [UIView areAnimationsEnabled];//防止设备横屏，新vc的View有异常旋转动画
                         [UIView setAnimationsEnabled:NO];
                         
-                        CCTabBar2VC *newTabBar = [[CCTabBar2VC alloc] init];
+                        OKOtherTabBarVC *newTabBar = [[OKOtherTabBarVC alloc] init];
                         [self presentViewController:newTabBar animated:NO completion:^{
                             NSLog(@"切换到新的原生tabBar完成");
                         }];

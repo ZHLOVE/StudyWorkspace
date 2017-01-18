@@ -7,33 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-
-		B5509EC91E24F508008B50E3 /* FourthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5509EC71E24F508008B50E3 /* FourthViewController.m */; };
-		B5509ECA1E24F508008B50E3 /* FourthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5509EC81E24F508008B50E3 /* FourthViewController.xib */; };
-		B5509ECC1E24FE3D008B50E3 /* CommonFrameWork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5509ECB1E24FE3D008B50E3 /* CommonFrameWork.framework */; };
-		B5509ECD1E24FE3D008B50E3 /* CommonFrameWork.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5509ECB1E24FE3D008B50E3 /* CommonFrameWork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-
 		A306935A1E1EACEE0023DE5E /* CommonFrameWork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A30693591E1EACEE0023DE5E /* CommonFrameWork.framework */; };
 		A306935B1E1EACEE0023DE5E /* CommonFrameWork.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A30693591E1EACEE0023DE5E /* CommonFrameWork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-
 		B57A66CD1E1E324400ACB5EC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B57A66CC1E1E324400ACB5EC /* main.m */; };
 		B57A66D01E1E324400ACB5EC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B57A66CF1E1E324400ACB5EC /* AppDelegate.m */; };
 		B57A66D81E1E324400ACB5EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B57A66D71E1E324400ACB5EC /* Assets.xcassets */; };
 		B57A66DB1E1E324400ACB5EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B57A66D91E1E324400ACB5EC /* LaunchScreen.storyboard */; };
-		B57A66E41E1E327600ACB5EC /* CCTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B57A66E31E1E327600ACB5EC /* CCTabBarViewController.m */; };
-		B57A66EE1E1E32A000ACB5EC /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B57A66E61E1E32A000ACB5EC /* FirstViewController.m */; };
-		B57A66EF1E1E32A000ACB5EC /* FirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B57A66E71E1E32A000ACB5EC /* FirstViewController.xib */; };
-		B57A66F01E1E32A000ACB5EC /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B57A66E91E1E32A000ACB5EC /* SecondViewController.m */; };
-		B57A66F11E1E32A000ACB5EC /* SecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B57A66EA1E1E32A000ACB5EC /* SecondViewController.xib */; };
-		B57A66F21E1E32A000ACB5EC /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B57A66EC1E1E32A000ACB5EC /* ThirdViewController.m */; };
-		B57A66F31E1E32A000ACB5EC /* ThirdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B57A66ED1E1E32A000ACB5EC /* ThirdViewController.xib */; };
-		B57A66F61E1E412A00ACB5EC /* CCTabBar2VC.m in Sources */ = {isa = PBXBuildFile; fileRef = B57A66F51E1E412A00ACB5EC /* CCTabBar2VC.m */; };
-		B5F011141E2E094400371A4F /* CCTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F011131E2E094400371A4F /* CCTabBar.m */; };
-		B5F011171E2E23E500371A4F /* CCConst.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F011161E2E23E500371A4F /* CCConst.m */; };
+		B5BA5FF41E2F24CF000CF619 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BA5FDA1E2F24CF000CF619 /* FirstViewController.m */; };
+		B5BA5FF51E2F24CF000CF619 /* FirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BA5FDB1E2F24CF000CF619 /* FirstViewController.xib */; };
+		B5BA5FF61E2F24CF000CF619 /* FourthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BA5FDD1E2F24CF000CF619 /* FourthViewController.m */; };
+		B5BA5FF71E2F24CF000CF619 /* FourthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BA5FDE1E2F24CF000CF619 /* FourthViewController.xib */; };
+		B5BA5FF81E2F24CF000CF619 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BA5FE01E2F24CF000CF619 /* SecondViewController.m */; };
+		B5BA5FF91E2F24CF000CF619 /* SecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BA5FE11E2F24CF000CF619 /* SecondViewController.xib */; };
+		B5BA5FFA1E2F24CF000CF619 /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BA5FE41E2F24CF000CF619 /* ThirdViewController.m */; };
+		B5BA5FFB1E2F24CF000CF619 /* ThirdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BA5FE51E2F24CF000CF619 /* ThirdViewController.xib */; };
+		B5BA5FFD1E2F24CF000CF619 /* OKTabBarInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BA5FEB1E2F24CF000CF619 /* OKTabBarInfoModel.m */; };
+		B5BA5FFE1E2F24CF000CF619 /* OKAppTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BA5FEE1E2F24CF000CF619 /* OKAppTabBar.m */; };
+		B5BA5FFF1E2F24CF000CF619 /* OKOtherTabBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BA5FF01E2F24CF000CF619 /* OKOtherTabBarVC.m */; };
+		B5BA60001E2F24CF000CF619 /* OKAppTabBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BA5FF21E2F24CF000CF619 /* OKAppTabBarVC.m */; };
+		B5BA60061E2F2A86000CF619 /* OKPublicConst.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BA60051E2F2A86000CF619 /* OKPublicConst.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-
 		A306935C1E1EACEE0023DE5E /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -48,14 +43,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-
-		B5509EC61E24F508008B50E3 /* FourthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FourthViewController.h; sourceTree = "<group>"; };
-		B5509EC71E24F508008B50E3 /* FourthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FourthViewController.m; sourceTree = "<group>"; };
-		B5509EC81E24F508008B50E3 /* FourthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FourthViewController.xib; sourceTree = "<group>"; };
-		B5509ECB1E24FE3D008B50E3 /* CommonFrameWork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CommonFrameWork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-
 		A30693591E1EACEE0023DE5E /* CommonFrameWork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CommonFrameWork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-
 		B57A66C81E1E324400ACB5EC /* ThemeSkinDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThemeSkinDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B57A66CC1E1E324400ACB5EC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B57A66CE1E1E324400ACB5EC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -63,23 +51,31 @@
 		B57A66D71E1E324400ACB5EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B57A66DA1E1E324400ACB5EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B57A66DC1E1E324400ACB5EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B57A66E21E1E327600ACB5EC /* CCTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTabBarViewController.h; sourceTree = "<group>"; };
-		B57A66E31E1E327600ACB5EC /* CCTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCTabBarViewController.m; sourceTree = "<group>"; };
-		B57A66E51E1E32A000ACB5EC /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		B57A66E61E1E32A000ACB5EC /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
-		B57A66E71E1E32A000ACB5EC /* FirstViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstViewController.xib; sourceTree = "<group>"; };
-		B57A66E81E1E32A000ACB5EC /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		B57A66E91E1E32A000ACB5EC /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
-		B57A66EA1E1E32A000ACB5EC /* SecondViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SecondViewController.xib; sourceTree = "<group>"; };
-		B57A66EB1E1E32A000ACB5EC /* ThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdViewController.h; sourceTree = "<group>"; };
-		B57A66EC1E1E32A000ACB5EC /* ThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
-		B57A66ED1E1E32A000ACB5EC /* ThirdViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ThirdViewController.xib; sourceTree = "<group>"; };
-		B57A66F41E1E412A00ACB5EC /* CCTabBar2VC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTabBar2VC.h; sourceTree = "<group>"; };
-		B57A66F51E1E412A00ACB5EC /* CCTabBar2VC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCTabBar2VC.m; sourceTree = "<group>"; };
-		B5F011121E2E094400371A4F /* CCTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTabBar.h; sourceTree = "<group>"; };
-		B5F011131E2E094400371A4F /* CCTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCTabBar.m; sourceTree = "<group>"; };
-		B5F011151E2E23E500371A4F /* CCConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCConst.h; sourceTree = "<group>"; };
-		B5F011161E2E23E500371A4F /* CCConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCConst.m; sourceTree = "<group>"; };
+		B5BA5FD91E2F24CF000CF619 /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
+		B5BA5FDA1E2F24CF000CF619 /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		B5BA5FDB1E2F24CF000CF619 /* FirstViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstViewController.xib; sourceTree = "<group>"; };
+		B5BA5FDC1E2F24CF000CF619 /* FourthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FourthViewController.h; sourceTree = "<group>"; };
+		B5BA5FDD1E2F24CF000CF619 /* FourthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FourthViewController.m; sourceTree = "<group>"; };
+		B5BA5FDE1E2F24CF000CF619 /* FourthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FourthViewController.xib; sourceTree = "<group>"; };
+		B5BA5FDF1E2F24CF000CF619 /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
+		B5BA5FE01E2F24CF000CF619 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		B5BA5FE11E2F24CF000CF619 /* SecondViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SecondViewController.xib; sourceTree = "<group>"; };
+		B5BA5FE31E2F24CF000CF619 /* ThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdViewController.h; sourceTree = "<group>"; };
+		B5BA5FE41E2F24CF000CF619 /* ThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
+		B5BA5FE51E2F24CF000CF619 /* ThirdViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ThirdViewController.xib; sourceTree = "<group>"; };
+		B5BA5FEA1E2F24CF000CF619 /* OKTabBarInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKTabBarInfoModel.h; sourceTree = "<group>"; };
+		B5BA5FEB1E2F24CF000CF619 /* OKTabBarInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OKTabBarInfoModel.m; sourceTree = "<group>"; };
+		B5BA5FED1E2F24CF000CF619 /* OKAppTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKAppTabBar.h; sourceTree = "<group>"; };
+		B5BA5FEE1E2F24CF000CF619 /* OKAppTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OKAppTabBar.m; sourceTree = "<group>"; };
+		B5BA5FEF1E2F24CF000CF619 /* OKOtherTabBarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKOtherTabBarVC.h; sourceTree = "<group>"; };
+		B5BA5FF01E2F24CF000CF619 /* OKOtherTabBarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OKOtherTabBarVC.m; sourceTree = "<group>"; };
+		B5BA5FF11E2F24CF000CF619 /* OKAppTabBarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKAppTabBarVC.h; sourceTree = "<group>"; };
+		B5BA5FF21E2F24CF000CF619 /* OKAppTabBarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OKAppTabBarVC.m; sourceTree = "<group>"; };
+		B5BA60011E2F275D000CF619 /* OKPubilcHeadDefiner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OKPubilcHeadDefiner.h; sourceTree = "<group>"; };
+		B5BA60021E2F27AA000CF619 /* ThemeSkim.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeSkim.pch; sourceTree = "<group>"; };
+		B5BA60031E2F27ED000CF619 /* OKColorDefiner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OKColorDefiner.h; sourceTree = "<group>"; };
+		B5BA60041E2F2A86000CF619 /* OKPublicConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKPublicConst.h; sourceTree = "<group>"; };
+		B5BA60051E2F2A86000CF619 /* OKPublicConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OKPublicConst.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,9 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-
 				A306935A1E1EACEE0023DE5E /* CommonFrameWork.framework in Frameworks */,
-
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,26 +111,11 @@
 			children = (
 				B57A66CE1E1E324400ACB5EC /* AppDelegate.h */,
 				B57A66CF1E1E324400ACB5EC /* AppDelegate.m */,
-				B5F011151E2E23E500371A4F /* CCConst.h */,
-				B5F011161E2E23E500371A4F /* CCConst.m */,
-				B5F011121E2E094400371A4F /* CCTabBar.h */,
-				B5F011131E2E094400371A4F /* CCTabBar.m */,
-				B57A66E21E1E327600ACB5EC /* CCTabBarViewController.h */,
-				B57A66E31E1E327600ACB5EC /* CCTabBarViewController.m */,
-				B57A66F41E1E412A00ACB5EC /* CCTabBar2VC.h */,
-				B57A66F51E1E412A00ACB5EC /* CCTabBar2VC.m */,
-				B57A66E51E1E32A000ACB5EC /* FirstViewController.h */,
-				B57A66E61E1E32A000ACB5EC /* FirstViewController.m */,
-				B57A66E71E1E32A000ACB5EC /* FirstViewController.xib */,
-				B57A66E81E1E32A000ACB5EC /* SecondViewController.h */,
-				B57A66E91E1E32A000ACB5EC /* SecondViewController.m */,
-				B57A66EA1E1E32A000ACB5EC /* SecondViewController.xib */,
-				B57A66EB1E1E32A000ACB5EC /* ThirdViewController.h */,
-				B57A66EC1E1E32A000ACB5EC /* ThirdViewController.m */,
-				B57A66ED1E1E32A000ACB5EC /* ThirdViewController.xib */,
-				B5509EC61E24F508008B50E3 /* FourthViewController.h */,
-				B5509EC71E24F508008B50E3 /* FourthViewController.m */,
-				B5509EC81E24F508008B50E3 /* FourthViewController.xib */,
+				B5BA5FD81E2F24CF000CF619 /* Controller(控制器) */,
+				B5BA5FE91E2F24CF000CF619 /* Model(模型) */,
+				B5BA5FF31E2F24CF000CF619 /* View(视图) */,
+				B5BA5FEC1E2F24CF000CF619 /* Other(其他) */,
+				B5BA5FE61E2F24CF000CF619 /* Mian(主要) */,
 				B57A66D71E1E324400ACB5EC /* Assets.xcassets */,
 				B57A66D91E1E324400ACB5EC /* LaunchScreen.storyboard */,
 				B57A66DC1E1E324400ACB5EC /* Info.plist */,
@@ -148,12 +127,70 @@
 		B57A66CB1E1E324400ACB5EC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-
+				B5BA60021E2F27AA000CF619 /* ThemeSkim.pch */,
 				A30693591E1EACEE0023DE5E /* CommonFrameWork.framework */,
-
 				B57A66CC1E1E324400ACB5EC /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B5BA5FD81E2F24CF000CF619 /* Controller(控制器) */ = {
+			isa = PBXGroup;
+			children = (
+				B5BA5FD91E2F24CF000CF619 /* FirstViewController.h */,
+				B5BA5FDA1E2F24CF000CF619 /* FirstViewController.m */,
+				B5BA5FDB1E2F24CF000CF619 /* FirstViewController.xib */,
+				B5BA5FDC1E2F24CF000CF619 /* FourthViewController.h */,
+				B5BA5FDD1E2F24CF000CF619 /* FourthViewController.m */,
+				B5BA5FDE1E2F24CF000CF619 /* FourthViewController.xib */,
+				B5BA5FDF1E2F24CF000CF619 /* SecondViewController.h */,
+				B5BA5FE01E2F24CF000CF619 /* SecondViewController.m */,
+				B5BA5FE11E2F24CF000CF619 /* SecondViewController.xib */,
+				B5BA5FE31E2F24CF000CF619 /* ThirdViewController.h */,
+				B5BA5FE41E2F24CF000CF619 /* ThirdViewController.m */,
+				B5BA5FE51E2F24CF000CF619 /* ThirdViewController.xib */,
+			);
+			path = "Controller(控制器)";
+			sourceTree = "<group>";
+		};
+		B5BA5FE61E2F24CF000CF619 /* Mian(主要) */ = {
+			isa = PBXGroup;
+			children = (
+				B5BA60041E2F2A86000CF619 /* OKPublicConst.h */,
+				B5BA60051E2F2A86000CF619 /* OKPublicConst.m */,
+				B5BA60011E2F275D000CF619 /* OKPubilcHeadDefiner.h */,
+				B5BA60031E2F27ED000CF619 /* OKColorDefiner.h */,
+			);
+			path = "Mian(主要)";
+			sourceTree = "<group>";
+		};
+		B5BA5FE91E2F24CF000CF619 /* Model(模型) */ = {
+			isa = PBXGroup;
+			children = (
+				B5BA5FEA1E2F24CF000CF619 /* OKTabBarInfoModel.h */,
+				B5BA5FEB1E2F24CF000CF619 /* OKTabBarInfoModel.m */,
+			);
+			path = "Model(模型)";
+			sourceTree = "<group>";
+		};
+		B5BA5FEC1E2F24CF000CF619 /* Other(其他) */ = {
+			isa = PBXGroup;
+			children = (
+				B5BA5FED1E2F24CF000CF619 /* OKAppTabBar.h */,
+				B5BA5FEE1E2F24CF000CF619 /* OKAppTabBar.m */,
+				B5BA5FEF1E2F24CF000CF619 /* OKOtherTabBarVC.h */,
+				B5BA5FF01E2F24CF000CF619 /* OKOtherTabBarVC.m */,
+				B5BA5FF11E2F24CF000CF619 /* OKAppTabBarVC.h */,
+				B5BA5FF21E2F24CF000CF619 /* OKAppTabBarVC.m */,
+			);
+			path = "Other(其他)";
+			sourceTree = "<group>";
+		};
+		B5BA5FF31E2F24CF000CF619 /* View(视图) */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View(视图)";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,9 +203,7 @@
 				B57A66C41E1E324400ACB5EC /* Sources */,
 				B57A66C51E1E324400ACB5EC /* Frameworks */,
 				B57A66C61E1E324400ACB5EC /* Resources */,
-
 				A306935C1E1EACEE0023DE5E /* Embed Frameworks */,
-
 			);
 			buildRules = (
 			);
@@ -223,12 +258,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5BA5FF71E2F24CF000CF619 /* FourthViewController.xib in Resources */,
 				B57A66DB1E1E324400ACB5EC /* LaunchScreen.storyboard in Resources */,
+				B5BA5FFB1E2F24CF000CF619 /* ThirdViewController.xib in Resources */,
+				B5BA5FF51E2F24CF000CF619 /* FirstViewController.xib in Resources */,
 				B57A66D81E1E324400ACB5EC /* Assets.xcassets in Resources */,
-				B57A66F31E1E32A000ACB5EC /* ThirdViewController.xib in Resources */,
-				B57A66EF1E1E32A000ACB5EC /* FirstViewController.xib in Resources */,
-				B5509ECA1E24F508008B50E3 /* FourthViewController.xib in Resources */,
-				B57A66F11E1E32A000ACB5EC /* SecondViewController.xib in Resources */,
+				B5BA5FF91E2F24CF000CF619 /* SecondViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,16 +274,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5509EC91E24F508008B50E3 /* FourthViewController.m in Sources */,
-				B57A66F01E1E32A000ACB5EC /* SecondViewController.m in Sources */,
-				B5F011141E2E094400371A4F /* CCTabBar.m in Sources */,
-				B57A66E41E1E327600ACB5EC /* CCTabBarViewController.m in Sources */,
-				B57A66F61E1E412A00ACB5EC /* CCTabBar2VC.m in Sources */,
-				B57A66EE1E1E32A000ACB5EC /* FirstViewController.m in Sources */,
+				B5BA5FF81E2F24CF000CF619 /* SecondViewController.m in Sources */,
+				B5BA5FFD1E2F24CF000CF619 /* OKTabBarInfoModel.m in Sources */,
+				B5BA5FFE1E2F24CF000CF619 /* OKAppTabBar.m in Sources */,
+				B5BA5FFF1E2F24CF000CF619 /* OKOtherTabBarVC.m in Sources */,
+				B5BA5FF61E2F24CF000CF619 /* FourthViewController.m in Sources */,
+				B5BA5FFA1E2F24CF000CF619 /* ThirdViewController.m in Sources */,
+				B5BA60061E2F2A86000CF619 /* OKPublicConst.m in Sources */,
 				B57A66D01E1E324400ACB5EC /* AppDelegate.m in Sources */,
-				B5F011171E2E23E500371A4F /* CCConst.m in Sources */,
+				B5BA5FF41E2F24CF000CF619 /* FirstViewController.m in Sources */,
 				B57A66CD1E1E324400ACB5EC /* main.m in Sources */,
-				B57A66F21E1E32A000ACB5EC /* ThirdViewController.m in Sources */,
+				B5BA60001E2F24CF000CF619 /* OKAppTabBarVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,9 +396,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-
 				DEVELOPMENT_TEAM = W222R58V26;
-
+				GCC_PREFIX_HEADER = ThemeSkinDemo/ThemeSkim.pch;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/../CommonFrameWork/**";
 				INFOPLIST_FILE = ThemeSkinDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -378,9 +413,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-
 				DEVELOPMENT_TEAM = "";
-
+				GCC_PREFIX_HEADER = ThemeSkinDemo/ThemeSkim.pch;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/../CommonFrameWork/**";
 				INFOPLIST_FILE = ThemeSkinDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

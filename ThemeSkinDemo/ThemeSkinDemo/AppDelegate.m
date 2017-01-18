@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "CCTabBarViewController.h"
+#import "OKAppTabBarVC.h"
 
 @interface AppDelegate ()
 
@@ -20,7 +20,7 @@
 {    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
-    self.window.rootViewController = [CCTabBarViewController new];
+    self.window.rootViewController = [OKAppTabBarVC new];
     [self.window makeKeyAndVisible];
     
     return YES;

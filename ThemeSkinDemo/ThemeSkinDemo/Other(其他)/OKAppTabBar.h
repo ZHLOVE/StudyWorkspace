@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CCTabBar : UITabBar
+@interface OKAppTabBar : UITabBar
+
+/** 重复点击tabBar回调 */
+@property (nonatomic, copy) void (^repeatTouchDownItemBlock)(UITabBarItem *item);
 
 /**
  * 更换TabBar图片

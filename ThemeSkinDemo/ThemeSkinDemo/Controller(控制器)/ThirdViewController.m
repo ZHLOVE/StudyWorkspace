@@ -11,8 +11,6 @@
 #import "OKHttpRequestTools.h"
 #import "OKAlertController.h"
 
-#define WEAKSELF(weakSelf)  __weak __typeof(&*self)weakSelf = self;
-
 @interface ThirdViewController ()
 @property (nonatomic, strong) FourthViewController *fourthVC;
 @property (nonatomic, strong) UIView *bgNavView;
@@ -81,7 +79,7 @@
  */
 - (void)requestAllData
 {
-    WEAKSELF(weakSelf)
+    WEAKSELF
     
     //处理请求1回调
     [self requestData1:^(id returnValue) {

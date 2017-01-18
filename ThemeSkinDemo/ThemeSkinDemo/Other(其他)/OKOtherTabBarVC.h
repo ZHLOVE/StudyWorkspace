@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CCTabBar2VC : UITabBarController
+@interface OKOtherTabBarVC : UITabBarController
 
 @end
