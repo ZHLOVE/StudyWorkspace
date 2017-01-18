@@ -26,6 +26,7 @@
 		B5BA5FFF1E2F24CF000CF619 /* OKOtherTabBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BA5FF01E2F24CF000CF619 /* OKOtherTabBarVC.m */; };
 		B5BA60001E2F24CF000CF619 /* OKAppTabBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BA5FF21E2F24CF000CF619 /* OKAppTabBarVC.m */; };
 		B5BA60061E2F2A86000CF619 /* OKPublicConst.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BA60051E2F2A86000CF619 /* OKPublicConst.m */; };
+		B5BA600B1E2F38FC000CF619 /* OKUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BA600A1E2F38FC000CF619 /* OKUtils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -77,6 +78,8 @@
 		B5BA60051E2F2A86000CF619 /* OKPublicConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OKPublicConst.m; sourceTree = "<group>"; };
 		B5BA60071E2F2B1A000CF619 /* OKFrameDefiner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OKFrameDefiner.h; sourceTree = "<group>"; };
 		B5BA60081E2F2B72000CF619 /* OKPubilcKeyDefiner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OKPubilcKeyDefiner.h; sourceTree = "<group>"; };
+		B5BA60091E2F38FC000CF619 /* OKUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKUtils.h; sourceTree = "<group>"; };
+		B5BA600A1E2F38FC000CF619 /* OKUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OKUtils.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,15 +144,15 @@
 				B5BA5FD91E2F24CF000CF619 /* FirstViewController.h */,
 				B5BA5FDA1E2F24CF000CF619 /* FirstViewController.m */,
 				B5BA5FDB1E2F24CF000CF619 /* FirstViewController.xib */,
-				B5BA5FDC1E2F24CF000CF619 /* FourthViewController.h */,
-				B5BA5FDD1E2F24CF000CF619 /* FourthViewController.m */,
-				B5BA5FDE1E2F24CF000CF619 /* FourthViewController.xib */,
 				B5BA5FDF1E2F24CF000CF619 /* SecondViewController.h */,
 				B5BA5FE01E2F24CF000CF619 /* SecondViewController.m */,
 				B5BA5FE11E2F24CF000CF619 /* SecondViewController.xib */,
 				B5BA5FE31E2F24CF000CF619 /* ThirdViewController.h */,
 				B5BA5FE41E2F24CF000CF619 /* ThirdViewController.m */,
 				B5BA5FE51E2F24CF000CF619 /* ThirdViewController.xib */,
+				B5BA5FDC1E2F24CF000CF619 /* FourthViewController.h */,
+				B5BA5FDD1E2F24CF000CF619 /* FourthViewController.m */,
+				B5BA5FDE1E2F24CF000CF619 /* FourthViewController.xib */,
 			);
 			path = "Controller(控制器)";
 			sourceTree = "<group>";
@@ -162,6 +165,8 @@
 				B5BA60081E2F2B72000CF619 /* OKPubilcKeyDefiner.h */,
 				B5BA60071E2F2B1A000CF619 /* OKFrameDefiner.h */,
 				B5BA60031E2F27ED000CF619 /* OKColorDefiner.h */,
+				B5BA60091E2F38FC000CF619 /* OKUtils.h */,
+				B5BA600A1E2F38FC000CF619 /* OKUtils.m */,
 			);
 			path = "Mian(主要)";
 			sourceTree = "<group>";
@@ -180,10 +185,10 @@
 			children = (
 				B5BA5FED1E2F24CF000CF619 /* OKAppTabBar.h */,
 				B5BA5FEE1E2F24CF000CF619 /* OKAppTabBar.m */,
-				B5BA5FEF1E2F24CF000CF619 /* OKOtherTabBarVC.h */,
-				B5BA5FF01E2F24CF000CF619 /* OKOtherTabBarVC.m */,
 				B5BA5FF11E2F24CF000CF619 /* OKAppTabBarVC.h */,
 				B5BA5FF21E2F24CF000CF619 /* OKAppTabBarVC.m */,
+				B5BA5FEF1E2F24CF000CF619 /* OKOtherTabBarVC.h */,
+				B5BA5FF01E2F24CF000CF619 /* OKOtherTabBarVC.m */,
 			);
 			path = "Other(其他)";
 			sourceTree = "<group>";
@@ -279,6 +284,7 @@
 				B5BA5FF81E2F24CF000CF619 /* SecondViewController.m in Sources */,
 				B5BA5FFD1E2F24CF000CF619 /* OKTabBarInfoModel.m in Sources */,
 				B5BA5FFE1E2F24CF000CF619 /* OKAppTabBar.m in Sources */,
+				B5BA600B1E2F38FC000CF619 /* OKUtils.m in Sources */,
 				B5BA5FFF1E2F24CF000CF619 /* OKOtherTabBarVC.m in Sources */,
 				B5BA5FF61E2F24CF000CF619 /* FourthViewController.m in Sources */,
 				B5BA5FFA1E2F24CF000CF619 /* ThirdViewController.m in Sources */,

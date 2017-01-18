@@ -12,6 +12,7 @@
 #import <OKHttpRequestTools.h>
 #import <OKAlertController.h>
 #import "OKTabBarInfoModel.h"
+#import <UIImage+OKExtension.h>
 
 @interface FirstViewController ()
 
@@ -125,13 +126,23 @@
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
         NSMutableArray *tabBarInfoArr = [NSMutableArray array];
         
-        for (UIImage *iconImage in downloadIconArr) {
+        NSArray *defaultNormolImageArr = @[@"tabbar_home_n",@"tabbar_property_n",@"tabbar_my_n"];
+        for (int i=0; i<downloadIconArr.count; i++) {
+            UIImage *iconImage = downloadIconArr[i];
             if (![iconImage isKindOfClass:[UIImage class]]) continue;
+            
+            if (defaultNormolImageArr.count-1 < i) continue;
+            
+            //设置尺寸
+            UIImage *convertImage = [UIImage scaleToSize:iconImage size:CGSizeMake(31, 31)];
+            NSString *saveImagePath = [NSString stringWithFormat:@"%@/%@@2x.png",[OKUtils getTabBarDirectory],defaultNormolImageArr[i]];
+            [UIImagePNGRepresentation(convertImage) writeToFile:saveImagePath atomically:NO];
+            NSLog(@"下载图片是否保存成功===%@",saveImagePath);
             
             OKTabBarInfoModel *infoModel = [[OKTabBarInfoModel alloc] init];
             infoModel.tabBarItemTitle = @"测试";
-            infoModel.tabBarNormolImage = iconImage;
-            infoModel.tabBarSelectedImage = iconImage;
+            infoModel.tabBarNormolImage = convertImage;
+            infoModel.tabBarSelectedImage = convertImage;
             infoModel.tabBarNormolTitleColor = UIColorFromHex(0x282828);
             infoModel.tabBarSelectedTitleColor = UIColorFromHex(0xfe9b00);
             infoModel.tabBarTitleOffset = -10;
@@ -140,7 +151,7 @@
             [tabBarInfoArr addObject:infoModel];
         }
         NSLog(@"下载完成===%@",tabBarInfoArr);
-        [(OKAppTabBarVC *)self.tabBarController changeTabbarItemCustomImages:tabBarInfoArr];
+        [(OKAppTabBarVC *)self.tabBarController changeTabBarThemeImages:tabBarInfoArr];
     });
 }
 

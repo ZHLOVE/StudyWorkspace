@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+@class OKTabBarInfoModel;
 
 @interface OKAppTabBarVC : UITabBarController
 
 /**
  * 更换主题
  */
-- (void)changeTabbarItemCustomImages:(NSArray *)customImageArr;
+- (void)changeTabBarThemeImages:(NSArray <OKTabBarInfoModel *> *)customImageArr;
 
 @end

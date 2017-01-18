@@ -96,7 +96,7 @@
         
         /** 设置标题和图片偏移量 */
         item.titlePositionAdjustment = UIOffsetMake(0, infoModel.tabBarTitleOffset);
-        item.imageInsets = UIEdgeInsetsMake(infoModel.tabBarImageOffset, 0, 0, 0);
+        item.imageInsets = UIEdgeInsetsMake(infoModel.tabBarImageOffset, 0, -infoModel.tabBarImageOffset, 0);
     }
 }
 

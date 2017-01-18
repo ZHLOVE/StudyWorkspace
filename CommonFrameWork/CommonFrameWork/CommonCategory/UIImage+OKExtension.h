@@ -15,6 +15,7 @@
 + (UIImage *)ok_imageOfEllipseWithColor:(UIColor *)color inFrame:(CGRect)frame;
 //3倍图转2倍图
 + (UIImage *)ok_image2FromImage3:(UIImage*)image;
-
+//缩放图片尺寸
++ (UIImage *)scaleToSize:(UIImage *)img size:(CGSize)size;
 
 @end

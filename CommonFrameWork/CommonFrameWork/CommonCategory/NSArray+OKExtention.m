@@ -31,7 +31,7 @@
         return [self ok_objectAtIndex:index];
     }
     else {
-        NSLog(@"％ld超出了数组范围",index);
+        NSLog(@"超出了数组范围==％zd",index);
         return nil;
     }
 }

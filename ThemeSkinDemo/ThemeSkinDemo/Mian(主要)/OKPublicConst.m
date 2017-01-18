@@ -13,3 +13,6 @@ NSString * const OKTabBarNormolImageKey = @"OKTabBarNormolImageKey";
 
 /** tabBar被选中状态图片名字key */
 NSString * const OKTabBarSelectedImageKey = @"OKTabBarSelectedImageKey";
+
+/** tabbar图片文件夹的目录 */
+NSString * const kOKabBarImagePathKey = @"kOKabBarImagePathKey";

@@ -43,8 +43,11 @@
 {
     [super viewWillAppear:animated];
     
-    //设置默认tabBar图片
-    [self setDefaultTabBarImages];
+    //默认只设置一次tabBar初始图片
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [self setStartTabBarImages];
+    });
 }
 
 - (void)viewDidLoad
@@ -81,8 +84,7 @@
 {
     if (!_appTabBar) {
         _appTabBar = [[OKAppTabBar alloc] init];
-        //重复点击tabBar回调
-        WEAKSELF
+        WEAKSELF //重复点击tabBar回调
         [_appTabBar setRepeatTouchDownItemBlock:^(UITabBarItem *item) {
             [weakSelf didRepeatTouchDownTabBarItem:item];
         }];
@@ -96,42 +98,61 @@
  */
 - (void)addTabBarChildVC:(UIViewController *)vc navTitle:(NSString *)navTitle
 {
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
-    
     // 设置控制器起始位置和标题
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
     vc.edgesForExtendedLayout = UIRectEdgeNone;
     vc.navigationItem.title = navTitle;
-    
-    //设置tabBar默认文字颜色
-    [vc.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:UIColorFromHex(0x8CC63F)}
-                                 forState:UIControlStateSelected];
-    
     [self addChildViewController:nav];
 }
 
 /**
- * 设置默认tabBar图片
+ * 设置tabBar主题图片
  */
-- (void)setDefaultTabBarImages
+- (void)setStartTabBarImages
 {
-    NSMutableArray *defaultTabBarImageArr = [NSMutableArray array];
+    NSMutableArray *tabBarImageArr = [NSMutableArray array];
     
     NSArray *defaultTitleArray = @[@"首页",@"发现",@"我的"];
     NSArray *defaultNormolImageArr = @[@"tabbar_home_n",@"tabbar_property_n",@"tabbar_my_n"];
     NSArray *defaultSelectImageArr = @[@"tabbar_home_h",@"tabbar_property_h",@"tabbar_my_h"];
     
-    for (int i = 0; i<self.childViewControllers.count; i++) {
+    for (int i=0; i<defaultNormolImageArr.count; i++) {
+        NSString *iconPath = [NSString stringWithFormat:@"%@/%@@2x.png",[OKUtils getTabBarDirectory],defaultNormolImageArr[i]];
+        NSData *imageData = [NSData dataWithContentsOfFile:iconPath];
+        if (!imageData) continue;
+        
+        UIImage *image = [UIImage imageWithData:imageData];
         OKTabBarInfoModel *infoModel = [[OKTabBarInfoModel alloc] init];
         
         infoModel.tabBarItemTitle = defaultTitleArray[i];
-        infoModel.tabBarNormolImage = ImageNamed(defaultNormolImageArr[i]);
-        infoModel.tabBarSelectedImage = ImageNamed(defaultSelectImageArr[i]);
-        infoModel.tabBarNormolTitleColor = [UIColor blackColor];
-        infoModel.tabBarSelectedTitleColor = UIColorFromHex(0x8CC63F);
+        infoModel.tabBarNormolImage = image;
+        infoModel.tabBarSelectedImage = image;
+        infoModel.tabBarNormolTitleColor = UIColorFromHex(0x282828);
+        infoModel.tabBarSelectedTitleColor = UIColorFromHex(0xfe9b00);
+        infoModel.tabBarTitleOffset = -10;
+        infoModel.tabBarImageOffset = -20;
         
-        [defaultTabBarImageArr addObject:infoModel];
+        [tabBarImageArr addObject:infoModel];
     }
-    [self changeTabbarItemCustomImages:defaultTabBarImageArr];
+    
+    if (tabBarImageArr.count < self.childViewControllers.count) {
+        [tabBarImageArr removeAllObjects];
+        
+        for (int i=0; i<self.childViewControllers.count; i++) {
+            OKTabBarInfoModel *infoModel = [[OKTabBarInfoModel alloc] init];
+            
+            infoModel.tabBarItemTitle = defaultTitleArray[i];
+            infoModel.tabBarNormolImage = ImageNamed(defaultNormolImageArr[i]);
+            infoModel.tabBarSelectedImage = ImageNamed(defaultSelectImageArr[i]);
+            infoModel.tabBarNormolTitleColor = [UIColor blackColor];
+            infoModel.tabBarSelectedTitleColor = UIColorFromHex(0x8CC63F);
+            
+            [tabBarImageArr addObject:infoModel];
+        }
+    }
+    
+    //更换tabBar图片
+    [self changeTabBarThemeImages:tabBarImageArr];
 }
 
 #pragma mark - 监听tabBar双击事件
@@ -160,8 +181,10 @@
 
 #pragma mark - 给tabbar切换主题图片
 
-//更换主题
-- (void)changeTabbarItemCustomImages:(NSArray *)customImageArr
+/**
+ * 更换主题
+ */
+- (void)changeTabBarThemeImages:(NSArray <OKTabBarInfoModel *> *)customImageArr
 {
     [self.appTabBar setTabBarItemImages:customImageArr];
 }

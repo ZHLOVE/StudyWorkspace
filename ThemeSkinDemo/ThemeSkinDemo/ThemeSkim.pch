@@ -16,5 +16,6 @@
 #import "OKPubilcKeyDefiner.h"
 #import "OKColorDefiner.h"
 #import "OKFrameDefiner.h"
+#import "OKUtils.h"
 
 #endif /* ThemeSkim_pch */
