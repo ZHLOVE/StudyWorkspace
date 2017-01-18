@@ -10,10 +10,12 @@
 #import "FourthViewController.h"
 #import "OKHttpRequestTools.h"
 #import "OKAlertController.h"
+#import "UINavigationController+OKExtension.h"
 
 @interface ThirdViewController ()
 @property (nonatomic, strong) FourthViewController *fourthVC;
 @property (nonatomic, strong) UIView *bgNavView;
+@property (nonatomic, strong) UIColor *lastNavBgColor;
 @end
 
 @implementation ThirdViewController
@@ -21,18 +23,22 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
     NSLog(@"%s",__func__);
+
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    self.lastNavBgColor = self.navigationController.okNavBackgroundColor;
+}
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     NSLog(@"%s",__func__);
     
-    //设置导航背景色
-    [self setCustomNavBgColor:self.navigationController.navigationBar color:[[UIColor purpleColor] colorWithAlphaComponent:0.2]];
+    self.navigationController.okNavBackgroundColor = self.lastNavBgColor;
 }
 
 
@@ -137,26 +143,9 @@
     }];
 }
 
-/**
- *  设置导航栏背景色
- */
--(void)setCustomNavBgColor:(UIView *)superView color:(UIColor *)color
-{
-    if ([superView isKindOfClass:NSClassFromString(@"_UIVisualEffectFilterView")]) {
-        //在这里可设置背景色，用一个变量引住导航背景view,方便在其他地方改变颜色
-        self.bgNavView = superView;
-        self.bgNavView.backgroundColor = color;
-    }
-    
-    for (UIView *view in superView.subviews) {
-        [self setCustomNavBgColor:view color:color];
-    }
-}
-
 - (void)changeNavBgColor:(CGFloat)percent
 {
-    self.bgNavView.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:percent];
-
+    self.navigationController.okNavBackgroundColor = [[UIColor redColor] colorWithAlphaComponent:percent];
 }
 
 @end

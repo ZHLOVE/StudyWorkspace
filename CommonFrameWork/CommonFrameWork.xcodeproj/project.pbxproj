@@ -11,6 +11,8 @@
 		A30693531E1E98C30023DE5E /* UITabBar+BadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = A30693511E1E98C30023DE5E /* UITabBar+BadgeView.m */; };
 		A30693571E1EAB7B0023DE5E /* NSObject+NeverCrash.h in Headers */ = {isa = PBXBuildFile; fileRef = A30693551E1EAB7B0023DE5E /* NSObject+NeverCrash.h */; };
 		A30693581E1EAB7B0023DE5E /* NSObject+NeverCrash.m in Sources */ = {isa = PBXBuildFile; fileRef = A30693561E1EAB7B0023DE5E /* NSObject+NeverCrash.m */; };
+		A3FC95E91E2FA688001EA205 /* UINavigationController+OKExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = A3FC95E71E2FA688001EA205 /* UINavigationController+OKExtension.h */; };
+		A3FC95EA1E2FA688001EA205 /* UINavigationController+OKExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = A3FC95E81E2FA688001EA205 /* UINavigationController+OKExtension.m */; };
 		B50310AB1E1E5CB200C11EC4 /* CommonFrameWork.h in Headers */ = {isa = PBXBuildFile; fileRef = B50310A91E1E5CB200C11EC4 /* CommonFrameWork.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B503112C1E1E607F00C11EC4 /* OKCommonTipView.h in Headers */ = {isa = PBXBuildFile; fileRef = B50310B21E1E607F00C11EC4 /* OKCommonTipView.h */; };
 		B503112D1E1E607F00C11EC4 /* OKCommonTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = B50310B31E1E607F00C11EC4 /* OKCommonTipView.m */; };
@@ -133,6 +135,8 @@
 		A30693511E1E98C30023DE5E /* UITabBar+BadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBar+BadgeView.m"; sourceTree = "<group>"; };
 		A30693551E1EAB7B0023DE5E /* NSObject+NeverCrash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+NeverCrash.h"; sourceTree = "<group>"; };
 		A30693561E1EAB7B0023DE5E /* NSObject+NeverCrash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+NeverCrash.m"; sourceTree = "<group>"; };
+		A3FC95E71E2FA688001EA205 /* UINavigationController+OKExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+OKExtension.h"; sourceTree = "<group>"; };
+		A3FC95E81E2FA688001EA205 /* UINavigationController+OKExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+OKExtension.m"; sourceTree = "<group>"; };
 		B50310A61E1E5CB200C11EC4 /* CommonFrameWork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CommonFrameWork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B50310A91E1E5CB200C11EC4 /* CommonFrameWork.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonFrameWork.h; sourceTree = "<group>"; };
 		B50310AA1E1E5CB200C11EC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -371,6 +375,8 @@
 				B50310E51E1E607F00C11EC4 /* UIView+OKTool.m */,
 				A30693501E1E98C30023DE5E /* UITabBar+BadgeView.h */,
 				A30693511E1E98C30023DE5E /* UITabBar+BadgeView.m */,
+				A3FC95E71E2FA688001EA205 /* UINavigationController+OKExtension.h */,
+				A3FC95E81E2FA688001EA205 /* UINavigationController+OKExtension.m */,
 			);
 			path = CommonCategory;
 			sourceTree = "<group>";
@@ -584,6 +590,7 @@
 				B50311351E1E607F00C11EC4 /* GTMBase64.h in Headers */,
 				B50311851E1E607F00C11EC4 /* ZLPhotoPickerDatas.h in Headers */,
 				B50311761E1E607F00C11EC4 /* ZLPhotoPickerBrowserViewController.h in Headers */,
+				A3FC95E91E2FA688001EA205 /* UINavigationController+OKExtension.h in Headers */,
 				A30693571E1EAB7B0023DE5E /* NSObject+NeverCrash.h in Headers */,
 				B50311531E1E607F00C11EC4 /* UIImageView+OKCornerRadius.h in Headers */,
 				B50311891E1E607F00C11EC4 /* ZLPhotoPickerAssetsViewController.h in Headers */,
@@ -757,6 +764,7 @@
 				B503116C1E1E607F00C11EC4 /* OKPickerPhotoHelp.m in Sources */,
 				B50311331E1E607F00C11EC4 /* UITableView+OKRequestExtension.m in Sources */,
 				B50311751E1E607F00C11EC4 /* ZLPhotoPickerBrowserViewController+SignlePhotoBrowser.m in Sources */,
+				A3FC95EA1E2FA688001EA205 /* UINavigationController+OKExtension.m in Sources */,
 				B503112D1E1E607F00C11EC4 /* OKCommonTipView.m in Sources */,
 				B503118C1E1E607F00C11EC4 /* ZLPhotoPickerGroupViewController.m in Sources */,
 				B50311861E1E607F00C11EC4 /* ZLPhotoPickerDatas.m in Sources */,
