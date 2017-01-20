@@ -17,7 +17,7 @@
 #define RequestFailCommomTip        @"请求失败, 请重试!"
 
 /** 请求转圈的统一提示*/
-#define RequestLoadingTip           @"请求中..."
+#define RequestLoadingTip           @"数据加载中..."
 
 static NSString *const kRequestSuccessStatues   = @"0";                 /**< 请求成功的标志 */
 static NSString *const kServiceErrorStatues     = @"9";                 /**< 请求失败的标志 */

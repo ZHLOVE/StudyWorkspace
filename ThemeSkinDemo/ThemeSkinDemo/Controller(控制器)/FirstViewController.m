@@ -33,13 +33,16 @@
 }
 
 /**
- * 跳转
+ * 默认主题
  */
 - (IBAction)jumpAction:(UIButton *)sender
 {
-//    DetailViewController *detailVC = [[DetailViewController alloc] init];
-//    detailVC.title = @"详情";
-//    [self.navigationController pushViewController:detailVC animated:YES];
+    NSString *tabBarPath = [OKUtils getTabBarDirectory];
+    BOOL success = [[NSFileManager defaultManager] removeItemAtPath:tabBarPath error:nil];
+    NSLog(@"删除沙盒图标状态===%zd",success);
+    
+    OKAppTabBarVC *tabbarVC = (OKAppTabBarVC *)self.tabBarController;
+    [tabbarVC setDefaultTabBarImages];
 }
 
 /**
@@ -49,7 +52,7 @@
 {
     sender.selected = !sender.selected;
     
-    OKAppTabBarVC * tabbarContr = (OKAppTabBarVC *)self.tabBarController;
+    OKAppTabBarVC *tabbarContr = (OKAppTabBarVC *)self.tabBarController;
     
     NSMutableArray *newItemArr = [NSMutableArray arrayWithArray:tabbarContr.viewControllers];
     
@@ -137,8 +140,6 @@
         for (int i=0; i<downloadIconArr.count; i++) {
             UIImage *iconImage = downloadIconArr[i];
             if (![iconImage isKindOfClass:[UIImage class]]) continue;
-            
-            if (defaultNormolImageArr.count-1 < i) continue;
             
             //设置尺寸
             UIImage *convertImage = [UIImage scaleToSize:iconImage size:CGSizeMake(31*2, 31*2)];

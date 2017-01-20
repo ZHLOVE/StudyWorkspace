@@ -45,9 +45,9 @@
  @param failureBlock 请求失败执行的block
  @return 返回当前请求的对象
  */
-+ (NSURLSessionDataTask *)sendMultifunctionCCRequest:(OKHttpRequestModel *)requestModel
-                                             success:(OKHttpSuccessBlock)successBlock
-                                             failure:(OKHttpFailureBlock)failureBlock
++ (NSURLSessionDataTask *)sendExtensionRequest:(OKHttpRequestModel *)requestModel
+                                       success:(OKHttpSuccessBlock)successBlock
+                                       failure:(OKHttpFailureBlock)failureBlock
 {
     //请求地址为空则不请求
     if (!requestModel.requestUrl) return nil;
@@ -60,16 +60,14 @@
             [MBProgressHUD hideLoadingFromView:requestModel.loadView];
         }
         
+        if (failureBlock) {
+            failureBlock(error);
+        }
+        
         //判断Token状态是否为失效
         if (error.code == [kLoginFail integerValue]) {
             //通知页面需要重新登录
-            [[NSNotificationCenter defaultCenter] postNotificationName:kTokenExpiry object:nil];
-            return ;
-            
-        } else {
-            if (failureBlock) {
-                failureBlock(error);
-            }
+            [[NSNotificationCenter defaultCenter] postNotificationName:kTokenExpiry object:nil];            
         }
         
         //如果请求完成后需要判断页面表格下拉控件,分页,空白提示页的状态
@@ -130,7 +128,7 @@
             failResultBlock([NSError errorWithDomain:responseObject[kRequestMessageKey] code:code userInfo:nil]);
         }
     };
-    
+    /Users/maowangxin/Documents/GitHub开源项目/StudyWorkspace/CommonFrameWork/CommonFrameWork/CommonSendHttpTools/OKHttpRequestTools.h
     //如果有网络缓存, 则立即返回缓存, 同时继续请求网络最新数据
     if (successBlock && requestModel.requestCachePolicy == RequestStoreCacheData) {
         //缓存key

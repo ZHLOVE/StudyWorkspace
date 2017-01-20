@@ -20,8 +20,8 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wvo-vo-V00">
-                    <rect key="frame" x="171.5" y="318.5" width="31" height="30"/>
-                    <state key="normal" title="换肤"/>
+                    <rect key="frame" x="156.5" y="318.5" width="62" height="30"/>
+                    <state key="normal" title="切换图标"/>
                     <connections>
                         <action selector="reduceTabbarItem:" destination="-1" eventType="touchUpInside" id="7dm-Iz-9NP"/>
                     </connections>
@@ -34,8 +34,8 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A3I-C0-l2D">
-                    <rect key="frame" x="172" y="50" width="31" height="30"/>
-                    <state key="normal" title="跳转"/>
+                    <rect key="frame" x="157" y="50" width="62" height="30"/>
+                    <state key="normal" title="默认图标"/>
                     <connections>
                         <action selector="jumpAction:" destination="-1" eventType="touchUpInside" id="ggO-MN-6t2"/>
                     </connections>
@@ -50,7 +50,7 @@
                 <constraint firstItem="A3I-C0-l2D" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="50" id="hzg-wu-lLP"/>
                 <constraint firstItem="wvo-vo-V00" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="k0i-qu-OgD"/>
             </constraints>
-            <point key="canvasLocation" x="-326" y="-67"/>
+            <point key="canvasLocation" x="-326.5" y="-67.5"/>
         </view>
     </objects>
 </document>

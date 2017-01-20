@@ -58,7 +58,6 @@
  */
 - (void)showCameraController:(UIViewController *)superVC selectedImageComplete:(void (^)(UIImage *selectImage))complete
 {
-    //可用自己项目共用类 modify by maowangxin
     if (![OKPickerPhotoHelp checkAuthorizationStatusTypeCamera:YES]) return;
     self.complete = complete;
     

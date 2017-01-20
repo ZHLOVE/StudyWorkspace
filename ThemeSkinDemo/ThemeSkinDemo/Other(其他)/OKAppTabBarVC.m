@@ -46,7 +46,7 @@
     //默认只设置一次tabBar初始图片
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        [self setStartTabBarImages];
+        [self setDefaultTabBarImages];
     });
 }
 
@@ -108,7 +108,7 @@
 /**
  * 设置tabBar主题图片
  */
-- (void)setStartTabBarImages
+- (void)setDefaultTabBarImages
 {
     NSMutableArray *tabBarImageArr = [NSMutableArray array];
     
@@ -120,8 +120,11 @@
     for (int i=0; i<defaultNormolImageArr.count; i++) {
         NSString *iconPath = [NSString stringWithFormat:@"%@/%@@2x.png",[OKUtils getTabBarDirectory],defaultNormolImageArr[i]];
         
+        BOOL hasFile = [[NSFileManager defaultManager] fileExistsAtPath:iconPath];
+        if (!hasFile) continue;
+        
         UIImage *image = [UIImage imageNamed:iconPath];
-        if (!image) continue;
+        if (![image isKindOfClass:[UIImage class]]) continue;
         OKTabBarInfoModel *infoModel = [[OKTabBarInfoModel alloc] init];
         
         infoModel.tabBarItemTitle = defaultTitleArray[i];

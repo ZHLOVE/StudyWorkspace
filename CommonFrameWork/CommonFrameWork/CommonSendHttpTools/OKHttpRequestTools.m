@@ -78,12 +78,6 @@ static char const * const kRequestUrlKey    = "kRequestUrlKey";
                                 success:(OKHttpSuccessBlock)successBlock
                                 failure:(OKHttpFailureBlock)failureBlock
 {
-    //请求地址为空则不请求
-    if (!requestModel.requestUrl) return nil;
-    
-    //如果有相同url正在请求, 则取消此次请求
-    if ([self isCurrentSessionDataTaskRunning:requestModel]) return nil;
-
     //失败回调
     void (^failResultBlock)(NSError *) = ^(NSError *error){
         NSLog(@"请求参数= %@\n请求地址= %@\n网络数据失败返回= %@",requestModel.parameters,requestModel.requestUrl,error);
@@ -100,11 +94,29 @@ static char const * const kRequestUrlKey    = "kRequestUrlKey";
         [self removeCompletedTaskSession:requestModel];
     };
     
+    
+    //请求地址为空则不请求
+    if (!requestModel.requestUrl) {
+        if (failResultBlock) {
+            failResultBlock([NSError errorWithDomain:RequestFailCommomTip code:[kServiceErrorStatues integerValue] userInfo:nil]);
+        }
+        return nil;
+    };
+    
+    //如果有相同url正在请求, 则取消此次请求
+    if ([self isCurrentSessionDataTaskRunning:requestModel]) {
+        if (failResultBlock) {
+            failResultBlock([NSError errorWithDomain:RequestFailCommomTip code:[kServiceErrorStatues integerValue] userInfo:nil]);
+        }
+        return nil;
+    };
+    
+    
     //成功回调
     void(^succResultBlock)(id responseObject) = ^(id responseObject){
         
         NSInteger code = [responseObject[kRequestCodeKey] integerValue];
-        if (code == 0 || code == 200)
+        if (code == [kRequestSuccessStatues integerValue])
         {
             NSLog(@"请求参数= %@\n请求地址= %@\n网络数据成功返回= %@",requestModel.parameters,requestModel.requestUrl,responseObject);
             
@@ -120,6 +132,7 @@ static char const * const kRequestUrlKey    = "kRequestUrlKey";
         //每个请求完成后,从队列中移除当前请求任务
         [self removeCompletedTaskSession:requestModel];
     };
+    
     
     //网络不正常,直接走返回失败
     if (![AFNetworkReachabilityManager sharedManager].reachable) {

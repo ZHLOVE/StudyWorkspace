@@ -12,6 +12,11 @@
 @interface OKAppTabBarVC : UITabBarController
 
 /**
+ * 设置默认tabBar主题图片
+ */
+- (void)setDefaultTabBarImages;
+
+/**
  * 更换主题
  */
 - (void)changeTabBarThemeImages:(NSArray <OKTabBarInfoModel *> *)customImageArr;

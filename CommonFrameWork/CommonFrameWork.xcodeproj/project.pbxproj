@@ -478,10 +478,10 @@
 				B584C7D11E31BEC000CB6C81 /* OKPickerPhotoHelp.h */,
 				B584C7D21E31BEC000CB6C81 /* OKPickerPhotoHelp.m */,
 				B584C7D31E31BEC000CB6C81 /* ZLPhoto.h */,
+				B584C8071E31BEC000CB6C81 /* ZLPhotoPickerCommon.h */,
 				B584C7D41E31BEC000CB6C81 /* ZLPhotoBrowser */,
 				B584C7EC1E31BEC000CB6C81 /* ZLPhotoLib.bundle */,
 				B584C7ED1E31BEC000CB6C81 /* ZLPhotoPicker */,
-				B584C8071E31BEC000CB6C81 /* ZLPhotoPickerCommon.h */,
 			);
 			path = OKPhotoLib;
 			sourceTree = "<group>";

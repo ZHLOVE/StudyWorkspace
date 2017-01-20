@@ -29,7 +29,7 @@
  @param failureBlock 请求失败执行的block
  @return 返回当前请求的对象
  */
-+ (NSURLSessionDataTask *)sendMultifunctionCCRequest:(OKHttpRequestModel *)requestModel
-                                             success:(OKHttpSuccessBlock)successBlock
-                                             failure:(OKHttpFailureBlock)failureBlock;
++ (NSURLSessionDataTask *)sendExtensionRequest:(OKHttpRequestModel *)requestModel
+                                       success:(OKHttpSuccessBlock)successBlock
+                                       failure:(OKHttpFailureBlock)failureBlock;
 @end

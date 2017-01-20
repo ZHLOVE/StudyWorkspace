@@ -42,7 +42,8 @@ static char const * const kNavBarKey  = "kNavBarKey";
  */
 -(void)setOKNavBgColor:(UIView *)superView color:(UIColor *)color
 {
-    if ([superView isKindOfClass:NSClassFromString(@"_UIVisualEffectFilterView")]) {        objc_setAssociatedObject(self, kNavBarKey, superView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    if ([superView isKindOfClass:NSClassFromString(@"_UIVisualEffectFilterView")]) {
+        objc_setAssociatedObject(self, kNavBarKey, superView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         superView.backgroundColor = color;
         return;
     }
