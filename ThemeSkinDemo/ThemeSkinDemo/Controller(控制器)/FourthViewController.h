@@ -6,9 +6,9 @@
 //  Copyright © 2017年 okdeer. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "OKBaseViewController.h"
 
-@interface FourthViewController : UIViewController
+@interface FourthViewController : OKBaseViewController
 
 //刷新数据1
 - (void)refreshUI1WithData:(id)requestData;

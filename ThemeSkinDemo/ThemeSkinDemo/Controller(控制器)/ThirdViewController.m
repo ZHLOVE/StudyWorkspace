@@ -145,7 +145,7 @@
 
 - (void)changeNavBgColor:(CGFloat)percent
 {
-    self.navigationController.okNavBackgroundColor = [[UIColor redColor] colorWithAlphaComponent:percent];
+    self.navigationController.okNavBackgroundColor = [[UIColor orangeColor] colorWithAlphaComponent:percent];
 }
 
 @end

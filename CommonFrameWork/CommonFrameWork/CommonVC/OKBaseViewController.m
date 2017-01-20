@@ -15,13 +15,14 @@
 
 @implementation OKBaseViewController
 
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
     //设置UITableView选中cell后，在页面返回时取消选中效果
     for (UIView *view in self.view.subviews) {
-        if ([view isKindOfClass:[UITableView class]]&&!view.isHidden) {
+        if ([view isKindOfClass:[UITableView class]] && !view.isHidden) {
             UITableView *table = ((UITableView *)view);
             for (NSIndexPath *p in table.indexPathsForSelectedRows) {
                 [table deselectRowAtIndexPath:p animated:YES];
@@ -33,10 +34,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)]) {
-        self.edgesForExtendedLayout = UIRectEdgeNone;
-    }
+    //父类控制器一定要设置背景色，否则push会有拖影效果
+    self.view.backgroundColor = [UIColor whiteColor];
     
     //添加全屏右滑动返回
     [self addScreenEdgePanGesture];
@@ -53,11 +52,7 @@
     //用系统的方法,全屏滑动返回
     if (self.navigationController.viewControllers.count > 1) {
         id target = self.navigationController.interactivePopGestureRecognizer.delegate;
-        //忽略警告
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wundeclared-selector"
         SEL selector = @selector(handleNavigationTransition:);
-#pragma clang diagnostic pop
         
         if ([target respondsToSelector:selector]) { //需要滑动返回
             UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:target action:selector];
@@ -147,6 +142,25 @@
     [self.sessionDataTaskArr removeAllObjects];
 }
 
+#pragma mark - 结束第一响应
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [self endEdit];
+}
+
+- (void)endEdit
+{
+    [[[UIApplication sharedApplication] keyWindow] endEditing:YES];;
+}
+
+/**
+ *  返回上一页面
+ */
+- (void)backBtnClick:(UIButton *)backBtn
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 - (void)dealloc
 {
@@ -154,7 +168,6 @@
     [self cancelRequestSessionTask];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-//    self.navigationController.interactivePopGestureRecognizer.delegate = nil;
 }
 
 @end

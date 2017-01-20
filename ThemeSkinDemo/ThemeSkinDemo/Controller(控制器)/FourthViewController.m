@@ -10,9 +10,8 @@
 #import "ThirdViewController.h"
 #import <UIView+OKExtension.h>
 
-@interface FourthViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface FourthViewController ()
 @property (nonatomic, weak) ThirdViewController *thirdVC;
-@property (nonatomic, strong) UITableView *plainTableView;
 @end
 
 @implementation FourthViewController
@@ -32,28 +31,13 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
     
-    [self plainTableView];
+    self.plainTableView.frame = CGRectMake(0, 0, self.view.width, self.view.height-44);
 }
 
 //滚动到顶部
 - (void)scrollToTop
 {
-    [self.plainTableView scrollRectToVisible:CGRectMake(0, 0, self.view.width, self.view.height-49) animated:YES];
-}
-
-#pragma Mark - 初始化UI
-
-- (UITableView *)plainTableView
-{
-    if (!_plainTableView) {
-        _plainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height-49) style:UITableViewStylePlain];
-        _plainTableView.dataSource = self;
-        _plainTableView.delegate = self;
-        _plainTableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0.01)];
-        _plainTableView.tableFooterView = [UIView new];
-        [self.view addSubview:_plainTableView];
-    }
-    return _plainTableView;
+    [self.plainTableView scrollRectToVisible:CGRectMake(0, 0, self.plainTableView.width, self.plainTableView.height) animated:YES];
 }
 
 #pragma Mark - 表格代理
@@ -63,22 +47,9 @@
     return 100;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *cellID = @"cellID";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
-    }
-    cell.textLabel.text = [NSString stringWithFormat:@"数据源---%zd",indexPath.row];
-    return cell;
-}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-
-    [self.navigationController pushViewController:[UIViewController new] animated:YES];
+    [self.navigationController pushViewController:[OKBaseViewController new] animated:YES];
 }
 
 #pragma Mark - 滚动代理

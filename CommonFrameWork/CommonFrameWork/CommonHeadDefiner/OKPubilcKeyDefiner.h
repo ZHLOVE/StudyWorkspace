@@ -65,8 +65,15 @@
 #define System_Version_Less_Than_Or_Equal_To(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
 
 
-/*-----------------------系统字体-------------------------*/
-#define FontCustomSize(s)               [UIFont systemFontOfSize:s] //设置字体大小  (细体字)[UIFont fontWithName:@"Heiti SC" size:s]
+/*----------------------- 设置App字体 -------------------------*/
+//设置自定义细体字
+#define FontThinCustomSize(s)               [UIFont fontWithName:@"Heiti SC" size:s]
+
+//设置系统普通字体
+#define FontSystemSize(s)                   [UIFont systemFontOfSize:s]
+
+//设置系统粗体字体
+#define FontBoldSize(s)                     [UIFont boldSystemFontOfSize:s]
 
 
 /*----------------------适配屏幕----------------------------*/

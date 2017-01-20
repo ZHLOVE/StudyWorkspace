@@ -8,6 +8,7 @@
 
 #import "OKOtherTabBarVC.h"
 #import "ThirdViewController.h"
+#import "OKBaseNavigationVC.h"
 
 @interface OKOtherTabBarVC ()
 
@@ -27,7 +28,7 @@
 - (void)initTabBarVCS
 {
     ThirdViewController *firstVC = [[ThirdViewController alloc] init];
-    UINavigationController *firstNav = [[UINavigationController alloc] initWithRootViewController:firstVC];
+    OKBaseNavigationVC *firstNav = [[OKBaseNavigationVC alloc] initWithRootViewController:firstVC];
     firstVC.tabBarItem = [self createTabBarItemWithTitle:@"微信" imageName:@"icon_home1" selectedImage:@"icon_home2"];
     firstVC.title = @"微信";
     firstVC.navigationItem.leftBarButtonItem = [self addBackBtnItem];
@@ -35,7 +36,7 @@
     
     
     ThirdViewController *secondVc = [[ThirdViewController alloc] init];
-    UINavigationController *secondNav = [[UINavigationController alloc] initWithRootViewController:secondVc];
+    OKBaseNavigationVC *secondNav = [[OKBaseNavigationVC alloc] initWithRootViewController:secondVc];
     secondVc.tabBarItem = [self createTabBarItemWithTitle:@"微博" imageName:@"tabbar_shop_nor" selectedImage:@"tabbar_shop_ser"];
     secondVc.title = @"微博";
     secondVc.navigationItem.leftBarButtonItem = [self addBackBtnItem];
@@ -43,7 +44,7 @@
     
     
     ThirdViewController *mineVC = [[ThirdViewController alloc] init];
-    UINavigationController *mineNav = [[UINavigationController alloc] initWithRootViewController:mineVC];
+    OKBaseNavigationVC *mineNav = [[OKBaseNavigationVC alloc] initWithRootViewController:mineVC];
     mineVC.tabBarItem = [self createTabBarItemWithTitle:@"QQ" imageName:@"tabbar_cashier_nor" selectedImage:@"tabbar_cashier_ser"];
     mineVC.title = @"QQ";
     mineVC.navigationItem.leftBarButtonItem = [self addBackBtnItem];

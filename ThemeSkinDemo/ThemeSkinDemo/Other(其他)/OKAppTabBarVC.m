@@ -12,7 +12,7 @@
 #import "ThirdViewController.h"
 #import "OKTabBarInfoModel.h"
 #import "OKAppTabBar.h"
-
+#import "OKBaseNavigationVC.h"
 
 @interface OKAppTabBarVC ()
 @property (nonatomic, strong) OKAppTabBar *appTabBar;
@@ -99,7 +99,7 @@
 - (void)addTabBarChildVC:(UIViewController *)vc navTitle:(NSString *)navTitle
 {
     // 设置控制器起始位置和标题
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+    OKBaseNavigationVC *nav = [[OKBaseNavigationVC alloc] initWithRootViewController:vc];
     vc.edgesForExtendedLayout = UIRectEdgeNone;
     vc.navigationItem.title = navTitle;
     [self addChildViewController:nav];

@@ -37,8 +37,6 @@
 		B50311481E1E607F00C11EC4 /* NSString+OKEncryption.m in Sources */ = {isa = PBXBuildFile; fileRef = B50310CF1E1E607F00C11EC4 /* NSString+OKEncryption.m */; };
 		B50311491E1E607F00C11EC4 /* NSString+OKExtention.h in Headers */ = {isa = PBXBuildFile; fileRef = B50310D01E1E607F00C11EC4 /* NSString+OKExtention.h */; };
 		B503114A1E1E607F00C11EC4 /* NSString+OKExtention.m in Sources */ = {isa = PBXBuildFile; fileRef = B50310D11E1E607F00C11EC4 /* NSString+OKExtention.m */; };
-		B503114B1E1E607F00C11EC4 /* OKUtilityFunction.h in Headers */ = {isa = PBXBuildFile; fileRef = B50310D21E1E607F00C11EC4 /* OKUtilityFunction.h */; };
-		B503114C1E1E607F00C11EC4 /* OKUtilityFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = B50310D31E1E607F00C11EC4 /* OKUtilityFunction.m */; };
 		B503114D1E1E607F00C11EC4 /* UIButton+OKExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = B50310D41E1E607F00C11EC4 /* UIButton+OKExtension.h */; };
 		B503114E1E1E607F00C11EC4 /* UIButton+OKExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B50310D51E1E607F00C11EC4 /* UIButton+OKExtension.m */; };
 		B503114F1E1E607F00C11EC4 /* UIDevice+OKExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = B50310D61E1E607F00C11EC4 /* UIDevice+OKExtension.h */; };
@@ -133,6 +131,15 @@
 		B584C8401E31BEC000CB6C81 /* ZLPhotoPickerImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = B584C8051E31BEC000CB6C81 /* ZLPhotoPickerImageView.h */; };
 		B584C8411E31BEC000CB6C81 /* ZLPhotoPickerImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B584C8061E31BEC000CB6C81 /* ZLPhotoPickerImageView.m */; };
 		B584C8421E31BEC000CB6C81 /* ZLPhotoPickerCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = B584C8071E31BEC000CB6C81 /* ZLPhotoPickerCommon.h */; };
+		B584C8451E31DE3200CB6C81 /* OKBaseNavigationVC.h in Headers */ = {isa = PBXBuildFile; fileRef = B584C8431E31DE3200CB6C81 /* OKBaseNavigationVC.h */; };
+		B584C8461E31DE3200CB6C81 /* OKBaseNavigationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B584C8441E31DE3200CB6C81 /* OKBaseNavigationVC.m */; };
+		B584C8491E31E0E700CB6C81 /* UIBarButtonItem+OKExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = B584C8471E31E0E700CB6C81 /* UIBarButtonItem+OKExtension.h */; };
+		B584C84A1E31E0E700CB6C81 /* UIBarButtonItem+OKExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B584C8481E31E0E700CB6C81 /* UIBarButtonItem+OKExtension.m */; };
+		B584C84D1E31E62900CB6C81 /* UIViewController+OKExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = B584C84B1E31E62900CB6C81 /* UIViewController+OKExtension.h */; };
+		B584C84E1E31E62900CB6C81 /* UIViewController+OKExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B584C84C1E31E62900CB6C81 /* UIViewController+OKExtension.m */; };
+		B584C8561E31F42700CB6C81 /* commonImage.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B584C8551E31F42700CB6C81 /* commonImage.bundle */; };
+		B584C85D1E31F55700CB6C81 /* OKCFunction.h in Headers */ = {isa = PBXBuildFile; fileRef = B584C85B1E31F55700CB6C81 /* OKCFunction.h */; };
+		B584C85E1E31F55700CB6C81 /* OKCFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = B584C85C1E31F55700CB6C81 /* OKCFunction.m */; };
 		B5E8BD2F1E2F55DD00D0F73D /* OKReachabilityManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B5E8BD2D1E2F55DD00D0F73D /* OKReachabilityManager.h */; };
 		B5E8BD301E2F55DD00D0F73D /* OKReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E8BD2E1E2F55DD00D0F73D /* OKReachabilityManager.m */; };
 		F742917AA1FF6DFCD98BDDB7 /* libPods-CommonFrameWork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 677F0A896830251DDCBB58F8 /* libPods-CommonFrameWork.a */; };
@@ -172,8 +179,6 @@
 		B50310CF1E1E607F00C11EC4 /* NSString+OKEncryption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+OKEncryption.m"; sourceTree = "<group>"; };
 		B50310D01E1E607F00C11EC4 /* NSString+OKExtention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+OKExtention.h"; sourceTree = "<group>"; };
 		B50310D11E1E607F00C11EC4 /* NSString+OKExtention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+OKExtention.m"; sourceTree = "<group>"; };
-		B50310D21E1E607F00C11EC4 /* OKUtilityFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKUtilityFunction.h; sourceTree = "<group>"; };
-		B50310D31E1E607F00C11EC4 /* OKUtilityFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OKUtilityFunction.m; sourceTree = "<group>"; };
 		B50310D41E1E607F00C11EC4 /* UIButton+OKExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+OKExtension.h"; sourceTree = "<group>"; };
 		B50310D51E1E607F00C11EC4 /* UIButton+OKExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+OKExtension.m"; sourceTree = "<group>"; };
 		B50310D61E1E607F00C11EC4 /* UIDevice+OKExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+OKExtension.h"; sourceTree = "<group>"; };
@@ -268,6 +273,15 @@
 		B584C8051E31BEC000CB6C81 /* ZLPhotoPickerImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLPhotoPickerImageView.h; sourceTree = "<group>"; };
 		B584C8061E31BEC000CB6C81 /* ZLPhotoPickerImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLPhotoPickerImageView.m; sourceTree = "<group>"; };
 		B584C8071E31BEC000CB6C81 /* ZLPhotoPickerCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLPhotoPickerCommon.h; sourceTree = "<group>"; };
+		B584C8431E31DE3200CB6C81 /* OKBaseNavigationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKBaseNavigationVC.h; sourceTree = "<group>"; };
+		B584C8441E31DE3200CB6C81 /* OKBaseNavigationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OKBaseNavigationVC.m; sourceTree = "<group>"; };
+		B584C8471E31E0E700CB6C81 /* UIBarButtonItem+OKExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+OKExtension.h"; sourceTree = "<group>"; };
+		B584C8481E31E0E700CB6C81 /* UIBarButtonItem+OKExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+OKExtension.m"; sourceTree = "<group>"; };
+		B584C84B1E31E62900CB6C81 /* UIViewController+OKExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+OKExtension.h"; sourceTree = "<group>"; };
+		B584C84C1E31E62900CB6C81 /* UIViewController+OKExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+OKExtension.m"; sourceTree = "<group>"; };
+		B584C8551E31F42700CB6C81 /* commonImage.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = commonImage.bundle; sourceTree = "<group>"; };
+		B584C85B1E31F55700CB6C81 /* OKCFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKCFunction.h; sourceTree = "<group>"; };
+		B584C85C1E31F55700CB6C81 /* OKCFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OKCFunction.m; sourceTree = "<group>"; };
 		B5E8BD2D1E2F55DD00D0F73D /* OKReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKReachabilityManager.h; sourceTree = "<group>"; };
 		B5E8BD2E1E2F55DD00D0F73D /* OKReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OKReachabilityManager.m; sourceTree = "<group>"; };
 		D75B7CE185F50916618B66A4 /* Pods-CommonFrameWork.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonFrameWork.release.xcconfig"; path = "../Pods/Target Support Files/Pods-CommonFrameWork/Pods-CommonFrameWork.release.xcconfig"; sourceTree = "<group>"; };
@@ -325,6 +339,7 @@
 				B50310ED1E1E607F00C11EC4 /* CommonView */,
 				B584C7AA1E31BAD500CB6C81 /* CommonHeadDefiner */,
 				B50310AA1E1E5CB200C11EC4 /* Info.plist */,
+				B584C8551E31F42700CB6C81 /* commonImage.bundle */,
 			);
 			path = CommonFrameWork;
 			sourceTree = "<group>";
@@ -357,10 +372,10 @@
 				B50310CF1E1E607F00C11EC4 /* NSString+OKEncryption.m */,
 				B50310D01E1E607F00C11EC4 /* NSString+OKExtention.h */,
 				B50310D11E1E607F00C11EC4 /* NSString+OKExtention.m */,
-				B50310D21E1E607F00C11EC4 /* OKUtilityFunction.h */,
-				B50310D31E1E607F00C11EC4 /* OKUtilityFunction.m */,
 				B50310D41E1E607F00C11EC4 /* UIButton+OKExtension.h */,
 				B50310D51E1E607F00C11EC4 /* UIButton+OKExtension.m */,
+				B584C8471E31E0E700CB6C81 /* UIBarButtonItem+OKExtension.h */,
+				B584C8481E31E0E700CB6C81 /* UIBarButtonItem+OKExtension.m */,
 				B50310D61E1E607F00C11EC4 /* UIDevice+OKExtension.h */,
 				B50310D71E1E607F00C11EC4 /* UIDevice+OKExtension.m */,
 				B50310D81E1E607F00C11EC4 /* UIImage+OKExtension.h */,
@@ -381,6 +396,8 @@
 				A30693511E1E98C30023DE5E /* UITabBar+BadgeView.m */,
 				A3FC95E71E2FA688001EA205 /* UINavigationController+OKExtension.h */,
 				A3FC95E81E2FA688001EA205 /* UINavigationController+OKExtension.m */,
+				B584C84B1E31E62900CB6C81 /* UIViewController+OKExtension.h */,
+				B584C84C1E31E62900CB6C81 /* UIViewController+OKExtension.m */,
 			);
 			path = CommonCategory;
 			sourceTree = "<group>";
@@ -424,6 +441,8 @@
 			children = (
 				B584C7BE1E31BD9300CB6C81 /* OKBaseViewController.h */,
 				B584C7BF1E31BD9300CB6C81 /* OKBaseViewController.m */,
+				B584C8431E31DE3200CB6C81 /* OKBaseNavigationVC.h */,
+				B584C8441E31DE3200CB6C81 /* OKBaseNavigationVC.m */,
 			);
 			path = CommonVC;
 			sourceTree = "<group>";
@@ -581,6 +600,8 @@
 				B5E8BD2E1E2F55DD00D0F73D /* OKReachabilityManager.m */,
 				B584C7B91E31BD7F00CB6C81 /* OKUtils.h */,
 				B584C7BA1E31BD7F00CB6C81 /* OKUtils.m */,
+				B584C85B1E31F55700CB6C81 /* OKCFunction.h */,
+				B584C85C1E31F55700CB6C81 /* OKCFunction.m */,
 			);
 			path = CommonUtils;
 			sourceTree = "<group>";
@@ -604,6 +625,7 @@
 				B584C8121E31BEC000CB6C81 /* OKPhotoBrowserHelp.h in Headers */,
 				B584C8301E31BEC000CB6C81 /* ZLPhotoPickerGroup.h in Headers */,
 				B584C81B1E31BEC000CB6C81 /* ZLPhotoRect.h in Headers */,
+				B584C8451E31DE3200CB6C81 /* OKBaseNavigationVC.h in Headers */,
 				B584C80C1E31BEC000CB6C81 /* OKHttpRequestModel+OKExtension.h in Headers */,
 				B584C8211E31BEC000CB6C81 /* DACircularProgressView.h in Headers */,
 				B50311491E1E607F00C11EC4 /* NSString+OKExtention.h in Headers */,
@@ -620,13 +642,16 @@
 				B50311371E1E607F00C11EC4 /* GTMDefines.h in Headers */,
 				B503114D1E1E607F00C11EC4 /* UIButton+OKExtension.h in Headers */,
 				B584C8081E31BEC000CB6C81 /* OKCommonTipView.h in Headers */,
+				B584C84D1E31E62900CB6C81 /* UIViewController+OKExtension.h in Headers */,
 				B50311571E1E607F00C11EC4 /* UILabel+OKExtension.h in Headers */,
 				B584C8141E31BEC000CB6C81 /* OKPickerPhotoHelp.h in Headers */,
+				B584C85D1E31F55700CB6C81 /* OKCFunction.h in Headers */,
 				B50311631E1E607F00C11EC4 /* OKHttpRequestTools.h in Headers */,
 				B503115D1E1E607F00C11EC4 /* UIView+OKTool.h in Headers */,
 				B503113A1E1E607F00C11EC4 /* NSDate+OKExtension.h in Headers */,
 				B584C83C1E31BEC000CB6C81 /* ZLPhotoPickerFooterCollectionReusableView.h in Headers */,
 				B584C80E1E31BEC000CB6C81 /* OKHttpRequestTools+OKExtension.h in Headers */,
+				B584C8491E31E0E700CB6C81 /* UIBarButtonItem+OKExtension.h in Headers */,
 				B503113C1E1E607F00C11EC4 /* NSDictionary+OKExtension.h in Headers */,
 				B584C81D1E31BEC000CB6C81 /* ZLPhotoPickerBrowserViewController+SignlePhotoBrowser.h in Headers */,
 				B503114F1E1E607F00C11EC4 /* UIDevice+OKExtension.h in Headers */,
@@ -663,7 +688,6 @@
 				B584C82E1E31BEC000CB6C81 /* ZLPhotoPickerDatas.h in Headers */,
 				B50311551E1E607F00C11EC4 /* UIImageView+OKExtension.h in Headers */,
 				B584C8231E31BEC000CB6C81 /* ZLPhotoPickerBrowserPhotoImageView.h in Headers */,
-				B503114B1E1E607F00C11EC4 /* OKUtilityFunction.h in Headers */,
 				B584C7C01E31BD9300CB6C81 /* OKBaseViewController.h in Headers */,
 				B584C8251E31BEC000CB6C81 /* ZLPhotoPickerBrowserPhotoScrollView.h in Headers */,
 				B50311671E1E607F00C11EC4 /* OKAlertController.h in Headers */,
@@ -730,6 +754,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B584C8561E31F42700CB6C81 /* commonImage.bundle in Resources */,
 				B584C82B1E31BEC000CB6C81 /* ZLPhotoLib.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -782,14 +807,16 @@
 				B584C8331E31BEC000CB6C81 /* ZLPhotoPickerAssetsViewController.m in Sources */,
 				B50311431E1E607F00C11EC4 /* NSNull+OKSafely.m in Sources */,
 				B503115A1E1E607F00C11EC4 /* UITextField+OKExtension.m in Sources */,
-				B503114C1E1E607F00C11EC4 /* OKUtilityFunction.m in Sources */,
+				B584C84A1E31E0E700CB6C81 /* UIBarButtonItem+OKExtension.m in Sources */,
 				B50311411E1E607F00C11EC4 /* NSMutableDictionary+OKExtension.m in Sources */,
+				B584C85E1E31F55700CB6C81 /* OKCFunction.m in Sources */,
 				B584C8241E31BEC000CB6C81 /* ZLPhotoPickerBrowserPhotoImageView.m in Sources */,
 				B50311581E1E607F00C11EC4 /* UILabel+OKExtension.m in Sources */,
 				B584C81A1E31BEC000CB6C81 /* ZLPhotoPickerBrowserPhoto.m in Sources */,
 				B50311541E1E607F00C11EC4 /* UIImageView+OKCornerRadius.m in Sources */,
 				B584C81C1E31BEC000CB6C81 /* ZLPhotoRect.m in Sources */,
 				B50311501E1E607F00C11EC4 /* UIDevice+OKExtension.m in Sources */,
+				B584C84E1E31E62900CB6C81 /* UIViewController+OKExtension.m in Sources */,
 				B50311521E1E607F00C11EC4 /* UIImage+OKExtension.m in Sources */,
 				B503115E1E1E607F00C11EC4 /* UIView+OKTool.m in Sources */,
 				B584C82D1E31BEC000CB6C81 /* ZLPhotoAssets.m in Sources */,
@@ -816,6 +843,7 @@
 				B584C8371E31BEC000CB6C81 /* ZLPhotoPickerViewController.m in Sources */,
 				B584C7BC1E31BD7F00CB6C81 /* OKUtils.m in Sources */,
 				B50311661E1E607F00C11EC4 /* OKActionSheetView.m in Sources */,
+				B584C8461E31DE3200CB6C81 /* OKBaseNavigationVC.m in Sources */,
 				B584C8131E31BEC000CB6C81 /* OKPhotoBrowserHelp.m in Sources */,
 				B50311461E1E607F00C11EC4 /* NSObject+OKRuntime.m in Sources */,
 				B584C82F1E31BEC000CB6C81 /* ZLPhotoPickerDatas.m in Sources */,
