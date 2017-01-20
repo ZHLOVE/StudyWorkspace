@@ -318,12 +318,12 @@
 			children = (
 				B50310A91E1E5CB200C11EC4 /* CommonFrameWork.h */,
 				B584C7C21E31BEC000CB6C81 /* CommonOtherLib */,
-				B584C7AA1E31BAD500CB6C81 /* CommonHeadDefiner */,
-				B5E8BD2C1E2F55DD00D0F73D /* CommonUtils */,
-				B50310BA1E1E607F00C11EC4 /* CommonCategory */,
 				B50310E61E1E607F00C11EC4 /* CommonSendHttpTools */,
+				B50310BA1E1E607F00C11EC4 /* CommonCategory */,
+				B5E8BD2C1E2F55DD00D0F73D /* CommonUtils */,
 				B584C7BD1E31BD9300CB6C81 /* CommonVC */,
 				B50310ED1E1E607F00C11EC4 /* CommonView */,
+				B584C7AA1E31BAD500CB6C81 /* CommonHeadDefiner */,
 				B50310AA1E1E5CB200C11EC4 /* Info.plist */,
 			);
 			path = CommonFrameWork;
@@ -440,16 +440,16 @@
 		B584C7C31E31BEC000CB6C81 /* OKExtensionSendHttp */ = {
 			isa = PBXGroup;
 			children = (
-				B584C7C41E31BEC000CB6C81 /* OKCommonTipView.h */,
-				B584C7C51E31BEC000CB6C81 /* OKCommonTipView.m */,
 				B584C7C61E31BEC000CB6C81 /* OKFMDBTool.h */,
 				B584C7C71E31BEC000CB6C81 /* OKFMDBTool.m */,
+				B584C7C41E31BEC000CB6C81 /* OKCommonTipView.h */,
+				B584C7C51E31BEC000CB6C81 /* OKCommonTipView.m */,
+				B584C7CC1E31BEC000CB6C81 /* UITableView+OKRequestExtension.h */,
+				B584C7CD1E31BEC000CB6C81 /* UITableView+OKRequestExtension.m */,
 				B584C7C81E31BEC000CB6C81 /* OKHttpRequestModel+OKExtension.h */,
 				B584C7C91E31BEC000CB6C81 /* OKHttpRequestModel+OKExtension.m */,
 				B584C7CA1E31BEC000CB6C81 /* OKHttpRequestTools+OKExtension.h */,
 				B584C7CB1E31BEC000CB6C81 /* OKHttpRequestTools+OKExtension.m */,
-				B584C7CC1E31BEC000CB6C81 /* UITableView+OKRequestExtension.h */,
-				B584C7CD1E31BEC000CB6C81 /* UITableView+OKRequestExtension.m */,
 			);
 			path = OKExtensionSendHttp;
 			sourceTree = "<group>";
@@ -577,10 +577,10 @@
 		B5E8BD2C1E2F55DD00D0F73D /* CommonUtils */ = {
 			isa = PBXGroup;
 			children = (
-				B584C7B91E31BD7F00CB6C81 /* OKUtils.h */,
-				B584C7BA1E31BD7F00CB6C81 /* OKUtils.m */,
 				B5E8BD2D1E2F55DD00D0F73D /* OKReachabilityManager.h */,
 				B5E8BD2E1E2F55DD00D0F73D /* OKReachabilityManager.m */,
+				B584C7B91E31BD7F00CB6C81 /* OKUtils.h */,
+				B584C7BA1E31BD7F00CB6C81 /* OKUtils.m */,
 			);
 			path = CommonUtils;
 			sourceTree = "<group>";
@@ -699,7 +699,7 @@
 		B503109D1E1E5CB200C11EC4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = okdeer;
 				TargetAttributes = {
 					B50310A51E1E5CB200C11EC4 = {
@@ -858,6 +858,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -909,6 +910,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

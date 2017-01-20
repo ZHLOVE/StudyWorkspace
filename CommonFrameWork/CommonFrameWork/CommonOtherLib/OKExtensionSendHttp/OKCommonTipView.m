@@ -47,7 +47,7 @@
             if (tipView.superview) {
                 [tipView removeFromSuperview];
             }
-            [HUD hide:YES];
+            [HUD showAnimated:YES];
         }
     }
 }
@@ -66,8 +66,8 @@
     [addView addSubview:HUD];
     HUD.mode = MBProgressHUDModeIndeterminate;
     HUD.userInteractionEnabled = NO;
-    HUD.labelText = tipStr;
-    [HUD show:YES];
+    HUD.label.text = tipStr;
+    [HUD showAnimated:YES];
 }
 
 

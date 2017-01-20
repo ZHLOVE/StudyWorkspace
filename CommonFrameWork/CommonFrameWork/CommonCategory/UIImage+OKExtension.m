@@ -2,7 +2,7 @@
 //  UIImage+OKExtension.m
 //  基础框架类
 //
-//  Created by 雷祥 on 16/12/27.
+//  Created by mao wangxin on 16/12/27.
 //  Copyright © 2016年 leixiang. All rights reserved.
 //
 

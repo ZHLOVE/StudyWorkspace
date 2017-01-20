@@ -47,12 +47,13 @@ static char const * const kIsCacheDataKey           = "kIsCacheDataKey";
 
 - (void)setForbidTipErrorInfo:(BOOL)forbidTipErrorInfo
 {
-    objc_setAssociatedObject(self, kForbidTipErrorInfoKey, @(forbidTipErrorInfo), OBJC_ASSOCIATION_ASSIGN);
+    objc_setAssociatedObject(self, kForbidTipErrorInfoKey, @(forbidTipErrorInfo), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (BOOL)forbidTipErrorInfo
 {
-    return objc_getAssociatedObject(self, kForbidTipErrorInfoKey);
+    id value = objc_getAssociatedObject(self, kForbidTipErrorInfoKey);
+    return [value boolValue];
 }
 
 #pragma mark - ========== 请求缓存策略 ==========
@@ -76,12 +77,13 @@ static char const * const kIsCacheDataKey           = "kIsCacheDataKey";
 
 - (void)setIsCacheData:(BOOL)isCacheData
 {
-    objc_setAssociatedObject(self, kIsCacheDataKey, @(isCacheData), OBJC_ASSOCIATION_ASSIGN);
+    objc_setAssociatedObject(self, kIsCacheDataKey, @(isCacheData), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (BOOL)isCacheData
 {
-    return objc_getAssociatedObject(self, kIsCacheDataKey);
+    id value = objc_getAssociatedObject(self, kIsCacheDataKey);
+    return [value boolValue];
 }
 
 @end

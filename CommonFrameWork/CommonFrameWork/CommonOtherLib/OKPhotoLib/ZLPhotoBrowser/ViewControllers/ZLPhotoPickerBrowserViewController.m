@@ -720,11 +720,11 @@ static NSString *_cellIdentifier = @"collectionViewCell";
     }
 }
 
-- (void)showHeadPortrait:(UIImageView *)toImageView{
-    
-}
-
-- (void)showHeadPortrait:(UIImageView *)toImageView originUrl:(NSString *)originUrl{
-    
-}
+//- (void)showHeadPortrait:(UIImageView *)toImageView{
+//    
+//}
+//
+//- (void)showHeadPortrait:(UIImageView *)toImageView originUrl:(NSString *)originUrl{
+//    
+//}
 @end
