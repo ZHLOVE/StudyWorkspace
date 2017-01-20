@@ -13,6 +13,7 @@
 		B57A66D01E1E324400ACB5EC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B57A66CF1E1E324400ACB5EC /* AppDelegate.m */; };
 		B57A66D81E1E324400ACB5EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B57A66D71E1E324400ACB5EC /* Assets.xcassets */; };
 		B57A66DB1E1E324400ACB5EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B57A66D91E1E324400ACB5EC /* LaunchScreen.storyboard */; };
+		B584C8611E320E0E00CB6C81 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B584C8601E320E0E00CB6C81 /* DetailViewController.m */; };
 		B5BA5FF41E2F24CF000CF619 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BA5FDA1E2F24CF000CF619 /* FirstViewController.m */; };
 		B5BA5FF51E2F24CF000CF619 /* FirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BA5FDB1E2F24CF000CF619 /* FirstViewController.xib */; };
 		B5BA5FF61E2F24CF000CF619 /* FourthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BA5FDD1E2F24CF000CF619 /* FourthViewController.m */; };
@@ -50,6 +51,8 @@
 		B57A66D71E1E324400ACB5EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B57A66DA1E1E324400ACB5EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B57A66DC1E1E324400ACB5EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B584C85F1E320E0E00CB6C81 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		B584C8601E320E0E00CB6C81 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		B5BA5FD91E2F24CF000CF619 /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
 		B5BA5FDA1E2F24CF000CF619 /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
 		B5BA5FDB1E2F24CF000CF619 /* FirstViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstViewController.xib; sourceTree = "<group>"; };
@@ -135,6 +138,8 @@
 				B5BA5FD91E2F24CF000CF619 /* FirstViewController.h */,
 				B5BA5FDA1E2F24CF000CF619 /* FirstViewController.m */,
 				B5BA5FDB1E2F24CF000CF619 /* FirstViewController.xib */,
+				B584C85F1E320E0E00CB6C81 /* DetailViewController.h */,
+				B584C8601E320E0E00CB6C81 /* DetailViewController.m */,
 				B5BA5FDF1E2F24CF000CF619 /* SecondViewController.h */,
 				B5BA5FE01E2F24CF000CF619 /* SecondViewController.m */,
 				B5BA5FE11E2F24CF000CF619 /* SecondViewController.xib */,
@@ -272,6 +277,7 @@
 				B5BA5FF61E2F24CF000CF619 /* FourthViewController.m in Sources */,
 				B5BA5FFA1E2F24CF000CF619 /* ThirdViewController.m in Sources */,
 				B57A66D01E1E324400ACB5EC /* AppDelegate.m in Sources */,
+				B584C8611E320E0E00CB6C81 /* DetailViewController.m in Sources */,
 				B5BA5FF41E2F24CF000CF619 /* FirstViewController.m in Sources */,
 				B57A66CD1E1E324400ACB5EC /* main.m in Sources */,
 				B5BA60001E2F24CF000CF619 /* OKAppTabBarVC.m in Sources */,

@@ -9,6 +9,7 @@
 #import "UIViewController+OKExtension.h"
 #import "UIBarButtonItem+OKExtension.h"
 #import "OKColorDefiner.h"
+#import "UIView+OKTool.h"
 
 @implementation UIViewController (OKExtension)
 
@@ -85,6 +86,31 @@
         VC.title = title;
         [self.navigationController pushViewController:VC animated:YES];
     }
+}
+
+/**
+ *  此导航条仅供上一个页面没有导航栏, 下一个页面滑动边缘返回时会顶部异常的情况,
+ *  添加一个假的导航view
+ *  备注：如果要隐藏导航栏，不能用 setNavigationBarHidden 影藏导航, 
+ *  否则在滑动返回一点点后再push时导航会出现覆盖异常
+ *  只能用这种方式：self.navigationController.navigationBar.hidden = YES;
+ */
+- (void)showFakeNavBarWhenScreenEdgePanBack
+{
+    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, -64, self.view.bounds.size.width, 64)];
+    
+    //对导航栏截图
+    UIView *fakeNavBarView = [self.navigationController.navigationBar snapshotViewAfterScreenUpdates:NO];
+    CGRect rect = fakeNavBarView.frame;
+    rect.origin.y = 20;
+    fakeNavBarView.frame = rect;
+    fakeNavBarView.backgroundColor = [UIColor whiteColor];
+    bgView.backgroundColor = [UIColor whiteColor];
+    [bgView addSubview:fakeNavBarView];
+    
+    //添加底部细线
+    [bgView addLineToPosition:OkDrawLine_bottom lineWidth:1];
+    [self.view insertSubview:bgView atIndex:0];
 }
 
 @end

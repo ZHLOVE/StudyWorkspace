@@ -8,9 +8,6 @@
 
 #import "ThirdViewController.h"
 #import "FourthViewController.h"
-#import "OKHttpRequestTools.h"
-#import "OKAlertController.h"
-#import "UINavigationController+OKExtension.h"
 
 @interface ThirdViewController ()
 @property (nonatomic, strong) FourthViewController *fourthVC;
@@ -19,13 +16,6 @@
 @end
 
 @implementation ThirdViewController
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    NSLog(@"%s",__func__);
-
-}
 
 - (void)viewWillDisappear:(BOOL)animated
 {
@@ -36,8 +26,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    NSLog(@"%s",__func__);
-    
+    NSLog(@"%s",__func__);    
     self.navigationController.okNavBackgroundColor = self.lastNavBgColor;
 }
 

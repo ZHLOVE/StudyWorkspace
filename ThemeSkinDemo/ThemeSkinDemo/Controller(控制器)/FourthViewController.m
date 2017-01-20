@@ -8,18 +8,12 @@
 
 #import "FourthViewController.h"
 #import "ThirdViewController.h"
-#import <UIView+OKExtension.h>
 
 @interface FourthViewController ()
 @property (nonatomic, weak) ThirdViewController *thirdVC;
 @end
 
 @implementation FourthViewController
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-}
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -31,7 +25,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
     
-    self.plainTableView.frame = CGRectMake(0, 0, self.view.width, self.view.height-44);
+    self.plainTableView.frame = CGRectMake(0, 0, self.view.width, self.view.height-47);
 }
 
 //滚动到顶部

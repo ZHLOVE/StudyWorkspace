@@ -53,7 +53,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSLog(@"系统TabBar对象===%@",self);
+    NSLog(@"系统TabBar对象===%@",self.tabBar);
     
     //初始化tabBar控制器
     [self initTabBarVC];
@@ -83,7 +83,7 @@
 - (OKAppTabBar *)appTabBar
 {
     if (!_appTabBar) {
-        _appTabBar = [[OKAppTabBar alloc] init];
+        _appTabBar = [[OKAppTabBar alloc] initWithFrame:self.tabBar.bounds];
         WEAKSELF //重复点击tabBar回调
         [_appTabBar setRepeatTouchDownItemBlock:^(UITabBarItem *item) {
             [weakSelf didRepeatTouchDownTabBarItem:item];

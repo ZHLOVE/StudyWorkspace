@@ -30,7 +30,6 @@
 		B50311411E1E607F00C11EC4 /* NSMutableDictionary+OKExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B50310C81E1E607F00C11EC4 /* NSMutableDictionary+OKExtension.m */; };
 		B50311421E1E607F00C11EC4 /* NSNull+OKSafely.h in Headers */ = {isa = PBXBuildFile; fileRef = B50310C91E1E607F00C11EC4 /* NSNull+OKSafely.h */; };
 		B50311431E1E607F00C11EC4 /* NSNull+OKSafely.m in Sources */ = {isa = PBXBuildFile; fileRef = B50310CA1E1E607F00C11EC4 /* NSNull+OKSafely.m */; };
-		B50311441E1E607F00C11EC4 /* NSObject+OKExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = B50310CB1E1E607F00C11EC4 /* NSObject+OKExtension.h */; };
 		B50311451E1E607F00C11EC4 /* NSObject+OKRuntime.h in Headers */ = {isa = PBXBuildFile; fileRef = B50310CC1E1E607F00C11EC4 /* NSObject+OKRuntime.h */; };
 		B50311461E1E607F00C11EC4 /* NSObject+OKRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = B50310CD1E1E607F00C11EC4 /* NSObject+OKRuntime.m */; };
 		B50311471E1E607F00C11EC4 /* NSString+OKEncryption.h in Headers */ = {isa = PBXBuildFile; fileRef = B50310CE1E1E607F00C11EC4 /* NSString+OKEncryption.h */; };
@@ -172,7 +171,6 @@
 		B50310C81E1E607F00C11EC4 /* NSMutableDictionary+OKExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+OKExtension.m"; sourceTree = "<group>"; };
 		B50310C91E1E607F00C11EC4 /* NSNull+OKSafely.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNull+OKSafely.h"; sourceTree = "<group>"; };
 		B50310CA1E1E607F00C11EC4 /* NSNull+OKSafely.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNull+OKSafely.m"; sourceTree = "<group>"; };
-		B50310CB1E1E607F00C11EC4 /* NSObject+OKExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+OKExtension.h"; sourceTree = "<group>"; };
 		B50310CC1E1E607F00C11EC4 /* NSObject+OKRuntime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+OKRuntime.h"; sourceTree = "<group>"; };
 		B50310CD1E1E607F00C11EC4 /* NSObject+OKRuntime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+OKRuntime.m"; sourceTree = "<group>"; };
 		B50310CE1E1E607F00C11EC4 /* NSString+OKEncryption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+OKEncryption.h"; sourceTree = "<group>"; };
@@ -363,7 +361,6 @@
 				B50310C81E1E607F00C11EC4 /* NSMutableDictionary+OKExtension.m */,
 				B50310C91E1E607F00C11EC4 /* NSNull+OKSafely.h */,
 				B50310CA1E1E607F00C11EC4 /* NSNull+OKSafely.m */,
-				B50310CB1E1E607F00C11EC4 /* NSObject+OKExtension.h */,
 				B50310CC1E1E607F00C11EC4 /* NSObject+OKRuntime.h */,
 				B50310CD1E1E607F00C11EC4 /* NSObject+OKRuntime.m */,
 				A30693551E1EAB7B0023DE5E /* NSObject+NeverCrash.h */,
@@ -679,7 +676,6 @@
 				B584C8321E31BEC000CB6C81 /* ZLPhotoPickerAssetsViewController.h in Headers */,
 				B503115B1E1E607F00C11EC4 /* UIView+OKExtension.h in Headers */,
 				B584C80A1E31BEC000CB6C81 /* OKFMDBTool.h in Headers */,
-				B50311441E1E607F00C11EC4 /* NSObject+OKExtension.h in Headers */,
 				B50311381E1E607F00C11EC4 /* NSArray+OKExtention.h in Headers */,
 				A30693521E1E98C30023DE5E /* UITabBar+BadgeView.h in Headers */,
 				B584C8341E31BEC000CB6C81 /* ZLPhotoPickerGroupViewController.h in Headers */,

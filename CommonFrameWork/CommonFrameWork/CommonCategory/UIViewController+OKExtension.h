@@ -44,4 +44,20 @@
  */
 - (void)setRightBarItemEnable:(BOOL)enable;
 
+/**
+ *  返回到指定控制器
+ */
+- (BOOL)shouldPopToCustomVC:(NSString *)classStr;
+
+/**
+ *  进入到指定控制器
+ */
+- (void)pushToCustomVC:(NSString *)classStr title:(NSString *)title;
+
+/**
+ *  此导航条仅供上一个页面没有导航栏, 下一个页面手势滑动边缘返回时会顶部异常的情况,
+ *  在导航底部添加一个假的导航view
+ */
+- (void)showFakeNavBarWhenScreenEdgePanBack;
+
 @end

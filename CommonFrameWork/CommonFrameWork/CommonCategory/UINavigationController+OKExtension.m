@@ -32,7 +32,6 @@ static char const * const kNavBarKey  = "kNavBarKey";
     return self.okNavBgView.backgroundColor;
 }
 
-
 - (UIView *)okNavBgView
 {
     return objc_getAssociatedObject(self, kNavBarKey);

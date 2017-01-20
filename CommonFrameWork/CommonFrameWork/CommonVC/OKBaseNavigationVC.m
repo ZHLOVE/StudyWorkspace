@@ -22,7 +22,7 @@
     // 设置导航栏标题文字
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     dict[NSFontAttributeName] = FontSystemSize(18);
-    dict[NSForegroundColorAttributeName] = UIColorFromHex(0x666666);
+    dict[NSForegroundColorAttributeName] = [UIColor blackColor];
     
     UINavigationBar *bar = [UINavigationBar appearance];
     [bar setTitleTextAttributes:dict];

@@ -7,12 +7,9 @@
 //
 
 #import "FirstViewController.h"
+#import "OKTabBarInfoModel.h"
 #import "OKAppTabBarVC.h"
 #import "UITabBar+BadgeView.h"
-#import <OKHttpRequestTools.h>
-#import <OKAlertController.h>
-#import "OKTabBarInfoModel.h"
-#import <UIImage+OKExtension.h>
 
 @interface FirstViewController ()
 
@@ -33,6 +30,16 @@
     NSLog(@"touchVC===%@===%@===%@",touchVC,self,self.tabBarController);
     //设置小红点
     [self.tabBarController.tabBar showBadgeOnItemIndex:0];
+}
+
+/**
+ * 跳转
+ */
+- (IBAction)jumpAction:(UIButton *)sender
+{
+//    DetailViewController *detailVC = [[DetailViewController alloc] init];
+//    detailVC.title = @"详情";
+//    [self.navigationController pushViewController:detailVC animated:YES];
 }
 
 /**
