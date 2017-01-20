@@ -10,7 +10,8 @@
 #import "OKHttpRequestModel.h"
 #import "OKCommonTipView.h"
 #import <AFNetworkReachabilityManager.h>
-
+#import "OKFrameDefiner.h"
+#import "OKColorDefiner.h"
 
 #define kTotalPageKey           @"totalPage"
 #define kCurrentPageKey         @"currentPage"
@@ -23,6 +24,32 @@ static char const * const kErrorImgKey    = "kErrorImgKey";
 static char const * const kNetErrorStrKey = "kNetErrorStrKey";
 
 @implementation UITableView (OKRequestExtension)
+
++ (instancetype)plainTableView
+{
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, KSystemNavBarHeight+20, Screen_Width, Screen_Height-KSystemNavBarHeight-20) style:UITableViewStylePlain];
+    tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
+    tableView.rowHeight = kDefaultCellHeight;
+    tableView.backgroundColor = Color_BackGround;
+    tableView.separatorColor = RGB(229,229,229);
+    tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Screen_Width, 0.01)];
+    tableView.tableFooterView = [UIView new];
+    return tableView;
+}
+
++ (instancetype)groupedTableView
+{
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, KSystemNavBarHeight+20, Screen_Width, Screen_Height-KSystemNavBarHeight-20) style:UITableViewStyleGrouped];
+    tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
+    tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Screen_Width, kTableViewTopSpace)];
+    tableView.rowHeight = kDefaultCellHeight;
+    tableView.backgroundColor = Color_BackGround;
+    tableView.separatorColor = RGB(229,229,229);
+    tableView.sectionHeaderHeight = 0.01;
+    tableView.sectionFooterHeight = kTableViewTopSpace;
+    tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Screen_Width, 0.01)];
+    return tableView;
+}
 
 #pragma mark - ========== 请求失败提示view相关 ==========
 

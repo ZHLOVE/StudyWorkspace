@@ -32,6 +32,21 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) NSString *errorImageName;
 
 
+/**
+ * 统一plain样式表格
+ * 默认坐标(0,64,屏幕宽度，屏幕高度-64)
+ * headerView高0.01，footerView=[UIView new]防止显示多余线条
+ */
++ (instancetype)plainTableView;
+
+/**
+ * 统一group样式表格
+ * 默认坐标(0,64,屏幕宽度，屏幕高度-64)
+ * headerView高12,footerView高0.01，sectionHeader高0.01，sectionFooter高12
+ */
++ (instancetype)groupedTableView;
+
+
 #pragma mark - 给表格添加上下拉刷新事件
 
 /**
