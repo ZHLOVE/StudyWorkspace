@@ -30,7 +30,7 @@
 //view背景
 #define Color_BackGround           UIColorFromRGB(0xf5f5f5)/*RGB(238, 241, 245)*/
 
-//主色 (黄色)
+//主色
 #define Color_Main                 UIColorFromRGB(0xfe9b00)
 
 //主色 (按钮不点击)
@@ -55,16 +55,16 @@
 #define DetailTextLabelColor       (UIColorFromRGB(0xa4a4a4))
 
 /** 导航栏字体颜色*/
-#define GJNavBarFontColor           (WhiteColor)
+#define OKNavBarFontColor           (WhiteColor)
 /** 导航栏背景颜色*/
-#define GJNabBarBackColor           (UIColorFromRGB(0x282828))
+#define OKNabBarBackColor           (UIColorFromRGB(0x282828))
 
 
 //----------------------按钮状态颜色宏---------------------------
 
-#define GJ_Btn_NormalColor       (Color_Main)
-#define GJ_Btn_HighlightedColor  ([Color_Main colorWithAlphaComponent:0.4])
-#define GJ_Btn_DisabledColor     (UIColorFromRGB(0xdcdcdc))
+#define OK_Btn_NormalColor       (Color_Main)
+#define OK_Btn_HighlightedColor  ([Color_Main colorWithAlphaComponent:0.4])
+#define OK_Btn_DisabledColor     (UIColorFromRGB(0xdcdcdc))
 
 
 #endif /* OKColorDefiner_h */

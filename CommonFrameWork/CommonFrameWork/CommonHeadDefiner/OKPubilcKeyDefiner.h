@@ -15,21 +15,14 @@
 /** 登录后保存的用户ID, 保存的value为 NSString 类型*/
 #define UserIDUserDefaultsKey           @"operatorId"
 
-/** 请求服务端Cookie */
-#define RequestHeadCookieKey            @"sessionCookies"
-
-/** 相册相关描述*/
-#define GJCameraLibrary                 (@"从相册选择")
-#define GJPhotograph                    (@"拍照")
-
 /** 图片压缩率*/
-#define GJMaxPixelSize                  (Screen_Width)
+#define OKMaxPixelSize                  (Screen_Width)
 
 /** 数据库名称 */
-#define AppFMDBName                     @"GJDB.sqlite"
+#define AppFMDBName                     @"OKDB.sqlite"
 
 /** 钱币符号 */
-#define GJ_Money_header                 @"￥"
+#define OK_Money_header                 @"￥"
 
 
 /* 获取iOS系统版本 */
@@ -98,17 +91,10 @@
 #define GetUserDefault(key)  key!=nil ? [[NSUserDefaults standardUserDefaults] objectForKey:key] : nil
 
 
-#define isBoss ([GJGlobalManager shareInstance].currentShopInfo.operatorType==1)
-
-#define GJ_CashierId (isBoss?@"":@([GJGlobalManager shareInstance].currentShopInfo.operatorId))
-
-#define CurrentUserName ([GJGlobalManager shareInstance].lastLoginAccount)
-
-
 /**
  * 拷贝自定义对象,NSCopy协议的具体实现
  */
-#define GJCopyImplementation \
+#define OKCopyImplementation \
 - (id)copyWithZone:(NSZone *)zone \
 { \
 Class clazz = [self class]; \
@@ -121,7 +107,7 @@ return model;\
 }
 
 //一个宏实现自定义对象的NSCopy协议
-#define GJExtensionCopyImplementation  GJCopyImplementation
+#define OKExtensionCopyImplementation  OKCopyImplementation
 
 
 

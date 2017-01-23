@@ -10,6 +10,8 @@
 		34A6EA1E4FF2E264357F8499 /* libPods-PodsDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 629FE69316996003D0C87935 /* libPods-PodsDemo.a */; };
 		B50311A31E1E621400C11EC4 /* CommonFrameWork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B50311A21E1E621400C11EC4 /* CommonFrameWork.framework */; };
 		B50311A41E1E621400C11EC4 /* CommonFrameWork.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B50311A21E1E621400C11EC4 /* CommonFrameWork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B56CE3B71E35AE1000B2EB30 /* DemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B56CE3B51E35AE1000B2EB30 /* DemoVC.m */; };
+		B56CE3B81E35AE1000B2EB30 /* DemoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B56CE3B61E35AE1000B2EB30 /* DemoVC.xib */; };
 		B57A67051E1E4B0200ACB5EC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B57A67041E1E4B0200ACB5EC /* main.m */; };
 		B57A67081E1E4B0200ACB5EC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B57A67071E1E4B0200ACB5EC /* AppDelegate.m */; };
 		B57A670B1E1E4B0200ACB5EC /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B57A670A1E1E4B0200ACB5EC /* FirstViewController.m */; };
@@ -36,6 +38,9 @@
 /* Begin PBXFileReference section */
 		629FE69316996003D0C87935 /* libPods-PodsDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PodsDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B50311A21E1E621400C11EC4 /* CommonFrameWork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CommonFrameWork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B56CE3B41E35AE1000B2EB30 /* DemoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoVC.h; sourceTree = "<group>"; };
+		B56CE3B51E35AE1000B2EB30 /* DemoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoVC.m; sourceTree = "<group>"; };
+		B56CE3B61E35AE1000B2EB30 /* DemoVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DemoVC.xib; sourceTree = "<group>"; };
 		B57A67001E1E4B0200ACB5EC /* PodsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PodsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B57A67041E1E4B0200ACB5EC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B57A67061E1E4B0200ACB5EC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -101,6 +106,9 @@
 				B57A670A1E1E4B0200ACB5EC /* FirstViewController.m */,
 				B57A670C1E1E4B0200ACB5EC /* SecondViewController.h */,
 				B57A670D1E1E4B0200ACB5EC /* SecondViewController.m */,
+				B56CE3B41E35AE1000B2EB30 /* DemoVC.h */,
+				B56CE3B51E35AE1000B2EB30 /* DemoVC.m */,
+				B56CE3B61E35AE1000B2EB30 /* DemoVC.xib */,
 				B57A670F1E1E4B0200ACB5EC /* Main.storyboard */,
 				B57A67121E1E4B0200ACB5EC /* Assets.xcassets */,
 				B57A67141E1E4B0200ACB5EC /* LaunchScreen.storyboard */,
@@ -163,6 +171,7 @@
 				TargetAttributes = {
 					B57A66FF1E1E4B0200ACB5EC = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = P8FFNR95EQ;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -191,6 +200,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B57A67161E1E4B0200ACB5EC /* LaunchScreen.storyboard in Resources */,
+				B56CE3B81E35AE1000B2EB30 /* DemoVC.xib in Resources */,
 				B57A67131E1E4B0200ACB5EC /* Assets.xcassets in Resources */,
 				B57A67111E1E4B0200ACB5EC /* Main.storyboard in Resources */,
 			);
@@ -268,6 +278,7 @@
 				B57A670E1E1E4B0200ACB5EC /* SecondViewController.m in Sources */,
 				B57A67081E1E4B0200ACB5EC /* AppDelegate.m in Sources */,
 				B57A670B1E1E4B0200ACB5EC /* FirstViewController.m in Sources */,
+				B56CE3B71E35AE1000B2EB30 /* DemoVC.m in Sources */,
 				B57A67051E1E4B0200ACB5EC /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -389,6 +400,8 @@
 			baseConfigurationReference = C5AEA028D6E5E0A20A55CAFB /* Pods-PodsDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = P8FFNR95EQ;
 				FRAMEWORK_SEARCH_PATHS = "";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -409,7 +422,7 @@
 					"\"$PODS_CONFIGURATION_BUILD_DIR/MJRefresh\"",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/SDWebImage\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.test.demo.PodsDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.PodsDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -419,6 +432,8 @@
 			baseConfigurationReference = EC8C6AC30B5C3C51907ED539 /* Pods-PodsDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = "";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -439,7 +454,7 @@
 					"\"$PODS_CONFIGURATION_BUILD_DIR/MJRefresh\"",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/SDWebImage\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.test.demo.PodsDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.PodsDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

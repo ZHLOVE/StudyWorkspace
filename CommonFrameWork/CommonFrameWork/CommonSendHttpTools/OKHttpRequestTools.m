@@ -111,12 +111,20 @@ static char const * const kRequestUrlKey    = "kRequestUrlKey";
         return nil;
     };
     
+    //网络不正常,直接走返回失败
+    if (![AFNetworkReachabilityManager sharedManager].reachable) {
+        if (failureBlock) {
+            failResultBlock([NSError errorWithDomain:NetworkConnectFailTip code:kCFURLErrorNotConnectedToInternet userInfo:nil]);
+        }
+        return nil;
+    }
     
     //成功回调
     void(^succResultBlock)(id responseObject) = ^(id responseObject){
         
         NSInteger code = [responseObject[kRequestCodeKey] integerValue];
-        if (code == [kRequestSuccessStatues integerValue])
+        if (code == [kRequestSuccessStatues integerValue] ||
+            code == 200)
         {
             NSLog(@"请求参数= %@\n请求地址= %@\n网络数据成功返回= %@",requestModel.parameters,requestModel.requestUrl,responseObject);
             
@@ -133,14 +141,6 @@ static char const * const kRequestUrlKey    = "kRequestUrlKey";
         [self removeCompletedTaskSession:requestModel];
     };
     
-    
-    //网络不正常,直接走返回失败
-    if (![AFNetworkReachabilityManager sharedManager].reachable) {
-        if (failureBlock) {
-            failResultBlock([NSError errorWithDomain:NetworkConnectFailTip code:kCFURLErrorNotConnectedToInternet userInfo:nil]);
-        }
-        return nil;
-    }
     
     //设置请求超时时间
     AFHTTPSessionManager *mgr_ = [self afManager];

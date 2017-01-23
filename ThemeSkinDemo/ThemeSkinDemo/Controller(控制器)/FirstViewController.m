@@ -101,13 +101,13 @@
     button.selected = !button.selected;
     [self requestIconData:nil];
     
-    OKHttpRequestModel *model = nil;
-    [OKHttpRequestTools sendOKRequest:model success:^(id returnValue) {
-        
-    } failure:^(NSError *error) {
-        ShowAlertToast(error.domain);
-    
-    }];
+//    OKHttpRequestModel *model = nil;
+//    [OKHttpRequestTools sendOKRequest:model success:^(id returnValue) {
+//        
+//    } failure:^(NSError *error) {
+//        ShowAlertToast(error.domain);
+//    
+//    }];
 }
 
 /**

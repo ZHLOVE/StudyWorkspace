@@ -49,9 +49,6 @@
                                        success:(OKHttpSuccessBlock)successBlock
                                        failure:(OKHttpFailureBlock)failureBlock
 {
-    //请求地址为空则不请求
-    if (!requestModel.requestUrl) return nil;
-    
     //失败回调
     void (^failResultBlock)(NSError *) = ^(NSError *error){
         
@@ -88,6 +85,22 @@
             }
         }
     };
+    
+    //请求地址为空则不请求
+    if (!requestModel.requestUrl) {
+        if (failResultBlock) {
+            failResultBlock([NSError errorWithDomain:RequestFailCommomTip code:[kServiceErrorStatues integerValue] userInfo:nil]);
+        }
+        return nil;
+    };
+    
+    //网络不正常,直接走返回失败
+    if (![AFNetworkReachabilityManager sharedManager].reachable) {
+        if (failureBlock) {
+            failResultBlock([NSError errorWithDomain:NetworkConnectFailTip code:kCFURLErrorNotConnectedToInternet userInfo:nil]);
+        }
+        return nil;
+    }
     
     //成功回调
     void(^succResultBlock)(id responseObject, BOOL isCacheData) = ^(id responseObject, BOOL isCacheData){
@@ -128,7 +141,7 @@
             failResultBlock([NSError errorWithDomain:responseObject[kRequestMessageKey] code:code userInfo:nil]);
         }
     };
-    /Users/maowangxin/Documents/GitHub开源项目/StudyWorkspace/CommonFrameWork/CommonFrameWork/CommonSendHttpTools/OKHttpRequestTools.h
+    
     //如果有网络缓存, 则立即返回缓存, 同时继续请求网络最新数据
     if (successBlock && requestModel.requestCachePolicy == RequestStoreCacheData) {
         //缓存key
@@ -140,13 +153,6 @@
         }
     }
     
-    //网络不正常,直接走返回失败
-    if (![AFNetworkReachabilityManager sharedManager].reachable) {
-        if (failureBlock) {
-            failResultBlock([NSError errorWithDomain:NetworkConnectFailTip code:kCFURLErrorNotConnectedToInternet userInfo:nil]);
-        }
-        return nil;
-    }
     
     //是否显示请求转圈
     if (requestModel.loadView && !requestModel.dataTableView) {
