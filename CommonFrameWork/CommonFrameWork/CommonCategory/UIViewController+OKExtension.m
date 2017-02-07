@@ -24,7 +24,7 @@
 /**
  *  在导航栏左边增加控件
  */
-- (void)addLeftBarButtonItem:(NSString *)normolImage highImage:(NSString *)highImage target:(id)target selector:(SEL)selector
+- (void)addLeftBarButtonItem:(UIImage *)normolImage highImage:(UIImage *)highImage target:(id)target selector:(SEL)selector
 {
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImage:normolImage highImage:highImage target:target action:selector];
 }
@@ -32,7 +32,7 @@
 /**
  *  在导航栏右边增加控件
  */
-- (void)addRightBarButtonItem:(NSString *)normolImage highImage:(NSString *)highImage target:(id)target selector:(SEL)selector
+- (void)addRightBarButtonItem:(UIImage *)normolImage highImage:(UIImage *)highImage target:(id)target selector:(SEL)selector
 {
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithImage:normolImage highImage:highImage target:target action:selector];
 }
@@ -111,6 +111,106 @@
     //添加底部细线
     [bgView addLineToPosition:OkDrawLine_bottom lineWidth:1];
     [self.view insertSubview:bgView atIndex:0];
+}
+
+
+#pragma mark - /*** 顶层控制器 ***/
+/**
+ *  获取最顶层的控制器
+ */
++ (UIViewController *)currentTopViewController{
+    UIViewController *viewController = [self activityViewController];
+    UIViewController *lastViewController  = [self getCurrentViewController:viewController];
+    return lastViewController;
+}
+
+/**
+ *  获取最顶层的控制器
+ */
++ (UIViewController *)getCurrentViewController:(UIViewController *)viewController
+{
+    UIViewController *lastViewController  = nil;
+    
+    if ([viewController isKindOfClass:[UITabBarController class]]) {
+        
+        UITabBarController *tabBarController = (UITabBarController *)viewController ;
+        NSInteger selectIndex = tabBarController.selectedIndex ;
+        if (selectIndex < tabBarController.viewControllers.count) {
+            UIViewController *tabViewController = tabBarController.viewControllers[selectIndex];
+            if ([tabViewController isKindOfClass:[UINavigationController class]]) {
+                lastViewController = [[(UINavigationController *)tabViewController viewControllers] lastObject];
+                lastViewController = [self getPresentedViewController :lastViewController];
+            }else{
+                lastViewController = [self getPresentedViewController:tabViewController];
+            }
+        }
+    }else if ([viewController isKindOfClass:[UINavigationController class]]){
+        
+        lastViewController = [[(UINavigationController *)viewController viewControllers] lastObject];
+        lastViewController = [self getPresentedViewController:lastViewController];
+    }else{
+        
+        lastViewController = [self getPresentedViewController:viewController];
+    }
+    
+    return lastViewController;
+}
+/**
+ *  获取PresentedViewController
+ */
++ (UIViewController *)getPresentedViewController:(UIViewController *)viewController
+{
+    while (viewController.presentedViewController) {
+        viewController = viewController.presentedViewController;                // 1. ViewController 下
+        
+        if ([viewController isKindOfClass:[UINavigationController class]]) {                // 2. NavigationController 下
+            viewController =  [self getCurrentViewController:viewController];
+        }
+        
+        if ([viewController isKindOfClass:[UITabBarController class]]) {
+            viewController = [self getCurrentViewController:viewController];     // 3. UITabBarController 下
+        }
+    }
+    return viewController;
+}
+/**
+ *  获取当前处于activity状态的view controller
+ */
++ (UIViewController *)activityViewController
+{
+    UIViewController* activityViewController = nil;
+    
+    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
+    if(window.windowLevel != UIWindowLevelNormal)
+    {
+        NSArray *windows = [[UIApplication sharedApplication] windows];
+        for(UIWindow *tmpWin in windows)
+        {
+            if(tmpWin.windowLevel == UIWindowLevelNormal)
+            {
+                window = tmpWin;
+                break;
+            }
+        }
+    }
+    NSArray *viewsArray = [window subviews];
+    if([viewsArray count] > 0)
+    {
+        UIView *frontView = [viewsArray objectAtIndex:0];
+        
+        id nextResponder = [frontView nextResponder];
+        
+        if([nextResponder isKindOfClass:[UIViewController class]])
+        {
+            activityViewController = nextResponder;
+        }
+        else
+        {
+            activityViewController = window.rootViewController;
+        }
+    }
+    
+    return activityViewController;
 }
 
 @end

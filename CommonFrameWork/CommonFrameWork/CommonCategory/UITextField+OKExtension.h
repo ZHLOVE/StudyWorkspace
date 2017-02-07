@@ -7,12 +7,47 @@
 //
 
 #import <UIKit/UIKit.h>
-//注：替换了setPlaceholder:方法，使得在设置了attributedPlaceholder属性的情况下，再次设置placeholder会保留attributedPlaceholder中的属性
+
 @interface UITextField (OKExtension)
+
+
+/** 左边文字 */
+@property (nonatomic, copy) NSString *leftText;
+
+/** 左边图片 */
+@property (nonatomic, strong) UIImage *leftImage;
+
+/** 占位文字 */
+@property (nonatomic, copy) NSString *placeholderText;
+
+/** 占位文字颜色 */
+@property (nonatomic, strong) UIColor *placeholderColor;
+
+/** 设置右侧按钮是否可点击 */
+@property (nonatomic, assign) BOOL rightViewEnable;
+
 /**
- *  设置提示语的字体属性
+ *  设置统一外观风格
  */
-- (void)setupPlaceholder:(NSString *)placeholder attribute:(NSDictionary *)attributes;
+- (void)addBorderStyle;
+
+/**
+ *  添加右侧按钮,返回点击回调
+ */
+- (UIButton *)setRightViewTitle:(NSString *)title touchBlock:(void(^)(UIButton *))block;
+
+/**
+ *  快速创建UITextField
+ *  @param placeholder 占位文字
+ */
++(UITextField *)textfieldWithPlaceholder:(NSString *)placeholder;
+
+/**
+ *  设置选中的范围
+ *
+ *  @param range  range
+ */
+- (void)setSelectedRange:(NSRange)range;
 
 /**
  *  得到选中的范围
@@ -20,12 +55,5 @@
  *  @return  NSRange
  */
 - (NSRange)selectedRange;
-
-/**
- *  设置选中的范围
- *
- *  @param range    range
- */
-- (void)setSelectedRange:(NSRange)range;
 
 @end

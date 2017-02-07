@@ -20,16 +20,16 @@
 /**
  *  在导航栏左边增加控件
  */
-- (void)addLeftBarButtonItem:(NSString *)normolImage
-                   highImage:(NSString *)highImage
+- (void)addLeftBarButtonItem:(UIImage *)normolImage
+                   highImage:(UIImage *)highImage
                       target:(id)target
                     selector:(SEL)selector;
 
 /**
  *  在导航栏右边增加控件
  */
-- (void)addRightBarButtonItem:(NSString *)normolImage
-                    highImage:(NSString *)highImage
+- (void)addRightBarButtonItem:(UIImage *)normolImage
+                    highImage:(UIImage *)highImage
                        target:(id)target
                      selector:(SEL)selector;
 /**
@@ -59,5 +59,10 @@
  *  在导航底部添加一个假的导航view
  */
 - (void)showFakeNavBarWhenScreenEdgePanBack;
+
+/**
+ *  获取最顶层的控制器
+ */
++ (UIViewController *)currentTopViewController;
 
 @end

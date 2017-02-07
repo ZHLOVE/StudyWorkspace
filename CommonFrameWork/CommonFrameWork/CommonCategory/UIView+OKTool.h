@@ -27,6 +27,16 @@ typedef enum : NSUInteger {
 -(instancetype)addLineToPosition:(OKDrawLinePosition)position lineWidth:(CGFloat)lineWidth;
 
 /**
+ *  快速根据xib创建View
+ */
++ (instancetype)viewFromXib;
+
+/**
+ *  判断self和view是否重叠
+ */
+- (BOOL)intersectsWithView:(UIView *)view;
+
+/**
  获取当前视图的父视图控制器
  
  @return 控制器

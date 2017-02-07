@@ -241,21 +241,6 @@
 }
 
 /**
- *  得到当前时间
- *
- *  @return yyyyMMddHHmmssSSS
- */
-+ (NSString *)getNowDate
-{
-    NSDate *senddate = [NSDate date];
-    NSDateFormatter *dateformatter=[[NSDateFormatter alloc] init];
-    [dateformatter setTimeZone:[NSTimeZone localTimeZone]];
-    [dateformatter setDateFormat:@"yyyyMMddHHmmssSSS"];
-    NSString *locationString = [dateformatter stringFromDate:senddate];
-    return locationString;
-}
-
-/**
  *  获取属性文字
  *
  *  @param textArr   需要显示的文字数组,如果有换行请在文字中添加 "\n"换行符

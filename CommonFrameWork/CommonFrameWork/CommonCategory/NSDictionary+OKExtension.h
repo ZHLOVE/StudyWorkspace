@@ -13,4 +13,10 @@
  * 转化为字符串
  */
 - (NSString *)ok_toString;
+
+/**
+ * 根据字段的属性，生成字典的模型类代码
+ */
+- (void)propertyCode;
+
 @end

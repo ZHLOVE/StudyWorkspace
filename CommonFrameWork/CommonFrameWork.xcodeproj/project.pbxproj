@@ -62,6 +62,10 @@
 		B50311661E1E607F00C11EC4 /* OKActionSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = B50310EF1E1E607F00C11EC4 /* OKActionSheetView.m */; };
 		B50311671E1E607F00C11EC4 /* OKAlertController.h in Headers */ = {isa = PBXBuildFile; fileRef = B50310F01E1E607F00C11EC4 /* OKAlertController.h */; };
 		B50311681E1E607F00C11EC4 /* OKAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = B50310F11E1E607F00C11EC4 /* OKAlertController.m */; };
+		B56E18F91E49D2A60051C7AE /* OKFileManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B56E18F71E49D2A60051C7AE /* OKFileManager.h */; };
+		B56E18FA1E49D2A60051C7AE /* OKFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B56E18F81E49D2A60051C7AE /* OKFileManager.m */; };
+		B56E18FD1E49D4F60051C7AE /* OKLocalNotification.h in Headers */ = {isa = PBXBuildFile; fileRef = B56E18FB1E49D4F60051C7AE /* OKLocalNotification.h */; };
+		B56E18FE1E49D4F60051C7AE /* OKLocalNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = B56E18FC1E49D4F60051C7AE /* OKLocalNotification.m */; };
 		B584C7B21E31BAD500CB6C81 /* OKColorDefiner.h in Headers */ = {isa = PBXBuildFile; fileRef = B584C7AB1E31BAD500CB6C81 /* OKColorDefiner.h */; };
 		B584C7B31E31BAD500CB6C81 /* OKFrameDefiner.h in Headers */ = {isa = PBXBuildFile; fileRef = B584C7AC1E31BAD500CB6C81 /* OKFrameDefiner.h */; };
 		B584C7B41E31BAD500CB6C81 /* OKPubilcKeyDefiner.h in Headers */ = {isa = PBXBuildFile; fileRef = B584C7AD1E31BAD500CB6C81 /* OKPubilcKeyDefiner.h */; };
@@ -203,6 +207,10 @@
 		B50310EF1E1E607F00C11EC4 /* OKActionSheetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OKActionSheetView.m; sourceTree = "<group>"; };
 		B50310F01E1E607F00C11EC4 /* OKAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKAlertController.h; sourceTree = "<group>"; };
 		B50310F11E1E607F00C11EC4 /* OKAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OKAlertController.m; sourceTree = "<group>"; };
+		B56E18F71E49D2A60051C7AE /* OKFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKFileManager.h; sourceTree = "<group>"; };
+		B56E18F81E49D2A60051C7AE /* OKFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OKFileManager.m; sourceTree = "<group>"; };
+		B56E18FB1E49D4F60051C7AE /* OKLocalNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKLocalNotification.h; sourceTree = "<group>"; };
+		B56E18FC1E49D4F60051C7AE /* OKLocalNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OKLocalNotification.m; sourceTree = "<group>"; };
 		B584C7AB1E31BAD500CB6C81 /* OKColorDefiner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKColorDefiner.h; sourceTree = "<group>"; };
 		B584C7AC1E31BAD500CB6C81 /* OKFrameDefiner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKFrameDefiner.h; sourceTree = "<group>"; };
 		B584C7AD1E31BAD500CB6C81 /* OKPubilcKeyDefiner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKPubilcKeyDefiner.h; sourceTree = "<group>"; };
@@ -595,10 +603,14 @@
 			children = (
 				B5E8BD2D1E2F55DD00D0F73D /* OKReachabilityManager.h */,
 				B5E8BD2E1E2F55DD00D0F73D /* OKReachabilityManager.m */,
+				B56E18F71E49D2A60051C7AE /* OKFileManager.h */,
+				B56E18F81E49D2A60051C7AE /* OKFileManager.m */,
+				B56E18FB1E49D4F60051C7AE /* OKLocalNotification.h */,
+				B56E18FC1E49D4F60051C7AE /* OKLocalNotification.m */,
 				B584C7B91E31BD7F00CB6C81 /* OKUtils.h */,
 				B584C7BA1E31BD7F00CB6C81 /* OKUtils.m */,
-				B584C85B1E31F55700CB6C81 /* OKCFunction.h */,
 				B584C85C1E31F55700CB6C81 /* OKCFunction.m */,
+				B584C85B1E31F55700CB6C81 /* OKCFunction.h */,
 			);
 			path = CommonUtils;
 			sourceTree = "<group>";
@@ -632,6 +644,7 @@
 				B50311511E1E607F00C11EC4 /* UIImage+OKExtension.h in Headers */,
 				B503113E1E1E607F00C11EC4 /* NSMutableArray+OKExtension.h in Headers */,
 				B50311451E1E607F00C11EC4 /* NSObject+OKRuntime.h in Headers */,
+				B56E18FD1E49D4F60051C7AE /* OKLocalNotification.h in Headers */,
 				B584C7B21E31BAD500CB6C81 /* OKColorDefiner.h in Headers */,
 				B50311611E1E607F00C11EC4 /* OKHttpRequestModel.h in Headers */,
 				B50311471E1E607F00C11EC4 /* NSString+OKEncryption.h in Headers */,
@@ -672,6 +685,7 @@
 				B584C81F1E31BEC000CB6C81 /* ZLPhotoPickerBrowserViewController.h in Headers */,
 				B50311531E1E607F00C11EC4 /* UIImageView+OKCornerRadius.h in Headers */,
 				B584C8291E31BEC000CB6C81 /* ZLPhotoPickerCustomToolBarView.h in Headers */,
+				B56E18F91E49D2A60051C7AE /* OKFileManager.h in Headers */,
 				B584C83A1E31BEC000CB6C81 /* ZLPhotoPickerCollectionViewCell.h in Headers */,
 				B584C8321E31BEC000CB6C81 /* ZLPhotoPickerAssetsViewController.h in Headers */,
 				B503115B1E1E607F00C11EC4 /* UIView+OKExtension.h in Headers */,
@@ -845,6 +859,7 @@
 				B584C82F1E31BEC000CB6C81 /* ZLPhotoPickerDatas.m in Sources */,
 				B584C7C11E31BD9300CB6C81 /* OKBaseViewController.m in Sources */,
 				A3FC95EA1E2FA688001EA205 /* UINavigationController+OKExtension.m in Sources */,
+				B56E18FE1E49D4F60051C7AE /* OKLocalNotification.m in Sources */,
 				B584C8201E31BEC000CB6C81 /* ZLPhotoPickerBrowserViewController.m in Sources */,
 				B584C8151E31BEC000CB6C81 /* OKPickerPhotoHelp.m in Sources */,
 				B584C8351E31BEC000CB6C81 /* ZLPhotoPickerGroupViewController.m in Sources */,
@@ -858,6 +873,7 @@
 				B503114E1E1E607F00C11EC4 /* UIButton+OKExtension.m in Sources */,
 				B50311681E1E607F00C11EC4 /* OKAlertController.m in Sources */,
 				B50311641E1E607F00C11EC4 /* OKHttpRequestTools.m in Sources */,
+				B56E18FA1E49D2A60051C7AE /* OKFileManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

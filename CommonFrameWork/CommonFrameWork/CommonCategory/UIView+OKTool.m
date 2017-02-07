@@ -56,6 +56,25 @@
     return line;
 }
 
+/**
+ *  快速根据xib创建View
+ */
++ (instancetype)viewFromXib
+{
+    return [[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self) owner:nil options:nil].firstObject;
+}
+
+/**
+ *  判断self和view是否重叠
+ */
+- (BOOL)intersectsWithView:(UIView *)view
+{
+    //都先转换为相对于窗口的坐标，然后进行判断是否重合
+    CGRect selfRect = [self convertRect:self.bounds toView:nil];
+    CGRect viewRect = [view convertRect:view.bounds toView:nil];
+    return CGRectIntersectsRect(selfRect, viewRect);
+}
+
 #pragma mark -=============== 获取当前视图的控制器 ===============
 
 /**
