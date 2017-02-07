@@ -93,7 +93,7 @@ typedef void (^TouchedBlock)(UIButton *btn);
  *  @param style 标题和图片的布局样式
  *  @param space 标题和图片的间距
  */
-- (void)layoutButtonWithEdgeInsetsStyle:(OKButtonEdgeInsetsStyle)style
-                        imageTitleSpace:(CGFloat)space;
+- (void)layoutImageOrTitleEdgeInsets:(OKButtonEdgeInsetsStyle)style
+                     imageTitleSpace:(CGFloat)space;
 
 @end

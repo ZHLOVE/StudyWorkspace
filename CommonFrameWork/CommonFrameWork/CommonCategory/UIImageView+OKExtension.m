@@ -14,6 +14,7 @@
 static const void *UIRenderColorKey = &UIRenderColorKey;
 
 @implementation UIImageView (OKExtension)
+
 //增加一个渲染色的属性
 - (void)setRenderColor:(UIColor *)renderColor {
     objc_setAssociatedObject(self, UIRenderColorKey, renderColor, OBJC_ASSOCIATION_RETAIN_NONATOMIC);

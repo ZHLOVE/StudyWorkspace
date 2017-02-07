@@ -609,8 +609,8 @@
 				B56E18FC1E49D4F60051C7AE /* OKLocalNotification.m */,
 				B584C7B91E31BD7F00CB6C81 /* OKUtils.h */,
 				B584C7BA1E31BD7F00CB6C81 /* OKUtils.m */,
-				B584C85C1E31F55700CB6C81 /* OKCFunction.m */,
 				B584C85B1E31F55700CB6C81 /* OKCFunction.h */,
+				B584C85C1E31F55700CB6C81 /* OKCFunction.m */,
 			);
 			path = CommonUtils;
 			sourceTree = "<group>";

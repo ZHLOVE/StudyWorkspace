@@ -10,7 +10,7 @@
 
 @interface UINavigationController (OKExtension)
 
-/** 设置导航栏北京颜色 */
+/** 设置当前页面导航栏背景颜色 */
 @property (nonatomic, strong) UIColor *okNavBackgroundColor;
 
 @end

@@ -224,8 +224,8 @@ static const void *UIButtonBlockKey = &UIButtonBlockKey;
  *  @param style titleLabel和imageView的布局样式
  *  @param space titleLabel和imageView的间距
  */
-- (void)layoutButtonWithEdgeInsetsStyle:(OKButtonEdgeInsetsStyle)style
-                        imageTitleSpace:(CGFloat)space
+- (void)layoutImageOrTitleEdgeInsets:(OKButtonEdgeInsetsStyle)style
+                     imageTitleSpace:(CGFloat)space
 {    
     // 1. 得到imageView和titleLabel的宽、高
     CGFloat imageWith = self.imageView.frame.size.width;

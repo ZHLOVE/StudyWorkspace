@@ -73,7 +73,7 @@
     //添加子控制器: 我的
     [self addTabBarChildVC:[ThirdViewController new] navTitle:@"我的"];
     
-    //更换tabBar
+    //更换tabBar，为什么要更换，因为可以自定义双击事件,自定义换肤等
     [self setValue:self.appTabBar forKeyPath:@"tabBar"];
 }
 

@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface UIImageView (OKExtension)
-@property (nonatomic, strong) UIColor *renderColor;     /**< 渲染颜色替换了图片渲染颜色也在 */
+
+/**< 渲染颜色替换了图片渲染颜色也在 */
+@property (nonatomic, strong) UIColor *renderColor;
 
 @end
