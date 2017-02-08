@@ -16,9 +16,10 @@
 
 @interface FirstViewController ()<UIGestureRecognizerDelegate>
 @property (nonatomic, strong) UIPanGestureRecognizer *pan;//UIScreenEdgePanGestureRecognizer
+@property (nonatomic, strong) UITapGestureRecognizer *sideslipTapGes;
 @property (nonatomic, assign) CGFloat startTabBarY;
-//左侧蒙版
-@property (nonatomic, strong) UIView *leftMaskView;
+@property (nonatomic, strong) UIView *leftMaskView;//左侧蒙版
+@property (nonatomic, assign) BOOL hasOpen;
 @end
 
 @implementation FirstViewController
@@ -34,7 +35,7 @@
 {
     [super viewDidAppear:animated];
     
-    self.startTabBarY = self.parentViewController.tabBarController.tabBar.y;
+    self.startTabBarY = self.tabBarController.tabBar.y;
     
     [self leftMaskView];
 }
@@ -66,20 +67,53 @@
 {
     [UIView animateWithDuration:0.3 animations:^{
         if (open) { //打开侧滑
-            self.leftMaskView.alpha = 0.0;
             self.view.x = MaxOffsetX;
-            self.view.height = Screen_Height;
-            self.parentViewController.tabBarController.tabBar.y =  self.startTabBarY + 49;
-            self.parentViewController.tabBarController.tabBar.alpha = 0.0;
+            self.tabBarController.tabBar.y =  self.startTabBarY + 49;
+            self.tabBarController.tabBar.alpha = 0.0;
+            self.view.height = Screen_Height-64;
+            self.leftMaskView.height = self.view.height;
+            self.leftMaskView.alpha = 0.0;
+            
+            [self addTapAction:YES];
             
         } else { //关闭侧滑
             self.view.x = 0;
-            self.view.height = Screen_Height - 49;
-            self.parentViewController.tabBarController.tabBar.y =  self.startTabBarY + 0;
+            self.tabBarController.tabBar.y =  self.startTabBarY + 0;
+            self.tabBarController.tabBar.alpha = 1.0;
+            self.view.height = Screen_Height - 64 - 49;
+            self.leftMaskView.height = self.view.height;
             self.leftMaskView.alpha = 0.5;
-            self.parentViewController.tabBarController.tabBar.alpha = 1.0;
+            
+            [self addTapAction:NO];
         }
+    } completion:^(BOOL finished) {
+        self.hasOpen = open;
     }];
+}
+
+/**
+ * 打开侧滑之后添加单击手势
+ */
+- (void)addTapAction:(BOOL)addTapGes
+{
+    if (addTapGes) {
+        self.sideslipTapGes= [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handeTap:)];
+        [self.sideslipTapGes setNumberOfTapsRequired:1];
+        [self.view addGestureRecognizer:self.sideslipTapGes];
+    } else {
+        [self.view removeGestureRecognizer:self.sideslipTapGes];
+        self.sideslipTapGes = nil;
+    }
+}
+
+#pragma mark - 单击手势
+-(void)handeTap:(UITapGestureRecognizer *)tap{
+    
+    if ((self.view.x == MaxOffsetX) && (tap.state == UIGestureRecognizerStateEnded))
+    {
+        //点击关闭侧滑
+        [self showLeftView:NO];
+    }
 }
 
 #pragma Mark - 初始化UI
@@ -108,25 +142,46 @@
 //滑动手势
 - (void)mainSlideHandlePan:(UIPanGestureRecognizer *)gesture
 {
-    CGPoint point = [gesture translationInView:self.parentViewController.view];
+    CGPoint point = [gesture translationInView:self.view];
     
-    //屏幕宽度一半的百分比
-    CGFloat percent = point.x/(self.view.width/2);
-    CGFloat offsetY = self.parentViewController.tabBarController.tabBar.height *percent;
-    
-    self.view.x = MIN((MAX(point.x, 0)), MaxOffsetX);
-    self.parentViewController.tabBarController.tabBar.y =  self.startTabBarY + MAX(offsetY, 0);
-    
-    self.leftMaskView.alpha = 0.5 * (1-percent);
-    self.parentViewController.tabBarController.tabBar.alpha = 1-percent;
-    self.view.height = Screen_Height-49+MAX(offsetY, 0);
-    
-    //手势结束后修正位置,超过约一半时向多出的一半偏移
-    if (gesture.state == UIGestureRecognizerStateEnded) {
+    if (self.hasOpen) {
+        CGFloat percent = -point.x/(MaxOffsetX);
+        self.view.x = MAX(MaxOffsetX + point.x, 0);
         
-        [UIView animateWithDuration:0.3 animations:^{
-            [self showLeftView:(point.x > self.view.width/2)];
-        }];
+        CGFloat offsetY = self.tabBarController.tabBar.height *percent;
+        self.tabBarController.tabBar.y = MAX(self.startTabBarY, Screen_Height - offsetY);
+        self.tabBarController.tabBar.alpha = percent;
+        self.view.height = MAX(Screen_Height-64-49, Screen_Height-64-offsetY);
+        self.leftMaskView.height = self.view.height;
+        self.leftMaskView.alpha = percent * 0.5;
+        
+        //手势结束后修正位置,超过约一半时向多出的一半偏移
+        if (gesture.state == UIGestureRecognizerStateEnded) {
+            NSLog(@"UIGestureRecognizerStateEnded===%.2f==%.2f",self.view.x,MaxOffsetX*0.75);
+            [UIView animateWithDuration:0.3 animations:^{
+                [self showLeftView:(self.view.x > MaxOffsetX*0.85)];
+            }];
+        }
+        
+    } else {
+        //屏幕宽度一半的百分比
+        CGFloat percent = point.x/(self.view.width/2);
+        self.view.x = MIN((MAX(point.x, 0)), MaxOffsetX);;
+        
+        CGFloat offsetY = self.parentViewController.tabBarController.tabBar.height *percent;
+        self.tabBarController.tabBar.y =  self.startTabBarY + MAX(offsetY, 0);
+        self.tabBarController.tabBar.alpha = 1-percent;
+        self.view.height = Screen_Height-49+MAX(offsetY, 0);
+        self.leftMaskView.height = self.view.height;
+        self.leftMaskView.alpha = 0.5 * (1-percent);
+        
+        //手势结束后修正位置,超过约一半时向多出的一半偏移
+        if (gesture.state == UIGestureRecognizerStateEnded) {
+            
+            [UIView animateWithDuration:0.3 animations:^{
+                [self showLeftView:(self.view.x > self.view.width/4)];
+            }];
+        }
     }
 }
 

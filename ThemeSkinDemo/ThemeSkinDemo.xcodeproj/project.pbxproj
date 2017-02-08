@@ -26,7 +26,8 @@
 		B5BA5FFE1E2F24CF000CF619 /* OKAppTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BA5FEE1E2F24CF000CF619 /* OKAppTabBar.m */; };
 		B5BA5FFF1E2F24CF000CF619 /* OKOtherTabBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BA5FF01E2F24CF000CF619 /* OKOtherTabBarVC.m */; };
 		B5BA60001E2F24CF000CF619 /* OKAppTabBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BA5FF21E2F24CF000CF619 /* OKAppTabBarVC.m */; };
-		B5C5BC351E4AD9E200DB1861 /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C5BC331E4AD9E200DB1861 /* LeftViewController.m */; };
+		B5C5BC3A1E4AFAFB00DB1861 /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C5BC381E4AFAFB00DB1861 /* LeftViewController.m */; };
+		B5C5BC3B1E4AFAFB00DB1861 /* LeftViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5C5BC391E4AFAFB00DB1861 /* LeftViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -75,8 +76,9 @@
 		B5BA5FF11E2F24CF000CF619 /* OKAppTabBarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKAppTabBarVC.h; sourceTree = "<group>"; };
 		B5BA5FF21E2F24CF000CF619 /* OKAppTabBarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OKAppTabBarVC.m; sourceTree = "<group>"; };
 		B5BA60021E2F27AA000CF619 /* ThemeSkim.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeSkim.pch; sourceTree = "<group>"; };
-		B5C5BC321E4AD9E100DB1861 /* LeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewController.h; sourceTree = "<group>"; };
-		B5C5BC331E4AD9E200DB1861 /* LeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewController.m; sourceTree = "<group>"; };
+		B5C5BC371E4AFAFB00DB1861 /* LeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewController.h; sourceTree = "<group>"; };
+		B5C5BC381E4AFAFB00DB1861 /* LeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewController.m; sourceTree = "<group>"; };
+		B5C5BC391E4AFAFB00DB1861 /* LeftViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,8 +140,9 @@
 		B5BA5FD81E2F24CF000CF619 /* Controller(控制器) */ = {
 			isa = PBXGroup;
 			children = (
-				B5C5BC321E4AD9E100DB1861 /* LeftViewController.h */,
-				B5C5BC331E4AD9E200DB1861 /* LeftViewController.m */,
+				B5C5BC371E4AFAFB00DB1861 /* LeftViewController.h */,
+				B5C5BC381E4AFAFB00DB1861 /* LeftViewController.m */,
+				B5C5BC391E4AFAFB00DB1861 /* LeftViewController.xib */,
 				B5BA5FD91E2F24CF000CF619 /* FirstViewController.h */,
 				B5BA5FDA1E2F24CF000CF619 /* FirstViewController.m */,
 				B5BA5FDB1E2F24CF000CF619 /* FirstViewController.xib */,
@@ -260,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5BA5FF71E2F24CF000CF619 /* FourthViewController.xib in Resources */,
+				B5C5BC3B1E4AFAFB00DB1861 /* LeftViewController.xib in Resources */,
 				B57A66DB1E1E324400ACB5EC /* LaunchScreen.storyboard in Resources */,
 				B5BA5FFB1E2F24CF000CF619 /* ThirdViewController.xib in Resources */,
 				B5BA5FF51E2F24CF000CF619 /* FirstViewController.xib in Resources */,
@@ -275,7 +279,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5C5BC351E4AD9E200DB1861 /* LeftViewController.m in Sources */,
 				B5BA5FF81E2F24CF000CF619 /* SecondViewController.m in Sources */,
 				B5BA5FFD1E2F24CF000CF619 /* OKTabBarInfoModel.m in Sources */,
 				B5BA5FFE1E2F24CF000CF619 /* OKAppTabBar.m in Sources */,
@@ -285,6 +288,7 @@
 				B57A66D01E1E324400ACB5EC /* AppDelegate.m in Sources */,
 				B584C8611E320E0E00CB6C81 /* DetailViewController.m in Sources */,
 				B5BA5FF41E2F24CF000CF619 /* FirstViewController.m in Sources */,
+				B5C5BC3A1E4AFAFB00DB1861 /* LeftViewController.m in Sources */,
 				B57A66CD1E1E324400ACB5EC /* main.m in Sources */,
 				B5BA60001E2F24CF000CF619 /* OKAppTabBarVC.m in Sources */,
 			);

@@ -32,6 +32,7 @@
     if (!_firstVC) {
         _firstVC = [[FirstViewController alloc] init];
         _firstVC.edgesForExtendedLayout = UIRectEdgeNone;
+        _firstVC.view.height += 49;
         [self.view addSubview:_firstVC.view];
         [self addChildViewController:_firstVC];
         [self addLeftBarButtonItem:@"开关" target:_firstVC selector:@selector(converLeftViewAction:)];
@@ -48,6 +49,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [_firstVC converLeftViewAction:nil];
     [self.navigationController pushViewController:[OKBaseViewController new] animated:YES];
 }
 

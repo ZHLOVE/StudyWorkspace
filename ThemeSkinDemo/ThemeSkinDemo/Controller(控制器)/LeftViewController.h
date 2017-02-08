@@ -6,7 +6,7 @@
 //  Copyright © 2017年 okdeer. All rights reserved.
 //
 
-#import "OKBaseViewController.h"
+#import <UIKit/UIKit.h>
 
 @interface LeftViewController : OKBaseViewController
 
