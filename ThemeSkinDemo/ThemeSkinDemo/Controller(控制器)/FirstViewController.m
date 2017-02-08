@@ -15,10 +15,11 @@
 #define MaxOffsetX      (self.view.width-49)
 
 @interface FirstViewController ()<UIGestureRecognizerDelegate>
-@property (nonatomic, strong) UIPanGestureRecognizer *pan;//UIScreenEdgePanGestureRecognizer
+@property (nonatomic, strong) UIScreenEdgePanGestureRecognizer *pan;//UIScreenEdgePanGestureRecognizer
 @property (nonatomic, strong) UITapGestureRecognizer *sideslipTapGes;
 @property (nonatomic, assign) CGFloat startTabBarY;
 @property (nonatomic, strong) UIView *leftMaskView;//左侧蒙版
+@property (nonatomic, strong) UIView *rightMaskView;//右侧蒙版
 @property (nonatomic, assign) BOOL hasOpen;
 @end
 
@@ -52,6 +53,18 @@
     return _leftMaskView;
 }
 
+- (UIView *)rightMaskView
+{
+    if (!_rightMaskView) {
+        _rightMaskView = [[UIView alloc] init];
+        _rightMaskView.frame = CGRectMake(0, 0, Screen_Width, Screen_Height);
+        _rightMaskView.backgroundColor = [UIColor blackColor];
+        _rightMaskView.alpha = 0.0;
+        [self.view insertSubview:_rightMaskView atIndex:1];
+    }
+    return _rightMaskView;
+}
+
 /**
  * 是否打开左侧视图
  */
@@ -73,6 +86,7 @@
             self.view.height = Screen_Height-64;
             self.leftMaskView.height = self.view.height;
             self.leftMaskView.alpha = 0.0;
+            self.rightMaskView.alpha = 0.3;
             
             [self addTapAction:YES];
             
@@ -83,6 +97,7 @@
             self.view.height = Screen_Height - 64 - 49;
             self.leftMaskView.height = self.view.height;
             self.leftMaskView.alpha = 0.5;
+            self.rightMaskView.alpha = 0.0;
             
             [self addTapAction:NO];
         }
@@ -99,9 +114,9 @@
     if (addTapGes) {
         self.sideslipTapGes= [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handeTap:)];
         [self.sideslipTapGes setNumberOfTapsRequired:1];
-        [self.view addGestureRecognizer:self.sideslipTapGes];
+        [self.rightMaskView addGestureRecognizer:self.sideslipTapGes];
     } else {
-        [self.view removeGestureRecognizer:self.sideslipTapGes];
+        [self.rightMaskView removeGestureRecognizer:self.sideslipTapGes];
         self.sideslipTapGes = nil;
     }
 }
@@ -123,11 +138,16 @@
  */
 - (void)addScreenPan
 {
-    self.pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(mainSlideHandlePan:)];
-    //self.pan.edges = UIRectEdgeLeft;
+    self.pan = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(mainSlideHandlePan:)];
+    self.pan.edges = UIRectEdgeLeft;
     self.pan.delegate = self;
     [self.pan setCancelsTouchesInView:YES];
     [self.view addGestureRecognizer:self.pan];
+    
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(mainSlideHandlePan:)];
+    pan.delegate = self;
+    [pan setCancelsTouchesInView:YES];
+    [self.rightMaskView addGestureRecognizer:pan];
     
     //添加侧滑投影效果
     [self.view.layer setShadowOffset:CGSizeMake(1, 1)];
@@ -154,6 +174,7 @@
         self.view.height = MAX(Screen_Height-64-49, Screen_Height-64-offsetY);
         self.leftMaskView.height = self.view.height;
         self.leftMaskView.alpha = percent * 0.5;
+        self.rightMaskView.alpha = 0.3 * (1-percent);
         
         //手势结束后修正位置,超过约一半时向多出的一半偏移
         if (gesture.state == UIGestureRecognizerStateEnded) {
@@ -174,6 +195,7 @@
         self.view.height = Screen_Height-49+MAX(offsetY, 0);
         self.leftMaskView.height = self.view.height;
         self.leftMaskView.alpha = 0.5 * (1-percent);
+        self.rightMaskView.alpha = 0.3 * (percent-1);
         
         //手势结束后修正位置,超过约一半时向多出的一半偏移
         if (gesture.state == UIGestureRecognizerStateEnded) {
