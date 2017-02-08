@@ -13,6 +13,8 @@
 #import "OKTabBarInfoModel.h"
 #import "OKAppTabBar.h"
 #import "OKBaseNavigationVC.h"
+#import "OKFileManager.h"
+#import "LeftViewController.h"
 
 @interface OKAppTabBarVC ()
 @property (nonatomic, strong) OKAppTabBar *appTabBar;
@@ -65,7 +67,7 @@
 - (void)initTabBarVC
 {
     //添加子控制器: 首页
-    [self addTabBarChildVC:[FirstViewController new] navTitle:@"首页"];
+    [self addTabBarChildVC:[LeftViewController new] navTitle:@"首页"];
     
     //添加子控制器: 发现
     [self addTabBarChildVC:[SecondViewController new] navTitle:@"发现"];
@@ -118,7 +120,7 @@
     
     //先加载沙盒的tabBar图标
     for (int i=0; i<defaultNormolImageArr.count; i++) {
-        NSString *iconPath = [NSString stringWithFormat:@"%@/%@@2x.png",[OKUtils getTabBarDirectory],defaultNormolImageArr[i]];
+        NSString *iconPath = [NSString stringWithFormat:@"%@/%@@2x.png",[OKFileManager getTabBarDirectory],defaultNormolImageArr[i]];
         
         BOOL hasFile = [[NSFileManager defaultManager] fileExistsAtPath:iconPath];
         if (!hasFile) continue;

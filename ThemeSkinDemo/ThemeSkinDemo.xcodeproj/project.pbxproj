@@ -26,6 +26,7 @@
 		B5BA5FFE1E2F24CF000CF619 /* OKAppTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BA5FEE1E2F24CF000CF619 /* OKAppTabBar.m */; };
 		B5BA5FFF1E2F24CF000CF619 /* OKOtherTabBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BA5FF01E2F24CF000CF619 /* OKOtherTabBarVC.m */; };
 		B5BA60001E2F24CF000CF619 /* OKAppTabBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BA5FF21E2F24CF000CF619 /* OKAppTabBarVC.m */; };
+		B5C5BC351E4AD9E200DB1861 /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C5BC331E4AD9E200DB1861 /* LeftViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -74,6 +75,8 @@
 		B5BA5FF11E2F24CF000CF619 /* OKAppTabBarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKAppTabBarVC.h; sourceTree = "<group>"; };
 		B5BA5FF21E2F24CF000CF619 /* OKAppTabBarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OKAppTabBarVC.m; sourceTree = "<group>"; };
 		B5BA60021E2F27AA000CF619 /* ThemeSkim.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeSkim.pch; sourceTree = "<group>"; };
+		B5C5BC321E4AD9E100DB1861 /* LeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewController.h; sourceTree = "<group>"; };
+		B5C5BC331E4AD9E200DB1861 /* LeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +138,8 @@
 		B5BA5FD81E2F24CF000CF619 /* Controller(控制器) */ = {
 			isa = PBXGroup;
 			children = (
+				B5C5BC321E4AD9E100DB1861 /* LeftViewController.h */,
+				B5C5BC331E4AD9E200DB1861 /* LeftViewController.m */,
 				B5BA5FD91E2F24CF000CF619 /* FirstViewController.h */,
 				B5BA5FDA1E2F24CF000CF619 /* FirstViewController.m */,
 				B5BA5FDB1E2F24CF000CF619 /* FirstViewController.xib */,
@@ -270,6 +275,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5C5BC351E4AD9E200DB1861 /* LeftViewController.m in Sources */,
 				B5BA5FF81E2F24CF000CF619 /* SecondViewController.m in Sources */,
 				B5BA5FFD1E2F24CF000CF619 /* OKTabBarInfoModel.m in Sources */,
 				B5BA5FFE1E2F24CF000CF619 /* OKAppTabBar.m in Sources */,

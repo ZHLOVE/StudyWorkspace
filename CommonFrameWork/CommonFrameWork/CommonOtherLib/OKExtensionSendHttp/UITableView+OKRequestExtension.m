@@ -107,7 +107,8 @@ static char const * const kNetErrorStrKey = "kNetErrorStrKey";
  @param headerBlock 下拉刷新需要调用的函数
  @param footerBlock 上啦刷新需要调用的函数
  */
-- (void)addheaderRefresh:(MJRefreshComponentRefreshingBlock)headerBlock footerBlock:(MJRefreshComponentRefreshingBlock)footerBlock
+- (void)addheaderRefresh:(MJRefreshComponentRefreshingBlock)headerBlock
+             footerBlock:(MJRefreshComponentRefreshingBlock)footerBlock
 {
     if (headerBlock) {
         WEAKSELF(weakSelf)
@@ -240,7 +241,10 @@ static char const * const kNetErrorStrKey = "kNetErrorStrKey";
 /**
  * 设置提示图片和文字
  */
-- (void)showTipBotton:(BOOL)show TipStatus:(TableVieTipStatus)state tipString:(NSString *)tipString clickBlock:(void(^)())blk
+- (void)showTipBotton:(BOOL)show
+            TipStatus:(TableVieTipStatus)state
+            tipString:(NSString *)tipString
+           clickBlock:(void(^)())blk
 {
     //先移除页面上已有的提示CCParkingRequestTipView视图
     [self removeOldTipBgView];
@@ -271,7 +275,11 @@ static char const * const kNetErrorStrKey = "kNetErrorStrKey";
     
     //这里防止表格有偏移量，一定要设置y的起始位置为0
     CGRect rect = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height);
-    UIView *tipBgView = [OKCommonTipView tipViewByFrame:rect tipImageName:imageName tipText:tipText actionTitle:actionTitle actionBlock:blk];
+    UIView *tipBgView = [OKCommonTipView tipViewByFrame:rect
+                                           tipImageName:imageName
+                                                tipText:tipText
+                                            actionTitle:actionTitle
+                                            actionBlock:blk];
     [self addSubview:tipBgView];
 }
 

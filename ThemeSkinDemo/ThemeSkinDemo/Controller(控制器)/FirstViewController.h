@@ -10,4 +10,9 @@
 
 @interface FirstViewController : OKBaseViewController
 
+/**
+ * 是否打开左侧视图
+ */
+- (void)converLeftViewAction:(UIButton *)button;
+
 @end
