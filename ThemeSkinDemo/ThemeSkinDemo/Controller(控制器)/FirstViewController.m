@@ -15,11 +15,16 @@
 #define MaxOffsetX      (self.view.width-49)
 
 @interface FirstViewController ()<UIGestureRecognizerDelegate>
-@property (nonatomic, strong) UIScreenEdgePanGestureRecognizer *pan;//UIScreenEdgePanGestureRecognizer
-@property (nonatomic, strong) UITapGestureRecognizer *sideslipTapGes;
+
+/** 单击右侧蒙板事件 */
+@property (nonatomic, strong) UIControl *tapMaskControl;
+/** TabBar起始Y */
 @property (nonatomic, assign) CGFloat startTabBarY;
-@property (nonatomic, strong) UIView *leftMaskView;//左侧蒙版
-@property (nonatomic, strong) UIView *rightMaskView;//右侧蒙版
+/** 左侧蒙版 */
+@property (nonatomic, strong) UIView *leftMaskView;
+/** 右侧蒙版 */
+@property (nonatomic, strong) UIView *rightMaskView;
+/** 是否已经打开侧滑 */
 @property (nonatomic, assign) BOOL hasOpen;
 @end
 
@@ -112,20 +117,21 @@
 - (void)addTapAction:(BOOL)addTapGes
 {
     if (addTapGes) {
-        self.sideslipTapGes= [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handeTap:)];
-        [self.sideslipTapGes setNumberOfTapsRequired:1];
-        [self.rightMaskView addGestureRecognizer:self.sideslipTapGes];
+        //点击打开的右侧蒙板
+        UIControl *control = [[UIControl alloc] initWithFrame:self.rightMaskView.frame];
+        [control addTarget:self action:@selector(handeTap:) forControlEvents:UIControlEventTouchUpInside];
+        [self.rightMaskView addSubview:control];
+        self.tapMaskControl = control;
+        
     } else {
-        [self.rightMaskView removeGestureRecognizer:self.sideslipTapGes];
-        self.sideslipTapGes = nil;
+        [self.tapMaskControl removeTarget:self action:@selector(handeTap:) forControlEvents:UIControlEventTouchUpInside];
     }
 }
 
 #pragma mark - 单击手势
--(void)handeTap:(UITapGestureRecognizer *)tap{
-    
-    if ((self.view.x == MaxOffsetX) && (tap.state == UIGestureRecognizerStateEnded))
-    {
+-(void)handeTap:(id)sender
+{
+    if ((self.view.x == MaxOffsetX)) {
         //点击关闭侧滑
         [self showLeftView:NO];
     }
@@ -138,23 +144,26 @@
  */
 - (void)addScreenPan
 {
-    self.pan = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(mainSlideHandlePan:)];
-    self.pan.edges = UIRectEdgeLeft;
-    self.pan.delegate = self;
-    [self.pan setCancelsTouchesInView:YES];
-    [self.view addGestureRecognizer:self.pan];
+    //UIScreenEdgePanGestureRecognizer , UIScreenEdgePanGestureRecognizer
+    //右侧边缘滑动手势
+    UIScreenEdgePanGestureRecognizer *leftScreenPan = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(mainSlideHandlePan:)];
+    leftScreenPan.edges = UIRectEdgeLeft;
+    leftScreenPan.delegate = self;
+    [leftScreenPan setCancelsTouchesInView:YES];
+    [self.view addGestureRecognizer:leftScreenPan];
     
-    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(mainSlideHandlePan:)];
-    pan.delegate = self;
-    [pan setCancelsTouchesInView:YES];
-    [self.rightMaskView addGestureRecognizer:pan];
+    //右侧蒙版全屏滑动手势
+    UIPanGestureRecognizer *rightMaskPan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(mainSlideHandlePan:)];
+    rightMaskPan.delegate = self;
+    [rightMaskPan setCancelsTouchesInView:YES];
+    [self.rightMaskView addGestureRecognizer:rightMaskPan];
     
-    //添加侧滑投影效果
-    [self.view.layer setShadowOffset:CGSizeMake(1, 1)];
-    [self.view.layer setShadowRadius:5];
-    [self.view.layer setShadowOpacity:1];
-    [self.view.layer setShadowColor:[UIColor colorWithWhite:0 alpha:0.48].CGColor];
-    self.view.layer.shadowPath = [UIBezierPath bezierPathWithRect:CGRectMake(0, 0, 1, Screen_Height)].CGPath;
+    //添加右侧边缘投影效果，有蒙版可不加投影
+//    [self.view.layer setShadowOffset:CGSizeMake(1, 1)];
+//    [self.view.layer setShadowRadius:5];
+//    [self.view.layer setShadowOpacity:1];
+//    [self.view.layer setShadowColor:[UIColor colorWithWhite:0 alpha:0.48].CGColor];
+//    self.view.layer.shadowPath = [UIBezierPath bezierPathWithRect:CGRectMake(0, 0, 1, Screen_Height)].CGPath;
 }
 
 #pragma mark - 滑动手势
@@ -178,7 +187,6 @@
         
         //手势结束后修正位置,超过约一半时向多出的一半偏移
         if (gesture.state == UIGestureRecognizerStateEnded) {
-            NSLog(@"UIGestureRecognizerStateEnded===%.2f==%.2f",self.view.x,MaxOffsetX*0.75);
             [UIView animateWithDuration:0.3 animations:^{
                 [self showLeftView:(self.view.x > MaxOffsetX*0.85)];
             }];
