@@ -11,6 +11,9 @@
       location = "group:ThemeSkinDemo/ThemeSkinDemo.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:SlideApp/SlideApp.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:XibDemo/XibDemo.xcodeproj">
    </FileRef>
    <FileRef

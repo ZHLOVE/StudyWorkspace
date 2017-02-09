@@ -78,6 +78,7 @@
     [self showLeftView:(self.view.x != MaxOffsetX)];
 }
 
+
 /**
  * 是否关闭左侧视图
  */
@@ -348,5 +349,6 @@
         [(OKAppTabBarVC *)self.tabBarController changeTabBarThemeImages:tabBarInfoArr];
     });
 }
+
 
 @end
