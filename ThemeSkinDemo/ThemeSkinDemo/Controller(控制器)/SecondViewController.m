@@ -9,6 +9,26 @@
 #import "SecondViewController.h"
 #import "OKOtherTabBarVC.h"
 
+@implementation APLAsyncImageActivityItemProvider
+
+
+- (id)activityViewControllerPlaceholderItem:(UIActivityViewController *)activityViewController
+{
+    return [[UIImage alloc] init];
+}
+
+- (id)item
+{
+    return [UIImage imageNamed:@"icon_home2"];
+}
+
+- (UIImage *)activityViewController:(UIActivityViewController *)activityViewController thumbnailImageForActivityType:(NSString *)activityType suggestedSize:(CGSize)size
+{
+    return [UIImage imageNamed:@"tabbar_cloudstore_h"];
+}
+
+@end
+
 @interface SecondViewController ()
 
 @end
@@ -19,6 +39,20 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
+
+- (IBAction)shareAction:(UIButton *)sender
+{
+    APLAsyncImageActivityItemProvider *aiImageItemProvider = [APLAsyncImageActivityItemProvider new];
+    
+    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[aiImageItemProvider] applicationActivities:nil];
+    
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        //iPhone, present activity view controller as is
+        [self presentViewController:activityViewController animated:YES completion:nil];
+    }
+}
+
 
 /**
  * 切换模块

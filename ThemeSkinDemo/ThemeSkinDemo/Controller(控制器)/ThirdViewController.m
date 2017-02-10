@@ -10,9 +10,9 @@
 #import "FourthViewController.h"
 
 @interface ThirdViewController ()
-@property (nonatomic, strong) FourthViewController *fourthVC;
 @property (nonatomic, strong) UIView *bgNavView;
 @property (nonatomic, strong) UIColor *lastNavBgColor;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 @end
 
 @implementation ThirdViewController
@@ -26,45 +26,97 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    NSLog(@"%s",__func__);    
     self.navigationController.okNavBackgroundColor = self.lastNavBgColor;
+    
+    // 改变下拉样式
+    [self changeRefreshStyle];
 }
 
+#pragma Mark - 初始化UI
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor grayColor];
     
-    //初始化UI
-    [self fourthVC];
+    if (!self.title) {
+        self.title = [NSString stringWithFormat:@"测试-%zd",self.navigationController.viewControllers.count];
+    }
     
     //请求所有数据
     [self requestAllData];
+
+    //添加系统下拉刷新控件
+    [self addTableRefreshControl];
 }
 
 /**
- * 监听重复点击tabBar按钮事件
+ * 添加系统下拉刷新控件
  */
-- (void)repeatTouchTabBarToViewController:(UIViewController *)touchVC
+- (void)addTableRefreshControl
 {
-    [self.fourthVC scrollToTop];
+    self.plainTableView.y = 0;
+    _refreshControl = [[UIRefreshControl alloc]init];
+    [_refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    [_refreshControl setValue:@(0) forKey:@"_style"];
+    [self.plainTableView addSubview:_refreshControl];
 }
 
-#pragma Mark - 初始化UI
-
 /**
- *  初始化子控制器，当做视图使用
+ * 改变下拉样式
  */
-- (FourthViewController *)fourthVC
+- (void)changeRefreshStyle
 {
-    if (!_fourthVC) {
-        _fourthVC = [[FourthViewController alloc] init];
-        _fourthVC.edgesForExtendedLayout = UIRectEdgeNone;
-        [self.view addSubview:_fourthVC.view];
-        [self addChildViewController:_fourthVC];
+    UIView *contentView = [_refreshControl valueForKey:@"_contentView"];
+    
+    UIImageView *imageView = [contentView valueForKey:@"_imageView"];
+    if (imageView) {
+        imageView.image = [UIImage imageNamed:@"first"];
     }
-    return _fourthVC;
+    
+    UIImageView *arrow = [contentView valueForKey:@"_arrow"];
+    if (arrow) {
+        arrow.backgroundColor = [UIColor blackColor];
+        arrow.image = [UIImage imageNamed:@"icon_home2"];
+        arrow.bounds = CGRectMake(0, 0, 200, 200);
+        arrow.layer.cornerRadius = 10;
+        arrow.layer.masksToBounds = YES;
+        arrow.alpha = 1;
+    }
+    
+    UILabel *textLab = [contentView valueForKey:@"_textLabel"];
+    if (textLab) {
+        textLab.bounds = CGRectMake(0, 0, 80, 20);
+    }
+    NSLog(@"refreshContro===%@",contentView);
 }
+
+#pragma mark -  刷新方法
+
+/**
+ * 刷新方法
+ */
+- (void)refresh:(UIRefreshControl *)refreshControl
+{
+    NSLog(@"开始刷新");
+    UIView *contentView = [refreshControl valueForKey:@"_contentView"];
+    
+    UILabel *textLab = [contentView valueForKey:@"_textLabel"];
+    if (textLab) {
+        textLab.text = @"正在刷新...";
+        textLab.hidden = NO;
+    }
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        textLab.text = @"刷新完成";
+    });
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        NSLog(@"结束刷新");
+        [refreshControl endRefreshing];
+        textLab.hidden = YES;
+    });
+}
+
 
 #pragma Mark - 请求所有数据
 
@@ -73,68 +125,44 @@
  */
 - (void)requestAllData
 {
-    WEAKSELF
-    //处理请求1回调
-    [self requestData1:^(id returnValue) {
-        [weakSelf.fourthVC refreshUI1WithData:returnValue];
+    [OKHttpRequestTools sendOKRequest:nil success:^(id returnValue) {
+        ShowAlertToast([returnValue description]);
+    } failure:^(NSError *error) {
+        ShowAlertToast(error.domain);
     }];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 100;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.navigationController pushViewController:[ThirdViewController new] animated:YES];
+}
+
+#pragma Mark - 滚动代理
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGFloat offset = scrollView.contentOffset.y;
     
-    //处理请求2回调
-    [self requestData2:^(id returnValue) {
-        [weakSelf.fourthVC refreshUI2WithData:returnValue];
-    }];
+    CGFloat percent = (64-offset)/64;
     
-    //处理请求3回调
-    [self requestData3:^(id returnValue) {
-        [weakSelf.fourthVC refreshUI3WithData:returnValue];
-    }];
-}
+    NSLog(@"scrollViewDidScroll===%.2f===%.2f",offset,percent);
 
-/**
- * 请求数据1
- */
-- (void)requestData1:(void(^)(id returnValue))block
-{
-    [OKHttpRequestTools sendOKRequest:nil success:^(id returnValue) {
-        if (block) {
-            block(returnValue);
-        }
-    } failure:^(NSError *error) {
-        ShowAlertToast(error.domain);
-    }];
-}
-
-/**
- * 请求数据2
- */
-- (void)requestData2:(void(^)(id returnValue))block
-{
-    [OKHttpRequestTools sendOKRequest:nil success:^(id returnValue) {
-        if (block) {
-            block(returnValue);
-        }
-    } failure:^(NSError *error) {
-        ShowAlertToast(error.domain);
-    }];
-}
-
-/**
- * 请求数据3
- */
-- (void)requestData3:(void(^)(id returnValue))block
-{
-    [OKHttpRequestTools sendOKRequest:nil success:^(id returnValue) {
-        if (block) {
-            block(returnValue);
-        }
-    } failure:^(NSError *error) {
-        ShowAlertToast(error.domain);
-    }];
-}
-
-- (void)changeNavBgColor:(CGFloat)percent
-{
     self.navigationController.okNavBackgroundColor = [[UIColor orangeColor] colorWithAlphaComponent:percent];
 }
+
+
+/**
+ * 监听重复点击tabBar按钮事件
+ */
+- (void)repeatTouchTabBarToViewController:(UIViewController *)touchVC
+{
+    [self.plainTableView scrollRectToVisible:CGRectMake(0, 0, self.plainTableView.width, self.plainTableView.height) animated:YES];
+}
+
 
 @end

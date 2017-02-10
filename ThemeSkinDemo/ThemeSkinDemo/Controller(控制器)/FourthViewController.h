@@ -10,16 +10,4 @@
 
 @interface FourthViewController : OKBaseViewController
 
-//刷新数据1
-- (void)refreshUI1WithData:(id)requestData;
-
-//刷新数据2
-- (void)refreshUI2WithData:(id)requestData;
-
-//刷新数据3
-- (void)refreshUI3WithData:(id)requestData;
-
-//滚动到顶部
-- (void)scrollToTop;
-
 @end
