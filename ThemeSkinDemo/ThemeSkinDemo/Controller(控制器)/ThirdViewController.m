@@ -9,6 +9,11 @@
 #import "ThirdViewController.h"
 #import "FourthViewController.h"
 
+
+#define TestRequestUrl1      @"http://api.cnez.info/product/getProductList/1"
+#define TestRequestUrl2      @"http://lib3.wap.zol.com.cn/index.php?c=Advanced_List_V1&keyword=808.8GB%205400%E8%BD%AC%2032MB&noParam=1&priceId=noPrice&num=15"
+
+
 @interface ThirdViewController ()
 @property (nonatomic, strong) UIView *bgNavView;
 @property (nonatomic, strong) UIColor *lastNavBgColor;
@@ -41,9 +46,6 @@
     if (!self.title) {
         self.title = [NSString stringWithFormat:@"测试-%zd",self.navigationController.viewControllers.count];
     }
-    
-    //请求所有数据
-    [self requestAllData];
 
     //添加系统下拉刷新控件
     [self addTableRefreshControl];
@@ -106,29 +108,38 @@
         textLab.hidden = NO;
     }
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        textLab.text = @"刷新完成";
-    });
+    //请求所有数据
+    OKHttpRequestModel *model = [[OKHttpRequestModel alloc] init];
+    model.requestType = HttpRequestTypeGET;
+    model.parameters = nil;
+    model.requestUrl = TestRequestUrl2;
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        NSLog(@"结束刷新");
-        [refreshControl endRefreshing];
-        textLab.hidden = YES;
-    });
-}
+    [OKHttpRequestTools sendOKRequest:model success:^(id returnValue) {
+        NSString *string = [[returnValue description] substringToIndex:200];
+        ShowAlertToast(string);
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            textLab.text = @"刷新完成";
+        });
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [refreshControl endRefreshing];
+            textLab.hidden = YES;
+        });
 
-
-#pragma Mark - 请求所有数据
-
-/**
- * 处理数据请求回调
- */
-- (void)requestAllData
-{
-    [OKHttpRequestTools sendOKRequest:nil success:^(id returnValue) {
-        ShowAlertToast([returnValue description]);
+        
     } failure:^(NSError *error) {
         ShowAlertToast(error.domain);
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            textLab.text = @"刷新失败";
+        });
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [refreshControl endRefreshing];
+            textLab.hidden = YES;
+        });
+        
     }];
 }
 
@@ -149,12 +160,9 @@
     CGFloat offset = scrollView.contentOffset.y;
     
     CGFloat percent = (64-offset)/64;
-    
-    NSLog(@"scrollViewDidScroll===%.2f===%.2f",offset,percent);
 
     self.navigationController.okNavBackgroundColor = [[UIColor orangeColor] colorWithAlphaComponent:percent];
 }
-
 
 /**
  * 监听重复点击tabBar按钮事件

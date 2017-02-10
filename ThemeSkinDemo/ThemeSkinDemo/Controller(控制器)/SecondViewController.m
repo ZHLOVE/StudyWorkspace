@@ -30,7 +30,8 @@
 @end
 
 @interface SecondViewController ()
-
+/** 夜间模式view */
+@property (nonatomic, strong) UIView *nightsMaskView;
 @end
 
 @implementation SecondViewController
@@ -39,6 +40,29 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
+
+/**
+ * 夜间模式
+ */
+- (IBAction)nightsStyle:(UIButton *)sender
+{
+    self.nightsMaskView.hidden = !self.nightsMaskView.hidden;
+}
+
+- (UIView *)nightsMaskView
+{
+    if (!_nightsMaskView) {
+        _nightsMaskView = [[UIView alloc] init];
+        _nightsMaskView.frame = CGRectMake(0, 0, Screen_Width, Screen_Height);
+        _nightsMaskView.backgroundColor = [UIColor blackColor];
+        _nightsMaskView.alpha = 0.5;
+        _nightsMaskView.userInteractionEnabled = NO;
+        [self.view.window addSubview:_nightsMaskView];
+        [self.view.window bringSubviewToFront:_nightsMaskView];
+    }
+    return _nightsMaskView;
+}
+
 
 - (IBAction)shareAction:(UIButton *)sender
 {

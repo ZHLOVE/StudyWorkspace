@@ -33,15 +33,25 @@
                         <action selector="shareAction:" destination="-1" eventType="touchUpInside" id="RLY-ZX-4Vh"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uFC-Ee-Kvj">
+                    <rect key="frame" x="156" y="133" width="62" height="30"/>
+                    <state key="normal" title="夜间模式"/>
+                    <connections>
+                        <action selector="nightsStyle:" destination="-1" eventType="touchUpInside" id="Qvu-WU-Anl"/>
+                        <action selector="shareAction:" destination="-1" eventType="touchUpInside" id="GmQ-9c-yUX"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Wlq-Fu-hwU" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="R8X-iM-2Ox"/>
                 <constraint firstItem="Wlq-Fu-hwU" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="U2N-td-HxG"/>
                 <constraint firstItem="Wlq-Fu-hwU" firstAttribute="top" secondItem="Tf8-Gb-XO7" secondAttribute="bottom" constant="79.5" id="WKi-IE-vEN"/>
+                <constraint firstItem="Tf8-Gb-XO7" firstAttribute="top" secondItem="uFC-Ee-Kvj" secondAttribute="bottom" constant="46" id="dvG-bC-D1P"/>
+                <constraint firstItem="uFC-Ee-Kvj" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="jV9-wi-UdR"/>
                 <constraint firstItem="Tf8-Gb-XO7" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="sLY-Po-Xpa"/>
             </constraints>
-            <point key="canvasLocation" x="-123" y="17"/>
+            <point key="canvasLocation" x="-507" y="34"/>
         </view>
     </objects>
 </document>
