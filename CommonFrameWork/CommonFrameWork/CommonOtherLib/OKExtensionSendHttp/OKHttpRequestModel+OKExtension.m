@@ -12,6 +12,7 @@
 static char const * const kLoadViewKey              = "kLoadViewKey";
 static char const * const kDataTableViewKey         = "kDataTableViewKey";
 static char const * const kForbidTipErrorInfoKey    = "kForbidTipErrorInfoKey";
+static char const * const kAttemptRequestWhenFail   = "kAttemptRequestWhenFail";
 static char const * const kRequestCachePolicyKey    = "kRequestCachePolicyKey";
 static char const * const kIsCacheDataKey           = "kIsCacheDataKey";
 
@@ -53,6 +54,19 @@ static char const * const kIsCacheDataKey           = "kIsCacheDataKey";
 - (BOOL)forbidTipErrorInfo
 {
     id value = objc_getAssociatedObject(self, kForbidTipErrorInfoKey);
+    return [value boolValue];
+}
+
+#pragma mark - ========== 是否在失败是尝试重新请求，(如果尝试则3次) ==========
+
+- (void)setAttemptRequestWhenFail:(BOOL)attemptRequestWhenFail
+{
+    objc_setAssociatedObject(self, kAttemptRequestWhenFail, @(attemptRequestWhenFail), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (BOOL)attemptRequestWhenFail
+{
+    id value = objc_getAssociatedObject(self, kAttemptRequestWhenFail);
     return [value boolValue];
 }
 

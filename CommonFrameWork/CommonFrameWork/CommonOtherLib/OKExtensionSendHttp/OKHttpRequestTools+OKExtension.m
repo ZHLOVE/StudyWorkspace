@@ -12,6 +12,9 @@
 #import "OKFMDBTool.h"
 #import "OKAlertController.h"
 
+//重复请求次数key
+static char const * const kRequestTimeCountKey    = "kRequestTimeCountKey";
+
 @implementation OKHttpRequestTools (OKExtension)
 
 #pragma mark - 包装每个接口缓存数据的key
@@ -105,15 +108,16 @@
     //成功回调
     void(^succResultBlock)(id responseObject, BOOL isCacheData) = ^(id responseObject, BOOL isCacheData){
         
-        //判断是否未缓存数据
+        //判断是否为缓存数据
         requestModel.isCacheData = isCacheData;
         
         if (requestModel.loadView && !requestModel.dataTableView) { //防止页面上有其他弹框
             [MBProgressHUD hideLoadingFromView:requestModel.loadView];
         }
         
+        //请求状态码为0表示成功，否则失败
         NSInteger code = [responseObject[kRequestCodeKey] integerValue];
-        if (code == 0 || code == 200)
+        if (code == [kRequestSuccessStatues integerValue])
         {
             /** <1>.回调页面请求 */
             if (successBlock) {
@@ -148,33 +152,49 @@
         NSString *cachekey = [self getCacheKeyByRequestUrl:requestModel.requestUrl parameter:requestModel.parameters];
         NSDictionary *cacheDic = [OKFMDBTool getObjectById:cachekey fromTable:JsonDataTableType];
         if (cacheDic) {
-            NSLog(@"请求参数= %@\n请求地址= %@\n缓存数据成功返回= %@",requestModel.parameters,requestModel.requestUrl,cacheDic);
+            NSLog(@"请求接口基地址= %@\n\n请求参数= %@\n\n缓存数据成功返回= %@",requestModel.requestUrl,requestModel.parameters,cacheDic);
             succResultBlock(cacheDic,YES);
         }
     }
     
-    
     //是否显示请求转圈
     if (requestModel.loadView && !requestModel.dataTableView) {
         [requestModel.loadView endEditing:YES];
+        [MBProgressHUD hideLoadingFromView:requestModel.loadView];
         [MBProgressHUD showLoadingWithView:requestModel.loadView text:RequestLoadingTip];
     }
     
     __block NSURLSessionDataTask *sessionDataTask = nil;
-    
+
     //发送网络请求,二次封装入口
     sessionDataTask = [OKHttpRequestTools sendOKRequest:requestModel success:^(id returnValue) {
-        NSLog(@"二次封装成功请求时,请求状态: ===%@",sessionDataTask);
         succResultBlock(returnValue, NO);
         
     } failure:^(NSError *error) {
-        NSLog(@"二次封装失败时,请求状态:  %@======%@",sessionDataTask,sessionDataTask.error);
-        failResultBlock(error);
+        
+        if (!requestModel.attemptRequestWhenFail) {
+            
+            NSInteger countNum = [objc_getAssociatedObject(requestModel, kRequestTimeCountKey) integerValue];
+            if (countNum<3) {
+                countNum++;
+                NSLog(@"网络请求已失败，尝试第-----%zd-----次请求===%@\n\n",countNum,requestModel.requestUrl);
+                
+                //给requestModel关联一个重复请求次数的key
+                objc_setAssociatedObject(requestModel, kRequestTimeCountKey, @(countNum), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                sessionDataTask = [OKHttpRequestTools sendExtensionRequest:requestModel success:successBlock failure:failureBlock];
+                
+            } else {
+                failResultBlock(error);
+            }
+            
+        } else {
+            failResultBlock(error);
+        }
     }];
-    
-    NSLog(@"发送完毕,返回请求对象到页面===%@",sessionDataTask);
     return sessionDataTask;
 }
+
+
 
 @end
 

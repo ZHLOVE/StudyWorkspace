@@ -17,7 +17,7 @@
 #import "OKHttpRequestTools.h"
 
 #define TestRequestUrl1      @"http://api.cnez.info/product/getProductList/1"
-#define TestRequestUrl2      @"http://lib3.wap.zol.com.cn/index.php?c=Advanced_List_V1&keyword=808.8GB%205400%E8%BD%AC%2032MB&noParam=1&priceId=noPrice&num=15"
+#define TestRequestUrl2      @"http://lib3.wap.zol.com.cn/index.php?c=Advanced_List_V1&keyword=808.8GB%205400%E8%BD%AC%2032MB&noParam=1&priceId=noPrice&num=1"
 
 @interface FirstViewController ()
 @end
@@ -62,9 +62,9 @@
     //    }
     
     //    //测试发送普通请求
-    [self sendCommomReq];
+//    [self sendCommomReq];
     //    //测试发送普通请求
-    //    [self sendMultifunctionReq:0];
+        [self sendMultifunctionReq:0];
 }
 
 /**
@@ -83,11 +83,9 @@
     //model.requestCachePolicy = RequestStoreCacheData; //需要保存底层网络数据
     
     NSURLSessionDataTask *task = [OKHttpRequestTools sendExtensionRequest:model success:^(id returnValue) {
-        NSLog(@"不错哦, 请求成功了");
         ShowAlertToast(@"请求成功,请查看打印日志");
         
     } failure:^(NSError *error) {
-        NSLog(@"悲剧哦, 请求失败了");
         ShowAlertToast(@" 悲剧哦, 请求失败了");
     }];
     
@@ -110,11 +108,9 @@
     model.requestUrl = TestRequestUrl1;
     
     NSURLSessionDataTask *task = [OKHttpRequestTools sendOKRequest:model success:^(id returnValue) {
-        NSLog(@"发送普通请求, 不错哦, 请求成功了");
         ShowAlertToast(@"请求成功,请查看打印日志");
         
     } failure:^(NSError *error) {
-        NSLog(@"发送普通请求, 悲剧哦, 请求失败了");
         ShowAlertToast(@" 悲剧哦, 请求失败了");
     }];
     
