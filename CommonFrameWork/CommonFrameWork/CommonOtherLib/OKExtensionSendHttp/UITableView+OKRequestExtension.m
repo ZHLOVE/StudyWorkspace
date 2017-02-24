@@ -181,11 +181,21 @@ static char const * const kNetErrorStrKey = "kNetErrorStrKey";
             //控制上啦控件的显示
             if (!self.mj_footer) return;
             
-            if (responseData[kTotalPageKey]) {
+            //控制上啦控件显示的分页逻辑
+            if ([((NSDictionary *)responseData).allKeys containsObject:kTotalPageKey] &&
+                [((NSDictionary *)responseData).allKeys containsObject:kCurrentPageKey] ) {
                 NSInteger totalPage = [responseData[kTotalPageKey] integerValue];
                 NSInteger currentPage = [responseData[kCurrentPageKey] integerValue];
                 
                 if (totalPage > currentPage) {
+                    self.mj_footer.hidden = NO;
+                } else {
+                    [self.mj_footer endRefreshingWithNoMoreData];
+                    self.mj_footer.hidden = YES;
+                }
+            } else if([((NSDictionary *)responseData).allKeys containsObject:kRequestListkey]){
+                NSArray *dataArr = responseData[kRequestListkey];
+                if (dataArr.count>0) {
                     self.mj_footer.hidden = NO;
                 } else {
                     [self.mj_footer endRefreshingWithNoMoreData];

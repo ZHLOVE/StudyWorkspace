@@ -67,7 +67,7 @@ static char const * const kRequestTimeCountKey    = "kRequestTimeCountKey";
         //判断Token状态是否为失效
         if (error.code == [kLoginFail integerValue]) {
             //通知页面需要重新登录
-            [[NSNotificationCenter defaultCenter] postNotificationName:kTokenExpiry object:nil];            
+            [[NSNotificationCenter defaultCenter] postNotificationName:kTokenExpiryNotification object:nil];
         }
         
         //如果请求完成后需要判断页面表格下拉控件,分页,空白提示页的状态
