@@ -17,6 +17,9 @@
       location = "group:XibDemo/XibDemo.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:DrawDemo/DrawDemo.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>

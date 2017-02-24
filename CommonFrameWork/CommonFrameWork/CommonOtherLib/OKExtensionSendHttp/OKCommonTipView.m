@@ -78,13 +78,22 @@
 /**
  *  根据类型显示提示view
  */
-+ (UIView *)tipViewByFrame:(CGRect)frame tipImageName:(NSString *)imageName tipText:(id)tipText actionTitle:(NSString *)actionTitle actionBlock:(void(^)())touchBlock
++ (UIView *)tipViewByFrame:(CGRect)frame
+              tipImageName:(NSString *)imageName
+                   tipText:(id)tipText
+               actionTitle:(NSString *)actionTitle
+               actionBlock:(void(^)())touchBlock
 {
     OKCommonTipView *tipBgView = [[OKCommonTipView alloc] initWithFrame:frame];
     tipBgView.tag = kRequestTipViewTag;
     tipBgView.backgroundColor = UIColorFromHex(0xf5f6f8);
     
     UIImage *image = [UIImage imageNamed:imageName];
+    if (!image) {
+        NSBundle *bundle = [NSBundle bundleForClass:[OKCommonTipView class]];
+        NSString *imageNamePath = [NSString stringWithFormat:@"commonImage.bundle/%@",imageName];
+        image = [UIImage imageNamed:imageNamePath inBundle:bundle compatibleWithTraitCollection:nil];
+    }
     
     //中间文字
     UILabel *_tipLabel = nil;
