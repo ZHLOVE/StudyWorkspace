@@ -9,33 +9,50 @@
 #ifndef OKPubilcKeyDefiner_h
 #define OKPubilcKeyDefiner_h
 
-
 //----------------------公共通用宏---------------------------
 
 /** 登录后保存的用户ID, 保存的value为 NSString 类型*/
-#define UserIDUserDefaultsKey           @"operatorId"
-
-/** 图片压缩率*/
-#define OKMaxPixelSize                  (Screen_Width)
+#define UserIDUserDefaultsKey               @"operatorId"
 
 /** 数据库名称 */
-#define AppFMDBName                     @"OKDB.sqlite"
+#define AppFMDBName                         @"OKDB.sqlite"
 
 /** 钱币符号 */
-#define OK_Money_header                 @"￥"
+#define OK_Money_header                     @"￥"
 
 
 /* 获取iOS系统版本 */
-#define KsystemVersion                  [[[UIDevice currentDevice] systemVersion] floatValue]
+#define KsystemVersion                      [[[UIDevice currentDevice] systemVersion] floatValue]
 /*  获取App版本号 */
-#define XcodeAppVersion                 [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
+#define XcodeAppVersion                     [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
+
 /*  弱引用 */
-#define WEAKSELF                        typeof(self) __weak weakSelf = self;
+#define WEAKSELF                            typeof(self) __weak weakSelf = self;
 /*  强引用 */
-#define STRONGSELF                       typeof(weakSelf) __strong strongSelf = weakSelf;
+#define STRONGSELF                          typeof(weakSelf) __strong strongSelf = weakSelf;
 
 //定义UIImage对象，图片多次被使用到
-#define ImageNamed(name)                [UIImage imageNamed:name]
+#define ImageNamed(name)                    [UIImage imageNamed:name]
+
+// 是否支持手势右滑返回
+#define PopGestureRecognizerenabled(ret)   (self.navigationController.interactivePopGestureRecognizer.enabled = ret)
+
+
+//自定义字体大小                               (细体字)[UIFont fontWithName:@"Heiti SC" size:s]
+//字体的大小
+#undef  FontCustomSize
+#define FontCustomSize(fontName,fontSize)   ([UIFont fontWithName:fontName size:fontSize])
+
+//设置系统默认字体的大小
+#undef  FONTSYSTEM
+#define FONTSYSTEM(fontSize)                ([UIFont systemFontOfSize:fontSize])
+
+//设置系统加粗字体的大小
+#undef  FONTBOLDSYSTEM
+#define FONTBOLDSYSTEM(fontSize)            ([UIFont boldSystemFontOfSize:fontSize])
+
+//获取 appdelegate
+#define APPDELEGATE                         (AppDelegate *)[[UIApplication sharedApplication] delegate]
 
 
 /*---------------------打印日志--------------------------*/
@@ -89,6 +106,28 @@
 
 /** 获取偏好设置数据 */
 #define GetUserDefault(key)  key!=nil ? [[NSUserDefaults standardUserDefaults] objectForKey:key] : nil
+
+
+/** 单个按钮提示Alert弹框, 没有事件只做提示使用 */
+#define OKAlertSingleBtnView(titleStr,messageStr,cancelTitle) [OKAlertView alertWithCallBackBlock:nil title:titleStr message:messageStr cancelButtonName:cancelTitle otherButtonTitles: nil];
+
+
+/*----------------------忽略警告的宏----------------------------*/
+/**
+ * 忽略警告的宏
+ * 忽略警告的类型: [obj performSelector: withObject:]
+ * 使用方式:
+ OKPerformSelectorLeakWarning(
+ [popTargetVC performSelector:selector withObject:nil];
+ );
+ */
+#define OKPerformSelectorLeakWarning(Stuff) \
+do { \
+_Pragma("clang diagnostic push") \
+_Pragma("clang diagnostic ignored \"-Warc-performSelector-leaks\"") \
+Stuff; \
+_Pragma("clang diagnostic pop") \
+} while (0)
 
 
 /**

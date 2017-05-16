@@ -10,6 +10,7 @@
 #import "UIBarButtonItem+OKExtension.h"
 #import "OKColorDefiner.h"
 #import "UIView+OKTool.h"
+#import "OKPubilcKeyDefiner.h"
 
 @implementation UIViewController (OKExtension)
 
@@ -211,6 +212,163 @@
     }
     
     return activityViewController;
+}
+
+
+
+/**
+ *  判断在导航栏控制器中有没存在该类
+ *
+ *  @param className 类名
+ *
+ *  @return 返回存在的控制器  没有存在则为nil
+ */
+- (UIViewController *)isExistClassInSelfNavigation:(NSString *)className
+{
+    UIViewController *existVC = nil;
+    if (className.length>0) {
+        for (UIViewController *tempVC in self.navigationController.viewControllers) {
+            if ([tempVC isKindOfClass:NSClassFromString(className)]) {
+                existVC = tempVC;
+                break;
+            }
+        }
+    }
+    return existVC;
+}
+
+#pragma mark -===========携带参数页面跳转===========
+
+/**
+ 带参数跳转到目标控制器, 如果导航栈中存在目标器则pop, 不存在则push
+ 
+ @param vcName 目标控制器
+ @param propertyDic 目标控制器属性字典
+ @param selectorStr 跳转完成后需要执行的方法
+ */
+- (void)pushOrPopToViewController:(NSString *)vcName
+                        aSelector:(NSString *)selectorStr
+                       withObject:(NSDictionary *)propertyDic
+{
+    if (propertyDic && ![propertyDic isKindOfClass:[NSDictionary class]]) {
+        NSLog(@"页面push失败，控制器名称:%@,  携带属性字典:%@",vcName ,propertyDic);
+        return;
+    }
+    UIViewController *tempVC = [[NSClassFromString(vcName) alloc] init];
+    
+    if ([tempVC isKindOfClass:[UIViewController class]]) {
+        
+        UIViewController *popTargetVC = [self isExistClassInSelfNavigation:vcName];
+        if (popTargetVC) {
+            //KVC赋值控制器的属性
+            if (propertyDic && [propertyDic isKindOfClass:[NSDictionary class]]) {
+                [popTargetVC setValuesForKeysWithDictionary:propertyDic];
+            }
+            
+            [self.navigationController popToViewController:popTargetVC animated:YES];
+            
+            //判断在pop完成后是否需要调用相关方法
+            SEL selector = NSSelectorFromString(selectorStr);
+            if (selectorStr.length>0 && [popTargetVC respondsToSelector:selector]) {
+                OKPerformSelectorLeakWarning(
+                                             [popTargetVC performSelector:selector withObject:nil];
+                                             );
+            }
+        } else {
+            //KVC赋值控制器的属性
+            if (propertyDic && [propertyDic isKindOfClass:[NSDictionary class]]) {
+                [tempVC setValuesForKeysWithDictionary:propertyDic];
+            }
+            
+            [self.navigationController pushViewController:tempVC animated:YES];
+        }
+    } else {
+        NSLog(@"页面push失败，控制器名称:%@,  携带属性字典:%@",vcName ,propertyDic);
+    }
+}
+
+
+/**
+ *  执行push页面跳转
+ *
+ *  @param vcName 当前的控制器
+ *  @param propertyDic 控制器需要的参数
+ */
+- (void)pushToViewController:(NSString *)vcName propertyDic:(NSDictionary *)propertyDic
+{
+    if (propertyDic && ![propertyDic isKindOfClass:[NSDictionary class]]) {
+        NSLog(@"页面push失败，控制器名称:%@,  携带属性字典:%@",vcName ,propertyDic);
+        return;
+    }
+    UIViewController *pushVC = [[NSClassFromString(vcName) alloc] init];
+    if ([pushVC isKindOfClass:[UIViewController class]]) {
+        if (propertyDic && [propertyDic isKindOfClass:[NSDictionary class]]) {
+            [pushVC setValuesForKeysWithDictionary:propertyDic];
+        }
+        [self.navigationController pushViewController:pushVC animated:YES];
+    } else {
+        NSLog(@"页面push失败，控制器名称:%@,  携带属性字典:%@",vcName ,propertyDic);
+    }
+}
+
+/**
+ *  执行页面present跳转
+ *
+ *  @param vcName 当前的控制器
+ *  @param propertyDic 控制器需要的参数
+ */
+- (void)presentToViewController:(NSString *)vcName
+                     withObject:(NSDictionary *)propertyDic
+                  showTargetNav:(BOOL)showNavigation
+{
+    if (propertyDic && ![propertyDic isKindOfClass:[NSDictionary class]]) {
+        NSLog(@"页面present失败，控制器名称:%@,  携带属性字典:%@",vcName ,propertyDic);
+        return;
+    }
+    UIViewController *presentVC = [[NSClassFromString(vcName) alloc] init];
+    if ([presentVC isKindOfClass:[UIViewController class]]) {
+        if (propertyDic && [propertyDic isKindOfClass:[NSDictionary class]]) {
+            [presentVC setValuesForKeysWithDictionary:propertyDic];
+        }
+        
+        if (showNavigation) {
+            UINavigationController *presentNav = nil;
+            if (self.navigationController) {
+                presentNav = [[[self.navigationController class] alloc] initWithRootViewController:presentVC];
+            } else {
+                presentNav = [[UINavigationController alloc] initWithRootViewController:presentVC];
+            }
+            [self presentViewController:presentNav animated:YES completion:nil];
+        } else {
+            [self presentViewController:presentVC animated:YES completion:nil];
+        }
+    } else {
+        NSLog(@"页面present失败，控制器名称:%@,  携带属性字典:%@",vcName ,propertyDic);
+    }
+}
+
+/**
+ * 警告：此方法不要删除，在上面的方法(pushController: parm:)的参数携带错误时防止崩溃
+ */
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key
+{
+    NSLog(@"❌❌❌ 警告:< %@ >: 类没有实现该属性: %@",[self class],key);
+}
+
+/**
+ *  设置导航按右侧钮点击状态
+ */
+- (void)setNavRightBarItemEnable:(BOOL)enable titleColor:(UIColor *)color
+{
+    for (UIBarButtonItem *barItem in self.navigationItem.rightBarButtonItems) {
+        if (barItem.customView && [barItem.customView isKindOfClass:[UIButton class]]) {
+            UIButton *rightBtn = (UIButton *)barItem.customView;
+            rightBtn.enabled = enable;
+            [rightBtn setTitleColor:color forState:UIControlStateNormal];
+        } else {
+            barItem.enabled = enable;
+        }
+    }
 }
 
 @end

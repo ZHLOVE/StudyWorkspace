@@ -65,4 +65,49 @@
  */
 + (UIViewController *)currentTopViewController;
 
+
+/**
+ *  判断在导航栏控制器中有没存在该类
+ *
+ *  @param className 类名
+ *
+ *  @return 返回存在的控制器  没有存在则为nil
+ */
+- (UIViewController *)isExistClassInSelfNavigation:(NSString *)className;
+
+
+/**
+ 带参数跳转到目标控制器, 如果导航栈中存在目标器则pop, 不存在则push
+ 
+ @param vcName 目标控制器
+ @param propertyDic 目标控制器属性字典
+ @param selectorStr 跳转完成后需要执行的方法
+ */
+- (void)pushOrPopToViewController:(NSString *)vcName
+                        aSelector:(NSString *)selectorStr
+                       withObject:(NSDictionary *)propertyDic;
+
+/**
+ *  执行页面push跳转
+ *
+ *  @param vcName 当前的控制器
+ *  @param propertyDic  控制器需要的参数
+ */
+- (void)pushToViewController:(NSString *)vcName propertyDic:(NSDictionary *)propertyDic;
+
+/**
+ *  执行页面present跳转
+ *
+ *  @param vcName 当前的控制器
+ *  @param propertyDic 控制器需要的参数
+ */
+- (void)presentToViewController:(NSString *)vcName
+                     withObject:(NSDictionary *)propertyDic
+                  showTargetNav:(BOOL)showNavigation;
+
+/**
+ *  设置导航按右侧钮点击状态
+ */
+- (void)setNavRightBarItemEnable:(BOOL)enable titleColor:(UIColor *)color;
+
 @end

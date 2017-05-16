@@ -9,23 +9,36 @@
 #import "ThirdViewController.h"
 #import "FourthViewController.h"
 
-
 #define TestRequestUrl1      @"http://api.cnez.info/product/getProductList/1"
 #define TestRequestUrl2      @"http://lib3.wap.zol.com.cn/index.php?c=Advanced_List_V1&keyword=808.8GB%205400%E8%BD%AC%2032MB&noParam=1&priceId=noPrice&num=15"
 
-
-@interface ThirdViewController ()
+@interface ThirdViewController ()<UINavigationControllerDelegate>
+@property (nonatomic, strong) UIView *statusMaskView;
 @property (nonatomic, strong) UIView *bgNavView;
 @property (nonatomic, strong) UIColor *lastNavBgColor;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (nonatomic, assign) CGFloat lastOffset;
 @end
 
 @implementation ThirdViewController
+
+- (UIView *)statusMaskView
+{
+    if (!_statusMaskView) {
+        _statusMaskView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 20)];
+        _statusMaskView.backgroundColor = [UIColor whiteColor];
+        [self.view.window addSubview:_statusMaskView];
+    }
+    return _statusMaskView;
+}
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     self.lastNavBgColor = self.navigationController.okNavBackgroundColor;
+    [UIView animateWithDuration:0.2 animations:^{
+        self.navigationController.navigationBar.y = 20;
+    }];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -35,18 +48,54 @@
     
     // 改变下拉样式
     [self changeRefreshStyle];
+    
+    //向上滑动隐藏导航栏
+    //[self hidesBarsWhenSwipe];
+    
+}
+
+/**
+ * 向上滑动隐藏导航栏
+ */
+- (void)hidesBarsWhenSwipe
+{
+    //向上滑动隐藏导航栏: 系统属性
+    self.navigationController.hidesBarsOnSwipe = YES;
+    self.navigationController.hidesBarsOnTap = NO;
+    
+    //导航透明
+    //    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    //    self.navigationController.navigationBar.shadowImage = [UIImage new];
+    //    self.navigationController.navigationBar.translucent = YES;
+}
+
+/**
+ * 导航代理方法
+ */
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    NSLog(@"willShowViewController===%@===%zd",viewController,navigationController.viewControllers.count);
+    //此方法需要添加代理, 警告: 设置了代理后在滑动时与父类的全品滑动手势冲突
+    //self.navigationController.delegate = self;
+}
+
+- (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    NSLog(@"didShowViewController===%@",viewController);
+    //此方法需要添加代理, 警告: 设置了代理后在滑动时与父类的全品滑动手势冲突
+    //self.navigationController.delegate = self;
 }
 
 #pragma Mark - 初始化UI
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor grayColor];
+    self.view.backgroundColor = [UIColor lightTextColor];
     
     if (!self.title) {
         self.title = [NSString stringWithFormat:@"测试-%zd",self.navigationController.viewControllers.count];
     }
-
+    
     //添加系统下拉刷新控件
     [self addTableRefreshControl];
 }
@@ -56,7 +105,10 @@
  */
 - (void)addTableRefreshControl
 {
-    self.plainTableView.y = 0;
+    self.plainTableView.height = Screen_Height;
+    self.plainTableView.sectionIndexColor = [UIColor redColor];
+    self.plainTableView.sectionIndexBackgroundColor = [UIColor greenColor];
+    self.plainTableView.sectionIndexTrackingBackgroundColor = [UIColor orangeColor];
     _refreshControl = [[UIRefreshControl alloc]init];
     [_refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     [_refreshControl setValue:@(0) forKey:@"_style"];
@@ -153,15 +205,45 @@
     [self.navigationController pushViewController:[ThirdViewController new] animated:YES];
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return (indexPath.row % 2) >0 ? YES : NO;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
+
 #pragma Mark - 滚动代理
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    CGFloat offset = scrollView.contentOffset.y;
+    float y = scrollView.contentOffset.y;
+    scrollView.bounces = y > Screen_Height ? NO : YES;
+    CGFloat value = y-self.lastOffset;
+    CGFloat barY = self.navigationController.navigationBar.y;
     
-    CGFloat percent = (64-offset)/64;
-
-    self.navigationController.okNavBackgroundColor = [[UIColor orangeColor] colorWithAlphaComponent:percent];
+    if (y>0) {
+        barY -= value;
+        self.statusMaskView.alpha = fabs((barY-20)/44.0);
+    }
+    
+    if (barY>=20) {
+        barY = 20;
+        self.statusMaskView.alpha = 0;
+        self.plainTableView.height = Screen_Height;
+        
+    } else if (barY<=-24) {
+        barY = -24;
+        self.statusMaskView.alpha = 1;
+        self.plainTableView.height = Screen_Height-(kStatusBarHeight+kTabbarHeight);
+    }
+    
+    self.lastOffset = y;
+    
+    self.navigationController.navigationBar.y = barY;
+    self.plainTableView.y = barY-20;
 }
 
 /**

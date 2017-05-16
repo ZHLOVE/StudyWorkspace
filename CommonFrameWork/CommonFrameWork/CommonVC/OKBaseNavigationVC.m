@@ -10,6 +10,7 @@
 #import "OKColorDefiner.h"
 #import "OKPubilcKeyDefiner.h"
 #import "UIViewController+OKExtension.h"
+#import "OKAlertView.h"
 
 @interface OKBaseNavigationVC ()
 

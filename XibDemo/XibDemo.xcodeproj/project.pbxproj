@@ -14,6 +14,9 @@
 		B57A66B31E1E1EC400ACB5EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B57A66B11E1E1EC400ACB5EC /* Main.storyboard */; };
 		B57A66B51E1E1EC400ACB5EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B57A66B41E1E1EC400ACB5EC /* Assets.xcassets */; };
 		B57A66B81E1E1EC400ACB5EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B57A66B61E1E1EC400ACB5EC /* LaunchScreen.storyboard */; };
+		B57AB3911E65A5FF00F76D7C /* ThreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B57AB3901E65A5FF00F76D7C /* ThreeViewController.m */; };
+		B5D1C4801E696FEA005B5549 /* LukeView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D1C47F1E696FEA005B5549 /* LukeView.m */; };
+		B5D1C4821E696FF6005B5549 /* LukeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5D1C4811E696FF6005B5549 /* LukeView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +32,11 @@
 		B57A66B41E1E1EC400ACB5EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B57A66B71E1E1EC400ACB5EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B57A66B91E1E1EC400ACB5EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B57AB38F1E65A5FF00F76D7C /* ThreeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreeViewController.h; sourceTree = "<group>"; };
+		B57AB3901E65A5FF00F76D7C /* ThreeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreeViewController.m; sourceTree = "<group>"; };
+		B5D1C47E1E696FEA005B5549 /* LukeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LukeView.h; sourceTree = "<group>"; };
+		B5D1C47F1E696FEA005B5549 /* LukeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LukeView.m; sourceTree = "<group>"; };
+		B5D1C4811E696FF6005B5549 /* LukeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LukeView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +75,11 @@
 				B57A66AC1E1E1EC400ACB5EC /* FirstViewController.m */,
 				B57A66AE1E1E1EC400ACB5EC /* SecondViewController.h */,
 				B57A66AF1E1E1EC400ACB5EC /* SecondViewController.m */,
+				B57AB38F1E65A5FF00F76D7C /* ThreeViewController.h */,
+				B57AB3901E65A5FF00F76D7C /* ThreeViewController.m */,
+				B5D1C47E1E696FEA005B5549 /* LukeView.h */,
+				B5D1C47F1E696FEA005B5549 /* LukeView.m */,
+				B5D1C4811E696FF6005B5549 /* LukeView.xib */,
 				B57A66B11E1E1EC400ACB5EC /* Main.storyboard */,
 				B57A66B41E1E1EC400ACB5EC /* Assets.xcassets */,
 				B57A66B61E1E1EC400ACB5EC /* LaunchScreen.storyboard */,
@@ -110,7 +123,7 @@
 		B57A669A1E1E1EC400ACB5EC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = okdeer;
 				TargetAttributes = {
 					B57A66A11E1E1EC400ACB5EC = {
@@ -144,6 +157,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B57A66B81E1E1EC400ACB5EC /* LaunchScreen.storyboard in Resources */,
+				B5D1C4821E696FF6005B5549 /* LukeView.xib in Resources */,
 				B57A66B51E1E1EC400ACB5EC /* Assets.xcassets in Resources */,
 				B57A66B31E1E1EC400ACB5EC /* Main.storyboard in Resources */,
 			);
@@ -157,9 +171,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B57A66B01E1E1EC400ACB5EC /* SecondViewController.m in Sources */,
+				B5D1C4801E696FEA005B5549 /* LukeView.m in Sources */,
 				B57A66AA1E1E1EC400ACB5EC /* AppDelegate.m in Sources */,
 				B57A66AD1E1E1EC400ACB5EC /* FirstViewController.m in Sources */,
 				B57A66A71E1E1EC400ACB5EC /* main.m in Sources */,
+				B57AB3911E65A5FF00F76D7C /* ThreeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,6 +219,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -251,6 +268,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

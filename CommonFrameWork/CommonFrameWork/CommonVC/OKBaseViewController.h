@@ -20,7 +20,6 @@
 /** 由子公用表格数据源数组 */
 @property (nonatomic, strong) NSMutableArray *tableDataArr;
 
-
 /** 子类请求对象数组 */
 @property (nonatomic, strong) NSMutableArray <NSURLSessionDataTask *> *sessionDataTaskArr;
 

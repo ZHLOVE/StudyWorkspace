@@ -13,6 +13,9 @@
 /** 网络连接失败 */
 #define NetworkConnectFailTip                   @"网络开小差, 请稍后再试哦!"
 
+/** 重复请求 */
+#define RequestRepeatFailTip                    @"重复请求!"
+
 /** 错误码在200-500以外的失败统一提示 */
 #define RequestFailCommomTip                    @"请求失败, 请重试!"
 
@@ -21,6 +24,7 @@
 
 static NSString *const kRequestSuccessStatues   = @"0";                         /**< 请求成功的标志 */
 static NSString *const kServiceErrorStatues     = @"9";                         /**< 请求失败的标志 */
+static NSString *const kRepeatRequest           = @"-1";                        /**< 重复请求的标志 */
 static NSString *const kRequestCodeKey          = @"code";                      /**< 请求code 的key */
 static NSString *const kRequestMessageKey       = @"message";                   /**< 请求message 的key */
 static NSString *const kRequestDataKey          = @"data";                      /**< 请求data 的key */
@@ -43,6 +47,9 @@ typedef enum : NSUInteger {
 
 /**< 请求参数字典信息 */
 @property (nonatomic, strong) id parameters;
+
+/**< 是否正在当前请求 */
+@property (nonatomic, assign) BOOL isRequesting;
 
 /**< 必传参数:请求地址 */
 @property (nonatomic,copy) NSString *requestUrl;

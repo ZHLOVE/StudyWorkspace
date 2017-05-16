@@ -56,13 +56,13 @@
         _nightsMaskView.frame = CGRectMake(0, 0, Screen_Width, Screen_Height);
         _nightsMaskView.backgroundColor = [UIColor blackColor];
         _nightsMaskView.alpha = 0.5;
+        _nightsMaskView.hidden = YES;
         _nightsMaskView.userInteractionEnabled = NO;
         [self.view.window addSubview:_nightsMaskView];
         [self.view.window bringSubviewToFront:_nightsMaskView];
     }
     return _nightsMaskView;
 }
-
 
 - (IBAction)shareAction:(UIButton *)sender
 {

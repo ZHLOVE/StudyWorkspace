@@ -12,6 +12,13 @@
 
 @implementation UIImage (OKExtension)
 
++ (UIImage *(^)(UIColor *))withColor {
+    
+    return ^(UIColor * color) {
+        return [UIImage ok_imageWithColor:color];
+    };
+}
+
 + (UIImage *)ok_imageWithColor:(UIColor *)color
 {
     CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);

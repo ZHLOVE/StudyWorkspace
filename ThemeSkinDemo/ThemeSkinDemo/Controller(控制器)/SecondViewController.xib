@@ -38,7 +38,6 @@
                     <state key="normal" title="夜间模式"/>
                     <connections>
                         <action selector="nightsStyle:" destination="-1" eventType="touchUpInside" id="Qvu-WU-Anl"/>
-                        <action selector="shareAction:" destination="-1" eventType="touchUpInside" id="GmQ-9c-yUX"/>
                     </connections>
                 </button>
             </subviews>
@@ -51,7 +50,7 @@
                 <constraint firstItem="uFC-Ee-Kvj" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="jV9-wi-UdR"/>
                 <constraint firstItem="Tf8-Gb-XO7" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="sLY-Po-Xpa"/>
             </constraints>
-            <point key="canvasLocation" x="-507" y="34"/>
+            <point key="canvasLocation" x="-895" y="31"/>
         </view>
     </objects>
 </document>

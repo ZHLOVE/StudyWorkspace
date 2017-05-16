@@ -185,7 +185,7 @@
  */
 - (void)addScreenPan
 {
-    //UIScreenEdgePanGestureRecognizer , UIScreenEdgePanGestureRecognizer
+    //UIScreenEdgePanGestureRecognizer , UIPanGestureRecognizer
     //右侧边缘滑动手势
     UIScreenEdgePanGestureRecognizer *leftScreenPan = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(mainSlideHandlePan:)];
     leftScreenPan.edges = UIRectEdgeLeft;

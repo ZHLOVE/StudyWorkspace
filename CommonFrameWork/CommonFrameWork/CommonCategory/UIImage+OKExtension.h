@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface UIImage (OKExtension)
+
++ (UIImage *(^)(UIColor *))withColor;
 //小方块图片
 + (UIImage *)ok_imageWithColor:(UIColor *)color;
 //椭圆图片

@@ -7,7 +7,9 @@
 //
 
 #import "OKBaseViewController.h"
-#import "UITableView+OKRequestExtension.h"
+#import "UIScrollView+OKRequestExtension.h"
+#import "OKFrameDefiner.h"
+#import "OKPubilcKeyDefiner.h"
 
 @interface OKBaseViewController ()<UIGestureRecognizerDelegate>
 
@@ -68,7 +70,11 @@
 - (UITableView *)plainTableView
 {
     if (!_plainTableView) {
-        _plainTableView = [UITableView plainTableView];
+        _plainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Screen_Width, Screen_Height-kStatusBarAndNavigationBarHeight) style:UITableViewStylePlain];
+        _plainTableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
+        _plainTableView.rowHeight = kDefaultCellHeight;
+        _plainTableView.backgroundColor = self.view.backgroundColor;
+        _plainTableView.tableFooterView = [UIView new];
         _plainTableView.dataSource = self;
         _plainTableView.delegate = self;
         [self.view addSubview:_plainTableView];
@@ -79,7 +85,13 @@
 - (UITableView *)groupedTableView
 {
     if (!_groupedTableView) {
-        _groupedTableView = [UITableView groupedTableView];
+        _groupedTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Screen_Width, Screen_Height-kStatusBarAndNavigationBarHeight) style:UITableViewStyleGrouped];
+        _groupedTableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
+        _groupedTableView.rowHeight = kDefaultCellHeight;
+        _groupedTableView.backgroundColor = self.view.backgroundColor;
+        _groupedTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Screen_Width, 0.01)];
+        _groupedTableView.sectionHeaderHeight = 0.01;
+        _groupedTableView.sectionFooterHeight = 10.0;
         _groupedTableView.dataSource = self;
         _groupedTableView.delegate = self;
         [self.view addSubview:_groupedTableView];
