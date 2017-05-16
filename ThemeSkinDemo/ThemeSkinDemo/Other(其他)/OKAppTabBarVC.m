@@ -168,6 +168,7 @@
  */
 - (void)didRepeatTouchDownTabBarItem:(UITabBarItem *)item
 {
+    NSLog(@"重复点击tabBar按钮事件");
     NSInteger touchIndex = [self.tabBar.items indexOfObject:item];
     if (self.viewControllers.count > touchIndex) {
         UIViewController *touchItemVC = self.viewControllers[touchIndex];

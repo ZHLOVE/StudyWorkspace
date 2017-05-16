@@ -8,6 +8,7 @@
 
 #import "LeftViewController.h"
 #import "FirstViewController.h"
+#import "UITabBar+BadgeView.h"
 
 @interface LeftViewController ()
 @property (nonatomic, strong) FirstViewController *firstVC;
@@ -51,6 +52,16 @@
     [scrollView addSubview:overView2];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:scrollView];
+}
+
+/**
+ * 监听重复点击tabBar按钮事件
+ */
+- (void)repeatTouchTabBarToViewController:(UIViewController *)touchVC
+{
+    NSLog(@"touchVC===%@===%@===%@",touchVC,self,self.tabBarController);
+    //设置小红点
+    [self.tabBarController.tabBar showBadgeOnItemIndex:0];
 }
 
 /**
