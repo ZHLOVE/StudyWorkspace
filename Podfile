@@ -10,7 +10,7 @@ target :'PodsDemo' do
     pod 'AFNetworking'
     pod 'SDWebImage'
     pod 'FMDB', '~> 2.6.2'
-    pod 'MJRefresh', '~> 3.1.12'
+    pod 'MJRefresh'
     project 'PodsDemo/PodsDemo.xcodeproj'
 end
 
@@ -20,7 +20,7 @@ target :'CommonFrameWork' do
     pod 'AFNetworking'
     pod 'SDWebImage'
     pod 'FMDB', '~> 2.6.2'
-    pod 'MJRefresh', '~> 3.1.12'
+    pod 'MJRefresh'
     pod 'MBProgressHUD', '~> 1.0.0'
     project 'CommonFrameWork/CommonFrameWork.xcodeproj'
 end

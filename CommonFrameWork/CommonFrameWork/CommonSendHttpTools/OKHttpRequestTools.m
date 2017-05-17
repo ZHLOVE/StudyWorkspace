@@ -149,7 +149,7 @@ static char const * const kRequestUrlKey    = "kRequestUrlKey";
             NSString *tipMsg = [NSString stringWithFormat:@"%@",responseObject[kRequestMessageKey]];
             failResultBlock([NSError errorWithDomain:tipMsg code:code userInfo:nil]);
             
-            /** 单点登录问题, 发送通知. 在App初始化时候,注册相应的通知 by chenzl */
+            /** 单点登录问题,发送通知.注册相应的通知*/
             if (code == [kLoginFail integerValue]) {
                 [[NSNotificationCenter defaultCenter] postNotificationName:kTokenExpiryNotification object:responseObject[kRequestMessageKey]];
             }

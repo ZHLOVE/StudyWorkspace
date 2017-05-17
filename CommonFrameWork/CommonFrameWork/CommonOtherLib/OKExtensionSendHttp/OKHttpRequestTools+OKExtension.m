@@ -96,7 +96,7 @@ static char const * const kRequestTimeCountKey    = "kRequestTimeCountKey";
         [self showTipViewAndDataPageWhenReqComplete:requestModel reqData:error];
         
         //如果需要提示错误信息,错误码在200-500内才提示服务端错误信息
-        // 先注释, 引用了View 模块的 alert, modify by chenzl
+        // 先注释, 引用了View 模块的 alert
         //        if (!requestModel.forbidTipErrorInfo) {
         //            if (error.code > kRequestTipsStatuesMin && error.code < kRequestTipsStatuesMax) {
         //                ShowAlertToast(error.domain);

@@ -8,6 +8,7 @@
 
 #import "ThirdViewController.h"
 #import "FourthViewController.h"
+#import "OKHttpRequestTools+OKExtension.h"
 
 #define TestRequestUrl1      @"http://api.cnez.info/product/getProductList/1"
 #define TestRequestUrl2      @"http://lib3.wap.zol.com.cn/index.php?c=Advanced_List_V1&keyword=808.8GB%205400%E8%BD%AC%2032MB&noParam=1&priceId=noPrice&num=15"
@@ -51,7 +52,6 @@
     
     //向上滑动隐藏导航栏
     //[self hidesBarsWhenSwipe];
-    
 }
 
 /**
@@ -100,6 +100,8 @@
     [self addTableRefreshControl];
 }
 
+#pragma mark -===========UIRefreshControl刷新控件===========
+
 /**
  * 添加系统下拉刷新控件
  */
@@ -109,7 +111,7 @@
     self.plainTableView.sectionIndexColor = [UIColor redColor];
     self.plainTableView.sectionIndexBackgroundColor = [UIColor greenColor];
     self.plainTableView.sectionIndexTrackingBackgroundColor = [UIColor orangeColor];
-    _refreshControl = [[UIRefreshControl alloc]init];
+    _refreshControl = [[UIRefreshControl alloc] init];
     [_refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     [_refreshControl setValue:@(0) forKey:@"_style"];
     [self.plainTableView addSubview:_refreshControl];
@@ -121,7 +123,6 @@
 - (void)changeRefreshStyle
 {
     UIView *contentView = [_refreshControl valueForKey:@"_contentView"];
-    
     UIImageView *imageView = [contentView valueForKey:@"_imageView"];
     if (imageView) {
         imageView.image = [UIImage imageNamed:@"first"];
@@ -144,6 +145,33 @@
     NSLog(@"refreshContro===%@",contentView);
 }
 
+/**
+ * 刷新状态
+ */
+- (void)endRefreshStyle:(UIRefreshControl *)refreshControl
+{
+    UIView *contentView = [refreshControl valueForKey:@"_contentView"];
+    UILabel *textLab = [contentView valueForKey:@"_textLabel"];
+    textLab.hidden = NO;
+    NSString *tipStr = nil;
+    
+    if (refreshControl) {
+       tipStr = @"正在刷新...";
+    } else if (refreshControl.isRefreshing) {
+        tipStr = @"刷新完成";
+    } else {
+        tipStr = @"刷新失败";
+    }
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        textLab.text = tipStr;
+    });
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [refreshControl endRefreshing];
+        textLab.hidden = YES;
+    });
+}
+
 #pragma mark -  刷新方法
 
 /**
@@ -151,53 +179,44 @@
  */
 - (void)refresh:(UIRefreshControl *)refreshControl
 {
-    NSLog(@"开始刷新");
-    UIView *contentView = [refreshControl valueForKey:@"_contentView"];
-    
-    UILabel *textLab = [contentView valueForKey:@"_textLabel"];
-    if (textLab) {
-        textLab.text = @"正在刷新...";
-        textLab.hidden = NO;
-    }
-    
     //请求所有数据
     OKHttpRequestModel *model = [[OKHttpRequestModel alloc] init];
     model.requestType = HttpRequestTypeGET;
-    model.parameters = nil;
+    model.parameters = @{@"page":@"1"};
     model.requestUrl = TestRequestUrl2;
     
-    [OKHttpRequestTools sendOKRequest:model success:^(id returnValue) {
-        NSString *string = [[returnValue description] substringToIndex:200];
-        ShowAlertToast(string);
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            textLab.text = @"刷新完成";
-        });
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [refreshControl endRefreshing];
-            textLab.hidden = YES;
-        });
-
+    model.loadView = self.view;
+    model.dataTableView = self.plainTableView;
+//    model.sessionDataTaskArr = self.sessionDataTaskArr;
+//    model.requestCachePolicy = RequestStoreCacheData;
+    
+    [OKHttpRequestTools sendExtensionRequest:model success:^(id returnValue) {
+        [self.tableDataArr removeAllObjects];
+        [self.tableDataArr addObjectsFromArray:returnValue[@"data"]];
+        [self.plainTableView reloadData];        
+        // 刷新状态
+        [self endRefreshStyle:refreshControl];
         
     } failure:^(NSError *error) {
         ShowAlertToast(error.domain);
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            textLab.text = @"刷新失败";
-        });
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [refreshControl endRefreshing];
-            textLab.hidden = YES;
-        });
-        
+        // 刷新状态
+        [self endRefreshStyle:refreshControl];
     }];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+#pragma mark -===========UITableViewDelegate===========
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 100;
+    static NSString *cellID = @"cellID";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+    }
+    NSDictionary *dic = self.tableDataArr[indexPath.row];
+    cell.textLabel.text = dic[@"name"];
+    cell.textLabel.numberOfLines = 1;
+    return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -205,17 +224,12 @@
     [self.navigationController pushViewController:[ThirdViewController new] animated:YES];
 }
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return (indexPath.row % 2) >0 ? YES : NO;
-}
-
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    NSLog(@"commitEditingStyle===%@",indexPath);
 }
 
-#pragma Mark - 滚动代理
+#pragma mark -===========UIScrollViewDelegate===========
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
@@ -253,6 +267,5 @@
 {
     [self.plainTableView scrollRectToVisible:CGRectMake(0, 0, self.plainTableView.width, self.plainTableView.height) animated:YES];
 }
-
 
 @end
