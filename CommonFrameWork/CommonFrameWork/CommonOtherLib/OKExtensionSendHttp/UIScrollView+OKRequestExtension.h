@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <MJRefresh.h>
+
+/** 进入刷新状态的回调 */
+typedef void (^OKRefreshingBlock)();
 
 typedef enum : NSUInteger {
     RequestNormalStatus,    //0 正常状态
@@ -40,8 +42,8 @@ typedef enum : NSUInteger {
  @param headerBlock 下拉刷新需要调用的函数
  @param footerBlock 上啦刷新需要调用的函数
  */
-- (void)addheaderRefresh:(MJRefreshComponentRefreshingBlock)headerBlock
-             footerBlock:(MJRefreshComponentRefreshingBlock)footerBlock;
+- (void)addheaderRefresh:(OKRefreshingBlock)headerBlock
+             footerBlock:(OKRefreshingBlock)footerBlock;
 
 
 #pragma mark - 处理表格上下拉刷新,分页,添加空白页事件

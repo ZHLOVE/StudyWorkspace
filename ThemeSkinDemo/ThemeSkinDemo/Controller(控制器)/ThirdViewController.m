@@ -8,10 +8,8 @@
 
 #import "ThirdViewController.h"
 #import "FourthViewController.h"
-#import "OKHttpRequestTools+OKExtension.h"
 
-#define TestRequestUrl1      @"http://api.cnez.info/product/getProductList/1"
-#define TestRequestUrl2      @"http://lib3.wap.zol.com.cn/index.php?c=Advanced_List_V1&keyword=808.8GB%205400%E8%BD%AC%2032MB&noParam=1&priceId=noPrice&num=15"
+#define TestRequestUrl2      @"http://api.cnez.info/product/getProductList/1"
 
 @interface ThirdViewController ()<UINavigationControllerDelegate>
 @property (nonatomic, strong) UIView *statusMaskView;
@@ -50,8 +48,12 @@
     // 改变下拉样式
     [self changeRefreshStyle];
     
+    //刷新方法
+    [self refresh:_refreshControl];
+    
     //向上滑动隐藏导航栏
     //[self hidesBarsWhenSwipe];
+    
 }
 
 /**
@@ -107,10 +109,8 @@
  */
 - (void)addTableRefreshControl
 {
-    self.plainTableView.height = Screen_Height;
-    self.plainTableView.sectionIndexColor = [UIColor redColor];
-    self.plainTableView.sectionIndexBackgroundColor = [UIColor greenColor];
-    self.plainTableView.sectionIndexTrackingBackgroundColor = [UIColor orangeColor];
+    self.plainTableView.rowHeight = kTabbarHeight;
+    
     _refreshControl = [[UIRefreshControl alloc] init];
     [_refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     [_refreshControl setValue:@(0) forKey:@"_style"];
@@ -182,7 +182,7 @@
     //请求所有数据
     OKHttpRequestModel *model = [[OKHttpRequestModel alloc] init];
     model.requestType = HttpRequestTypeGET;
-    model.parameters = @{@"page":@"1"};
+    model.parameters = nil;
     model.requestUrl = TestRequestUrl2;
     
     model.loadView = self.view;
@@ -191,8 +191,7 @@
 //    model.requestCachePolicy = RequestStoreCacheData;
     
     [OKHttpRequestTools sendExtensionRequest:model success:^(id returnValue) {
-        [self.tableDataArr removeAllObjects];
-        [self.tableDataArr addObjectsFromArray:returnValue[@"data"]];
+        
         [self.plainTableView reloadData];        
         // 刷新状态
         [self endRefreshStyle:refreshControl];
@@ -206,17 +205,9 @@
 
 #pragma mark -===========UITableViewDelegate===========
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    static NSString *cellID = @"cellID";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
-    }
-    NSDictionary *dic = self.tableDataArr[indexPath.row];
-    cell.textLabel.text = dic[@"name"];
-    cell.textLabel.numberOfLines = 1;
-    return cell;
+    return 100;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

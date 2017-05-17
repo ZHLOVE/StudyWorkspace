@@ -19,6 +19,7 @@
 #import "OKFrameDefiner.h"
 #import "OKUtils.h"
 #import "OKHttpRequestTools.h"
+#import "OKHttpRequestTools+OKExtension.h"
 #import "OKAlertView.h"
 #import "UINavigationController+OKExtension.h"
 #import "UIViewController+OKExtension.h"

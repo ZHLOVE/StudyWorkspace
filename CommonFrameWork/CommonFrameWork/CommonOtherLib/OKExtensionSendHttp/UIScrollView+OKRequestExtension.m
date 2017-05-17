@@ -10,6 +10,7 @@
 #import "OKCommonTipView.h"
 #import <AFNetworkReachabilityManager.h>
 #import "OKPubilcKeyDefiner.h"
+#import <MJRefresh.h>
 
 /** 网络连接失败 */
 #define NetworkConnectFailTips              @"网络开小差, 请稍后再试哦!"
@@ -80,7 +81,7 @@ static char const * const kNetErrorStrKey   = "kNetErrorStrKey";
  @param headerBlock 下拉刷新需要调用的函数
  @param footerBlock 上啦刷新需要调用的函数
  */
-- (void)addheaderRefresh:(MJRefreshComponentRefreshingBlock)headerBlock footerBlock:(MJRefreshComponentRefreshingBlock)footerBlock
+- (void)addheaderRefresh:(OKRefreshingBlock)headerBlock footerBlock:(OKRefreshingBlock)footerBlock
 {
     if (headerBlock) {
         WEAKSELF
@@ -219,22 +220,22 @@ static char const * const kNetErrorStrKey   = "kNetErrorStrKey";
         
     } else if (state == RequestEmptyDataStatus) { //请求空数据
         tipText = self.emptyString ? : @"暂无数据 ";
-        imageName = self.emptyImageName ? : @"nodata_nodata";
+        imageName = self.emptyImageName ? : @"empty_data_icon";
         
     } else if (state == RequesErrorNoNetWork) { //网络连接失败
         tipText = @"网络开小差, 请稍后再试哦!";
         actionTitle = @"重新加载";
-        imageName = self.errorImageName ? : @"nodata_networkfailure";
+        imageName = self.errorImageName ? : @"networkfail_icon";
         
     } else if (state == RequestFailStatus) { //请求失败
         tipText = @"加载失败了哦!";
         actionTitle = @"重新加载";
-        imageName = self.errorImageName ? : @"nodata_loadfail";
+        imageName = self.errorImageName ? : @"loading_fail_icon";
     }
     
     //这里防止表格有偏移量，一定要设置y的起始位置为0
-    CGRect rect = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height);
-    UIView *tipBgView = [OKCommonTipView tipViewByFrame:rect tipImageName:imageName tipText:tipText actionTitle:actionTitle actionBlock:blk];
+    UIView *tipBgView = [OKCommonTipView tipViewByFrame:self.bounds tipImageName:imageName tipText:tipText actionTitle:actionTitle actionBlock:blk];
+    tipBgView.center = self.center;
     if (self.backgroundColor) {
         tipBgView.backgroundColor = self.backgroundColor;
     }

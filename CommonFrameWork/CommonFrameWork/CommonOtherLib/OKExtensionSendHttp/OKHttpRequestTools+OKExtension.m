@@ -12,6 +12,7 @@
 #import "OKFMDBTool.h"
 #import "OKAlertView.h"
 #import "OKPubilcKeyDefiner.h"
+#import <objc/runtime.h>
 
 //重复请求次数key
 static char const * const kRequestTimeCountKey    = "kRequestTimeCountKey";
@@ -117,7 +118,8 @@ static char const * const kRequestTimeCountKey    = "kRequestTimeCountKey";
         //请求状态码为0表示成功，否则失败
         NSInteger code = [responseObject[kRequestCodeKey] integerValue];
         if ([responseObject isKindOfClass:[NSDictionary class]] &&
-            responseObject[kRequestCodeKey] && code == [kRequestSuccessStatues integerValue])
+            responseObject[kRequestCodeKey] &&
+            (code == [kRequestSuccessStatues integerValue] || code == kRequestTipsStatuesMin))
         {
             /** <1>.回调页面请求 */
             if (successBlock) {

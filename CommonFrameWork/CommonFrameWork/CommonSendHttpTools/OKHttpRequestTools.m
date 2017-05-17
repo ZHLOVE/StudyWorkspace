@@ -137,7 +137,8 @@ static char const * const kRequestUrlKey    = "kRequestUrlKey";
         
         NSInteger code = [responseObject[kRequestCodeKey] integerValue];
         if ([responseObject isKindOfClass:[NSDictionary class]] &&
-            responseObject[kRequestCodeKey] && code == [kRequestSuccessStatues integerValue])
+            responseObject[kRequestCodeKey] &&
+            (code == [kRequestSuccessStatues integerValue] || code == kRequestTipsStatuesMin))
         {
             NSLog(@"\n请求接口基地址= %@\n\n请求参数= %@\n\n网络数据成功返回= %@\n\n",requestModel.requestUrl,requestModel.parameters,responseObject);
             /** <1>.回调页面请求 */
