@@ -7,14 +7,9 @@
 //
 
 #import "OKAppTabBarVC.h"
-#import "FirstViewController.h"
-#import "SecondViewController.h"
-#import "ThirdViewController.h"
-#import "OKTabBarInfoModel.h"
 #import "OKAppTabBar.h"
-#import "OKBaseNavigationVC.h"
+#import "OKTabBarInfoModel.h"
 #import "OKFileManager.h"
-#import "LeftViewController.h"
 
 @interface OKAppTabBarVC ()
 @property (nonatomic, strong) OKAppTabBar *appTabBar;
@@ -66,14 +61,13 @@
  */
 - (void)initTabBarVC
 {
-    //添加子控制器: 首页
-    [self addTabBarChildVC:[LeftViewController new] navTitle:@"首页"];
-    
-    //添加子控制器: 发现
-    [self addTabBarChildVC:[SecondViewController new] navTitle:@"发现"];
-    
-    //添加子控制器: 我的
-    [self addTabBarChildVC:[ThirdViewController new] navTitle:@"我的"];
+    NSArray *infoArr = @[@{@"LeftViewController":@"首页"},
+                         @{@"SecondViewController":@"发现"},
+                         @{@"ThirdViewController":@"我的"}];
+    //添加子控制器
+    for (NSDictionary *infoDic in infoArr) {
+        [self addTabBarChildVCWithName:infoDic.allKeys[0] navTitle:infoDic.allValues[0]];
+    }
     
     //更换tabBar，为什么要更换，因为可以自定义双击事件,自定义换肤等
     [self setValue:self.appTabBar forKeyPath:@"tabBar"];
@@ -98,10 +92,11 @@
 /**
  * 包装一个导航控制器, 添加导航控制器为tabbarcontroller的子控制器
  */
-- (void)addTabBarChildVC:(UIViewController *)vc navTitle:(NSString *)navTitle
+- (void)addTabBarChildVCWithName:(NSString *)vcName navTitle:(NSString *)navTitle
 {
     // 设置控制器起始位置和标题
-    OKBaseNavigationVC *nav = [[OKBaseNavigationVC alloc] initWithRootViewController:vc];
+    UIViewController *vc = [[NSClassFromString(vcName) alloc] init];
+    UINavigationController *nav = [[NSClassFromString(@"OKBaseNavigationVC") alloc] initWithRootViewController:vc];
     vc.edgesForExtendedLayout = UIRectEdgeNone;
     vc.navigationItem.title = navTitle;
     [self addChildViewController:nav];
@@ -177,12 +172,11 @@
             touchItemVC = [((UINavigationController *)touchItemVC).viewControllers firstObject];
         }
         //忽略警告
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wundeclared-selector"
-        if ([touchItemVC respondsToSelector:@selector(repeatTouchTabBarToViewController:)]) {
-            [touchItemVC performSelector:@selector(repeatTouchTabBarToViewController:) withObject:touchItemVC];
-        }
-#pragma clang diagnostic pop
+        OKUndeclaredSelectorLeakWarning(
+            if ([touchItemVC respondsToSelector:@selector(repeatTouchTabBarToViewController:)]) {
+                [touchItemVC performSelector:@selector(repeatTouchTabBarToViewController:) withObject:touchItemVC];
+            }
+        );
     }
 }
 

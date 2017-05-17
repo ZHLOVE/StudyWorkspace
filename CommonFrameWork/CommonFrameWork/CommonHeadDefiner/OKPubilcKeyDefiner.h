@@ -130,6 +130,14 @@ _Pragma("clang diagnostic pop") \
 } while (0)
 
 
+#define OKUndeclaredSelectorLeakWarning(Stuff) \
+do { \
+_Pragma("clang diagnostic push") \
+_Pragma("clang diagnostic ignored \"-Wundeclared-selector\"") \
+Stuff; \
+_Pragma("clang diagnostic pop") \
+} while (0)
+
 /**
  * 拷贝自定义对象,NSCopy协议的具体实现
  */

@@ -54,14 +54,18 @@
     //用系统的方法,全屏滑动返回
     if (self.navigationController.viewControllers.count > 1) {
         id target = self.navigationController.interactivePopGestureRecognizer.delegate;
-        SEL selector = @selector(handleNavigationTransition:);
         
-        if ([target respondsToSelector:selector]) { //需要滑动返回
-            UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:target action:selector];
-            pan.delegate = self;
-            [self.view addGestureRecognizer:pan];
-            self.navigationController.interactivePopGestureRecognizer.enabled = NO;
-        }
+        //忽略警告
+        OKUndeclaredSelectorLeakWarning(
+            SEL selector = @selector(handleNavigationTransition:);
+                                        
+            if ([target respondsToSelector:selector]) { //需要滑动返回
+                UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:target action:selector];
+                pan.delegate = self;
+                [self.view addGestureRecognizer:pan];
+                self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+            }
+        );        
     }
 }
 
