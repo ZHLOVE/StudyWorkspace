@@ -29,6 +29,7 @@
             for (NSIndexPath *p in table.indexPathsForSelectedRows) {
                 [table deselectRowAtIndexPath:p animated:YES];
             }
+            break;
         }
     }
 }

@@ -70,7 +70,6 @@
     
     UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[aiImageItemProvider] applicationActivities:nil];
     
-    
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         //iPhone, present activity view controller as is
         [self presentViewController:activityViewController animated:YES completion:nil];
