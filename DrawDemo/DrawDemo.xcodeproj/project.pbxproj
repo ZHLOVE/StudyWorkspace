@@ -7,22 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B522A70C1ED91EA400C13897 /* FirstVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B522A70A1ED91EA400C13897 /* FirstVC.m */; };
-		B522A70D1ED91EA400C13897 /* FirstVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B522A70B1ED91EA400C13897 /* FirstVC.xib */; };
 		B54689B91ED679110025D69F /* LukeView.m in Sources */ = {isa = PBXBuildFile; fileRef = B54689B81ED679110025D69F /* LukeView.m */; };
 		B54689BC1ED679920025D69F /* LukeLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B54689BB1ED679920025D69F /* LukeLayer.m */; };
 		B57DEDC51E5D6BD900A8C678 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B57DEDC41E5D6BD900A8C678 /* main.m */; };
 		B57DEDC81E5D6BD900A8C678 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B57DEDC71E5D6BD900A8C678 /* AppDelegate.m */; };
-		B57DEDCB1E5D6BD900A8C678 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B57DEDCA1E5D6BD900A8C678 /* ViewController.m */; };
+		B57DEDCB1E5D6BD900A8C678 /* FirstVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B57DEDCA1E5D6BD900A8C678 /* FirstVC.m */; };
 		B57DEDCE1E5D6BD900A8C678 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B57DEDCC1E5D6BD900A8C678 /* Main.storyboard */; };
 		B57DEDD01E5D6BD900A8C678 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B57DEDCF1E5D6BD900A8C678 /* Assets.xcassets */; };
 		B57DEDD31E5D6BD900A8C678 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B57DEDD11E5D6BD900A8C678 /* LaunchScreen.storyboard */; };
+		B5E9C4EE1ED98C06001EFF44 /* SecondVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E9C4ED1ED98C06001EFF44 /* SecondVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B522A7091ED91EA400C13897 /* FirstVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstVC.h; sourceTree = "<group>"; };
-		B522A70A1ED91EA400C13897 /* FirstVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstVC.m; sourceTree = "<group>"; };
-		B522A70B1ED91EA400C13897 /* FirstVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstVC.xib; sourceTree = "<group>"; };
 		B54689B71ED679110025D69F /* LukeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LukeView.h; sourceTree = "<group>"; };
 		B54689B81ED679110025D69F /* LukeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LukeView.m; sourceTree = "<group>"; };
 		B54689BA1ED679920025D69F /* LukeLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LukeLayer.h; sourceTree = "<group>"; };
@@ -31,12 +27,14 @@
 		B57DEDC41E5D6BD900A8C678 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B57DEDC61E5D6BD900A8C678 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B57DEDC71E5D6BD900A8C678 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		B57DEDC91E5D6BD900A8C678 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		B57DEDCA1E5D6BD900A8C678 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		B57DEDC91E5D6BD900A8C678 /* FirstVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstVC.h; sourceTree = "<group>"; };
+		B57DEDCA1E5D6BD900A8C678 /* FirstVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstVC.m; sourceTree = "<group>"; };
 		B57DEDCD1E5D6BD900A8C678 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B57DEDCF1E5D6BD900A8C678 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B57DEDD21E5D6BD900A8C678 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B57DEDD41E5D6BD900A8C678 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B5E9C4EC1ED98C06001EFF44 /* SecondVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondVC.h; sourceTree = "<group>"; };
+		B5E9C4ED1ED98C06001EFF44 /* SecondVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,15 +69,8 @@
 			children = (
 				B57DEDC61E5D6BD900A8C678 /* AppDelegate.h */,
 				B57DEDC71E5D6BD900A8C678 /* AppDelegate.m */,
-				B54689B71ED679110025D69F /* LukeView.h */,
-				B54689B81ED679110025D69F /* LukeView.m */,
-				B54689BA1ED679920025D69F /* LukeLayer.h */,
-				B54689BB1ED679920025D69F /* LukeLayer.m */,
-				B57DEDC91E5D6BD900A8C678 /* ViewController.h */,
-				B57DEDCA1E5D6BD900A8C678 /* ViewController.m */,
-				B522A7091ED91EA400C13897 /* FirstVC.h */,
-				B522A70A1ED91EA400C13897 /* FirstVC.m */,
-				B522A70B1ED91EA400C13897 /* FirstVC.xib */,
+				B5E9C4EF1ED98C41001EFF44 /* Controller */,
+				B5E9C4F11ED98C60001EFF44 /* View */,
 				B57DEDCC1E5D6BD900A8C678 /* Main.storyboard */,
 				B57DEDCF1E5D6BD900A8C678 /* Assets.xcassets */,
 				B57DEDD11E5D6BD900A8C678 /* LaunchScreen.storyboard */,
@@ -95,6 +86,28 @@
 				B57DEDC41E5D6BD900A8C678 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B5E9C4EF1ED98C41001EFF44 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B57DEDC91E5D6BD900A8C678 /* FirstVC.h */,
+				B57DEDCA1E5D6BD900A8C678 /* FirstVC.m */,
+				B5E9C4EC1ED98C06001EFF44 /* SecondVC.h */,
+				B5E9C4ED1ED98C06001EFF44 /* SecondVC.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		B5E9C4F11ED98C60001EFF44 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B54689B71ED679110025D69F /* LukeView.h */,
+				B54689B81ED679110025D69F /* LukeView.m */,
+				B54689BA1ED679920025D69F /* LukeLayer.h */,
+				B54689BB1ED679920025D69F /* LukeLayer.m */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -157,7 +170,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B57DEDD31E5D6BD900A8C678 /* LaunchScreen.storyboard in Resources */,
-				B522A70D1ED91EA400C13897 /* FirstVC.xib in Resources */,
 				B57DEDD01E5D6BD900A8C678 /* Assets.xcassets in Resources */,
 				B57DEDCE1E5D6BD900A8C678 /* Main.storyboard in Resources */,
 			);
@@ -170,11 +182,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B57DEDCB1E5D6BD900A8C678 /* ViewController.m in Sources */,
-				B522A70C1ED91EA400C13897 /* FirstVC.m in Sources */,
+				B57DEDCB1E5D6BD900A8C678 /* FirstVC.m in Sources */,
 				B54689B91ED679110025D69F /* LukeView.m in Sources */,
 				B57DEDC81E5D6BD900A8C678 /* AppDelegate.m in Sources */,
 				B54689BC1ED679920025D69F /* LukeLayer.m in Sources */,
+				B5E9C4EE1ED98C06001EFF44 /* SecondVC.m in Sources */,
 				B57DEDC51E5D6BD900A8C678 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

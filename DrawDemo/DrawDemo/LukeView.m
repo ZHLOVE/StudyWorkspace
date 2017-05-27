@@ -10,5 +10,15 @@
 
 @implementation LukeView
 
+- (void)drawRect:(CGRect)rect
+{
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    
+    CGContextMoveToPoint(ctx, 10, 10);
+    
+    CGContextAddLineToPoint(ctx, 100, 100);
+    
+    CGContextStrokePath(ctx);
+}
 
 @end
