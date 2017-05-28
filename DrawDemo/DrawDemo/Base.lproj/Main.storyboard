@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BJt-jh-Ks3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BJt-jh-Ks3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -115,7 +115,7 @@
         <!--Quartz2D绘图-->
         <scene sceneID="RaY-dt-vDd">
             <objects>
-                <viewController id="fJy-O4-tba" sceneMemberID="viewController">
+                <viewController id="fJy-O4-tba" customClass="SecondVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mJn-AN-wjw"/>
                         <viewControllerLayoutGuide type="bottom" id="pQe-x0-0No"/>
@@ -140,6 +140,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Quartz2D绘图" id="0Ib-Go-1Z2"/>
+                    <connections>
+                        <outlet property="contentView" destination="ZhC-dd-vwu" id="kLy-fN-Ipc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Q4-Fl-VjQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -154,20 +157,25 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="tabBar.tintColor">
+                            <color key="value" red="0.97983509302139282" green="0.66530179977416992" blue="0.1937391459941864" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
-                        <segue destination="5VZ-GW-Vpg" kind="relationship" relationship="viewControllers" id="jRx-5l-AGL"/>
                         <segue destination="cFI-3E-uSq" kind="relationship" relationship="viewControllers" id="MnL-DV-S1Q"/>
+                        <segue destination="5VZ-GW-Vpg" kind="relationship" relationship="viewControllers" id="jRx-5l-AGL"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kmo-P6-gCh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-708" y="334"/>
+            <point key="canvasLocation" x="-743" y="333"/>
         </scene>
-        <!--核心动画-->
+        <!--动画-->
         <scene sceneID="04M-yH-Q2e">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5VZ-GW-Vpg" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="核心动画" image="tab_1" id="ZRD-sW-wXk"/>
+                    <tabBarItem key="tabBarItem" title="动画" image="tab_1" id="ZRD-sW-wXk"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fFo-ZT-mdR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
