@@ -6,7 +6,7 @@
 //  Copyright © 2016年 leixiang. All rights reserved.
 //
 
-#import "NSArray+OkExtention.h"
+#import "NSArray+OKExtention.h"
 #import "NSObject+OKRuntime.h"
 
 @implementation NSArray (OKExtention)

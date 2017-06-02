@@ -6,7 +6,7 @@
 //  Copyright © 2016年 leixiang. All rights reserved.
 //
 
-#import "NSDictionary+OkExtension.h"
+#import "NSDictionary+OKExtension.h"
 
 @implementation NSDictionary (OkExtension)
 
