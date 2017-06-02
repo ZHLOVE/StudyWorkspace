@@ -6,12 +6,12 @@
 //  Copyright © 2017年 Luke. All rights reserved.
 //
 
-#import "FirstVC.h"
+#import "DrawFirstVC.h"
 #import "LukeLayer.h"
 
 #define kAngle2Radian(x)   ((x / 180.0) * M_PI)
 
-@interface FirstVC ()<CALayerDelegate,CAAnimationDelegate>
+@interface DrawFirstVC ()<CALayerDelegate,CAAnimationDelegate>
 @property (nonatomic, strong) CALayer *layer;
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 @property (strong, nonatomic) IBOutlet UIImageView *imageView1;
@@ -22,7 +22,7 @@
 @property (nonatomic, strong) UIImageView *tempView;
 @end
 
-@implementation FirstVC
+@implementation DrawFirstVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];

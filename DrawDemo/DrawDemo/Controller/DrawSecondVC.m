@@ -6,16 +6,14 @@
 //  Copyright © 2017年 Luke. All rights reserved.
 //
 
-#import "SecondVC.h"
+#import "DrawSecondVC.h"
 #import "LukeView.h"
 
-@interface SecondVC ()
+@interface DrawSecondVC ()
 @property (weak, nonatomic) IBOutlet LukeView *contentView;
 @end
 
-@implementation SecondVC
-
-
+@implementation DrawSecondVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];

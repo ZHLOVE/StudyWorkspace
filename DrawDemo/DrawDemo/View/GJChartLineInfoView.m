@@ -18,12 +18,12 @@
 //获取屏幕高度
 #define Screen_Height           ([UIScreen mainScreen].bounds.size.height)
 
-#define PageSize            12 //每页12个数据点
-#define RowHieght           20 //每行高度
-#define LeftTextWidth       33 //左边文字宽度
-#define LeftTextHeight      RowHieght //左边文字高度
-#define SpaceWidth          15 //左右两边间隙
-#define RedRoundSize        4  //小圆点大小
+#define PageSize                12 //每页12个数据点
+#define RowHieght               20 //每行高度
+#define LeftTextWidth           33 //左边文字宽度
+#define LeftTextHeight          RowHieght //左边文字高度
+#define SpaceWidth              15 //左右两边间隙
+#define RedRoundSize            4  //小圆点大小
 
 static char const * const kScaleValueLabelKey = "kScaleValueLabelKey";
 static char const * const kDateTimeLabelKey = "kDateTimeLabelKey";

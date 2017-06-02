@@ -12,7 +12,6 @@
 		B50311A41E1E621400C11EC4 /* CommonFrameWork.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B50311A21E1E621400C11EC4 /* CommonFrameWork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B53E3AA81EE102CA00F538AF /* PodFirstVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B53E3AA31EE102CA00F538AF /* PodFirstVC.m */; };
 		B53E3AA91EE102CA00F538AF /* PodSecondVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B53E3AA51EE102CA00F538AF /* PodSecondVC.m */; };
-		B53E3AAC1EE102D900F538AF /* GJChartLineInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = B53E3AAB1EE102D900F538AF /* GJChartLineInfoView.m */; };
 		B53E3AB81EE1036200F538AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B53E3AB41EE1036200F538AF /* LaunchScreen.storyboard */; };
 		B53E3AB91EE1036200F538AF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B53E3AB51EE1036200F538AF /* main.m */; };
 		B53E3ABA1EE1036200F538AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B53E3AB61EE1036200F538AF /* Main.storyboard */; };
@@ -43,8 +42,6 @@
 		B53E3AA31EE102CA00F538AF /* PodFirstVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PodFirstVC.m; sourceTree = "<group>"; };
 		B53E3AA41EE102CA00F538AF /* PodSecondVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PodSecondVC.h; sourceTree = "<group>"; };
 		B53E3AA51EE102CA00F538AF /* PodSecondVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PodSecondVC.m; sourceTree = "<group>"; };
-		B53E3AAA1EE102D900F538AF /* GJChartLineInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GJChartLineInfoView.h; sourceTree = "<group>"; };
-		B53E3AAB1EE102D900F538AF /* GJChartLineInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GJChartLineInfoView.m; sourceTree = "<group>"; };
 		B53E3AB31EE1036200F538AF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B53E3AB41EE1036200F538AF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B53E3AB51EE1036200F538AF /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -106,8 +103,6 @@
 		B53E3A9E1EE1025700F538AF /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B53E3AAA1EE102D900F538AF /* GJChartLineInfoView.h */,
-				B53E3AAB1EE102D900F538AF /* GJChartLineInfoView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -309,7 +304,6 @@
 				B53E3AA81EE102CA00F538AF /* PodFirstVC.m in Sources */,
 				B53E3AB91EE1036200F538AF /* main.m in Sources */,
 				B53E3AC31EE1065D00F538AF /* PodSendReqVC.m in Sources */,
-				B53E3AAC1EE102D900F538AF /* GJChartLineInfoView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
