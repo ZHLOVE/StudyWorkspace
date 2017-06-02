@@ -6,14 +6,14 @@
 //  Copyright © 2017年 okdeer. All rights reserved.
 //
 
-#import "FirstViewController.h"
+#import "XibFirstVC.h"
 
-@interface FirstViewController ()
+@interface XibFirstVC ()
 @property (weak, nonatomic) IBOutlet UILabel *textLabel;
 @property (weak, nonatomic) IBOutlet UIView *bgVidew;
 @end
 
-@implementation FirstViewController
+@implementation XibFirstVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];

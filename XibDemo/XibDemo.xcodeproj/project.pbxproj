@@ -7,36 +7,42 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B53E3AF11EE1562F00F538AF /* XibFirstVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B53E3AE71EE1562F00F538AF /* XibFirstVC.m */; };
+		B53E3AF21EE1562F00F538AF /* XibSecondVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B53E3AE91EE1562F00F538AF /* XibSecondVC.m */; };
+		B53E3AF31EE1562F00F538AF /* XibThreeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B53E3AEB1EE1562F00F538AF /* XibThreeVC.m */; };
+		B53E3AF41EE1562F00F538AF /* LukeView.m in Sources */ = {isa = PBXBuildFile; fileRef = B53E3AEF1EE1562F00F538AF /* LukeView.m */; };
+		B53E3AF51EE1562F00F538AF /* LukeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B53E3AF01EE1562F00F538AF /* LukeView.xib */; };
 		B57A66A71E1E1EC400ACB5EC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B57A66A61E1E1EC400ACB5EC /* main.m */; };
 		B57A66AA1E1E1EC400ACB5EC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B57A66A91E1E1EC400ACB5EC /* AppDelegate.m */; };
-		B57A66AD1E1E1EC400ACB5EC /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B57A66AC1E1E1EC400ACB5EC /* FirstViewController.m */; };
-		B57A66B01E1E1EC400ACB5EC /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B57A66AF1E1E1EC400ACB5EC /* SecondViewController.m */; };
 		B57A66B31E1E1EC400ACB5EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B57A66B11E1E1EC400ACB5EC /* Main.storyboard */; };
 		B57A66B51E1E1EC400ACB5EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B57A66B41E1E1EC400ACB5EC /* Assets.xcassets */; };
 		B57A66B81E1E1EC400ACB5EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B57A66B61E1E1EC400ACB5EC /* LaunchScreen.storyboard */; };
-		B57AB3911E65A5FF00F76D7C /* ThreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B57AB3901E65A5FF00F76D7C /* ThreeViewController.m */; };
-		B5D1C4801E696FEA005B5549 /* LukeView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D1C47F1E696FEA005B5549 /* LukeView.m */; };
-		B5D1C4821E696FF6005B5549 /* LukeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5D1C4811E696FF6005B5549 /* LukeView.xib */; };
+		B582DEAC1EE169CC0043284C /* XibTempVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B582DEAA1EE169CC0043284C /* XibTempVC.m */; };
+		B582DEB01EE171780043284C /* XibFourVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B582DEAF1EE171780043284C /* XibFourVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B53E3AE61EE1562F00F538AF /* XibFirstVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XibFirstVC.h; sourceTree = "<group>"; };
+		B53E3AE71EE1562F00F538AF /* XibFirstVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XibFirstVC.m; sourceTree = "<group>"; };
+		B53E3AE81EE1562F00F538AF /* XibSecondVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XibSecondVC.h; sourceTree = "<group>"; };
+		B53E3AE91EE1562F00F538AF /* XibSecondVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XibSecondVC.m; sourceTree = "<group>"; };
+		B53E3AEA1EE1562F00F538AF /* XibThreeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XibThreeVC.h; sourceTree = "<group>"; };
+		B53E3AEB1EE1562F00F538AF /* XibThreeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XibThreeVC.m; sourceTree = "<group>"; };
+		B53E3AEE1EE1562F00F538AF /* LukeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LukeView.h; sourceTree = "<group>"; };
+		B53E3AEF1EE1562F00F538AF /* LukeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LukeView.m; sourceTree = "<group>"; };
+		B53E3AF01EE1562F00F538AF /* LukeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LukeView.xib; sourceTree = "<group>"; };
 		B57A66A21E1E1EC400ACB5EC /* XibDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XibDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B57A66A61E1E1EC400ACB5EC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B57A66A81E1E1EC400ACB5EC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B57A66A91E1E1EC400ACB5EC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		B57A66AB1E1E1EC400ACB5EC /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		B57A66AC1E1E1EC400ACB5EC /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
-		B57A66AE1E1E1EC400ACB5EC /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		B57A66AF1E1E1EC400ACB5EC /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		B57A66B21E1E1EC400ACB5EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B57A66B41E1E1EC400ACB5EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B57A66B71E1E1EC400ACB5EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B57A66B91E1E1EC400ACB5EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B57AB38F1E65A5FF00F76D7C /* ThreeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreeViewController.h; sourceTree = "<group>"; };
-		B57AB3901E65A5FF00F76D7C /* ThreeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreeViewController.m; sourceTree = "<group>"; };
-		B5D1C47E1E696FEA005B5549 /* LukeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LukeView.h; sourceTree = "<group>"; };
-		B5D1C47F1E696FEA005B5549 /* LukeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LukeView.m; sourceTree = "<group>"; };
-		B5D1C4811E696FF6005B5549 /* LukeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LukeView.xib; sourceTree = "<group>"; };
+		B582DEA91EE169CC0043284C /* XibTempVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XibTempVC.h; sourceTree = "<group>"; };
+		B582DEAA1EE169CC0043284C /* XibTempVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XibTempVC.m; sourceTree = "<group>"; };
+		B582DEAE1EE171780043284C /* XibFourVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XibFourVC.h; sourceTree = "<group>"; };
+		B582DEAF1EE171780043284C /* XibFourVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XibFourVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +56,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B53E3AE51EE1562F00F538AF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B53E3AE61EE1562F00F538AF /* XibFirstVC.h */,
+				B53E3AE71EE1562F00F538AF /* XibFirstVC.m */,
+				B53E3AE81EE1562F00F538AF /* XibSecondVC.h */,
+				B53E3AE91EE1562F00F538AF /* XibSecondVC.m */,
+				B53E3AEA1EE1562F00F538AF /* XibThreeVC.h */,
+				B53E3AEB1EE1562F00F538AF /* XibThreeVC.m */,
+				B582DEAE1EE171780043284C /* XibFourVC.h */,
+				B582DEAF1EE171780043284C /* XibFourVC.m */,
+				B582DEA91EE169CC0043284C /* XibTempVC.h */,
+				B582DEAA1EE169CC0043284C /* XibTempVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		B53E3AEC1EE1562F00F538AF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B53E3AED1EE1562F00F538AF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B53E3AEE1EE1562F00F538AF /* LukeView.h */,
+				B53E3AEF1EE1562F00F538AF /* LukeView.m */,
+				B53E3AF01EE1562F00F538AF /* LukeView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		B57A66991E1E1EC400ACB5EC = {
 			isa = PBXGroup;
 			children = (
@@ -71,15 +111,9 @@
 			children = (
 				B57A66A81E1E1EC400ACB5EC /* AppDelegate.h */,
 				B57A66A91E1E1EC400ACB5EC /* AppDelegate.m */,
-				B57A66AB1E1E1EC400ACB5EC /* FirstViewController.h */,
-				B57A66AC1E1E1EC400ACB5EC /* FirstViewController.m */,
-				B57A66AE1E1E1EC400ACB5EC /* SecondViewController.h */,
-				B57A66AF1E1E1EC400ACB5EC /* SecondViewController.m */,
-				B57AB38F1E65A5FF00F76D7C /* ThreeViewController.h */,
-				B57AB3901E65A5FF00F76D7C /* ThreeViewController.m */,
-				B5D1C47E1E696FEA005B5549 /* LukeView.h */,
-				B5D1C47F1E696FEA005B5549 /* LukeView.m */,
-				B5D1C4811E696FF6005B5549 /* LukeView.xib */,
+				B53E3AE51EE1562F00F538AF /* Controller */,
+				B53E3AEC1EE1562F00F538AF /* Model */,
+				B53E3AED1EE1562F00F538AF /* View */,
 				B57A66B11E1E1EC400ACB5EC /* Main.storyboard */,
 				B57A66B41E1E1EC400ACB5EC /* Assets.xcassets */,
 				B57A66B61E1E1EC400ACB5EC /* LaunchScreen.storyboard */,
@@ -157,7 +191,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B57A66B81E1E1EC400ACB5EC /* LaunchScreen.storyboard in Resources */,
-				B5D1C4821E696FF6005B5549 /* LukeView.xib in Resources */,
+				B53E3AF51EE1562F00F538AF /* LukeView.xib in Resources */,
 				B57A66B51E1E1EC400ACB5EC /* Assets.xcassets in Resources */,
 				B57A66B31E1E1EC400ACB5EC /* Main.storyboard in Resources */,
 			);
@@ -170,12 +204,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B57A66B01E1E1EC400ACB5EC /* SecondViewController.m in Sources */,
-				B5D1C4801E696FEA005B5549 /* LukeView.m in Sources */,
+				B582DEAC1EE169CC0043284C /* XibTempVC.m in Sources */,
+				B53E3AF21EE1562F00F538AF /* XibSecondVC.m in Sources */,
+				B53E3AF41EE1562F00F538AF /* LukeView.m in Sources */,
 				B57A66AA1E1E1EC400ACB5EC /* AppDelegate.m in Sources */,
-				B57A66AD1E1E1EC400ACB5EC /* FirstViewController.m in Sources */,
+				B53E3AF11EE1562F00F538AF /* XibFirstVC.m in Sources */,
 				B57A66A71E1E1EC400ACB5EC /* main.m in Sources */,
-				B57AB3911E65A5FF00F76D7C /* ThreeViewController.m in Sources */,
+				B582DEB01EE171780043284C /* XibFourVC.m in Sources */,
+				B53E3AF31EE1562F00F538AF /* XibThreeVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

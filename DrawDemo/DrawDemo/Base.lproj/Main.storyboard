@@ -178,7 +178,7 @@
                     </tabBar>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="color" keyPath="tabBar.tintColor">
-                            <color key="value" red="0.97983509302139282" green="0.66530179977416992" blue="0.1937391459941864" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="value" red="0.98039215686274506" green="0.66666666666666663" blue="0.19215686274509802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>

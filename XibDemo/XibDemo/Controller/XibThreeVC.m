@@ -6,13 +6,13 @@
 //  Copyright © 2017年 okdeer. All rights reserved.
 //
 
-#import "ThreeViewController.h"
+#import "XibThreeVC.h"
 
-@interface ThreeViewController ()
+@interface XibThreeVC ()
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @end
 
-@implementation ThreeViewController
+@implementation XibThreeVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];

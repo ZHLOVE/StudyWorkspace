@@ -380,7 +380,9 @@ static char const * const kDateTimeLabelKey = "kDateTimeLabelKey";
     [UIView animateWithDuration:(2.0f * pageCount) animations:^{
         self.chartScrollView.contentOffset = CGPointMake((pageCount-1)*self.chartScrollView.width, 0);
     } completion:^(BOOL finished) {
-        self.chartScrollView.scrollEnabled = YES;
+        if (finished) {
+            self.chartScrollView.scrollEnabled = YES;
+        }
     }];
 
     for (UIButton *btn in self.allBtnArr) {
