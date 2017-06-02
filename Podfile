@@ -11,6 +11,7 @@ target :'PodsDemo' do
     pod 'SDWebImage'
     pod 'FMDB', '~> 2.6.2'
     pod 'MJRefresh'
+    pod 'Masonry'
     project 'PodsDemo/PodsDemo.xcodeproj'
 end
 

@@ -6,10 +6,10 @@
 //  Copyright © 2017年 okdeer. All rights reserved.
 //
 
-#import "FirstViewController.h"
+#import "PodFirstVC.h"
 #import "OKReachabilityManager.h"
-#import <OKAlertController.h>
-#import "DemoVC.h"
+#import <OKAlertView.h>
+#import "PodSendReqVC.h"
 
 //发送封装多功能请求用到
 #import "OKHttpRequestTools+OKExtension.h"
@@ -19,10 +19,10 @@
 #define TestRequestUrl1      @"http://api.cnez.info/product/getProductList/1"
 #define TestRequestUrl2      @"http://lib3.wap.zol.com.cn/index.php?c=Advanced_List_V1&keyword=808.8GB%205400%E8%BD%AC%2032MB&noParam=1&priceId=noPrice&num=1"
 
-@interface FirstViewController ()
+@interface PodFirstVC ()
 @end
 
-@implementation FirstViewController
+@implementation PodFirstVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -39,7 +39,7 @@
  */
 - (IBAction)sendHttpReqAction:(id)sender
 {
-    DemoVC *demoVC = [[DemoVC alloc] init];
+    PodSendReqVC *demoVC = [[PodSendReqVC alloc] init];
     demoVC.title = @"测试表格分页请求";
     demoVC.hidesBottomBarWhenPushed = YES;
     demoVC.edgesForExtendedLayout = UIRectEdgeNone;

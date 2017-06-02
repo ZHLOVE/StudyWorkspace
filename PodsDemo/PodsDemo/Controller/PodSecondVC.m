@@ -6,13 +6,13 @@
 //  Copyright © 2017年 okdeer. All rights reserved.
 //
 
-#import "SecondViewController.h"
+#import "PodSecondVC.h"
 
-@interface SecondViewController ()
+@interface PodSecondVC ()
 
 @end
 
-@implementation SecondViewController
+@implementation PodSecondVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
