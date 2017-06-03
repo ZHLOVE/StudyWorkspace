@@ -11,6 +11,8 @@
 
 @interface DrawThirdVC ()
 @property (nonatomic, strong) GJChartLineInfoView *chartLineInfoView;
+@property (nonatomic, strong) CAShapeLayer *shapeLayer;
+@property (nonatomic, strong) CALayer *circleLayer;
 @end
 
 @implementation DrawThirdVC
@@ -21,22 +23,32 @@
     
 }
 
-- (void)viewDidLayoutSubviews
+
+/**
+ *  移除当前类所有动画
+ */
+- (void)removeSelfAllAnimation
 {
-    [super viewDidLayoutSubviews];
+    [self.shapeLayer removeAnimationForKey:@"strokeEndKey"];
     
-    NSLog(@"viewDidLayoutSubviews");
+    [[self.chartLineInfoView.layer sublayers] makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
+    [self.chartLineInfoView removeFromSuperview];
+    self.chartLineInfoView = nil;
     
-    //会曲线图
-//    [self drawChartLineInfoView];
+    [self.circleLayer removeFromSuperlayer];
+    self.circleLayer = nil;
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+
+/**
+ *  绘制曲线图
+ */
+- (IBAction)drawBrokenLineAction:(UIButton *)sender
 {
-    //会曲线图
-//    [self drawChartLineInfoView];
+    //移除当前类所有动画
+    [self removeSelfAllAnimation];
     
-    [self testCAGradientLayer2];
+    [self drawChartLineInfoView];
 }
 
 /**
@@ -44,10 +56,6 @@
  */
 - (void)drawChartLineInfoView
 {
-    [[self.chartLineInfoView.layer sublayers] makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
-    [self.chartLineInfoView removeFromSuperview];
-    self.chartLineInfoView = nil;
-    
     //y轴刻度值
     NSArray *yAxleArr = @[@"1000",@"800",@"600",@"400",@"200",@"0"];
     
@@ -115,8 +123,27 @@
     anim.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     anim.fillMode = kCAFillModeForwards;
     anim.removedOnCompletion = NO;
-    [gradientLayer addAnimation:anim forKey:@""];
+    [gradientLayer addAnimation:anim forKey:@"endPointKKey"];
     
+}
+
+
+/**
+ *  绘制圆圈
+ */
+- (IBAction)drawCircleAction:(UIButton *)sender
+{
+    //移除当前类所有动画
+    [self removeSelfAllAnimation];
+    
+    if (sender.selected) {
+        sender.selected = NO;
+        [sender setTitle:@"画圈" forState:0];
+    } else {
+        sender.selected = YES;
+        [sender setTitle:@"停止画圈" forState:0];
+        [self testCAGradientLayer2];
+    }
 }
 
 /**
@@ -134,6 +161,7 @@
     shapeLayer.lineWidth = 10;
     shapeLayer.lineCap = kCALineCapRound;
     shapeLayer.strokeColor = [UIColor redColor].CGColor;
+    self.shapeLayer = shapeLayer;
     
     //创建渐变图层
     CAGradientLayer *gradientLayer = [CAGradientLayer layer];
@@ -153,6 +181,8 @@
     [layer addSublayer:gradientLayer];
     [layer setMask:shapeLayer];
     [self.view.layer addSublayer:layer];
+    self.circleLayer = layer;
+
     
     //给路径图层添加动画
     CABasicAnimation *anim = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
@@ -164,7 +194,7 @@
     anim.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     anim.fillMode = kCAFillModeForwards;
     anim.removedOnCompletion = NO;
-    [shapeLayer addAnimation:anim forKey:@""];
+    [shapeLayer addAnimation:anim forKey:@"strokeEndKey"];
     
 }
 

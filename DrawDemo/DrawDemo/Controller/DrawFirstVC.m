@@ -40,9 +40,13 @@
     [self coreAnimation];
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+- (void)viewDidLayoutSubviews
 {
-//    [self.navigationController pushViewController:[FirstVC new] animated:YES];
+    //测试动画
+    [self viewAnimation];
+    
+    //测试动画
+    [self coreAnimation];
 }
 
 /**

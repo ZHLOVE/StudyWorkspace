@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1C9C6027889BDED5F0455C07 /* libPods-DrawDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C35A717962B80F485D66E8D /* libPods-DrawDemo.a */; };
+		A3FF70421EE22A9900F59FA5 /* DrawTransitionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A3FF70411EE22A9900F59FA5 /* DrawTransitionVC.m */; };
+		A3FF70451EE3147D00F59FA5 /* DrawCircleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A3FF70441EE3147D00F59FA5 /* DrawCircleVC.m */; };
 		B53E3ADA1EE10F4F00F538AF /* DrawThirdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B53E3ACC1EE10F4F00F538AF /* DrawThirdVC.m */; };
 		B53E3ADC1EE10F4F00F538AF /* DrawFirstVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B53E3ACF1EE10F4F00F538AF /* DrawFirstVC.m */; };
 		B53E3ADD1EE10F4F00F538AF /* DrawSecondVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B53E3AD11EE10F4F00F538AF /* DrawSecondVC.m */; };
@@ -41,6 +43,10 @@
 		4C35A717962B80F485D66E8D /* libPods-DrawDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DrawDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C9753787A55B7F2E027A9AB /* Pods-DrawDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrawDemo.release.xcconfig"; path = "../Pods/Target Support Files/Pods-DrawDemo/Pods-DrawDemo.release.xcconfig"; sourceTree = "<group>"; };
 		8DDDC3F7AB34EAD67CDDCA71 /* Pods-DrawDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrawDemo.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-DrawDemo/Pods-DrawDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		A3FF70401EE22A9900F59FA5 /* DrawTransitionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawTransitionVC.h; sourceTree = "<group>"; };
+		A3FF70411EE22A9900F59FA5 /* DrawTransitionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawTransitionVC.m; sourceTree = "<group>"; };
+		A3FF70431EE3147D00F59FA5 /* DrawCircleVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawCircleVC.h; sourceTree = "<group>"; };
+		A3FF70441EE3147D00F59FA5 /* DrawCircleVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawCircleVC.m; sourceTree = "<group>"; };
 		B53E3ACB1EE10F4F00F538AF /* DrawThirdVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawThirdVC.h; sourceTree = "<group>"; };
 		B53E3ACC1EE10F4F00F538AF /* DrawThirdVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawThirdVC.m; sourceTree = "<group>"; };
 		B53E3ACE1EE10F4F00F538AF /* DrawFirstVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawFirstVC.h; sourceTree = "<group>"; };
@@ -95,6 +101,10 @@
 				B53E3AD11EE10F4F00F538AF /* DrawSecondVC.m */,
 				B53E3ACB1EE10F4F00F538AF /* DrawThirdVC.h */,
 				B53E3ACC1EE10F4F00F538AF /* DrawThirdVC.m */,
+				A3FF70401EE22A9900F59FA5 /* DrawTransitionVC.h */,
+				A3FF70411EE22A9900F59FA5 /* DrawTransitionVC.m */,
+				A3FF70431EE3147D00F59FA5 /* DrawCircleVC.h */,
+				A3FF70441EE3147D00F59FA5 /* DrawCircleVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -299,9 +309,11 @@
 				B53E3AE01EE10F4F00F538AF /* LukeView.m in Sources */,
 				B53E3ADC1EE10F4F00F538AF /* DrawFirstVC.m in Sources */,
 				B53E3ADF1EE10F4F00F538AF /* LukeLayer.m in Sources */,
+				A3FF70451EE3147D00F59FA5 /* DrawCircleVC.m in Sources */,
 				B53E3ADA1EE10F4F00F538AF /* DrawThirdVC.m in Sources */,
 				B53E3ADD1EE10F4F00F538AF /* DrawSecondVC.m in Sources */,
 				B53E3ADE1EE10F4F00F538AF /* GJChartLineInfoView.m in Sources */,
+				A3FF70421EE22A9900F59FA5 /* DrawTransitionVC.m in Sources */,
 				B57DEDC51E5D6BD900A8C678 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

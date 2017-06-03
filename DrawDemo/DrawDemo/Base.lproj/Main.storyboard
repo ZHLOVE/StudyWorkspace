@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BJt-jh-Ks3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BJt-jh-Ks3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -159,13 +159,35 @@
                     <view key="view" contentMode="scaleToFill" id="1sO-gL-1B4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m2r-eR-uC7">
+                                <rect key="frame" x="16" y="94" width="46" height="30"/>
+                                <state key="normal" title="折线图"/>
+                                <connections>
+                                    <action selector="drawBrokenLineAction:" destination="PM6-nf-gkH" eventType="touchUpInside" id="ApF-hp-mb5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZoT-3F-etV">
+                                <rect key="frame" x="101" y="94" width="31" height="30"/>
+                                <state key="normal" title="画圈"/>
+                                <connections>
+                                    <action selector="drawCircleAction:" destination="PM6-nf-gkH" eventType="touchUpInside" id="yKa-k9-QXc"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ZoT-3F-etV" firstAttribute="leading" secondItem="m2r-eR-uC7" secondAttribute="trailing" constant="39" id="035-mb-gjv"/>
+                            <constraint firstItem="m2r-eR-uC7" firstAttribute="top" secondItem="GHx-AU-YB9" secondAttribute="bottom" constant="30" id="9sb-Km-lOG"/>
+                            <constraint firstItem="ZoT-3F-etV" firstAttribute="top" secondItem="m2r-eR-uC7" secondAttribute="top" id="VWO-Gi-dKI"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="m2r-eR-uC7" secondAttribute="leading" id="VcI-78-VPe"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="绘图示例" id="psf-rj-spK"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7qd-an-nzM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1081" y="1134"/>
+            <point key="canvasLocation" x="1062" y="1091"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="OyI-iB-B6x">
@@ -182,14 +204,16 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <segue destination="cFI-3E-uSq" kind="relationship" relationship="viewControllers" id="MnL-DV-S1Q"/>
                         <segue destination="5VZ-GW-Vpg" kind="relationship" relationship="viewControllers" id="jRx-5l-AGL"/>
+                        <segue destination="cFI-3E-uSq" kind="relationship" relationship="viewControllers" id="MnL-DV-S1Q"/>
                         <segue destination="Xeq-5X-oMc" kind="relationship" relationship="viewControllers" id="aol-g9-Izf"/>
+                        <segue destination="a3h-fH-UHw" kind="relationship" relationship="viewControllers" id="U7F-xX-ycq"/>
+                        <segue destination="Yaz-bB-P1h" kind="relationship" relationship="viewControllers" id="SFy-JL-OqD"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kmo-P6-gCh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-743" y="333"/>
+            <point key="canvasLocation" x="-703" y="762"/>
         </scene>
         <!--动画-->
         <scene sceneID="04M-yH-Q2e">
@@ -227,7 +251,84 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BtX-Jv-hbJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="222" y="410"/>
+            <point key="canvasLocation" x="222" y="394"/>
+        </scene>
+        <!--转场动画-->
+        <scene sceneID="LzC-Wr-eZq">
+            <objects>
+                <viewController title="转场动画" id="HEB-B8-O2k" customClass="DrawTransitionVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tRu-Ac-Aq5"/>
+                        <viewControllerLayoutGuide type="bottom" id="7UL-3S-5eg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bCG-Da-Lpd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="osn-fk-766">
+                                <rect key="frame" x="156" y="318.5" width="62" height="30"/>
+                                <state key="normal" title="转场动画"/>
+                                <connections>
+                                    <action selector="buttonAction:" destination="HEB-B8-O2k" eventType="touchUpInside" id="27d-Q7-p0n"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="osn-fk-766" firstAttribute="centerY" secondItem="bCG-Da-Lpd" secondAttribute="centerY" id="0qJ-s9-iMs"/>
+                            <constraint firstItem="osn-fk-766" firstAttribute="centerX" secondItem="bCG-Da-Lpd" secondAttribute="centerX" id="KuG-8T-g8p"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="百叶窗动画" id="i8C-Iv-LNq"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nea-tD-59w" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1062" y="1811"/>
+        </scene>
+        <!--画圈-->
+        <scene sceneID="hCc-Aj-4f8">
+            <objects>
+                <viewController title="画圈" id="qHT-Qc-vv4" customClass="DrawCircleVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6OH-6w-9aw"/>
+                        <viewControllerLayoutGuide type="bottom" id="nZh-nB-bjg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zkg-k9-zGo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HrP-CX-8rR">
+                                <rect key="frame" x="62.5" y="208.5" width="250" height="250"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="Nnv-w7-vB9"/>
+                                    <constraint firstAttribute="height" constant="250" id="mcA-TS-1dw"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pc9-qm-4JO">
+                                <rect key="frame" x="172.5" y="120" width="31" height="30"/>
+                                <state key="normal" title="画圈"/>
+                                <connections>
+                                    <action selector="drawCircleAction:" destination="qHT-Qc-vv4" eventType="touchUpInside" id="9dn-sm-x6Z"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="HrP-CX-8rR" firstAttribute="centerX" secondItem="zkg-k9-zGo" secondAttribute="centerX" id="Nmd-0n-XSO"/>
+                            <constraint firstItem="HrP-CX-8rR" firstAttribute="centerY" secondItem="zkg-k9-zGo" secondAttribute="centerY" id="WSO-hk-GlU"/>
+                            <constraint firstItem="HrP-CX-8rR" firstAttribute="top" secondItem="Pc9-qm-4JO" secondAttribute="bottom" constant="58.5" id="pWO-Fe-ffn"/>
+                            <constraint firstItem="Pc9-qm-4JO" firstAttribute="centerX" secondItem="zkg-k9-zGo" secondAttribute="centerX" id="y7C-a2-wqe"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="画圈" id="ouh-Kg-3bb"/>
+                    <connections>
+                        <outlet property="contentView" destination="HrP-CX-8rR" id="bnZ-1X-uVp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JDe-Iv-1Iz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1062" y="2515"/>
         </scene>
         <!--示例-->
         <scene sceneID="lHI-q5-nAn">
@@ -246,7 +347,45 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QcH-Ag-6JE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="222" y="1133"/>
+            <point key="canvasLocation" x="222" y="1072"/>
+        </scene>
+        <!--转场动画-->
+        <scene sceneID="UvZ-jh-xJ0">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="a3h-fH-UHw" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="转场动画" image="tab_4" id="Xk7-nq-ofd"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uui-d7-WI5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="HEB-B8-O2k" kind="relationship" relationship="rootViewController" id="pdu-hu-xr1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AlA-DJ-OpP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="222" y="1810"/>
+        </scene>
+        <!--画圈-->
+        <scene sceneID="uLs-Uz-rWW">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Yaz-bB-P1h" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="画圈" image="tab_3" id="Mau-zY-Uf8"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zaj-ZY-KMm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="qHT-Qc-vv4" kind="relationship" relationship="rootViewController" id="ux4-sZ-gk9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="toU-sf-qNh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="222" y="2515"/>
         </scene>
     </scenes>
     <resources>
@@ -255,5 +394,6 @@
         <image name="tab_1" width="20" height="20"/>
         <image name="tab_2" width="20" height="20"/>
         <image name="tab_3" width="20" height="20"/>
+        <image name="tab_4" width="20" height="20"/>
     </resources>
 </document>
