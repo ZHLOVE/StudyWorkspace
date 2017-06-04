@@ -209,6 +209,7 @@
                         <segue destination="Xeq-5X-oMc" kind="relationship" relationship="viewControllers" id="aol-g9-Izf"/>
                         <segue destination="a3h-fH-UHw" kind="relationship" relationship="viewControllers" id="U7F-xX-ycq"/>
                         <segue destination="Yaz-bB-P1h" kind="relationship" relationship="viewControllers" id="SFy-JL-OqD"/>
+                        <segue destination="bNu-S2-PY8" kind="relationship" relationship="viewControllers" id="xfJ-Hy-qAZ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kmo-P6-gCh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -283,7 +284,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nea-tD-59w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1062" y="1811"/>
+            <point key="canvasLocation" x="2000.8" y="1810.344827586207"/>
         </scene>
         <!--画圈-->
         <scene sceneID="hCc-Aj-4f8">
@@ -328,7 +329,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JDe-Iv-1Iz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1062" y="2515"/>
+            <point key="canvasLocation" x="2000.8" y="2514.6926536731635"/>
         </scene>
         <!--示例-->
         <scene sceneID="lHI-q5-nAn">
@@ -349,6 +350,57 @@
             </objects>
             <point key="canvasLocation" x="222" y="1072"/>
         </scene>
+        <!--画笔涂鸦-->
+        <scene sceneID="4ep-Np-dLZ">
+            <objects>
+                <viewController id="IRI-J0-LG5" customClass="DrawCGPathVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gyP-Mo-TjG"/>
+                        <viewControllerLayoutGuide type="bottom" id="B5V-cV-ORY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2qC-7s-CKg" customClass="DrawPathView">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SRB-mT-Sh0">
+                                <rect key="frame" x="34" y="93" width="62" height="30"/>
+                                <state key="normal" title="开始涂鸦"/>
+                                <connections>
+                                    <action selector="startDrawPath:" destination="IRI-J0-LG5" eventType="touchUpInside" id="PVy-Uc-PPP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dwW-XK-dV8">
+                                <rect key="frame" x="120" y="93" width="62" height="30"/>
+                                <state key="normal" title="轨迹运动"/>
+                                <connections>
+                                    <action selector="moveSport:" destination="IRI-J0-LG5" eventType="touchUpInside" id="fUi-gz-FMJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WEu-y9-zFI">
+                                <rect key="frame" x="216" y="93" width="62" height="30"/>
+                                <state key="normal" title="重新涂鸦"/>
+                                <connections>
+                                    <action selector="afreshDrawPath:" destination="IRI-J0-LG5" eventType="touchUpInside" id="Afx-WF-Mfl"/>
+                                    <action selector="moveSport:" destination="IRI-J0-LG5" eventType="touchUpInside" id="Vmy-yl-N7u"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dwW-XK-dV8" firstAttribute="leading" secondItem="SRB-mT-Sh0" secondAttribute="trailing" constant="24" id="Fmi-jg-fSe"/>
+                            <constraint firstItem="WEu-y9-zFI" firstAttribute="leading" secondItem="dwW-XK-dV8" secondAttribute="trailing" constant="34" id="ROY-3Y-eVZ"/>
+                            <constraint firstItem="WEu-y9-zFI" firstAttribute="top" secondItem="SRB-mT-Sh0" secondAttribute="top" id="heF-oZ-cT9"/>
+                            <constraint firstItem="dwW-XK-dV8" firstAttribute="top" secondItem="SRB-mT-Sh0" secondAttribute="top" id="ivg-9S-Ler"/>
+                            <constraint firstItem="SRB-mT-Sh0" firstAttribute="leading" secondItem="2qC-7s-CKg" secondAttribute="leadingMargin" constant="18" id="mQO-1J-9ZW"/>
+                            <constraint firstItem="SRB-mT-Sh0" firstAttribute="top" secondItem="gyP-Mo-TjG" secondAttribute="bottom" constant="29" id="xhN-Rf-sVl"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="画笔涂鸦" id="21d-Wc-TwI"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ug1-Sb-r9q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-615" y="1878"/>
+        </scene>
         <!--转场动画-->
         <scene sceneID="UvZ-jh-xJ0">
             <objects>
@@ -366,7 +418,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AlA-DJ-OpP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="222" y="1810"/>
+            <point key="canvasLocation" x="1160.8" y="1809.4452773613195"/>
         </scene>
         <!--画圈-->
         <scene sceneID="uLs-Uz-rWW">
@@ -385,7 +437,26 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="toU-sf-qNh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="222" y="2515"/>
+            <point key="canvasLocation" x="1160.8" y="2514.6926536731635"/>
+        </scene>
+        <!--涂鸦-->
+        <scene sceneID="Xib-Bp-As8">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bNu-S2-PY8" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="涂鸦" image="tab_4" id="mWs-c9-gxQ"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1z8-ej-uD3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="IRI-J0-LG5" kind="relationship" relationship="rootViewController" id="aUz-eq-77Z"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CIp-DW-AL1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1367" y="1878"/>
         </scene>
     </scenes>
     <resources>

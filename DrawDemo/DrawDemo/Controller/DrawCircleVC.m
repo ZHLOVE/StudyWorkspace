@@ -43,42 +43,47 @@
  */
 - (void)drawCircle
 {
-    NSInteger duplicateCount = 30;
     CGFloat smallCircleSize = 10;
-    CGFloat starttX = self.contentView.bounds.size.width/2 - smallCircleSize/2;
+    CGFloat duration = 2;
+    CGFloat layerWidth = self.contentView.bounds.size.width*0.5;
+    CGRect fromRect = CGRectMake(0, 0, 0, 0);
+    CGRect toRect = CGRectMake(0, 0, smallCircleSize, smallCircleSize);
+    NSInteger duplicateCount = 20;
+    CGFloat angle = M_PI * 2 / duplicateCount;
     
+    //每个小圆圈
     CALayer *circleLayer = [CALayer layer];
     circleLayer.backgroundColor = [UIColor redColor].CGColor;
-    circleLayer.bounds = CGRectMake(0, 0, 0, 0);
-    circleLayer.position = CGPointMake(starttX, smallCircleSize);
+    circleLayer.bounds = fromRect;
+    circleLayer.position = CGPointMake((layerWidth-smallCircleSize)/2, smallCircleSize);
     circleLayer.cornerRadius = smallCircleSize/2;
     circleLayer.masksToBounds = YES;
     self.circleLayer = circleLayer;
     
-    CGFloat duration = 2;
-    CGRect fromRect = CGRectMake(0, 0, 0, 0);
-    CGRect toRect = CGRectMake(0, 0, smallCircleSize, smallCircleSize);
+    //复制图层
+    CAReplicatorLayer *replicatorLayer = [CAReplicatorLayer layer];
+    replicatorLayer.bounds = CGRectMake(0, 0, layerWidth, layerWidth);
+    replicatorLayer.position = CGPointMake(layerWidth, layerWidth);
+    replicatorLayer.instanceCount = duplicateCount;
+    replicatorLayer.instanceTransform = CATransform3DMakeRotation(angle, 0, 0, 1);
+    replicatorLayer.instanceDelay = duration / duplicateCount;
+    self.replicatorLayer = replicatorLayer;
     
+    //给复制图层添加子图层
+    [replicatorLayer addSublayer:circleLayer];
+    //把复制图层显示到contentView视图上
+    [self.contentView.layer addSublayer:replicatorLayer];
+
+    //给复制的每个小圆圈添加缩放动画
     CABasicAnimation *anima = [CABasicAnimation animation];
     anima.keyPath = @"bounds";
     anima.fromValue = [NSValue valueWithCGRect:fromRect];
     anima.toValue = [NSValue valueWithCGRect:toRect];
     anima.duration = duration;
     anima.repeatCount = MAXFLOAT;
+    anima.removedOnCompletion = NO;
+    anima.fillMode = kCAFillModeForwards;
     [circleLayer addAnimation:anima forKey:@"circleAnima"];
-    
-    CAReplicatorLayer *replicatorLayer = [CAReplicatorLayer layer];
-    replicatorLayer.frame = self.contentView.bounds;
-    [replicatorLayer addSublayer:circleLayer];
-    
-    CGFloat angle = M_PI * 2 / duplicateCount;
-    
-    replicatorLayer.instanceCount = duplicateCount;
-    replicatorLayer.instanceTransform = CATransform3DMakeRotation(angle, 0, 0, 1);
-    replicatorLayer.instanceDelay = duration / duplicateCount;
-    
-    [self.contentView.layer addSublayer:replicatorLayer];
-    self.replicatorLayer = replicatorLayer;
 }
 
 /*
