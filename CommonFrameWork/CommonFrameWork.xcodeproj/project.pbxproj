@@ -13,6 +13,8 @@
 		A30693581E1EAB7B0023DE5E /* NSObject+NeverCrash.m in Sources */ = {isa = PBXBuildFile; fileRef = A30693561E1EAB7B0023DE5E /* NSObject+NeverCrash.m */; };
 		A3FC95E91E2FA688001EA205 /* UINavigationController+OKExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = A3FC95E71E2FA688001EA205 /* UINavigationController+OKExtension.h */; };
 		A3FC95EA1E2FA688001EA205 /* UINavigationController+OKExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = A3FC95E81E2FA688001EA205 /* UINavigationController+OKExtension.m */; };
+		A3FF70561EE45B1C00F59FA5 /* UITabBarController+OKSliderApp.h in Headers */ = {isa = PBXBuildFile; fileRef = A3FF70541EE45B1C00F59FA5 /* UITabBarController+OKSliderApp.h */; };
+		A3FF70571EE45B1C00F59FA5 /* UITabBarController+OKSliderApp.m in Sources */ = {isa = PBXBuildFile; fileRef = A3FF70551EE45B1C00F59FA5 /* UITabBarController+OKSliderApp.m */; };
 		B50310AB1E1E5CB200C11EC4 /* CommonFrameWork.h in Headers */ = {isa = PBXBuildFile; fileRef = B50310A91E1E5CB200C11EC4 /* CommonFrameWork.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B50311341E1E607F00C11EC4 /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = B50310BB1E1E607F00C11EC4 /* Foundation+Log.m */; };
 		B50311351E1E607F00C11EC4 /* GTMBase64.h in Headers */ = {isa = PBXBuildFile; fileRef = B50310BC1E1E607F00C11EC4 /* GTMBase64.h */; };
@@ -166,6 +168,8 @@
 		A30693561E1EAB7B0023DE5E /* NSObject+NeverCrash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+NeverCrash.m"; sourceTree = "<group>"; };
 		A3FC95E71E2FA688001EA205 /* UINavigationController+OKExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+OKExtension.h"; sourceTree = "<group>"; };
 		A3FC95E81E2FA688001EA205 /* UINavigationController+OKExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+OKExtension.m"; sourceTree = "<group>"; };
+		A3FF70541EE45B1C00F59FA5 /* UITabBarController+OKSliderApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBarController+OKSliderApp.h"; sourceTree = "<group>"; };
+		A3FF70551EE45B1C00F59FA5 /* UITabBarController+OKSliderApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBarController+OKSliderApp.m"; sourceTree = "<group>"; };
 		B50310A61E1E5CB200C11EC4 /* CommonFrameWork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CommonFrameWork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B50310A91E1E5CB200C11EC4 /* CommonFrameWork.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonFrameWork.h; sourceTree = "<group>"; };
 		B50310AA1E1E5CB200C11EC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -431,6 +435,8 @@
 				A3FC95E81E2FA688001EA205 /* UINavigationController+OKExtension.m */,
 				B584C84B1E31E62900CB6C81 /* UIViewController+OKExtension.h */,
 				B584C84C1E31E62900CB6C81 /* UIViewController+OKExtension.m */,
+				A3FF70541EE45B1C00F59FA5 /* UITabBarController+OKSliderApp.h */,
+				A3FF70551EE45B1C00F59FA5 /* UITabBarController+OKSliderApp.m */,
 				B57AB38B1E65151100F76D7C /* NSObject+OKPrintModelProperty.h */,
 				B57AB38C1E65151100F76D7C /* NSObject+OKPrintModelProperty.m */,
 			);
@@ -705,6 +711,7 @@
 				B50311651E1E607F00C11EC4 /* OKActionSheetView.h in Headers */,
 				B584C7B31E31BAD500CB6C81 /* OKFrameDefiner.h in Headers */,
 				B5877F281ECB07DD00A3A521 /* NSAttributedString+OKExtension.h in Headers */,
+				A3FF70561EE45B1C00F59FA5 /* UITabBarController+OKSliderApp.h in Headers */,
 				B5877F241ECB070C00A3A521 /* OKAlertView.h in Headers */,
 				B584C7BB1E31BD7F00CB6C81 /* OKUtils.h in Headers */,
 				B584C82C1E31BEC000CB6C81 /* ZLPhotoAssets.h in Headers */,
@@ -873,6 +880,7 @@
 				B503114A1E1E607F00C11EC4 /* NSString+OKExtention.m in Sources */,
 				B5877F1D1ECB013000A3A521 /* UILabel+OKShortcut.m in Sources */,
 				B584C7B61E31BAD500CB6C81 /* OKPublicConst.m in Sources */,
+				A3FF70571EE45B1C00F59FA5 /* UITabBarController+OKSliderApp.m in Sources */,
 				B584C8181E31BEC000CB6C81 /* UIImage+ZLPhotoLib.m in Sources */,
 				B5E8BD301E2F55DD00D0F73D /* OKReachabilityManager.m in Sources */,
 				B50311391E1E607F00C11EC4 /* NSArray+OKExtention.m in Sources */,

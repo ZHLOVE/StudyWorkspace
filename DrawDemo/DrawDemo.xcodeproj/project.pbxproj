@@ -12,6 +12,9 @@
 		A3FF70451EE3147D00F59FA5 /* DrawCircleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A3FF70441EE3147D00F59FA5 /* DrawCircleVC.m */; };
 		A3FF70481EE3D45200F59FA5 /* DrawCGPathVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A3FF70471EE3D45200F59FA5 /* DrawCGPathVC.m */; };
 		A3FF704B1EE3E5EA00F59FA5 /* DrawPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = A3FF704A1EE3E5EA00F59FA5 /* DrawPathView.m */; };
+		A3FF704E1EE4417B00F59FA5 /* DrawTabBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A3FF704D1EE4417B00F59FA5 /* DrawTabBarVC.m */; };
+		A3FF70521EE442B100F59FA5 /* DrawAppLeftVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A3FF70501EE442B100F59FA5 /* DrawAppLeftVC.m */; };
+		A3FF70531EE442B100F59FA5 /* DrawAppLeftVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3FF70511EE442B100F59FA5 /* DrawAppLeftVC.xib */; };
 		B53E3ADA1EE10F4F00F538AF /* DrawThirdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B53E3ACC1EE10F4F00F538AF /* DrawThirdVC.m */; };
 		B53E3ADC1EE10F4F00F538AF /* DrawFirstVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B53E3ACF1EE10F4F00F538AF /* DrawFirstVC.m */; };
 		B53E3ADD1EE10F4F00F538AF /* DrawSecondVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B53E3AD11EE10F4F00F538AF /* DrawSecondVC.m */; };
@@ -53,6 +56,11 @@
 		A3FF70471EE3D45200F59FA5 /* DrawCGPathVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawCGPathVC.m; sourceTree = "<group>"; };
 		A3FF70491EE3E5EA00F59FA5 /* DrawPathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawPathView.h; sourceTree = "<group>"; };
 		A3FF704A1EE3E5EA00F59FA5 /* DrawPathView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawPathView.m; sourceTree = "<group>"; };
+		A3FF704C1EE4417B00F59FA5 /* DrawTabBarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawTabBarVC.h; sourceTree = "<group>"; };
+		A3FF704D1EE4417B00F59FA5 /* DrawTabBarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawTabBarVC.m; sourceTree = "<group>"; };
+		A3FF704F1EE442B100F59FA5 /* DrawAppLeftVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawAppLeftVC.h; sourceTree = "<group>"; };
+		A3FF70501EE442B100F59FA5 /* DrawAppLeftVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawAppLeftVC.m; sourceTree = "<group>"; };
+		A3FF70511EE442B100F59FA5 /* DrawAppLeftVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DrawAppLeftVC.xib; sourceTree = "<group>"; };
 		B53E3ACB1EE10F4F00F538AF /* DrawThirdVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawThirdVC.h; sourceTree = "<group>"; };
 		B53E3ACC1EE10F4F00F538AF /* DrawThirdVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawThirdVC.m; sourceTree = "<group>"; };
 		B53E3ACE1EE10F4F00F538AF /* DrawFirstVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawFirstVC.h; sourceTree = "<group>"; };
@@ -101,6 +109,11 @@
 		B53E3ACA1EE10F4F00F538AF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				A3FF704C1EE4417B00F59FA5 /* DrawTabBarVC.h */,
+				A3FF704D1EE4417B00F59FA5 /* DrawTabBarVC.m */,
+				A3FF704F1EE442B100F59FA5 /* DrawAppLeftVC.h */,
+				A3FF70501EE442B100F59FA5 /* DrawAppLeftVC.m */,
+				A3FF70511EE442B100F59FA5 /* DrawAppLeftVC.xib */,
 				B53E3ACE1EE10F4F00F538AF /* DrawFirstVC.h */,
 				B53E3ACF1EE10F4F00F538AF /* DrawFirstVC.m */,
 				B53E3AD01EE10F4F00F538AF /* DrawSecondVC.h */,
@@ -255,6 +268,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B57DEDD31E5D6BD900A8C678 /* LaunchScreen.storyboard in Resources */,
+				A3FF70531EE442B100F59FA5 /* DrawAppLeftVC.xib in Resources */,
 				B57DEDD01E5D6BD900A8C678 /* Assets.xcassets in Resources */,
 				B57DEDCE1E5D6BD900A8C678 /* Main.storyboard in Resources */,
 			);
@@ -317,6 +331,7 @@
 			files = (
 				B57DEDC81E5D6BD900A8C678 /* AppDelegate.m in Sources */,
 				B53E3AE01EE10F4F00F538AF /* LukeView.m in Sources */,
+				A3FF704E1EE4417B00F59FA5 /* DrawTabBarVC.m in Sources */,
 				B53E3ADC1EE10F4F00F538AF /* DrawFirstVC.m in Sources */,
 				A3FF704B1EE3E5EA00F59FA5 /* DrawPathView.m in Sources */,
 				B53E3ADF1EE10F4F00F538AF /* LukeLayer.m in Sources */,
@@ -327,6 +342,7 @@
 				B53E3ADE1EE10F4F00F538AF /* GJChartLineInfoView.m in Sources */,
 				A3FF70421EE22A9900F59FA5 /* DrawTransitionVC.m in Sources */,
 				B57DEDC51E5D6BD900A8C678 /* main.m in Sources */,
+				A3FF70521EE442B100F59FA5 /* DrawAppLeftVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
