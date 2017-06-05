@@ -64,6 +64,22 @@
 }
 
 /**
+ *  设置导航按右侧钮点击状态
+ */
+- (void)setNavRightBarItemEnable:(BOOL)enable titleColor:(UIColor *)color
+{
+    for (UIBarButtonItem *barItem in self.navigationItem.rightBarButtonItems) {
+        if (barItem.customView && [barItem.customView isKindOfClass:[UIButton class]]) {
+            UIButton *rightBtn = (UIButton *)barItem.customView;
+            rightBtn.enabled = enable;
+            [rightBtn setTitleColor:color forState:UIControlStateNormal];
+        } else {
+            barItem.enabled = enable;
+        }
+    }
+}
+
+/**
  *  返回到指定控制器
  */
 - (BOOL)shouldPopToCustomVC:(NSString *)classStr
@@ -251,7 +267,7 @@
                        withObject:(NSDictionary *)propertyDic
 {
     if (propertyDic && ![propertyDic isKindOfClass:[NSDictionary class]]) {
-        NSLog(@"页面push失败，控制器名称:%@,  携带属性字典:%@",vcName ,propertyDic);
+        NSLog(@"❌❌❌ 页面push失败，携带属性字典错误:%@",propertyDic);
         return;
     }
     UIViewController *tempVC = [[NSClassFromString(vcName) alloc] init];
@@ -291,7 +307,7 @@
             }
         }
     } else {
-        NSLog(@"页面push失败，控制器名称:%@,  携带属性字典:%@",vcName ,propertyDic);
+        NSLog(@"❌❌❌ 页面push失败，名称对应的控制器不存在: %@",vcName);
     }
 }
 
@@ -305,7 +321,7 @@
 - (void)pushToViewController:(NSString *)vcName propertyDic:(NSDictionary *)propertyDic
 {
     if (propertyDic && ![propertyDic isKindOfClass:[NSDictionary class]]) {
-        NSLog(@"❌❌❌ 页面push失败，控制器名称:%@,  携带属性字典:%@",vcName ,propertyDic);
+        NSLog(@"❌❌❌ 页面push失败，携带属性字典错误:%@",propertyDic);
         return;
     }
     UIViewController *pushVC = [[NSClassFromString(vcName) alloc] init];
@@ -320,7 +336,7 @@
             [self.navigationController pushViewController:pushVC animated:YES];
         }
     } else {
-        NSLog(@"❌❌❌ 页面push失败，控制器名称:%@,  携带属性字典:%@",vcName ,propertyDic);
+        NSLog(@"❌❌❌ 页面push失败，名称对应的控制器不存在: %@",vcName);
     }
 }
 
@@ -335,7 +351,7 @@
                   showTargetNav:(BOOL)showNavigation
 {
     if (propertyDic && ![propertyDic isKindOfClass:[NSDictionary class]]) {
-        NSLog(@"❌❌❌ 页面present失败，控制器名称:%@,  携带属性字典:%@",vcName ,propertyDic);
+        NSLog(@"❌❌❌ 页面push失败，携带属性字典错误:%@",propertyDic);
         return;
     }
     UIViewController *presentVC = [[NSClassFromString(vcName) alloc] init];
@@ -356,7 +372,7 @@
             [self presentViewController:presentVC animated:YES completion:nil];
         }
     } else {
-        NSLog(@"❌❌❌ 页面present失败，控制器名称:%@,  携带属性字典:%@",vcName ,propertyDic);
+        NSLog(@"❌❌❌ 页面push失败，名称对应的控制器不存在: %@",vcName);
     }
 }
 
@@ -368,20 +384,5 @@
     NSLog(@"❌❌❌ 警告:< %@ >: 类没有实现该属性: %@",[self class],key);
 }
 
-/**
- *  设置导航按右侧钮点击状态
- */
-- (void)setNavRightBarItemEnable:(BOOL)enable titleColor:(UIColor *)color
-{
-    for (UIBarButtonItem *barItem in self.navigationItem.rightBarButtonItems) {
-        if (barItem.customView && [barItem.customView isKindOfClass:[UIButton class]]) {
-            UIButton *rightBtn = (UIButton *)barItem.customView;
-            rightBtn.enabled = enable;
-            [rightBtn setTitleColor:color forState:UIControlStateNormal];
-        } else {
-            barItem.enabled = enable;
-        }
-    }
-}
 
 @end

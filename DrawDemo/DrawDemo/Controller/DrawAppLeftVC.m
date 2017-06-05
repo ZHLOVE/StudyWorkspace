@@ -8,6 +8,8 @@
 
 #import "DrawAppLeftVC.h"
 #import <OKPubilcKeyDefiner.h>
+#import <OKFrameDefiner.h>
+#import <UIView+OKExtension.h>
 #import <UIViewController+OKExtension.h>
 
 @interface DrawAppLeftVC ()
@@ -24,7 +26,7 @@
     
     self.plainTableView.tableHeaderView = headView;
     self.plainTableView.rowHeight = 80;
-    
+    self.plainTableView.height = Screen_Height;
     //要添加测试的VC
     [self setupTableData];
 }
@@ -37,7 +39,7 @@
     [self.tableDataArr addObjectsFromArray:@[@{@"DrawCoreAnimationVC":@"核心动画"},
                                              @{@"DrawCircleVC":@"画圈"},
                                              @{@"DrawQuartz2DVC":@"Quartz2D绘图"},
-                                             @{@"DrawChartVC":@"统计折线图"},
+                                             @{@"DrawChartVC":@"折线统计图"},
                                              @{@"DrawTransitionVC":@"百叶窗动画"},
                                              @{@"DrawCGPathVC":@"画笔涂鸦"},
                                              ]];
@@ -70,16 +72,20 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     //关闭侧滑视图
-    SEL selector = @selector(showAppSliderView:);
-    if ([self.tabBarController respondsToSelector:selector]) {
-        [self.tabBarController performSelector:selector withObject:@(NO)];
+    UITabBarController *tabBarVC = self.tabBarController;
+    SEL selector = NSSelectorFromString(@"showAppSliderView:");
+    if ([tabBarVC respondsToSelector:selector]) {
+        OKPerformSelectorLeakWarning(
+          [tabBarVC performSelector:selector withObject:@(NO)];
+        );
     }
     
-    UINavigationController *VCNav = self.tabBarController.viewControllers[self.tabBarController.selectedIndex];
+    UINavigationController *vcNav = tabBarVC.viewControllers[tabBarVC.selectedIndex];
+    vcNav.navigationBar.translucent = NO;//设置背景不透明
     
     NSDictionary *celLDic = [self.tableDataArr objectAtIndex:indexPath.row];
     NSString *className = celLDic.allKeys[0];
-    [VCNav pushToViewController:className propertyDic:@{@"title":className}];
+    [vcNav pushToViewController:className propertyDic:@{@"title":className}];
 }
 
 @end

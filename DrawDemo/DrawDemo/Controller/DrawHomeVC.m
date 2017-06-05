@@ -7,6 +7,7 @@
 //
 
 #import "DrawHomeVC.h"
+#import <OKFrameDefiner.h>
 #import <UIViewController+OKExtension.h>
 
 @interface DrawHomeVC ()
@@ -21,9 +22,9 @@
 }
 
 
-- (IBAction)buttonAction:(UIButton *)sender
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    [self pushToViewController:@"DrawFirstVC" propertyDic:@{@"title":@"核心动画"}];
+//    [self pushToViewController:@"DrawCoreAnimationVC" propertyDic:@{@"title":@"核心动画"}];
 }
 
 /*

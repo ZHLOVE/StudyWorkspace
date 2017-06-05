@@ -124,14 +124,14 @@
         self.tempView.transform = CGAffineTransformMakeRotation(M_PI);
         
         //平移
-        //        self.imageView3.transform = CGAffineTransformMakeTranslation(self.view.bounds.size.width-self.imageView3.bounds.size.width, 0);
+        //self.imageView3.transform = CGAffineTransformMakeTranslation(self.view.bounds.size.width-self.imageView3.bounds.size.width, 0);
         rect.origin.x = self.view.bounds.size.width-self.tempView.bounds.size.width;
         self.tempView.frame = rect;
         
     } completion:^(BOOL finished) {
         
         [UIView animateWithDuration:3 animations:^{
-            //            self.imageView3.transform = CGAffineTransformMakeTranslation(0, 0);
+            //self.imageView3.transform = CGAffineTransformMakeTranslation(0, 0);
             self.tempView.transform = CGAffineTransformMakeRotation(-M_PI * 2);
             rect.origin.x = 0;
             self.tempView.frame = rect;

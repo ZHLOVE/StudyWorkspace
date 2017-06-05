@@ -12,12 +12,13 @@
 
 /**
  * 初始化左侧侧滑视图
+ * 警告：此方法一定要在UITabBarController的 viewDidAppear方法中调用
  */
-- (void)setAppSliderVCWithName:(NSString *)VChName;
+- (BOOL)initAppSliderVCWithName:(NSString *)vcName;
 
 /**
  * 是否关闭侧滑视图
  */
-- (void)showAppSliderView:(BOOL)open;
+- (void)showAppSliderView:(NSNumber *)openFlag;
 
 @end

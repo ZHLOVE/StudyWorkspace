@@ -12,6 +12,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DrawCoreAnimationVC">
             <connections>
+                <outlet property="contentView" destination="OqO-wy-CzA" id="anM-PR-7hF"/>
+                <outlet property="imageView1" destination="sBB-Ip-ISY" id="Hzj-zZ-aY7"/>
+                <outlet property="imageView2" destination="U93-7G-VFO" id="HkV-mY-F3b"/>
                 <outlet property="view" destination="gfm-UP-oRy" id="mnA-24-1DA"/>
             </connections>
         </placeholder>
@@ -71,7 +74,7 @@
                         <action selector="buttonAction1:" destination="-1" eventType="touchUpInside" id="cRO-C1-SRE"/>
                     </connections>
                 </button>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RfC-Hd-RGd">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RfC-Hd-RGd" userLabel="line">
                     <rect key="frame" x="0.0" y="408" width="375" height="1"/>
                     <color key="backgroundColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>

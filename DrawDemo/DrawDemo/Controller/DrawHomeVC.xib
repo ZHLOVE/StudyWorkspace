@@ -19,18 +19,17 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vWQ-M2-o3n">
-                    <rect key="frame" x="172" y="318.5" width="31" height="30"/>
-                    <state key="normal" title="测试"/>
-                    <connections>
-                        <action selector="buttonAction:" destination="-1" eventType="touchUpInside" id="kWK-yd-THl"/>
-                    </connections>
-                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DrawDemo 学习笔记" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nnP-lu-Yb1">
+                    <rect key="frame" x="89" y="285.5" width="197" height="96"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                    <color key="textColor" red="0.54901960780000003" green="0.77647058820000003" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="vWQ-M2-o3n" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="8Hj-5M-qTs"/>
-                <constraint firstItem="vWQ-M2-o3n" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="V0c-SE-wgA"/>
+                <constraint firstItem="nnP-lu-Yb1" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="59t-ad-Q9z"/>
+                <constraint firstItem="nnP-lu-Yb1" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="YYK-AO-wK1"/>
             </constraints>
             <point key="canvasLocation" x="-556" y="21"/>
         </view>

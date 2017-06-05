@@ -7,13 +7,18 @@
 //
 
 #import "DrawTabBarVC.h"
-#import "UITabBarController+OKSliderApp.h"
 #import "UIViewController+OKExtension.h"
+#import <OKPubilcKeyDefiner.h>
 
-#define kVCNameKey              @"kVCNameKey"
-#define kVCTitleKey             @"kVCTitleKey"
-#define kVCNormoImageKey        @"kVCNormoImageKey"
-#define kVCSelectedImageKey     @"kVCSelectedImageKey"
+//显示侧滑控制器的方法
+#define kShowSliderViewMethodStr    @"showAppSliderView:"
+//初始化侧滑控制器的方法
+#define kInitSliderViewMethodStr    @"initAppSliderVCWithName:"
+
+#define kVCNameKey                  @"kVCNameKey"
+#define kVCTitleKey                 @"kVCTitleKey"
+#define kVCNormoImageKey            @"kVCNormoImageKey"
+#define kVCSelectedImageKey         @"kVCSelectedImageKey"
 
 @interface DrawTabBarVC ()<UIGestureRecognizerDelegate>
 
@@ -32,11 +37,8 @@
 {
     [super viewDidAppear:animated];
     
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        //添加边缘侧滑手势控制器
-        [self setAppSliderVCWithName:@"DrawAppLeftVC"];
-    });
+    //初始化左侧侧滑视图
+    [self initAppSliderVC];
 }
 
 /**
@@ -49,10 +51,10 @@
                            kVCNormoImageKey:@"tab_1",
                            kVCSelectedImageKey:@"tab_1"},
                          
-                         @{kVCNameKey:@"DrawHomeVC",
+                         /*@{kVCNameKey:@"UIViewController",
                            kVCTitleKey:@"我的",
                            kVCNormoImageKey:@"tab_2",
-                           kVCSelectedImageKey:@"tab_2"},];
+                           kVCSelectedImageKey:@"tab_2"},*/];
     //添加子控制器
     for (NSDictionary *infoDic in infoArr) {
         [self addTabBarChildVCWithName:infoDic[kVCNameKey]
@@ -63,6 +65,8 @@
     
     //设置tabBar选中颜色
     self.tabBar.tintColor = [UIColor orangeColor];
+    //设置背景不透明
+    self.tabBar.translucent = NO;
 }
 
 /**
@@ -75,6 +79,7 @@
 {
     UIViewController *vc = [[NSClassFromString(vcName) alloc] init];
     UINavigationController *nav = [[NSClassFromString(@"OKBaseNavigationVC") alloc] initWithRootViewController:vc];
+    nav.navigationBar.translucent = NO;//设置背景不透明
     vc.edgesForExtendedLayout = UIRectEdgeNone;
     vc.navigationItem.title = navTitle;
     vc.tabBarItem = [[UITabBarItem alloc] initWithTitle:navTitle
@@ -86,15 +91,39 @@
     [vc addLeftBarButtonItem:[UIImage imageNamed:@"tab_3"]
                    highImage:[UIImage imageNamed:@"tab_3"]
                       target:self
-                    selector:@selector(showAppSliderView)];
+                    selector:@selector(leftNavAction)];
 }
 
 /**
- * 显示侧滑
+ * 是否关闭侧滑视图
  */
-- (void)showAppSliderView
+- (void)leftNavAction
 {
-    [self showAppSliderView:YES];
+    SEL selector = NSSelectorFromString(kShowSliderViewMethodStr);
+    if ([self respondsToSelector:selector]) {
+        OKPerformSelectorLeakWarning(
+                                     //参数YES: 打开侧滑视图
+                                     [self performSelector:selector withObject:@(YES)];
+                                     );
+    }
+}
+
+/**
+ * 初始化左侧侧滑视图
+ */
+- (void)initAppSliderVC
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        SEL selector = NSSelectorFromString(kInitSliderViewMethodStr);
+        if ([self respondsToSelector:selector]) {
+            NSLog(@"初始化:此Block只需走一次");
+            OKPerformSelectorLeakWarning(
+                                         //DrawAppLeftVC：需要侧滑的控制器名称
+                                         [self performSelector:selector withObject:@"DrawAppLeftVC"];
+                                         );
+        }
+    });
 }
 
 @end

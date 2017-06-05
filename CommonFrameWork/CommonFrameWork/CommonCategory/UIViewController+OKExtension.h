@@ -45,6 +45,11 @@
 - (void)setRightBarItemEnable:(BOOL)enable;
 
 /**
+ *  设置导航按右侧钮点击状态
+ */
+- (void)setNavRightBarItemEnable:(BOOL)enable titleColor:(UIColor *)color;
+
+/**
  *  返回到指定控制器
  */
 - (BOOL)shouldPopToCustomVC:(NSString *)classStr;
@@ -104,10 +109,5 @@
 - (void)presentToViewController:(NSString *)vcName
                      withObject:(NSDictionary *)propertyDic
                   showTargetNav:(BOOL)showNavigation;
-
-/**
- *  设置导航按右侧钮点击状态
- */
-- (void)setNavRightBarItemEnable:(BOOL)enable titleColor:(UIColor *)color;
 
 @end

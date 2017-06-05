@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DrawCircleVC">
             <connections>
+                <outlet property="contentView" destination="QVK-Tw-7Jd" id="Zc4-Rp-bGM"/>
                 <outlet property="view" destination="gaR-HV-Yym" id="PCs-l1-40S"/>
             </connections>
         </placeholder>
