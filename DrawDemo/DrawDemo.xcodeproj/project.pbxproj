@@ -20,6 +20,15 @@
 		B57DEDCE1E5D6BD900A8C678 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B57DEDCC1E5D6BD900A8C678 /* Main.storyboard */; };
 		B57DEDD01E5D6BD900A8C678 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B57DEDCF1E5D6BD900A8C678 /* Assets.xcassets */; };
 		B57DEDD31E5D6BD900A8C678 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B57DEDD11E5D6BD900A8C678 /* LaunchScreen.storyboard */; };
+		B5BBC7651EE4F25D007C8D48 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC7641EE4F25D007C8D48 /* AppDelegate.m */; };
+		B5BBC7671EE4F276007C8D48 /* DrawFirstVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC7661EE4F276007C8D48 /* DrawFirstVC.m */; };
+		B5BBC7691EE4F282007C8D48 /* DrawThirdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC7681EE4F282007C8D48 /* DrawThirdVC.m */; };
+		B5BBC76E1EE4F2A1007C8D48 /* DrawCGPathVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC76B1EE4F2A1007C8D48 /* DrawCGPathVC.m */; };
+		B5BBC76F1EE4F2A1007C8D48 /* DrawCircleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC76D1EE4F2A1007C8D48 /* DrawCircleVC.m */; };
+		B5BBC7751EE4F2B4007C8D48 /* DrawAppLeftVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC7711EE4F2B4007C8D48 /* DrawAppLeftVC.m */; };
+		B5BBC7761EE4F2B4007C8D48 /* DrawAppLeftVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BBC7721EE4F2B4007C8D48 /* DrawAppLeftVC.xib */; };
+		B5BBC7771EE4F2B4007C8D48 /* DrawTabBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC7741EE4F2B4007C8D48 /* DrawTabBarVC.m */; };
+		B5BBC77A1EE4F356007C8D48 /* UITabBarController+OKSliderApp.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC7791EE4F356007C8D48 /* UITabBarController+OKSliderApp.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -62,6 +71,20 @@
 		B57DEDCF1E5D6BD900A8C678 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B57DEDD21E5D6BD900A8C678 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B57DEDD41E5D6BD900A8C678 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B5BBC7641EE4F25D007C8D48 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B5BBC7661EE4F276007C8D48 /* DrawFirstVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawFirstVC.m; sourceTree = "<group>"; };
+		B5BBC7681EE4F282007C8D48 /* DrawThirdVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawThirdVC.m; sourceTree = "<group>"; };
+		B5BBC76A1EE4F2A1007C8D48 /* DrawCGPathVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawCGPathVC.h; sourceTree = "<group>"; };
+		B5BBC76B1EE4F2A1007C8D48 /* DrawCGPathVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawCGPathVC.m; sourceTree = "<group>"; };
+		B5BBC76C1EE4F2A1007C8D48 /* DrawCircleVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawCircleVC.h; sourceTree = "<group>"; };
+		B5BBC76D1EE4F2A1007C8D48 /* DrawCircleVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawCircleVC.m; sourceTree = "<group>"; };
+		B5BBC7701EE4F2B4007C8D48 /* DrawAppLeftVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawAppLeftVC.h; sourceTree = "<group>"; };
+		B5BBC7711EE4F2B4007C8D48 /* DrawAppLeftVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawAppLeftVC.m; sourceTree = "<group>"; };
+		B5BBC7721EE4F2B4007C8D48 /* DrawAppLeftVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DrawAppLeftVC.xib; sourceTree = "<group>"; };
+		B5BBC7731EE4F2B4007C8D48 /* DrawTabBarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawTabBarVC.h; sourceTree = "<group>"; };
+		B5BBC7741EE4F2B4007C8D48 /* DrawTabBarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawTabBarVC.m; sourceTree = "<group>"; };
+		B5BBC7781EE4F356007C8D48 /* UITabBarController+OKSliderApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBarController+OKSliderApp.h"; sourceTree = "<group>"; };
+		B5BBC7791EE4F356007C8D48 /* UITabBarController+OKSliderApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBarController+OKSliderApp.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,12 +112,25 @@
 		B53E3ACA1EE10F4F00F538AF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B5BBC7701EE4F2B4007C8D48 /* DrawAppLeftVC.h */,
+				B5BBC7711EE4F2B4007C8D48 /* DrawAppLeftVC.m */,
+				B5BBC7721EE4F2B4007C8D48 /* DrawAppLeftVC.xib */,
+				B5BBC7731EE4F2B4007C8D48 /* DrawTabBarVC.h */,
+				B5BBC7741EE4F2B4007C8D48 /* DrawTabBarVC.m */,
 				B53E3ACE1EE10F4F00F538AF /* DrawFirstVC.h */,
+				B5BBC7661EE4F276007C8D48 /* DrawFirstVC.m */,
 				B53E3AD01EE10F4F00F538AF /* DrawSecondVC.h */,
 				B53E3AD11EE10F4F00F538AF /* DrawSecondVC.m */,
 				B53E3ACB1EE10F4F00F538AF /* DrawThirdVC.h */,
+				B5BBC7681EE4F282007C8D48 /* DrawThirdVC.m */,
 				A3FF70401EE22A9900F59FA5 /* DrawTransitionVC.h */,
 				A3FF70411EE22A9900F59FA5 /* DrawTransitionVC.m */,
+				B5BBC76A1EE4F2A1007C8D48 /* DrawCGPathVC.h */,
+				B5BBC76B1EE4F2A1007C8D48 /* DrawCGPathVC.m */,
+				B5BBC76C1EE4F2A1007C8D48 /* DrawCircleVC.h */,
+				B5BBC76D1EE4F2A1007C8D48 /* DrawCircleVC.m */,
+				B5BBC7781EE4F356007C8D48 /* UITabBarController+OKSliderApp.h */,
+				B5BBC7791EE4F356007C8D48 /* UITabBarController+OKSliderApp.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -143,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				B57DEDC61E5D6BD900A8C678 /* AppDelegate.h */,
+				B5BBC7641EE4F25D007C8D48 /* AppDelegate.m */,
 				B53E3ACA1EE10F4F00F538AF /* Controller */,
 				B53E3AD21EE10F4F00F538AF /* Model */,
 				B53E3AD31EE10F4F00F538AF /* View */,
@@ -236,6 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B57DEDD31E5D6BD900A8C678 /* LaunchScreen.storyboard in Resources */,
+				B5BBC7761EE4F2B4007C8D48 /* DrawAppLeftVC.xib in Resources */,
 				B57DEDD01E5D6BD900A8C678 /* Assets.xcassets in Resources */,
 				B57DEDCE1E5D6BD900A8C678 /* Main.storyboard in Resources */,
 			);
@@ -296,12 +334,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5BBC7751EE4F2B4007C8D48 /* DrawAppLeftVC.m in Sources */,
 				B53E3AE01EE10F4F00F538AF /* LukeView.m in Sources */,
 				A3FF704B1EE3E5EA00F59FA5 /* DrawPathView.m in Sources */,
+				B5BBC76F1EE4F2A1007C8D48 /* DrawCircleVC.m in Sources */,
 				B53E3ADF1EE10F4F00F538AF /* LukeLayer.m in Sources */,
 				B53E3ADD1EE10F4F00F538AF /* DrawSecondVC.m in Sources */,
+				B5BBC7771EE4F2B4007C8D48 /* DrawTabBarVC.m in Sources */,
+				B5BBC77A1EE4F356007C8D48 /* UITabBarController+OKSliderApp.m in Sources */,
+				B5BBC7691EE4F282007C8D48 /* DrawThirdVC.m in Sources */,
+				B5BBC7651EE4F25D007C8D48 /* AppDelegate.m in Sources */,
 				B53E3ADE1EE10F4F00F538AF /* GJChartLineInfoView.m in Sources */,
+				B5BBC76E1EE4F2A1007C8D48 /* DrawCGPathVC.m in Sources */,
 				A3FF70421EE22A9900F59FA5 /* DrawTransitionVC.m in Sources */,
+				B5BBC7671EE4F276007C8D48 /* DrawFirstVC.m in Sources */,
 				B57DEDC51E5D6BD900A8C678 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
