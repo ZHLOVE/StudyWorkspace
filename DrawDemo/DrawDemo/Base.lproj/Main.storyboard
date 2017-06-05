@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BJt-jh-Ks3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BJt-jh-Ks3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -110,7 +110,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1062" y="-340"/>
+            <point key="canvasLocation" x="1095" y="-1015"/>
         </scene>
         <!--Quartz2D绘图-->
         <scene sceneID="RaY-dt-vDd">
@@ -146,7 +146,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Q4-Fl-VjQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1062" y="394"/>
+            <point key="canvasLocation" x="1094" y="-322"/>
         </scene>
         <!--绘图示例-->
         <scene sceneID="EXd-z5-Qiy">
@@ -187,7 +187,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7qd-an-nzM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1062" y="1091"/>
+            <point key="canvasLocation" x="1094" y="418"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="OyI-iB-B6x">
@@ -214,7 +214,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kmo-P6-gCh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-703" y="762"/>
+            <point key="canvasLocation" x="-678" y="631"/>
         </scene>
         <!--动画-->
         <scene sceneID="04M-yH-Q2e">
@@ -233,7 +233,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hgs-vv-Czj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="222" y="-340"/>
+            <point key="canvasLocation" x="185" y="-1015"/>
         </scene>
         <!--绘图-->
         <scene sceneID="Jhj-yE-S7q">
@@ -252,7 +252,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BtX-Jv-hbJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="222" y="394"/>
+            <point key="canvasLocation" x="185" y="-321"/>
         </scene>
         <!--转场动画-->
         <scene sceneID="LzC-Wr-eZq">
@@ -284,7 +284,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nea-tD-59w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2000.8" y="1810.344827586207"/>
+            <point key="canvasLocation" x="1094" y="1176"/>
         </scene>
         <!--画圈-->
         <scene sceneID="hCc-Aj-4f8">
@@ -329,7 +329,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JDe-Iv-1Iz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2000.8" y="2514.6926536731635"/>
+            <point key="canvasLocation" x="1094" y="1916"/>
         </scene>
         <!--示例-->
         <scene sceneID="lHI-q5-nAn">
@@ -348,7 +348,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QcH-Ag-6JE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="222" y="1072"/>
+            <point key="canvasLocation" x="185" y="418"/>
         </scene>
         <!--画笔涂鸦-->
         <scene sceneID="4ep-Np-dLZ">
@@ -377,7 +377,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WEu-y9-zFI">
-                                <rect key="frame" x="216" y="93" width="62" height="30"/>
+                                <rect key="frame" x="217" y="93" width="62" height="30"/>
                                 <state key="normal" title="重新涂鸦"/>
                                 <connections>
                                     <action selector="afreshDrawPath:" destination="IRI-J0-LG5" eventType="touchUpInside" id="Afx-WF-Mfl"/>
@@ -388,7 +388,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="dwW-XK-dV8" firstAttribute="leading" secondItem="SRB-mT-Sh0" secondAttribute="trailing" constant="24" id="Fmi-jg-fSe"/>
-                            <constraint firstItem="WEu-y9-zFI" firstAttribute="leading" secondItem="dwW-XK-dV8" secondAttribute="trailing" constant="34" id="ROY-3Y-eVZ"/>
+                            <constraint firstItem="WEu-y9-zFI" firstAttribute="leading" secondItem="dwW-XK-dV8" secondAttribute="trailing" constant="35" id="ROY-3Y-eVZ"/>
                             <constraint firstItem="WEu-y9-zFI" firstAttribute="top" secondItem="SRB-mT-Sh0" secondAttribute="top" id="heF-oZ-cT9"/>
                             <constraint firstItem="dwW-XK-dV8" firstAttribute="top" secondItem="SRB-mT-Sh0" secondAttribute="top" id="ivg-9S-Ler"/>
                             <constraint firstItem="SRB-mT-Sh0" firstAttribute="leading" secondItem="2qC-7s-CKg" secondAttribute="leadingMargin" constant="18" id="mQO-1J-9ZW"/>
@@ -418,7 +418,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AlA-DJ-OpP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1160.8" y="1809.4452773613195"/>
+            <point key="canvasLocation" x="185" y="1177"/>
         </scene>
         <!--画圈-->
         <scene sceneID="uLs-Uz-rWW">
@@ -437,7 +437,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="toU-sf-qNh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1160.8" y="2514.6926536731635"/>
+            <point key="canvasLocation" x="185" y="1916"/>
         </scene>
         <!--涂鸦-->
         <scene sceneID="Xib-Bp-As8">
