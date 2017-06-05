@@ -10,6 +10,14 @@
 
 @interface UITabBarController (OKSliderApp)
 
-- (void)setSliderLeftVCWithName:(NSString *)VChName;
+/**
+ * 初始化左侧侧滑视图
+ */
+- (void)setAppSliderVCWithName:(NSString *)VChName;
+
+/**
+ * 是否关闭侧滑视图
+ */
+- (void)showAppSliderView:(BOOL)open;
 
 @end

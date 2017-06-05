@@ -11,6 +11,7 @@
 #import "OKPubilcKeyDefiner.h"
 #import "UIViewController+OKExtension.h"
 #import "OKAlertView.h"
+#import "OKCFunction.h"
 
 @interface OKBaseNavigationVC ()
 
@@ -48,16 +49,17 @@
 {
     //设置返回按钮
     if ( self.viewControllers.count > 0) {
-        UIImage *barImage = ImageNamed(@"backBarButtonItemImage");
+        UIImage *backImage = [UIImage imageNamed:@"commonImage.bundle/backBarButtonItemImage" inBundle:[NSBundle bundleForClass:NSClassFromString(@"OKBaseNavigationVC")] compatibleWithTraitCollection:nil];
+        
         SEL selector = NSSelectorFromString(@"backBtnClick:");
         
         if ([viewController respondsToSelector:selector]) {
-            [viewController addLeftBarButtonItem:barImage
+            [viewController addLeftBarButtonItem:backImage
                                        highImage:nil
                                           target:viewController
                                         selector:selector];
         } else {
-            [viewController addLeftBarButtonItem:barImage
+            [viewController addLeftBarButtonItem:backImage
                                        highImage:nil
                                           target:self
                                         selector:@selector(popViewControllerAnimated:)];

@@ -8,27 +8,33 @@
 
 /* Begin PBXBuildFile section */
 		1C9C6027889BDED5F0455C07 /* libPods-DrawDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C35A717962B80F485D66E8D /* libPods-DrawDemo.a */; };
-		A3FF70421EE22A9900F59FA5 /* DrawTransitionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A3FF70411EE22A9900F59FA5 /* DrawTransitionVC.m */; };
 		A3FF704B1EE3E5EA00F59FA5 /* DrawPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = A3FF704A1EE3E5EA00F59FA5 /* DrawPathView.m */; };
-		B53E3ADD1EE10F4F00F538AF /* DrawSecondVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B53E3AD11EE10F4F00F538AF /* DrawSecondVC.m */; };
 		B53E3ADE1EE10F4F00F538AF /* GJChartLineInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = B53E3AD51EE10F4F00F538AF /* GJChartLineInfoView.m */; };
 		B53E3ADF1EE10F4F00F538AF /* LukeLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B53E3AD71EE10F4F00F538AF /* LukeLayer.m */; };
 		B53E3AE01EE10F4F00F538AF /* LukeView.m in Sources */ = {isa = PBXBuildFile; fileRef = B53E3AD91EE10F4F00F538AF /* LukeView.m */; };
 		B53E3AE21EE110F900F538AF /* CommonFrameWork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B53E3AE11EE110F900F538AF /* CommonFrameWork.framework */; };
 		B53E3AE31EE110F900F538AF /* CommonFrameWork.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B53E3AE11EE110F900F538AF /* CommonFrameWork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B57DEDC51E5D6BD900A8C678 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B57DEDC41E5D6BD900A8C678 /* main.m */; };
-		B57DEDCE1E5D6BD900A8C678 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B57DEDCC1E5D6BD900A8C678 /* Main.storyboard */; };
 		B57DEDD01E5D6BD900A8C678 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B57DEDCF1E5D6BD900A8C678 /* Assets.xcassets */; };
 		B57DEDD31E5D6BD900A8C678 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B57DEDD11E5D6BD900A8C678 /* LaunchScreen.storyboard */; };
 		B5BBC7651EE4F25D007C8D48 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC7641EE4F25D007C8D48 /* AppDelegate.m */; };
-		B5BBC7671EE4F276007C8D48 /* DrawFirstVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC7661EE4F276007C8D48 /* DrawFirstVC.m */; };
-		B5BBC7691EE4F282007C8D48 /* DrawThirdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC7681EE4F282007C8D48 /* DrawThirdVC.m */; };
-		B5BBC76E1EE4F2A1007C8D48 /* DrawCGPathVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC76B1EE4F2A1007C8D48 /* DrawCGPathVC.m */; };
-		B5BBC76F1EE4F2A1007C8D48 /* DrawCircleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC76D1EE4F2A1007C8D48 /* DrawCircleVC.m */; };
 		B5BBC7751EE4F2B4007C8D48 /* DrawAppLeftVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC7711EE4F2B4007C8D48 /* DrawAppLeftVC.m */; };
 		B5BBC7761EE4F2B4007C8D48 /* DrawAppLeftVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BBC7721EE4F2B4007C8D48 /* DrawAppLeftVC.xib */; };
 		B5BBC7771EE4F2B4007C8D48 /* DrawTabBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC7741EE4F2B4007C8D48 /* DrawTabBarVC.m */; };
-		B5BBC77A1EE4F356007C8D48 /* UITabBarController+OKSliderApp.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC7791EE4F356007C8D48 /* UITabBarController+OKSliderApp.m */; };
+		B5BBC77E1EE5073A007C8D48 /* DrawHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC77C1EE5073A007C8D48 /* DrawHomeVC.m */; };
+		B5BBC77F1EE5073A007C8D48 /* DrawHomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BBC77D1EE5073A007C8D48 /* DrawHomeVC.xib */; };
+		B5BBC78D1EE50878007C8D48 /* DrawCGPathVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC7821EE50878007C8D48 /* DrawCGPathVC.m */; };
+		B5BBC78E1EE50878007C8D48 /* DrawCircleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC7841EE50878007C8D48 /* DrawCircleVC.m */; };
+		B5BBC78F1EE50878007C8D48 /* DrawFirstVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC7861EE50878007C8D48 /* DrawFirstVC.m */; };
+		B5BBC7901EE50878007C8D48 /* DrawSecondVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC7881EE50878007C8D48 /* DrawSecondVC.m */; };
+		B5BBC7911EE50878007C8D48 /* DrawThirdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC78A1EE50878007C8D48 /* DrawThirdVC.m */; };
+		B5BBC7921EE50878007C8D48 /* DrawTransitionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC78C1EE50878007C8D48 /* DrawTransitionVC.m */; };
+		B5BBC7981EE524CA007C8D48 /* DrawFirstVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BBC7971EE524CA007C8D48 /* DrawFirstVC.xib */; };
+		B5BBC79A1EE5258E007C8D48 /* DrawSecondVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BBC7991EE5258E007C8D48 /* DrawSecondVC.xib */; };
+		B5BBC79C1EE525A1007C8D48 /* DrawCGPathVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BBC79B1EE525A1007C8D48 /* DrawCGPathVC.xib */; };
+		B5BBC79E1EE525A9007C8D48 /* DrawCircleVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BBC79D1EE525A9007C8D48 /* DrawCircleVC.xib */; };
+		B5BBC7A01EE525B5007C8D48 /* DrawThirdVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BBC79F1EE525B5007C8D48 /* DrawThirdVC.xib */; };
+		B5BBC7A21EE525C2007C8D48 /* DrawTransitionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BBC7A11EE525C2007C8D48 /* DrawTransitionVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -49,14 +55,8 @@
 		4C35A717962B80F485D66E8D /* libPods-DrawDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DrawDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C9753787A55B7F2E027A9AB /* Pods-DrawDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrawDemo.release.xcconfig"; path = "../Pods/Target Support Files/Pods-DrawDemo/Pods-DrawDemo.release.xcconfig"; sourceTree = "<group>"; };
 		8DDDC3F7AB34EAD67CDDCA71 /* Pods-DrawDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrawDemo.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-DrawDemo/Pods-DrawDemo.debug.xcconfig"; sourceTree = "<group>"; };
-		A3FF70401EE22A9900F59FA5 /* DrawTransitionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawTransitionVC.h; sourceTree = "<group>"; };
-		A3FF70411EE22A9900F59FA5 /* DrawTransitionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawTransitionVC.m; sourceTree = "<group>"; };
 		A3FF70491EE3E5EA00F59FA5 /* DrawPathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawPathView.h; sourceTree = "<group>"; };
 		A3FF704A1EE3E5EA00F59FA5 /* DrawPathView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawPathView.m; sourceTree = "<group>"; };
-		B53E3ACB1EE10F4F00F538AF /* DrawThirdVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawThirdVC.h; sourceTree = "<group>"; };
-		B53E3ACE1EE10F4F00F538AF /* DrawFirstVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawFirstVC.h; sourceTree = "<group>"; };
-		B53E3AD01EE10F4F00F538AF /* DrawSecondVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawSecondVC.h; sourceTree = "<group>"; };
-		B53E3AD11EE10F4F00F538AF /* DrawSecondVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawSecondVC.m; sourceTree = "<group>"; };
 		B53E3AD41EE10F4F00F538AF /* GJChartLineInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GJChartLineInfoView.h; sourceTree = "<group>"; };
 		B53E3AD51EE10F4F00F538AF /* GJChartLineInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GJChartLineInfoView.m; sourceTree = "<group>"; };
 		B53E3AD61EE10F4F00F538AF /* LukeLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LukeLayer.h; sourceTree = "<group>"; };
@@ -67,24 +67,36 @@
 		B57DEDC01E5D6BD900A8C678 /* DrawDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrawDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B57DEDC41E5D6BD900A8C678 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B57DEDC61E5D6BD900A8C678 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		B57DEDCD1E5D6BD900A8C678 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B57DEDCF1E5D6BD900A8C678 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B57DEDD21E5D6BD900A8C678 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B57DEDD41E5D6BD900A8C678 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5BBC7641EE4F25D007C8D48 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		B5BBC7661EE4F276007C8D48 /* DrawFirstVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawFirstVC.m; sourceTree = "<group>"; };
-		B5BBC7681EE4F282007C8D48 /* DrawThirdVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawThirdVC.m; sourceTree = "<group>"; };
-		B5BBC76A1EE4F2A1007C8D48 /* DrawCGPathVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawCGPathVC.h; sourceTree = "<group>"; };
-		B5BBC76B1EE4F2A1007C8D48 /* DrawCGPathVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawCGPathVC.m; sourceTree = "<group>"; };
-		B5BBC76C1EE4F2A1007C8D48 /* DrawCircleVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawCircleVC.h; sourceTree = "<group>"; };
-		B5BBC76D1EE4F2A1007C8D48 /* DrawCircleVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawCircleVC.m; sourceTree = "<group>"; };
 		B5BBC7701EE4F2B4007C8D48 /* DrawAppLeftVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawAppLeftVC.h; sourceTree = "<group>"; };
 		B5BBC7711EE4F2B4007C8D48 /* DrawAppLeftVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawAppLeftVC.m; sourceTree = "<group>"; };
 		B5BBC7721EE4F2B4007C8D48 /* DrawAppLeftVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DrawAppLeftVC.xib; sourceTree = "<group>"; };
 		B5BBC7731EE4F2B4007C8D48 /* DrawTabBarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawTabBarVC.h; sourceTree = "<group>"; };
 		B5BBC7741EE4F2B4007C8D48 /* DrawTabBarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawTabBarVC.m; sourceTree = "<group>"; };
-		B5BBC7781EE4F356007C8D48 /* UITabBarController+OKSliderApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBarController+OKSliderApp.h"; sourceTree = "<group>"; };
-		B5BBC7791EE4F356007C8D48 /* UITabBarController+OKSliderApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBarController+OKSliderApp.m"; sourceTree = "<group>"; };
+		B5BBC77B1EE5073A007C8D48 /* DrawHomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawHomeVC.h; sourceTree = "<group>"; };
+		B5BBC77C1EE5073A007C8D48 /* DrawHomeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawHomeVC.m; sourceTree = "<group>"; };
+		B5BBC77D1EE5073A007C8D48 /* DrawHomeVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DrawHomeVC.xib; sourceTree = "<group>"; };
+		B5BBC7811EE50878007C8D48 /* DrawCGPathVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawCGPathVC.h; sourceTree = "<group>"; };
+		B5BBC7821EE50878007C8D48 /* DrawCGPathVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawCGPathVC.m; sourceTree = "<group>"; };
+		B5BBC7831EE50878007C8D48 /* DrawCircleVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawCircleVC.h; sourceTree = "<group>"; };
+		B5BBC7841EE50878007C8D48 /* DrawCircleVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawCircleVC.m; sourceTree = "<group>"; };
+		B5BBC7851EE50878007C8D48 /* DrawFirstVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawFirstVC.h; sourceTree = "<group>"; };
+		B5BBC7861EE50878007C8D48 /* DrawFirstVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawFirstVC.m; sourceTree = "<group>"; };
+		B5BBC7871EE50878007C8D48 /* DrawSecondVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawSecondVC.h; sourceTree = "<group>"; };
+		B5BBC7881EE50878007C8D48 /* DrawSecondVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawSecondVC.m; sourceTree = "<group>"; };
+		B5BBC7891EE50878007C8D48 /* DrawThirdVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawThirdVC.h; sourceTree = "<group>"; };
+		B5BBC78A1EE50878007C8D48 /* DrawThirdVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawThirdVC.m; sourceTree = "<group>"; };
+		B5BBC78B1EE50878007C8D48 /* DrawTransitionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawTransitionVC.h; sourceTree = "<group>"; };
+		B5BBC78C1EE50878007C8D48 /* DrawTransitionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawTransitionVC.m; sourceTree = "<group>"; };
+		B5BBC7971EE524CA007C8D48 /* DrawFirstVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DrawFirstVC.xib; sourceTree = "<group>"; };
+		B5BBC7991EE5258E007C8D48 /* DrawSecondVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DrawSecondVC.xib; sourceTree = "<group>"; };
+		B5BBC79B1EE525A1007C8D48 /* DrawCGPathVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DrawCGPathVC.xib; sourceTree = "<group>"; };
+		B5BBC79D1EE525A9007C8D48 /* DrawCircleVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DrawCircleVC.xib; sourceTree = "<group>"; };
+		B5BBC79F1EE525B5007C8D48 /* DrawThirdVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DrawThirdVC.xib; sourceTree = "<group>"; };
+		B5BBC7A11EE525C2007C8D48 /* DrawTransitionVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DrawTransitionVC.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,25 +124,15 @@
 		B53E3ACA1EE10F4F00F538AF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B5BBC7801EE50878007C8D48 /* SliderVC */,
+				B5BBC7731EE4F2B4007C8D48 /* DrawTabBarVC.h */,
+				B5BBC7741EE4F2B4007C8D48 /* DrawTabBarVC.m */,
 				B5BBC7701EE4F2B4007C8D48 /* DrawAppLeftVC.h */,
 				B5BBC7711EE4F2B4007C8D48 /* DrawAppLeftVC.m */,
 				B5BBC7721EE4F2B4007C8D48 /* DrawAppLeftVC.xib */,
-				B5BBC7731EE4F2B4007C8D48 /* DrawTabBarVC.h */,
-				B5BBC7741EE4F2B4007C8D48 /* DrawTabBarVC.m */,
-				B53E3ACE1EE10F4F00F538AF /* DrawFirstVC.h */,
-				B5BBC7661EE4F276007C8D48 /* DrawFirstVC.m */,
-				B53E3AD01EE10F4F00F538AF /* DrawSecondVC.h */,
-				B53E3AD11EE10F4F00F538AF /* DrawSecondVC.m */,
-				B53E3ACB1EE10F4F00F538AF /* DrawThirdVC.h */,
-				B5BBC7681EE4F282007C8D48 /* DrawThirdVC.m */,
-				A3FF70401EE22A9900F59FA5 /* DrawTransitionVC.h */,
-				A3FF70411EE22A9900F59FA5 /* DrawTransitionVC.m */,
-				B5BBC76A1EE4F2A1007C8D48 /* DrawCGPathVC.h */,
-				B5BBC76B1EE4F2A1007C8D48 /* DrawCGPathVC.m */,
-				B5BBC76C1EE4F2A1007C8D48 /* DrawCircleVC.h */,
-				B5BBC76D1EE4F2A1007C8D48 /* DrawCircleVC.m */,
-				B5BBC7781EE4F356007C8D48 /* UITabBarController+OKSliderApp.h */,
-				B5BBC7791EE4F356007C8D48 /* UITabBarController+OKSliderApp.m */,
+				B5BBC77B1EE5073A007C8D48 /* DrawHomeVC.h */,
+				B5BBC77C1EE5073A007C8D48 /* DrawHomeVC.m */,
+				B5BBC77D1EE5073A007C8D48 /* DrawHomeVC.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -183,7 +185,6 @@
 				B53E3ACA1EE10F4F00F538AF /* Controller */,
 				B53E3AD21EE10F4F00F538AF /* Model */,
 				B53E3AD31EE10F4F00F538AF /* View */,
-				B57DEDCC1E5D6BD900A8C678 /* Main.storyboard */,
 				B57DEDCF1E5D6BD900A8C678 /* Assets.xcassets */,
 				B57DEDD11E5D6BD900A8C678 /* LaunchScreen.storyboard */,
 				B57DEDD41E5D6BD900A8C678 /* Info.plist */,
@@ -198,6 +199,31 @@
 				B57DEDC41E5D6BD900A8C678 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B5BBC7801EE50878007C8D48 /* SliderVC */ = {
+			isa = PBXGroup;
+			children = (
+				B5BBC7811EE50878007C8D48 /* DrawCGPathVC.h */,
+				B5BBC7821EE50878007C8D48 /* DrawCGPathVC.m */,
+				B5BBC79B1EE525A1007C8D48 /* DrawCGPathVC.xib */,
+				B5BBC7831EE50878007C8D48 /* DrawCircleVC.h */,
+				B5BBC7841EE50878007C8D48 /* DrawCircleVC.m */,
+				B5BBC79D1EE525A9007C8D48 /* DrawCircleVC.xib */,
+				B5BBC7851EE50878007C8D48 /* DrawFirstVC.h */,
+				B5BBC7861EE50878007C8D48 /* DrawFirstVC.m */,
+				B5BBC7971EE524CA007C8D48 /* DrawFirstVC.xib */,
+				B5BBC7871EE50878007C8D48 /* DrawSecondVC.h */,
+				B5BBC7881EE50878007C8D48 /* DrawSecondVC.m */,
+				B5BBC7991EE5258E007C8D48 /* DrawSecondVC.xib */,
+				B5BBC7891EE50878007C8D48 /* DrawThirdVC.h */,
+				B5BBC78A1EE50878007C8D48 /* DrawThirdVC.m */,
+				B5BBC79F1EE525B5007C8D48 /* DrawThirdVC.xib */,
+				B5BBC78B1EE50878007C8D48 /* DrawTransitionVC.h */,
+				B5BBC78C1EE50878007C8D48 /* DrawTransitionVC.m */,
+				B5BBC7A11EE525C2007C8D48 /* DrawTransitionVC.xib */,
+			);
+			path = SliderVC;
 			sourceTree = "<group>";
 		};
 		E1C8FF68E97404E2E6C02EAB /* Pods */ = {
@@ -273,9 +299,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				B57DEDD31E5D6BD900A8C678 /* LaunchScreen.storyboard in Resources */,
+				B5BBC7981EE524CA007C8D48 /* DrawFirstVC.xib in Resources */,
+				B5BBC7A01EE525B5007C8D48 /* DrawThirdVC.xib in Resources */,
+				B5BBC77F1EE5073A007C8D48 /* DrawHomeVC.xib in Resources */,
 				B5BBC7761EE4F2B4007C8D48 /* DrawAppLeftVC.xib in Resources */,
 				B57DEDD01E5D6BD900A8C678 /* Assets.xcassets in Resources */,
-				B57DEDCE1E5D6BD900A8C678 /* Main.storyboard in Resources */,
+				B5BBC79E1EE525A9007C8D48 /* DrawCircleVC.xib in Resources */,
+				B5BBC7A21EE525C2007C8D48 /* DrawTransitionVC.xib in Resources */,
+				B5BBC79A1EE5258E007C8D48 /* DrawSecondVC.xib in Resources */,
+				B5BBC79C1EE525A1007C8D48 /* DrawCGPathVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,35 +366,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5BBC7901EE50878007C8D48 /* DrawSecondVC.m in Sources */,
 				B5BBC7751EE4F2B4007C8D48 /* DrawAppLeftVC.m in Sources */,
 				B53E3AE01EE10F4F00F538AF /* LukeView.m in Sources */,
+				B5BBC78F1EE50878007C8D48 /* DrawFirstVC.m in Sources */,
+				B5BBC7911EE50878007C8D48 /* DrawThirdVC.m in Sources */,
+				B5BBC78E1EE50878007C8D48 /* DrawCircleVC.m in Sources */,
 				A3FF704B1EE3E5EA00F59FA5 /* DrawPathView.m in Sources */,
-				B5BBC76F1EE4F2A1007C8D48 /* DrawCircleVC.m in Sources */,
 				B53E3ADF1EE10F4F00F538AF /* LukeLayer.m in Sources */,
-				B53E3ADD1EE10F4F00F538AF /* DrawSecondVC.m in Sources */,
 				B5BBC7771EE4F2B4007C8D48 /* DrawTabBarVC.m in Sources */,
-				B5BBC77A1EE4F356007C8D48 /* UITabBarController+OKSliderApp.m in Sources */,
-				B5BBC7691EE4F282007C8D48 /* DrawThirdVC.m in Sources */,
+				B5BBC77E1EE5073A007C8D48 /* DrawHomeVC.m in Sources */,
+				B5BBC78D1EE50878007C8D48 /* DrawCGPathVC.m in Sources */,
 				B5BBC7651EE4F25D007C8D48 /* AppDelegate.m in Sources */,
 				B53E3ADE1EE10F4F00F538AF /* GJChartLineInfoView.m in Sources */,
-				B5BBC76E1EE4F2A1007C8D48 /* DrawCGPathVC.m in Sources */,
-				A3FF70421EE22A9900F59FA5 /* DrawTransitionVC.m in Sources */,
-				B5BBC7671EE4F276007C8D48 /* DrawFirstVC.m in Sources */,
 				B57DEDC51E5D6BD900A8C678 /* main.m in Sources */,
+				B5BBC7921EE50878007C8D48 /* DrawTransitionVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		B57DEDCC1E5D6BD900A8C678 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B57DEDCD1E5D6BD900A8C678 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		B57DEDD11E5D6BD900A8C678 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

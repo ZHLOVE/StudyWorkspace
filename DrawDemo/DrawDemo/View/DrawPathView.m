@@ -28,7 +28,7 @@
 {
     if (!_imageLayer) {
         _imageLayer = [CALayer layer];
-        _imageLayer.contents = (id)[UIImage imageNamed:@"icon_qq"].CGImage;
+        _imageLayer.contents = (id)[UIImage imageNamed:@"icon_qq_zone"].CGImage;
         _imageLayer.bounds =CGRectMake(0, 0, 50, 50);
         _imageLayer.position = CGPointMake(self.center.x, self.center.y);
         [self.layer addSublayer:_imageLayer];

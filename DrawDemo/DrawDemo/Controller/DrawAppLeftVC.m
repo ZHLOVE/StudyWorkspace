@@ -7,7 +7,8 @@
 //
 
 #import "DrawAppLeftVC.h"
-#import <OKFrameDefiner.h>
+#import <OKPubilcKeyDefiner.h>
+#import <UIViewController+OKExtension.h>
 
 @interface DrawAppLeftVC ()
 
@@ -17,34 +18,68 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     
-    UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Screen_Width, 150)];
+    UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 150)];
     headView.backgroundColor = [UIColor orangeColor];
     
     self.plainTableView.tableHeaderView = headView;
     self.plainTableView.rowHeight = 80;
+    
+    //要添加测试的VC
+    [self setupTableData];
+}
+
+/**
+ * 要添加测试的VC，在此处把类名加上即可
+ */
+- (void)setupTableData
+{
+    [self.tableDataArr addObjectsFromArray:@[@{@"DrawCGPathVC":@"画笔涂鸦"},
+                                             @{@"DrawCircleVC":@"画圈"},
+                                             @{@"DrawFirstVC":@"核心动画"},
+                                             @{@"DrawSecondVC":@"Quartz2D绘图"},
+                                             @{@"DrawThirdVC":@"绘图示例"},
+                                             @{@"DrawTransitionVC":@"百叶窗动画"}
+                                             ]];
 }
 
 #pragma Mark - 表格代理
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 5;
+    static NSString *cellId = @"cellIdInfo";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellId];
+        if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+            cell.layoutMargins = UIEdgeInsetsZero;
+        }
+        if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+            cell.separatorInset = UIEdgeInsetsZero;
+        }
+    }
+    NSDictionary *celLDic = [self.tableDataArr objectAtIndex:indexPath.row];
+    NSString *className = celLDic.allKeys[0];
+    cell.textLabel.text = className;
+    cell.detailTextLabel.text = celLDic[className];
+    return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.navigationController pushViewController:[OKBaseViewController new] animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    //关闭侧滑视图
+    SEL selector = @selector(showAppSliderView:);
+    if ([self.tabBarController respondsToSelector:selector]) {
+        [self.tabBarController performSelector:selector withObject:@(NO)];
+    }
+    
+    UINavigationController *VCNav = self.tabBarController.viewControllers[self.tabBarController.selectedIndex];
+    
+    NSDictionary *celLDic = [self.tableDataArr objectAtIndex:indexPath.row];
+    NSString *className = celLDic.allKeys[0];
+    [VCNav pushToViewController:className propertyDic:@{@"title":className}];
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

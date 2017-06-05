@@ -11,10 +11,11 @@
 #import <OKFrameDefiner.h>
 #import <objc/runtime.h>
 
-#define MaxOffsetX              (self.view.width-49)
+#define MaxOffsetX                          (self.view.width-49)
 
 static char const * const kLeftMaskView      = "kLeftMaskView";
 static char const * const kRightMaskView     = "kRightMaskView";
+static char const * const kTabBarMaskView    = "kTabBarMaskView";
 static char const * const KHasOpen           = "KHasOpen";
 
 @interface UITabBarController ()<UIGestureRecognizerDelegate>
@@ -22,6 +23,8 @@ static char const * const KHasOpen           = "KHasOpen";
 @property (nonatomic, strong) UIView *leftMaskView;
 /** 右侧蒙版 */
 @property (nonatomic, strong) UIView *rightMaskView;
+/** tabBar蒙版 */
+@property (nonatomic, strong) UIView *tabBarMaskView;
 /** 是否已经打开侧滑 */
 @property (nonatomic, assign) BOOL hasOpen;
 @end
@@ -53,6 +56,18 @@ static char const * const KHasOpen           = "KHasOpen";
     return objc_getAssociatedObject(self, kRightMaskView);
 }
 
+#pragma mark - ========== tabBar蒙版 ==========
+
+- (void)setTabBarMaskView:(UIView *)tabBarMaskView
+{
+    objc_setAssociatedObject(self, kTabBarMaskView, tabBarMaskView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (UIView *)tabBarMaskView
+{
+    return objc_getAssociatedObject(self, kTabBarMaskView);
+}
+
 #pragma mark - ========== 是否已经打开侧滑 ==========
 
 - (void)setHasOpen:(BOOL)hasOpen
@@ -69,7 +84,10 @@ static char const * const KHasOpen           = "KHasOpen";
 
 #pragma mark -========== 处理侧滑逻辑 ==========
 
-- (void)setSliderLeftVCWithName:(NSString *)VCName
+/**
+ * 初始化左侧侧滑视图
+ */
+- (void)setAppSliderVCWithName:(NSString *)VCName
 {
     UIViewController *leftVC = [[NSClassFromString(VCName) alloc] init];
     if (!VCName ||
@@ -83,7 +101,7 @@ static char const * const KHasOpen           = "KHasOpen";
     [self setLeftVCAndleftMaskView:VCName];
     
     //右侧蒙层
-    [self setCustomRightMaskView];
+    [self setRightAndTabBarMaskView];
     
     //添加边缘侧滑手势控制器
     [self addScreenPan];
@@ -98,7 +116,7 @@ static char const * const KHasOpen           = "KHasOpen";
     leftVC.edgesForExtendedLayout = UIRectEdgeNone;
     leftVC.view.frame = CGRectMake(0, 0, Screen_Width, Screen_Height);
     [self.view.window insertSubview:leftVC.view atIndex:0];
-    //[self addChildViewController:_appLeftVC];
+    [self addChildViewController:leftVC];
     
     self.leftMaskView = [[UIView alloc] init];
     self.leftMaskView.frame = CGRectMake(0, 0, Screen_Width, Screen_Height);
@@ -110,18 +128,29 @@ static char const * const KHasOpen           = "KHasOpen";
 /**
  *  右侧蒙层
  */
-- (void)setCustomRightMaskView
+- (void)setRightAndTabBarMaskView
 {
+    //1. 设置右侧蒙层添加点击手势
     self.rightMaskView = [[UIView alloc] init];
     self.rightMaskView.frame = CGRectMake(0, 0, Screen_Width, Screen_Height);
     self.rightMaskView.backgroundColor = [UIColor blackColor];
     self.rightMaskView.alpha = 0.0;
     [self.view insertSubview:self.rightMaskView atIndex:1];
     
-    //右侧蒙层添加点击手势
     UIControl *control = [[UIControl alloc] initWithFrame:self.rightMaskView.frame];
     [control addTarget:self action:@selector(handeTap:) forControlEvents:UIControlEventTouchUpInside];
     [self.rightMaskView addSubview:control];
+    
+    
+    //2. 设置tabBar蒙层添加点击手势
+    self.tabBarMaskView = [[UIView alloc] initWithFrame:self.tabBar.bounds];
+    self.tabBarMaskView.backgroundColor = [UIColor blackColor];
+    self.tabBarMaskView.alpha = 0.0;
+    [self.tabBar addSubview:self.tabBarMaskView];
+    
+    UIControl *control2 = [[UIControl alloc] initWithFrame:self.tabBarMaskView.frame];
+    [control2 addTarget:self action:@selector(handeTap:) forControlEvents:UIControlEventTouchUpInside];
+    [self.tabBarMaskView addSubview:control2];
 }
 
 /**
@@ -131,7 +160,7 @@ static char const * const KHasOpen           = "KHasOpen";
 {
     if ((self.view.x == MaxOffsetX)) {
         //点击关闭侧滑
-        [self showLeftView:NO];
+        [self showAppSliderView:NO];
     }
 }
 
@@ -156,6 +185,13 @@ static char const * const KHasOpen           = "KHasOpen";
     rightMaskPan.delegate = self;
     [rightMaskPan setCancelsTouchesInView:YES];
     [self.rightMaskView addGestureRecognizer:rightMaskPan];
+    
+    //设置tabBar蒙层全屏滑动手势
+    UIPanGestureRecognizer *tabBarMaskPan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(mainSlideHandlePan:)];
+    tabBarMaskPan.delegate = self;
+    [tabBarMaskPan setCancelsTouchesInView:YES];
+    [self.tabBarMaskView addGestureRecognizer:tabBarMaskPan];
+    
 }
 
 #pragma mark -滑动手势
@@ -170,10 +206,11 @@ static char const * const KHasOpen           = "KHasOpen";
         self.view.x = MAX(MaxOffsetX + point.x, 0);
         self.leftMaskView.alpha = percent * 0.5;
         self.rightMaskView.alpha = 0.3 * (1-percent);
+        self.tabBarMaskView.alpha = self.rightMaskView.alpha;
         
         //手势结束后修正位置,超过约一半时向多出的一半偏移
         if (gesture.state == UIGestureRecognizerStateEnded) {
-            [self showLeftView:(self.view.x > MaxOffsetX*0.85)];
+            [self showAppSliderView:(self.view.x > MaxOffsetX*0.85)];
         }
         
     } else {
@@ -182,29 +219,32 @@ static char const * const KHasOpen           = "KHasOpen";
         self.view.x = MIN((MAX(point.x, 0)), MaxOffsetX);;
         self.leftMaskView.alpha = 0.5 * (1-percent);
         self.rightMaskView.alpha = 0.3 * (percent-1);
+        self.tabBarMaskView.alpha = self.rightMaskView.alpha;
         
         //手势结束后修正位置,超过约一半时向多出的一半偏移
         if (gesture.state == UIGestureRecognizerStateEnded) {
-            [self showLeftView:(self.view.x > self.view.width/4)];
+            [self showAppSliderView:(self.view.x > self.view.width/4)];
         }
     }
 }
 
 /**
- * 是否关闭左侧视图
+ * 是否关闭侧滑视图
  */
-- (void)showLeftView:(BOOL)open
+- (void)showAppSliderView:(BOOL)open
 {
     [UIView animateWithDuration:0.3 animations:^{
         if (open) { //打开侧滑
             self.view.x = MaxOffsetX;
             self.leftMaskView.alpha = 0.0;
             self.rightMaskView.alpha = 0.3;
+            self.tabBarMaskView.alpha = self.rightMaskView.alpha;
             
         } else { //关闭侧滑
             self.view.x = 0;
             self.leftMaskView.alpha = 0.5;
             self.rightMaskView.alpha = 0.0;
+            self.tabBarMaskView.alpha = self.rightMaskView.alpha;
         }
     } completion:^(BOOL finished) {
         self.hasOpen = open;

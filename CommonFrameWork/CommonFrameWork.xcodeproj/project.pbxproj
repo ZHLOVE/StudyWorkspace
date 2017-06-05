@@ -153,6 +153,8 @@
 		B5877F251ECB070C00A3A521 /* OKAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5877F231ECB070C00A3A521 /* OKAlertView.m */; };
 		B5877F281ECB07DD00A3A521 /* NSAttributedString+OKExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = B5877F261ECB07DD00A3A521 /* NSAttributedString+OKExtension.h */; };
 		B5877F291ECB07DD00A3A521 /* NSAttributedString+OKExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B5877F271ECB07DD00A3A521 /* NSAttributedString+OKExtension.m */; };
+		B5BBC7951EE5094A007C8D48 /* UITabBarController+OKSliderApp.h in Headers */ = {isa = PBXBuildFile; fileRef = B5BBC7931EE5094A007C8D48 /* UITabBarController+OKSliderApp.h */; };
+		B5BBC7961EE5094A007C8D48 /* UITabBarController+OKSliderApp.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC7941EE5094A007C8D48 /* UITabBarController+OKSliderApp.m */; };
 		B5E8BD2F1E2F55DD00D0F73D /* OKReachabilityManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B5E8BD2D1E2F55DD00D0F73D /* OKReachabilityManager.h */; };
 		B5E8BD301E2F55DD00D0F73D /* OKReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E8BD2E1E2F55DD00D0F73D /* OKReachabilityManager.m */; };
 		F742917AA1FF6DFCD98BDDB7 /* libPods-CommonFrameWork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 677F0A896830251DDCBB58F8 /* libPods-CommonFrameWork.a */; };
@@ -308,6 +310,8 @@
 		B5877F231ECB070C00A3A521 /* OKAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OKAlertView.m; sourceTree = "<group>"; };
 		B5877F261ECB07DD00A3A521 /* NSAttributedString+OKExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+OKExtension.h"; sourceTree = "<group>"; };
 		B5877F271ECB07DD00A3A521 /* NSAttributedString+OKExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+OKExtension.m"; sourceTree = "<group>"; };
+		B5BBC7931EE5094A007C8D48 /* UITabBarController+OKSliderApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBarController+OKSliderApp.h"; sourceTree = "<group>"; };
+		B5BBC7941EE5094A007C8D48 /* UITabBarController+OKSliderApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBarController+OKSliderApp.m"; sourceTree = "<group>"; };
 		B5E8BD2D1E2F55DD00D0F73D /* OKReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKReachabilityManager.h; sourceTree = "<group>"; };
 		B5E8BD2E1E2F55DD00D0F73D /* OKReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OKReachabilityManager.m; sourceTree = "<group>"; };
 		D75B7CE185F50916618B66A4 /* Pods-CommonFrameWork.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonFrameWork.release.xcconfig"; path = "../Pods/Target Support Files/Pods-CommonFrameWork/Pods-CommonFrameWork.release.xcconfig"; sourceTree = "<group>"; };
@@ -433,6 +437,8 @@
 				B584C84C1E31E62900CB6C81 /* UIViewController+OKExtension.m */,
 				B57AB38B1E65151100F76D7C /* NSObject+OKPrintModelProperty.h */,
 				B57AB38C1E65151100F76D7C /* NSObject+OKPrintModelProperty.m */,
+				B5BBC7931EE5094A007C8D48 /* UITabBarController+OKSliderApp.h */,
+				B5BBC7941EE5094A007C8D48 /* UITabBarController+OKSliderApp.m */,
 			);
 			path = CommonCategory;
 			sourceTree = "<group>";
@@ -705,6 +711,7 @@
 				B50311651E1E607F00C11EC4 /* OKActionSheetView.h in Headers */,
 				B584C7B31E31BAD500CB6C81 /* OKFrameDefiner.h in Headers */,
 				B5877F281ECB07DD00A3A521 /* NSAttributedString+OKExtension.h in Headers */,
+				B5BBC7951EE5094A007C8D48 /* UITabBarController+OKSliderApp.h in Headers */,
 				B5877F241ECB070C00A3A521 /* OKAlertView.h in Headers */,
 				B584C7BB1E31BD7F00CB6C81 /* OKUtils.h in Headers */,
 				B584C82C1E31BEC000CB6C81 /* ZLPhotoAssets.h in Headers */,
@@ -873,6 +880,7 @@
 				B503114A1E1E607F00C11EC4 /* NSString+OKExtention.m in Sources */,
 				B5877F1D1ECB013000A3A521 /* UILabel+OKShortcut.m in Sources */,
 				B584C7B61E31BAD500CB6C81 /* OKPublicConst.m in Sources */,
+				B5BBC7961EE5094A007C8D48 /* UITabBarController+OKSliderApp.m in Sources */,
 				B584C8181E31BEC000CB6C81 /* UIImage+ZLPhotoLib.m in Sources */,
 				B5E8BD301E2F55DD00D0F73D /* OKReachabilityManager.m in Sources */,
 				B50311391E1E607F00C11EC4 /* NSArray+OKExtention.m in Sources */,

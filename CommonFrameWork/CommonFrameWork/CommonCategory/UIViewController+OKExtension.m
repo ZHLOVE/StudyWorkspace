@@ -265,7 +265,11 @@
                 [popTargetVC setValuesForKeysWithDictionary:propertyDic];
             }
             
-            [self.navigationController popToViewController:popTargetVC animated:YES];
+            if ([self isKindOfClass:[UINavigationController class]]) {
+                [(UINavigationController *)self popToViewController:popTargetVC animated:YES];
+            } else {
+                [self.navigationController popToViewController:popTargetVC animated:YES];
+            }
             
             //判断在pop完成后是否需要调用相关方法
             SEL selector = NSSelectorFromString(selectorStr);
@@ -280,7 +284,11 @@
                 [tempVC setValuesForKeysWithDictionary:propertyDic];
             }
             
-            [self.navigationController pushViewController:tempVC animated:YES];
+            if ([self isKindOfClass:[UINavigationController class]]) {
+                [(UINavigationController *)self pushViewController:tempVC animated:YES];
+            } else {
+                [self.navigationController pushViewController:tempVC animated:YES];
+            }
         }
     } else {
         NSLog(@"页面push失败，控制器名称:%@,  携带属性字典:%@",vcName ,propertyDic);
@@ -297,7 +305,7 @@
 - (void)pushToViewController:(NSString *)vcName propertyDic:(NSDictionary *)propertyDic
 {
     if (propertyDic && ![propertyDic isKindOfClass:[NSDictionary class]]) {
-        NSLog(@"页面push失败，控制器名称:%@,  携带属性字典:%@",vcName ,propertyDic);
+        NSLog(@"❌❌❌ 页面push失败，控制器名称:%@,  携带属性字典:%@",vcName ,propertyDic);
         return;
     }
     UIViewController *pushVC = [[NSClassFromString(vcName) alloc] init];
@@ -305,9 +313,14 @@
         if (propertyDic && [propertyDic isKindOfClass:[NSDictionary class]]) {
             [pushVC setValuesForKeysWithDictionary:propertyDic];
         }
-        [self.navigationController pushViewController:pushVC animated:YES];
+        
+        if ([self isKindOfClass:[UINavigationController class]]) {
+            [(UINavigationController *)self pushViewController:pushVC animated:YES];
+        } else {
+            [self.navigationController pushViewController:pushVC animated:YES];
+        }
     } else {
-        NSLog(@"页面push失败，控制器名称:%@,  携带属性字典:%@",vcName ,propertyDic);
+        NSLog(@"❌❌❌ 页面push失败，控制器名称:%@,  携带属性字典:%@",vcName ,propertyDic);
     }
 }
 
@@ -322,7 +335,7 @@
                   showTargetNav:(BOOL)showNavigation
 {
     if (propertyDic && ![propertyDic isKindOfClass:[NSDictionary class]]) {
-        NSLog(@"页面present失败，控制器名称:%@,  携带属性字典:%@",vcName ,propertyDic);
+        NSLog(@"❌❌❌ 页面present失败，控制器名称:%@,  携带属性字典:%@",vcName ,propertyDic);
         return;
     }
     UIViewController *presentVC = [[NSClassFromString(vcName) alloc] init];
@@ -343,7 +356,7 @@
             [self presentViewController:presentVC animated:YES completion:nil];
         }
     } else {
-        NSLog(@"页面present失败，控制器名称:%@,  携带属性字典:%@",vcName ,propertyDic);
+        NSLog(@"❌❌❌ 页面present失败，控制器名称:%@,  携带属性字典:%@",vcName ,propertyDic);
     }
 }
 
