@@ -1,17 +1,17 @@
 //
-//  ViewController.m
+//  DrawCoreAnimationVC.m
 //  DrawDemo
 //
-//  Created by mao wangxin on 2017/2/22.
+//  Created by mao wangxin on 2017/6/5.
 //  Copyright © 2017年 Luke. All rights reserved.
 //
 
-#import "DrawFirstVC.h"
+#import "DrawCoreAnimationVC.h"
 #import "LukeLayer.h"
 
 #define kAngle2Radian(x)   ((x / 180.0) * M_PI)
 
-@interface DrawFirstVC ()<CALayerDelegate,CAAnimationDelegate>
+@interface DrawCoreAnimationVC ()<CALayerDelegate,CAAnimationDelegate>
 @property (nonatomic, strong) CALayer *layer;
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 @property (strong, nonatomic) IBOutlet UIImageView *imageView1;
@@ -22,7 +22,7 @@
 @property (nonatomic, strong) UIImageView *tempView;
 @end
 
-@implementation DrawFirstVC
+@implementation DrawCoreAnimationVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -88,8 +88,8 @@
     keyAnima.repeatCount = MAXFLOAT;
     
     //保持动画不复原
-//    keyAnima.removedOnCompletion = NO;
-//    keyAnima.fillMode = kCAFillModeForwards;
+    //    keyAnima.removedOnCompletion = NO;
+    //    keyAnima.fillMode = kCAFillModeForwards;
     
     [self.imageView3.layer addAnimation:keyAnima forKey:@"keyAnima"];
 }
@@ -124,18 +124,18 @@
         self.tempView.transform = CGAffineTransformMakeRotation(M_PI);
         
         //平移
-//        self.imageView3.transform = CGAffineTransformMakeTranslation(self.view.bounds.size.width-self.imageView3.bounds.size.width, 0);
+        //        self.imageView3.transform = CGAffineTransformMakeTranslation(self.view.bounds.size.width-self.imageView3.bounds.size.width, 0);
         rect.origin.x = self.view.bounds.size.width-self.tempView.bounds.size.width;
         self.tempView.frame = rect;
         
     } completion:^(BOOL finished) {
         
         [UIView animateWithDuration:3 animations:^{
-//            self.imageView3.transform = CGAffineTransformMakeTranslation(0, 0);
+            //            self.imageView3.transform = CGAffineTransformMakeTranslation(0, 0);
             self.tempView.transform = CGAffineTransformMakeRotation(-M_PI * 2);
             rect.origin.x = 0;
             self.tempView.frame = rect;
-        
+            
         } completion:^(BOOL finished) {
             [self viewAnimation];
         }];
@@ -201,8 +201,8 @@
     [self.view.layer addSublayer:layer];
     self.layer = layer;
     
-//    layer.delegate = self;
-//    [layer setNeedsDisplay];
+    //    layer.delegate = self;
+    //    [layer setNeedsDisplay];
 }
 
 - (void)drawLayer:(CALayer *)layer inContext:(CGContextRef)ctx
@@ -231,9 +231,9 @@
                         NSString *imageName2 = [NSString stringWithFormat:@"%d.jpg",(arc4random() % 10)];
                         self.imageView1.image = [UIImage imageNamed:imageName2];
                         [UIView setAnimationsEnabled:oldState];
-    } completion:^(BOOL finished) {
-        NSLog(@"动画完成");
-    }];
+                    } completion:^(BOOL finished) {
+                        NSLog(@"动画完成");
+                    }];
 }
 
 /**
@@ -243,20 +243,20 @@
 {
     self.goingToFront = !self.goingToFront;
     
-//    UIView *fromView = self.goingToFront ? self.imageView1 : self.imageView2;
-//    UIView *toView = self.goingToFront ? self.imageView2 : self.imageView1;
-//    
+    //    UIView *fromView = self.goingToFront ? self.imageView1 : self.imageView2;
+    //    UIView *toView = self.goingToFront ? self.imageView2 : self.imageView1;
+    //
     __block UIViewAnimationOptions transitionDirection = self.goingToFront ? UIViewAnimationOptionTransitionFlipFromRight : UIViewAnimationOptionTransitionFlipFromLeft;
-//
-//    [UIView transitionFromView:fromView
-//                        toView:toView
-//                      duration:0.5
-//                       options:transitionDirection
-//                    completion:^(BOOL finished) {
-//                        NSLog(@"动画完成\n===%@\n===%@\n===%@",self.imageView1,self.imageView2,self.contentView);
-//                        self.imageView1.frame = CGRectMake(0, 0, 150, 150);
-//                        self.imageView2.frame = CGRectMake(0, 0, 150, 150);
-//                    }];
+    //
+    //    [UIView transitionFromView:fromView
+    //                        toView:toView
+    //                      duration:0.5
+    //                       options:transitionDirection
+    //                    completion:^(BOOL finished) {
+    //                        NSLog(@"动画完成\n===%@\n===%@\n===%@",self.imageView1,self.imageView2,self.contentView);
+    //                        self.imageView1.frame = CGRectMake(0, 0, 150, 150);
+    //                        self.imageView2.frame = CGRectMake(0, 0, 150, 150);
+    //                    }];
     
     [UIView transitionWithView:self.contentView
                       duration:2
@@ -264,9 +264,9 @@
                     animations:^{
                         [self.contentView exchangeSubviewAtIndex:0 withSubviewAtIndex:1];
                         [UIView setAnimationRepeatCount:MAXFLOAT];
-    } completion:^(BOOL finished) {
-        NSLog(@"动画完成");
-    }];
+                    } completion:^(BOOL finished) {
+                        NSLog(@"动画完成");
+                    }];
 }
 
 
@@ -360,7 +360,7 @@
     
     anim.removedOnCompletion = NO;
     anim.fillMode = kCAFillModeForwards;
-
+    
     anim.repeatCount = MAXFLOAT;
     
     // 3.添加动画

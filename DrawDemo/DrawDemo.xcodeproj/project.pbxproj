@@ -25,16 +25,16 @@
 		B5BBC77F1EE5073A007C8D48 /* DrawHomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BBC77D1EE5073A007C8D48 /* DrawHomeVC.xib */; };
 		B5BBC78D1EE50878007C8D48 /* DrawCGPathVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC7821EE50878007C8D48 /* DrawCGPathVC.m */; };
 		B5BBC78E1EE50878007C8D48 /* DrawCircleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC7841EE50878007C8D48 /* DrawCircleVC.m */; };
-		B5BBC78F1EE50878007C8D48 /* DrawFirstVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC7861EE50878007C8D48 /* DrawFirstVC.m */; };
-		B5BBC7901EE50878007C8D48 /* DrawSecondVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC7881EE50878007C8D48 /* DrawSecondVC.m */; };
-		B5BBC7911EE50878007C8D48 /* DrawThirdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC78A1EE50878007C8D48 /* DrawThirdVC.m */; };
 		B5BBC7921EE50878007C8D48 /* DrawTransitionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC78C1EE50878007C8D48 /* DrawTransitionVC.m */; };
-		B5BBC7981EE524CA007C8D48 /* DrawFirstVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BBC7971EE524CA007C8D48 /* DrawFirstVC.xib */; };
-		B5BBC79A1EE5258E007C8D48 /* DrawSecondVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BBC7991EE5258E007C8D48 /* DrawSecondVC.xib */; };
 		B5BBC79C1EE525A1007C8D48 /* DrawCGPathVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BBC79B1EE525A1007C8D48 /* DrawCGPathVC.xib */; };
 		B5BBC79E1EE525A9007C8D48 /* DrawCircleVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BBC79D1EE525A9007C8D48 /* DrawCircleVC.xib */; };
-		B5BBC7A01EE525B5007C8D48 /* DrawThirdVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BBC79F1EE525B5007C8D48 /* DrawThirdVC.xib */; };
 		B5BBC7A21EE525C2007C8D48 /* DrawTransitionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BBC7A11EE525C2007C8D48 /* DrawTransitionVC.xib */; };
+		B5BBC7A61EE5359F007C8D48 /* DrawCoreAnimationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC7A41EE5359F007C8D48 /* DrawCoreAnimationVC.m */; };
+		B5BBC7A71EE5359F007C8D48 /* DrawCoreAnimationVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BBC7A51EE5359F007C8D48 /* DrawCoreAnimationVC.xib */; };
+		B5BBC7AB1EE53638007C8D48 /* DrawQuartz2DVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC7A91EE53638007C8D48 /* DrawQuartz2DVC.m */; };
+		B5BBC7AC1EE53638007C8D48 /* DrawQuartz2DVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BBC7AA1EE53638007C8D48 /* DrawQuartz2DVC.xib */; };
+		B5BBC7B01EE536CC007C8D48 /* DrawChartVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC7AE1EE536CC007C8D48 /* DrawChartVC.m */; };
+		B5BBC7B11EE536CC007C8D48 /* DrawChartVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BBC7AF1EE536CC007C8D48 /* DrawChartVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -83,20 +83,20 @@
 		B5BBC7821EE50878007C8D48 /* DrawCGPathVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawCGPathVC.m; sourceTree = "<group>"; };
 		B5BBC7831EE50878007C8D48 /* DrawCircleVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawCircleVC.h; sourceTree = "<group>"; };
 		B5BBC7841EE50878007C8D48 /* DrawCircleVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawCircleVC.m; sourceTree = "<group>"; };
-		B5BBC7851EE50878007C8D48 /* DrawFirstVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawFirstVC.h; sourceTree = "<group>"; };
-		B5BBC7861EE50878007C8D48 /* DrawFirstVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawFirstVC.m; sourceTree = "<group>"; };
-		B5BBC7871EE50878007C8D48 /* DrawSecondVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawSecondVC.h; sourceTree = "<group>"; };
-		B5BBC7881EE50878007C8D48 /* DrawSecondVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawSecondVC.m; sourceTree = "<group>"; };
-		B5BBC7891EE50878007C8D48 /* DrawThirdVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawThirdVC.h; sourceTree = "<group>"; };
-		B5BBC78A1EE50878007C8D48 /* DrawThirdVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawThirdVC.m; sourceTree = "<group>"; };
 		B5BBC78B1EE50878007C8D48 /* DrawTransitionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawTransitionVC.h; sourceTree = "<group>"; };
 		B5BBC78C1EE50878007C8D48 /* DrawTransitionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawTransitionVC.m; sourceTree = "<group>"; };
-		B5BBC7971EE524CA007C8D48 /* DrawFirstVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DrawFirstVC.xib; sourceTree = "<group>"; };
-		B5BBC7991EE5258E007C8D48 /* DrawSecondVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DrawSecondVC.xib; sourceTree = "<group>"; };
 		B5BBC79B1EE525A1007C8D48 /* DrawCGPathVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DrawCGPathVC.xib; sourceTree = "<group>"; };
 		B5BBC79D1EE525A9007C8D48 /* DrawCircleVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DrawCircleVC.xib; sourceTree = "<group>"; };
-		B5BBC79F1EE525B5007C8D48 /* DrawThirdVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DrawThirdVC.xib; sourceTree = "<group>"; };
 		B5BBC7A11EE525C2007C8D48 /* DrawTransitionVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DrawTransitionVC.xib; sourceTree = "<group>"; };
+		B5BBC7A31EE5359F007C8D48 /* DrawCoreAnimationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawCoreAnimationVC.h; sourceTree = "<group>"; };
+		B5BBC7A41EE5359F007C8D48 /* DrawCoreAnimationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawCoreAnimationVC.m; sourceTree = "<group>"; };
+		B5BBC7A51EE5359F007C8D48 /* DrawCoreAnimationVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DrawCoreAnimationVC.xib; sourceTree = "<group>"; };
+		B5BBC7A81EE53638007C8D48 /* DrawQuartz2DVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawQuartz2DVC.h; sourceTree = "<group>"; };
+		B5BBC7A91EE53638007C8D48 /* DrawQuartz2DVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawQuartz2DVC.m; sourceTree = "<group>"; };
+		B5BBC7AA1EE53638007C8D48 /* DrawQuartz2DVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DrawQuartz2DVC.xib; sourceTree = "<group>"; };
+		B5BBC7AD1EE536CC007C8D48 /* DrawChartVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawChartVC.h; sourceTree = "<group>"; };
+		B5BBC7AE1EE536CC007C8D48 /* DrawChartVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawChartVC.m; sourceTree = "<group>"; };
+		B5BBC7AF1EE536CC007C8D48 /* DrawChartVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DrawChartVC.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,18 +204,18 @@
 		B5BBC7801EE50878007C8D48 /* SliderVC */ = {
 			isa = PBXGroup;
 			children = (
-				B5BBC7851EE50878007C8D48 /* DrawFirstVC.h */,
-				B5BBC7861EE50878007C8D48 /* DrawFirstVC.m */,
-				B5BBC7971EE524CA007C8D48 /* DrawFirstVC.xib */,
+				B5BBC7A31EE5359F007C8D48 /* DrawCoreAnimationVC.h */,
+				B5BBC7A41EE5359F007C8D48 /* DrawCoreAnimationVC.m */,
+				B5BBC7A51EE5359F007C8D48 /* DrawCoreAnimationVC.xib */,
 				B5BBC7831EE50878007C8D48 /* DrawCircleVC.h */,
 				B5BBC7841EE50878007C8D48 /* DrawCircleVC.m */,
 				B5BBC79D1EE525A9007C8D48 /* DrawCircleVC.xib */,
-				B5BBC7871EE50878007C8D48 /* DrawSecondVC.h */,
-				B5BBC7881EE50878007C8D48 /* DrawSecondVC.m */,
-				B5BBC7991EE5258E007C8D48 /* DrawSecondVC.xib */,
-				B5BBC7891EE50878007C8D48 /* DrawThirdVC.h */,
-				B5BBC78A1EE50878007C8D48 /* DrawThirdVC.m */,
-				B5BBC79F1EE525B5007C8D48 /* DrawThirdVC.xib */,
+				B5BBC7A81EE53638007C8D48 /* DrawQuartz2DVC.h */,
+				B5BBC7A91EE53638007C8D48 /* DrawQuartz2DVC.m */,
+				B5BBC7AA1EE53638007C8D48 /* DrawQuartz2DVC.xib */,
+				B5BBC7AD1EE536CC007C8D48 /* DrawChartVC.h */,
+				B5BBC7AE1EE536CC007C8D48 /* DrawChartVC.m */,
+				B5BBC7AF1EE536CC007C8D48 /* DrawChartVC.xib */,
 				B5BBC78B1EE50878007C8D48 /* DrawTransitionVC.h */,
 				B5BBC78C1EE50878007C8D48 /* DrawTransitionVC.m */,
 				B5BBC7A11EE525C2007C8D48 /* DrawTransitionVC.xib */,
@@ -299,14 +299,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				B57DEDD31E5D6BD900A8C678 /* LaunchScreen.storyboard in Resources */,
-				B5BBC7981EE524CA007C8D48 /* DrawFirstVC.xib in Resources */,
-				B5BBC7A01EE525B5007C8D48 /* DrawThirdVC.xib in Resources */,
+				B5BBC7B11EE536CC007C8D48 /* DrawChartVC.xib in Resources */,
 				B5BBC77F1EE5073A007C8D48 /* DrawHomeVC.xib in Resources */,
 				B5BBC7761EE4F2B4007C8D48 /* DrawAppLeftVC.xib in Resources */,
 				B57DEDD01E5D6BD900A8C678 /* Assets.xcassets in Resources */,
+				B5BBC7AC1EE53638007C8D48 /* DrawQuartz2DVC.xib in Resources */,
 				B5BBC79E1EE525A9007C8D48 /* DrawCircleVC.xib in Resources */,
 				B5BBC7A21EE525C2007C8D48 /* DrawTransitionVC.xib in Resources */,
-				B5BBC79A1EE5258E007C8D48 /* DrawSecondVC.xib in Resources */,
+				B5BBC7A71EE5359F007C8D48 /* DrawCoreAnimationVC.xib in Resources */,
 				B5BBC79C1EE525A1007C8D48 /* DrawCGPathVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -366,11 +366,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5BBC7901EE50878007C8D48 /* DrawSecondVC.m in Sources */,
+				B5BBC7A61EE5359F007C8D48 /* DrawCoreAnimationVC.m in Sources */,
+				B5BBC7B01EE536CC007C8D48 /* DrawChartVC.m in Sources */,
 				B5BBC7751EE4F2B4007C8D48 /* DrawAppLeftVC.m in Sources */,
 				B53E3AE01EE10F4F00F538AF /* LukeView.m in Sources */,
-				B5BBC78F1EE50878007C8D48 /* DrawFirstVC.m in Sources */,
-				B5BBC7911EE50878007C8D48 /* DrawThirdVC.m in Sources */,
 				B5BBC78E1EE50878007C8D48 /* DrawCircleVC.m in Sources */,
 				A3FF704B1EE3E5EA00F59FA5 /* DrawPathView.m in Sources */,
 				B53E3ADF1EE10F4F00F538AF /* LukeLayer.m in Sources */,
@@ -381,6 +380,7 @@
 				B53E3ADE1EE10F4F00F538AF /* GJChartLineInfoView.m in Sources */,
 				B57DEDC51E5D6BD900A8C678 /* main.m in Sources */,
 				B5BBC7921EE50878007C8D48 /* DrawTransitionVC.m in Sources */,
+				B5BBC7AB1EE53638007C8D48 /* DrawQuartz2DVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

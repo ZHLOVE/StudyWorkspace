@@ -1,19 +1,19 @@
 //
-//  SecondVC.m
+//  DrawQuartz2DVC.m
 //  DrawDemo
 //
-//  Created by mao wangxin on 2017/5/27.
+//  Created by mao wangxin on 2017/6/5.
 //  Copyright © 2017年 Luke. All rights reserved.
 //
 
-#import "DrawSecondVC.h"
+#import "DrawQuartz2DVC.h"
 #import "LukeView.h"
 
-@interface DrawSecondVC ()
+@interface DrawQuartz2DVC ()
 @property (weak, nonatomic) IBOutlet LukeView *contentView;
 @end
 
-@implementation DrawSecondVC
+@implementation DrawQuartz2DVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -192,7 +192,7 @@
     
     //显示图片
     self.view.layer.contents = (id)imageWater.CGImage;
-//    _contentView.image = imageWater;
+    //    _contentView.image = imageWater;
 }
 
 @end

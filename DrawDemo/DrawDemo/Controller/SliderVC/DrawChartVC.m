@@ -1,21 +1,21 @@
 //
-//  DrawThirdVC.m
+//  DrawChartVC.m
 //  DrawDemo
 //
-//  Created by mao wangxin on 2017/6/2.
+//  Created by mao wangxin on 2017/6/5.
 //  Copyright © 2017年 Luke. All rights reserved.
 //
 
-#import "DrawThirdVC.h"
+#import "DrawChartVC.h"
 #import "GJChartLineInfoView.h"
 
-@interface DrawThirdVC ()
+@interface DrawChartVC ()
 @property (nonatomic, strong) GJChartLineInfoView *chartLineInfoView;
 @property (nonatomic, strong) CAShapeLayer *shapeLayer;
 @property (nonatomic, strong) CALayer *circleLayer;
 @end
 
-@implementation DrawThirdVC
+@implementation DrawChartVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -182,7 +182,7 @@
     [layer setMask:shapeLayer];
     [self.view.layer addSublayer:layer];
     self.circleLayer = layer;
-
+    
     
     //给路径图层添加动画
     CABasicAnimation *anim = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];

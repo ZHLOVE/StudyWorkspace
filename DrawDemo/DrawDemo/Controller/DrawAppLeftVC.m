@@ -34,10 +34,10 @@
  */
 - (void)setupTableData
 {
-    [self.tableDataArr addObjectsFromArray:@[@{@"DrawFirstVC":@"核心动画"},
+    [self.tableDataArr addObjectsFromArray:@[@{@"DrawCoreAnimationVC":@"核心动画"},
                                              @{@"DrawCircleVC":@"画圈"},
-                                             @{@"DrawSecondVC":@"Quartz2D绘图"},
-                                             @{@"DrawThirdVC":@"绘图示例"},
+                                             @{@"DrawQuartz2DVC":@"Quartz2D绘图"},
+                                             @{@"DrawChartVC":@"统计折线图"},
                                              @{@"DrawTransitionVC":@"百叶窗动画"},
                                              @{@"DrawCGPathVC":@"画笔涂鸦"},
                                              ]];
