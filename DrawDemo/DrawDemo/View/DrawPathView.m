@@ -78,14 +78,35 @@
  */
 - (void)moveLayerFromPath
 {
-//    [self afreshDrawPath];
+    CABasicAnimation *anima1 = [CABasicAnimation animation];
+    anima1.keyPath = @"transform.rotation";
+    anima1.toValue = @(M_PI*2);
+    anima1.duration = 0.2;
+//    anima1.autoreverses = YES;
+    anima1.repeatCount = MAXFLOAT;
+    
+    CABasicAnimation *anima2 = [CABasicAnimation animation];
+    anima2.keyPath = @"transform.scale";
+    anima2.fromValue = @(0.5);
+    anima2.toValue = @(1);
+    anima2.duration = 2;
+    anima2.autoreverses = YES;
+    anima2.repeatCount = MAXFLOAT;
     
     CAKeyframeAnimation *keyAnimation = [CAKeyframeAnimation animation];
     keyAnimation.keyPath = @"position";
     keyAnimation.path = self.bezierPath.CGPath;
-    keyAnimation.duration = 5;
+    keyAnimation.duration = 8;
+    keyAnimation.autoreverses = YES;
     keyAnimation.repeatCount = MAXFLOAT;
-    [self.imageLayer addAnimation:keyAnimation forKey:@"positionAnimation"];
+    
+    CAAnimationGroup *groupAnima = [CAAnimationGroup animation];
+    groupAnima.animations = @[anima1,anima2,keyAnimation];
+    groupAnima.duration = 8;
+    groupAnima.autoreverses = YES;
+    groupAnima.repeatCount = MAXFLOAT;
+    [self.imageLayer addAnimation:groupAnima forKey:@"groupAnimation"];
+    
 }
 
 
@@ -95,7 +116,6 @@
 - (void)startDrawPath
 {
     [self bezierPath];
-//    self.clearsContextBeforeDrawing = 
 }
 
 
@@ -115,6 +135,9 @@
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
     // Drawing code
+    
+    [[UIColor redColor] set];
+    
     [self.bezierPath stroke];
 }
 

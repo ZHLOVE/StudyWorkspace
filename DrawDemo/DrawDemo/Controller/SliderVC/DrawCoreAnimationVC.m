@@ -7,6 +7,7 @@
 //
 
 #import "DrawCoreAnimationVC.h"
+#import <OKPubilcKeyDefiner.h>
 #import "LukeLayer.h"
 
 #define kAngle2Radian(x)   ((x / 180.0) * M_PI)
@@ -130,6 +131,7 @@
         
     } completion:^(BOOL finished) {
         
+        WEAKSELF
         [UIView animateWithDuration:3 animations:^{
             //self.imageView3.transform = CGAffineTransformMakeTranslation(0, 0);
             self.tempView.transform = CGAffineTransformMakeRotation(-M_PI * 2);
@@ -137,7 +139,7 @@
             self.tempView.frame = rect;
             
         } completion:^(BOOL finished) {
-            [self viewAnimation];
+            [weakSelf viewAnimation];
         }];
     }];
 }

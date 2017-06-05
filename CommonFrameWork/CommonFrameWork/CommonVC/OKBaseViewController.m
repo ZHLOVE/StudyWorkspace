@@ -188,6 +188,8 @@
 
 - (void)dealloc
 {
+    NSLog(@"%s",__func__);
+    
     //取消子类所有请求操作
     [self cancelRequestSessionTask];
     
