@@ -11,6 +11,9 @@
 @interface OKBaseViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 
 
+/** 是否使用全屏返回手势 */
+@property (nonatomic, assign) BOOL shouldPanBack;
+
 /** 基类设置公用plain样式表格，由子类创建显示 */
 @property (nonatomic, strong) UITableView *plainTableView;
 

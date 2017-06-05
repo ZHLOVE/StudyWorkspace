@@ -34,12 +34,12 @@
  */
 - (void)setupTableData
 {
-    [self.tableDataArr addObjectsFromArray:@[@{@"DrawCGPathVC":@"画笔涂鸦"},
+    [self.tableDataArr addObjectsFromArray:@[@{@"DrawFirstVC":@"核心动画"},
                                              @{@"DrawCircleVC":@"画圈"},
-                                             @{@"DrawFirstVC":@"核心动画"},
                                              @{@"DrawSecondVC":@"Quartz2D绘图"},
                                              @{@"DrawThirdVC":@"绘图示例"},
-                                             @{@"DrawTransitionVC":@"百叶窗动画"}
+                                             @{@"DrawTransitionVC":@"百叶窗动画"},
+                                             @{@"DrawCGPathVC":@"画笔涂鸦"},
                                              ]];
 }
 

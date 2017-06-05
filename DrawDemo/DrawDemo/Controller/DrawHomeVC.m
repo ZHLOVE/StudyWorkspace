@@ -23,7 +23,7 @@
 
 - (IBAction)buttonAction:(UIButton *)sender
 {
-    [self pushToViewController:@"DrawCGPathVC" propertyDic:@{@"title":@"画笔涂鸦"}];
+    [self pushToViewController:@"DrawFirstVC" propertyDic:@{@"title":@"核心动画"}];
 }
 
 /*

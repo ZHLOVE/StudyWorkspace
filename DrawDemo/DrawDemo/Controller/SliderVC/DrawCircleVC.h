@@ -6,8 +6,8 @@
 //  Copyright © 2017年 Luke. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "OKBaseViewController.h"
 
-@interface DrawCircleVC : UIViewController
+@interface DrawCircleVC : OKBaseViewController
 
 @end

@@ -60,6 +60,9 @@
                             normoImage:[UIImage imageNamed:infoDic[kVCNormoImageKey]]
                          selectedImage:[UIImage imageNamed:infoDic[kVCSelectedImageKey]]];
     }
+    
+    //设置tabBar选中颜色
+    self.tabBar.tintColor = [UIColor orangeColor];
 }
 
 /**

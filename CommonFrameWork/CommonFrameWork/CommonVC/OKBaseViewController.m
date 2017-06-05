@@ -12,7 +12,7 @@
 #import "OKPubilcKeyDefiner.h"
 
 @interface OKBaseViewController ()<UIGestureRecognizerDelegate>
-
+@property (nonatomic, strong) UIPanGestureRecognizer *backPan;
 @end
 
 @implementation OKBaseViewController
@@ -65,9 +65,16 @@
                 pan.delegate = self;
                 [self.view addGestureRecognizer:pan];
                 self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+                self.backPan = pan;
             }
         );        
     }
+}
+
+- (void)setShouldPanBack:(BOOL)shouldPanBack
+{
+    _shouldPanBack = shouldPanBack;
+    self.backPan.enabled = shouldPanBack;
 }
 
 #pragma mark - ========= 初始化基类表格,子类显示 =========
