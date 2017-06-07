@@ -19,6 +19,10 @@
 		B57A66B81E1E1EC400ACB5EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B57A66B61E1E1EC400ACB5EC /* LaunchScreen.storyboard */; };
 		B582DEAC1EE169CC0043284C /* XibTempVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B582DEAA1EE169CC0043284C /* XibTempVC.m */; };
 		B582DEB01EE171780043284C /* XibFourVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B582DEAF1EE171780043284C /* XibFourVC.m */; };
+		B5861A861EE697AF00AA5F01 /* DataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B5861A851EE697AF00AA5F01 /* DataModel.m */; };
+		B5861A881EE699BE00AA5F01 /* DataModel.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5861A871EE699BE00AA5F01 /* DataModel.xib */; };
+		B5861A8C1EE69FAF00AA5F01 /* TempVC2.m in Sources */ = {isa = PBXBuildFile; fileRef = B5861A8A1EE69FAF00AA5F01 /* TempVC2.m */; };
+		B5861A8D1EE69FAF00AA5F01 /* TempVC2.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5861A8B1EE69FAF00AA5F01 /* TempVC2.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +47,12 @@
 		B582DEAA1EE169CC0043284C /* XibTempVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XibTempVC.m; sourceTree = "<group>"; };
 		B582DEAE1EE171780043284C /* XibFourVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XibFourVC.h; sourceTree = "<group>"; };
 		B582DEAF1EE171780043284C /* XibFourVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XibFourVC.m; sourceTree = "<group>"; };
+		B5861A841EE697AF00AA5F01 /* DataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModel.h; sourceTree = "<group>"; };
+		B5861A851EE697AF00AA5F01 /* DataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataModel.m; sourceTree = "<group>"; };
+		B5861A871EE699BE00AA5F01 /* DataModel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DataModel.xib; sourceTree = "<group>"; };
+		B5861A891EE69FAF00AA5F01 /* TempVC2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TempVC2.h; sourceTree = "<group>"; };
+		B5861A8A1EE69FAF00AA5F01 /* TempVC2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TempVC2.m; sourceTree = "<group>"; };
+		B5861A8B1EE69FAF00AA5F01 /* TempVC2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TempVC2.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,15 +79,11 @@
 				B582DEAF1EE171780043284C /* XibFourVC.m */,
 				B582DEA91EE169CC0043284C /* XibTempVC.h */,
 				B582DEAA1EE169CC0043284C /* XibTempVC.m */,
+				B5861A891EE69FAF00AA5F01 /* TempVC2.h */,
+				B5861A8A1EE69FAF00AA5F01 /* TempVC2.m */,
+				B5861A8B1EE69FAF00AA5F01 /* TempVC2.xib */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		B53E3AEC1EE1562F00F538AF /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		B53E3AED1EE1562F00F538AF /* View */ = {
@@ -112,8 +118,8 @@
 				B57A66A81E1E1EC400ACB5EC /* AppDelegate.h */,
 				B57A66A91E1E1EC400ACB5EC /* AppDelegate.m */,
 				B53E3AE51EE1562F00F538AF /* Controller */,
-				B53E3AEC1EE1562F00F538AF /* Model */,
 				B53E3AED1EE1562F00F538AF /* View */,
+				B5861A831EE6977C00AA5F01 /* Model */,
 				B57A66B11E1E1EC400ACB5EC /* Main.storyboard */,
 				B57A66B41E1E1EC400ACB5EC /* Assets.xcassets */,
 				B57A66B61E1E1EC400ACB5EC /* LaunchScreen.storyboard */,
@@ -129,6 +135,16 @@
 				B57A66A61E1E1EC400ACB5EC /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B5861A831EE6977C00AA5F01 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B5861A841EE697AF00AA5F01 /* DataModel.h */,
+				B5861A851EE697AF00AA5F01 /* DataModel.m */,
+				B5861A871EE699BE00AA5F01 /* DataModel.xib */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -191,7 +207,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B57A66B81E1E1EC400ACB5EC /* LaunchScreen.storyboard in Resources */,
+				B5861A8D1EE69FAF00AA5F01 /* TempVC2.xib in Resources */,
 				B53E3AF51EE1562F00F538AF /* LukeView.xib in Resources */,
+				B5861A881EE699BE00AA5F01 /* DataModel.xib in Resources */,
 				B57A66B51E1E1EC400ACB5EC /* Assets.xcassets in Resources */,
 				B57A66B31E1E1EC400ACB5EC /* Main.storyboard in Resources */,
 			);
@@ -206,8 +224,10 @@
 			files = (
 				B582DEAC1EE169CC0043284C /* XibTempVC.m in Sources */,
 				B53E3AF21EE1562F00F538AF /* XibSecondVC.m in Sources */,
+				B5861A861EE697AF00AA5F01 /* DataModel.m in Sources */,
 				B53E3AF41EE1562F00F538AF /* LukeView.m in Sources */,
 				B57A66AA1E1E1EC400ACB5EC /* AppDelegate.m in Sources */,
+				B5861A8C1EE69FAF00AA5F01 /* TempVC2.m in Sources */,
 				B53E3AF11EE1562F00F538AF /* XibFirstVC.m in Sources */,
 				B57A66A71E1E1EC400ACB5EC /* main.m in Sources */,
 				B582DEB01EE171780043284C /* XibFourVC.m in Sources */,

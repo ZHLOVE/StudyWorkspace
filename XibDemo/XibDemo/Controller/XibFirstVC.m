@@ -7,10 +7,16 @@
 //
 
 #import "XibFirstVC.h"
+#import <objc/runtime.h>
+#import "LukeView.h"
+#import "TempVC2.h"
+
+static char const * const kMyName      = "myName";
 
 @interface XibFirstVC ()
 @property (weak, nonatomic) IBOutlet UILabel *textLabel;
 @property (weak, nonatomic) IBOutlet UIView *bgVidew;
+@property (nonatomic, strong) DataModel *dataModel;
 @end
 
 @implementation XibFirstVC
@@ -19,6 +25,18 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
 }
+
+/**
+ * 测试跳转
+ */
+- (IBAction)jumpBtnAction:(UIButton *)sender
+{
+    TempVC2 *vc = [[TempVC2 alloc] init];
+    vc.title = @"哈哈😆";
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+
 - (IBAction)touchBtnAction:(UIButton *)sender {
     sender.selected = !sender.selected;
     
@@ -47,4 +65,24 @@
     
     NSLog(@"updateViewConstraints===%@====%@",self.bgVidew,self.textLabel);
 }
+
+
+/**
+ * 初始化
+ */
+- (DataModel *)dataModel
+{
+    if(!_dataModel){
+        _dataModel = [[DataModel alloc] init];
+    }
+    return _dataModel;
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    NSString *tempStr1 = objc_getAssociatedObject(self, kMyName);
+    
+    NSLog(@"tempStr1===%@",tempStr1);
+}
+
 @end

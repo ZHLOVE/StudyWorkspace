@@ -576,7 +576,6 @@ void ShowAlertToastByTitle(id title, id msg) {
             }
         }
     }];
-    
     /** 是否能获取该属性*/
     if(title && [[alertController class] ok_hasVarName:@"attributedTitle"])
     {

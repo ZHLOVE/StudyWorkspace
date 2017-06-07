@@ -10,4 +10,6 @@
 
 @interface LukeView : UIView
 
+//@property (nonatomic, strong) NSString *myName;
+
 @end

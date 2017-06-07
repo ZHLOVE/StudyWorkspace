@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DataModel.h"
 
 @interface XibFirstVC : UIViewController
-
 
 @end
 
