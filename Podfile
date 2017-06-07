@@ -5,6 +5,15 @@ project 'PodsDemo/PodsDemo.xcodeproj'
 project 'CommonFrameWork/CommonFrameWork.xcodeproj'
 
 #步骤2:->添加工程的target, 和xcodeproj文件所在的项目路径
+target :'ReactiveObjCDemo' do
+    use_frameworks!
+    platform :ios, '8.0'
+    pod 'ReactiveObjC'
+    project 'ReactiveObjCDemo/ReactiveObjCDemo.xcodeproj'
+end
+
+
+
 target :'PodsDemo' do
     platform :ios, '7.0'
     pod 'AFNetworking'
