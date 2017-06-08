@@ -13,65 +13,109 @@
 #import <MJRefresh.h>
 
 /** 网络连接失败 */
-#define NetworkConnectFailTips              @"网络开小差, 请稍后再试哦!"
-#define kTotalPageKey                       @"totalPage"
-#define kCurrentPageKey                     @"currentPage"
-#define kListKey                            @"list"
+#define NetworkConnectFailTips                      @"网络开小差, 请稍后再试哦!"
+#define kTotalPageKey                               @"totalPage"
+#define kCurrentPageKey                             @"currentPage"
+#define kListKey                                    @"list"
 
-static char const * const kEmptyStrKey      = "kEmptyStrKey";
-static char const * const kEmptyImgKey      = "kEmptyImgKey";
-static char const * const kErrorImgKey      = "kErrorImgKey";
-static char const * const kNetErrorStrKey   = "kNetErrorStrKey";
+static char const * const kReqEmptyTipStringKey     = "kReqEmptyTipStringKey";
+static char const * const kReqEmptyTipImageKey      = "kReqEmptyTipImageKey";
+static char const * const kReqFailTipStringKey      = "kReqFailTipStringKey";
+static char const * const kReqFailTipImageKey       = "kReqFailTipImageKey";
+static char const * const kNetErrorTipStringKey     = "kNetErrorTipStringKey";
+static char const * const kNetErrorTipImageKey      = "kNetErrorTipImageKey";
+static char const * const kActionTargetKey          = "kActionTargetKey";
+static char const * const kActionSELKey             = "kActionSELKey";
+
 
 @implementation UIScrollView (OKRequestExtension)
 
-#pragma mark - ========== 请求失败提示view相关 ==========
+#pragma mark - ========== 请求空数据提示 ==========
 
-- (void)setEmptyString:(NSString *)emptyString
+- (void)setReqEmptyTipString:(NSString *)reqEmptyTipString
 {
-    objc_setAssociatedObject(self, kEmptyStrKey, emptyString, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, kReqEmptyTipStringKey, reqEmptyTipString, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (NSString *)emptyString
+- (NSString *)reqEmptyTipString
 {
-    return objc_getAssociatedObject(self, kEmptyStrKey);
+    return objc_getAssociatedObject(self, kReqEmptyTipStringKey);
 }
 
-#pragma mark - ========== 提示图片名字 ==========
+#pragma mark - ========== 请求空数据图片 ==========
 
-- (void)setEmptyImageName:(NSString *)emptyImageName
+- (void)setReqEmptyTipImage:(UIImage *)reqEmptyTipImage
 {
-    objc_setAssociatedObject(self, kEmptyImgKey, emptyImageName, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, kReqEmptyTipImageKey, reqEmptyTipImage, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (NSString *)emptyImageName
+- (NSString *)reqEmptyTipImage
 {
-    return objc_getAssociatedObject(self, kEmptyImgKey);
+    return objc_getAssociatedObject(self, kReqEmptyTipImageKey);
 }
 
-#pragma mark - ========== 请求失败文字 ==========
+#pragma mark - ========== 请求失败提示 ==========
 
-- (void)setNetErrorString:(NSString *)netErrorString
+- (void)setReqFailTipString:(NSString *)reqFailTipString
 {
-    objc_setAssociatedObject(self, kNetErrorStrKey, netErrorString, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, kReqFailTipStringKey, reqFailTipString, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (NSString *)netErrorString
+- (NSString *)reqFailTipString
 {
-    return objc_getAssociatedObject(self, kNetErrorStrKey);
+    return objc_getAssociatedObject(self, kReqFailTipStringKey);
 }
 
-#pragma mark - ========== 请求失败提示图片 ==========
+#pragma mark - ========== 请求失败图片 ==========
 
-- (void)setErrorImageName:(NSString *)errorImageName
+- (void)setReqFailTipImage:(UIImage *)reqFailTipImage
 {
-    objc_setAssociatedObject(self, kErrorImgKey, errorImageName, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, kReqFailTipImageKey, reqFailTipImage, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (NSString *)errorImageName
+- (NSString *)reqFailTipImage
 {
-    return objc_getAssociatedObject(self, kErrorImgKey);
+    return objc_getAssociatedObject(self, kReqFailTipImageKey);
 }
+
+#pragma mark - ========== 网络错误提示 ==========
+
+- (void)setNetErrorTipString:(NSString *)netErrorTipString
+{
+    objc_setAssociatedObject(self, kNetErrorTipStringKey, netErrorTipString, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (NSString *)netErrorTipString
+{
+    return objc_getAssociatedObject(self, kNetErrorTipStringKey);
+}
+
+#pragma mark - ========== 按钮点击的Target ==========
+
+- (void)setActionTarget:(id)actionTarget
+{
+    objc_setAssociatedObject(self, kActionTargetKey, actionTarget, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (id)actionTarget
+{
+    return objc_getAssociatedObject(self, kActionTargetKey);
+}
+
+#pragma mark - ========== 按钮点击的事件 ==========
+
+- (void)setActionSEL:(SEL)actionSEL
+{
+    NSString *selString = NSStringFromSelector(actionSEL);
+    objc_setAssociatedObject(self, kActionSELKey, selString, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (SEL)actionSEL
+{
+    NSString *selString = objc_getAssociatedObject(self, kActionSELKey);
+    return NSSelectorFromString(selString);
+}
+
 
 #pragma mark - 给表格添加上下拉刷新事件
 
@@ -204,7 +248,10 @@ static char const * const kNetErrorStrKey   = "kNetErrorStrKey";
 /**
  * 设置提示图片和文字
  */
-- (void)showTipBotton:(BOOL)show TipStatus:(TableVieTipStatus)state tipString:(NSString *)tipString clickBlock:(void(^)())blk
+- (void)showTipBotton:(BOOL)show
+            TipStatus:(TableVieTipStatus)state
+            tipString:(NSString *)tipString
+           clickBlock:(void(^)())blk
 {
     //先移除页面上已有的提示CCParkingRequestTipView视图
     [self removeOldTipBgView];
@@ -212,30 +259,50 @@ static char const * const kNetErrorStrKey   = "kNetErrorStrKey";
     if (!show) return;
     
     NSString *tipText = nil;
-    NSString *imageName = nil;
+    UIImage *tipImage = nil;
     NSString *actionTitle = nil;
+    NSBundle *bundle = [NSBundle bundleForClass:[OKCommonTipView class]];
     
     if (state == RequestNormalStatus) { //正常状态
         //不需要处理, 留给后面扩展
         
     } else if (state == RequestEmptyDataStatus) { //请求空数据
-        tipText = self.emptyString ? : @"暂无数据 ";
-        imageName = self.emptyImageName ? : @"empty_data_icon";
+        tipText = self.reqEmptyTipString ? : @"暂无数据 ";
+        tipImage = self.reqEmptyTipImage ? : [UIImage imageNamed:@"commonImage.bundle/empty_data_icon"
+                                                        inBundle:bundle
+                                   compatibleWithTraitCollection:nil];
         
     } else if (state == RequesErrorNoNetWork) { //网络连接失败
-        tipText = @"网络开小差, 请稍后再试哦!";
+        tipText = self.netErrorTipString ? : @"网络开小差, 请稍后再试哦!";
         actionTitle = @"重新加载";
-        imageName = self.errorImageName ? : @"networkfail_icon";
+        tipImage = self.netErrorTipImage ? : [UIImage imageNamed:@"commonImage.bundle/networkfail_icon"
+                                                        inBundle:bundle
+                                   compatibleWithTraitCollection:nil];
         
     } else if (state == RequestFailStatus) { //请求失败
-        tipText = @"加载失败了哦!";
+        tipText = self.reqFailTipString ? : @"加载失败了哦!";
         actionTitle = @"重新加载";
-        imageName = self.errorImageName ? : @"loading_fail_icon";
+        tipImage = self.reqFailTipImage ? : [UIImage imageNamed:@"commonImage.bundle/loading_fail_icon"
+                                                       inBundle:bundle
+                                  compatibleWithTraitCollection:nil];
     }
     
     //这里防止表格有偏移量，一定要设置y的起始位置为0
-    UIView *tipBgView = [OKCommonTipView tipViewByFrame:self.bounds tipImageName:imageName tipText:tipText actionTitle:actionTitle actionBlock:blk];
-    tipBgView.center = self.center;
+    OKCommonTipView *tipBgView = [OKCommonTipView tipViewByFrame:self.bounds
+                                                        tipImage:tipImage
+                                                         tipText:tipText
+                                                     actionTitle:actionTitle
+                                                     actionBlock:blk];
+    
+    if (self.actionTarget && [self.actionTarget respondsToSelector:self.actionSEL]) {
+        //移除之前的按钮事件
+        OKUndeclaredSelectorLeakWarning(
+          [tipBgView.actionBtn removeTarget:tipBgView action:@selector(buttonAction) forControlEvents:(UIControlEventTouchUpInside)];
+        );
+        //重新添加按钮事件
+        [tipBgView.actionBtn addTarget:self.actionTarget action:self.actionSEL forControlEvents:(UIControlEventTouchUpInside)];
+    }
+    
     if (self.backgroundColor) {
         tipBgView.backgroundColor = self.backgroundColor;
     }

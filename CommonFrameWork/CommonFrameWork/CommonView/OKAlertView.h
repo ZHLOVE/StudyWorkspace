@@ -62,8 +62,9 @@ void ShowAlertToastByTitle(id title, id msg);
 
 /**
  * 显示请求的错误提示信息
+ * @param msg   提示信息->(支持 NSString、NSAttributedString)
  */
-+ (void)showMsgWithError:(NSError *)error defaultMsg:(NSString *)defaultMsg;
+void ShowAlertWithError(NSError *error, id msg);
 
 
 #pragma mark - 带输入框的系统弹框

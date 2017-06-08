@@ -449,9 +449,9 @@
 #pragma mark -===========2秒自动消失弹框===========
 
 /**
- *  2秒自动消失系统Alert弹框
+ *  2秒自动消失的系统Alert弹框
  *
- *  @msg 提示文字
+ *  @msg 提示标题->(支持 NSString、NSAttributedString)
  */
 void ShowAlertToast(id msg) {
     ShowAlertToastByTitle(nil, msg);
@@ -459,10 +459,10 @@ void ShowAlertToast(id msg) {
 
 
 /**
- 2秒自动消失带标题的系统Alert弹框
+ * 2秒自动消失带标题的系统Alert弹框
  
- @param title 标题
- @param msg 提示信息
+ * @param title 提示标题->(支持 NSString、NSAttributedString)
+ * @param msg   提示信息->(支持 NSString、NSAttributedString)
  */
 void ShowAlertToastByTitle(id title, id msg) {
     
@@ -473,16 +473,18 @@ void ShowAlertToastByTitle(id title, id msg) {
 
 
 /**
- * 显示错误提示信息
+ * 显示请求的错误提示信息
+ * @param msg   提示信息->(支持 NSString、NSAttributedString)
  */
-+ (void)showMsgWithError:(NSError *)error defaultMsg:(NSString *)defaultMsg{
+void ShowAlertWithError(NSError *error, id msg) {
+    
     NSString *errorMsg = error.domain;
     NSInteger code = error.code;
     if (code > 200 && code < 500 && errorMsg.length) {
         ShowAlertToastByTitle(@"提示", errorMsg);
     }
-    else if (defaultMsg.length){
-        ShowAlertToastByTitle(@"提示", defaultMsg);
+    else if (msg){
+        ShowAlertToastByTitle(@"提示", msg);
     }
 }
 

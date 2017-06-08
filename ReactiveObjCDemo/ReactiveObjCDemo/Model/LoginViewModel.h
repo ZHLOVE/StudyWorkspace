@@ -13,12 +13,9 @@
 
 @property (nonatomic, strong) NSString *userName;
 @property (nonatomic, strong) NSString *passWord;
-
 @property (nonatomic, strong) NSString *statusTip;
-
 /** 登录按钮可点击信号 */
 @property (nonatomic, strong) RACSignal *loginBtnEnableSignal;
-
 /** 登录命令 */
 @property (nonatomic, strong) RACCommand *loginCommand;
 @end

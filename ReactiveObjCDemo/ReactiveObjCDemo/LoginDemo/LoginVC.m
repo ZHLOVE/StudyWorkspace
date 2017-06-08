@@ -7,6 +7,7 @@
 //
 
 #import "LoginVC.h"
+#import "RAC_TempVC.h"
 #import <ReactiveObjC/ReactiveObjC.h>
 #import "LoginViewModel.h"
 
@@ -22,7 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    // Do any additional setup after loading the view from its nib. 
     
     RAC(self.loginVM, userName) = self.accountTextField.rac_textSignal;
     
@@ -43,7 +44,7 @@
         //取消键盘
         [self.view endEditing:YES];
         
-        NSLog(@"处理登录事件");
+        NSLog(@"点击登录按钮事件");
         [self.loginVM.loginCommand execute:nil];
     }];
 }
@@ -64,6 +65,17 @@
     //取消键盘
     [self.view endEditing:YES];
     self.statusTipLab.hidden = YES;
+}
+
+/**
+ *  登录成功跳转
+ */
+- (void)testRACSubject
+{
+    RAC_TempVC *vc = [[RAC_TempVC alloc] init];
+    vc.hidesBottomBarWhenPushed = YES;
+    vc.title = @"登录成功";
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end

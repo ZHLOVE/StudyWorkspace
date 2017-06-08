@@ -42,12 +42,9 @@
 
 }
 
-- (IBAction)addSubViewAction:(UIButton *)sender {
-    }
+- (IBAction)addSubViewAction:(UIButton *)sender
+{
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 /*

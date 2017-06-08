@@ -6,12 +6,21 @@
 //  Copyright © 2017年 Luke. All rights reserved.
 //
 
-#import "FirstViewController.h"
-#import "SecondViewController.h"
-#import "ReactiveObjC.h"
-#import "OkView.h"
+/**
+ * RAC API学习地址：
+ http://www.cocoachina.com/ios/20160729/17236.html
+ 
+ http://www.cnblogs.com/zengshuilin/p/5780894.html
+ 
+ http://www.tuicool.com/articles/e2Q7beN
+ */
 
-@interface FirstViewController ()
+#import "RAC_UsageVC.h"
+#import "RAC_TempVC.h"
+#import "OkView.h"
+#import "ReactiveObjC.h"
+
+@interface RAC_UsageVC ()
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UILabel *textLabel;
 @property (weak, nonatomic) IBOutlet OkView *redVied;
@@ -19,25 +28,33 @@
 @property (nonatomic, strong) RACCommand *command;
 @end
 
-@implementation FirstViewController
+@implementation RAC_UsageVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    [self testSignalForSelector];
-//    
-//    //监听文本框的文字改变
-//    [self testTextField];
-//    
-//    //代替通知
-//    [self testNotification];
+    [self testSignalForSelector];
+    
+    //监听文本框的文字改变
+    [self testTextField];
+    
+    //代替通知
+    [self testNotification];
+    
+    //测试代理
+    [self replaceDelegate];
 }
 
 
 - (IBAction)btnAction:(UIButton *)sender
 {
-    //测试事件
-    [self testRACMulticastConnection];
+    [self.view endEditing:YES];
+    
+    //测试多个请求
+//    [self testSignalsFromArray];
+    
+    //信号类
+    [self testRACSignal];
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
@@ -48,13 +65,13 @@
 
 #pragma mark -===========简单实用实例===========
 
-
 /**
  * 监听文本框的文字改变
  */
 - (void)testTextField
 {
 //    @weakify(self)
+//    //1. 只用宏监听文本改变<方式1>:
 //    [_textField.rac_textSignal subscribeNext:^(id x) {
 //        @strongify(self)
 //        
@@ -62,15 +79,14 @@
 //        self.textLabel.text = x;
 //    }];
     
-    //    //1. 只用宏监听文本改变:
-        RAC(self.textLabel,text) = _textField.rac_textSignal;
+    //1. 只用宏监听文本改变<方式2>:
+    RAC(self.textLabel,text) = _textField.rac_textSignal;
     
-    
-    //2. 信号组合: 设置监听按钮是否可点击
-        RAC(self.testBtn,enabled) = [RACSignal combineLatest:@[_textField.rac_textSignal] reduce:^(NSString *inputText1){
-               BOOL status = (inputText1.length > 0);
-            return @(status);
-        }];
+//    //2. 信号组合: 设置监听按钮是否可点击
+//    RAC(self.testBtn,enabled) = [RACSignal combineLatest:@[_textField.rac_textSignal] reduce:^(NSString *inputText1){
+//        BOOL status = (inputText1.length > 0);
+//        return @(status);
+//    }];
 }
 
 
@@ -102,15 +118,13 @@
         // 解包元组，会把元组的值，按顺序给参数里面的变量赋值
         RACTupleUnpack(UIButton *btn) = x;
         NSLog(@"控制器中监听到按钮2被点击===%@===%@",x,btn);
-        
     }];
     
-        // 3.监听事件
-        // 把按钮点击事件转换为信号，点击按钮，就会发送信号
-        [[_testBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-    
-            NSLog(@"按钮2被点击了");
-        }];
+//    // 3.监听事件
+//    // 把按钮点击事件转换为信号，点击按钮，就会发送信号
+//    [[_testBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+//        NSLog(@"测试按钮被点击了");
+//    }];
 }
 
 
@@ -138,7 +152,6 @@
 
         NSLog(@"%@",x);
     }];
-    
     
 //    //kvo使用宏监听某个对象的某个属性,返回的是信号
 //    [RACObserve(_redVied, center) subscribeNext:^(id x) {
@@ -182,17 +195,17 @@
  */
 - (void)testRACTuple
 {
-        // 1.遍历数组
-        NSArray *numbers = @[@1,@2,@3,@4];
-    
-        // 这里其实是三步
-        // 第一步: 把数组转换成集合RACSequence numbers.rac_sequence
-        // 第二步: 把集合RACSequence转换RACSignal信号类,numbers.rac_sequence.signal
-        // 第三步: 订阅信号，激活信号，会自动把集合中的所有值，遍历出来。
-        [numbers.rac_sequence.signal subscribeNext:^(id x) {
-    
-            NSLog(@"%@",x);
-        }];
+    // 1.遍历数组
+    NSArray *numbers = @[@1,@2,@3,@4];
+
+    // 这里其实是三步
+    // 第一步: 把数组转换成集合RACSequence numbers.rac_sequence
+    // 第二步: 把集合RACSequence转换RACSignal信号类,numbers.rac_sequence.signal
+    // 第三步: 订阅信号，激活信号，会自动把集合中的所有值，遍历出来。
+    [numbers.rac_sequence.signal subscribeNext:^(id x) {
+
+        NSLog(@"%@",x);
+    }];
     
     
     //2. 遍历字典,遍历出来的键值对会包装成RACTuple(元组对象)
@@ -217,28 +230,33 @@
 {
     // 1.创建信号 -> (冷信号)
     RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        NSLog(@"发送数据");
         // block什么时候调用:当信号被订阅的时候就会调用
         // block作用:在这里面传递数据出去
         // 3.发送数据 -> (触发信号)
-        [subscriber sendNext:@1];
+        [subscriber sendNext:@"😆"];
+        
+        // 注意：数据传递完，最好调用sendCompleted，这时命令才执行完毕。
+        [subscriber sendCompleted];
         return nil;
     }];
     
-    // 2.订阅信号 -> (热信号)
-    [signal subscribeNext:^(id x) {
-        // block什么时候调用:当信号内部,发送数据的时候,就会调用,并且会把值传递给你
-        // block作用:在这个block中处理数据
-        NSLog(@"信号传递出来的数据==%@",x);
+//    // 2.订阅信号 -> (热信号)
+//    [signal subscribeNext:^(id x) {
+//        // block什么时候调用:当信号内部,发送数据的时候,就会调用,并且会把值传递给你
+//        // block作用:在这个block中处理数据
+//        NSLog(@"信号传递出来的数据1==%@",x);
+//    }];
+
+    // 2.订阅取消信号
+    RACDisposable *disposable = [signal subscribeNext:^(id x) {
+        NSLog(@"信号传递出来的数据2===%@",x);
     }];
     
-
-        // 3.订阅取消信号
-    RACDisposable *disposable = [signal subscribeNext:^(id x) {
-        NSLog(@"%@",x);
-    }];
-    // 取消订阅(主动取消)
+    // 3取消订阅(主动取消)
     [disposable dispose];
 
+    NSLog(@"已取消订阅");
 }
 
 #pragma mark -===========高级用法===========
@@ -248,20 +266,22 @@
 - (void)testSignalsFromArray
 {
     RACSignal *request1 = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        //做事情。。。
-        // 发送请求1
-        [subscriber sendNext:@"发送请求1"];
+        NSLog(@"做事情1,发送请求。。。");
+        [subscriber sendNext:@"数据1"];
+        
+        // 注意：数据传递完，最好调用sendCompleted，这时命令才执行完毕。
+        [subscriber sendCompleted];
         return nil;
     }];
     
     RACSignal *request2 = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        //做事情。。。
-        // 发送请求2
-        [subscriber sendNext:@"发送请求2"];
+        NSLog(@"做事情2,发送请求。。。");
+        [subscriber sendNext:@"数据2"];
+        [subscriber sendCompleted];
         return nil;
     }];
     
-    // 使用注意：几个信号，参数一的方法就几个参数，每个参数对应信号发出的数据。
+    // 使用注意：有几个信号就几个参数，每个参数对应信号发出的数据。
     [self rac_liftSelector:@selector(updateUIWithR1:r2:) withSignalsFromArray:@[request1,request2]];
 }
 
@@ -269,7 +289,7 @@
 // 更新UI
 - (void)updateUIWithR1:(id)data r2:(id)data1
 {
-    NSLog(@"更新UI%@  %@",data,data1);
+    NSLog(@"更新UI: %@,  %@",data,data1);
 }
 
 /**
@@ -279,8 +299,9 @@
  */
 - (void)testRACSubject
 {
-    SecondViewController *vc = [[SecondViewController alloc] init];
+    RAC_TempVC *vc = [[RAC_TempVC alloc] init];
     vc.hidesBottomBarWhenPushed = YES;
+    vc.title = @"RAC_TempVC.m";
     
     vc.subject = [RACSubject subject];
     
@@ -341,6 +362,8 @@
         //发送信号
         [subscriber sendNext:@"网络数据"];
         
+        // 注意：数据传递完，最好调用sendCompleted，这时命令才执行完毕。
+        [subscriber sendCompleted];
         return nil;
     }];
     // 2.把信号转换成连接类
@@ -367,6 +390,8 @@
     //创建3个信号来模拟队列
     RACSignal *signalB = [RACSignal createSignal:^RACDisposable *(id subscriber) {
         [subscriber sendNext:@"喜欢一个人"];
+        
+        // 注意：数据传递完，最好调用sendCompleted，这时命令才执行完毕。
         [subscriber sendCompleted];
         return nil;
     }];
@@ -386,7 +411,7 @@
     [signalGroup subscribeNext:^(id x) {
         NSLog(@"%@",x);
     }];
-//
+
 //    //信号合并队列:当其中信号方法执行完后便会执行下个信号
 //    [[RACSignal merge:@[signalB,signalC,signalD]] subscribeNext:^(id x) {
 //        // code...
@@ -479,8 +504,4 @@
     }];
 }
 
-//API中类的定义
-//http://www.cocoachina.com/ios/20160729/17236.html
-
-//http://www.tuicool.com/articles/e2Q7beN
 @end

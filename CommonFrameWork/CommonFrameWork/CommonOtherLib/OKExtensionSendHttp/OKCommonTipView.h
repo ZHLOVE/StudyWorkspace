@@ -32,20 +32,22 @@
 //当前提示view在父视图上的tag
 #define kRequestTipViewTag      2016
 
+@property (nonatomic, strong) UIButton *actionBtn;
+
 /**
  返回一个提示空白view
 
  @param frame 提示View大小
- @param imageName 图片名字
- @param tipText 提示文字
- @param actionTitle 按钮标题, 不要按钮可不传
- @param touchBlock 点击按钮回调Block
+ @param image 图片名字
+ @param text 提示文字
+ @param title 按钮标题, 不要按钮可不传
+ @param block 点击按钮回调Block
  @return 提示空白view
  */
 + (OKCommonTipView *)tipViewByFrame:(CGRect)frame
-                       tipImageName:(NSString *)imageName
-                            tipText:(id)tipText
-                        actionTitle:(NSString *)actionTitle
-                        actionBlock:(void(^)())touchBlock;
+                           tipImage:(UIImage *)image
+                            tipText:(id)text
+                        actionTitle:(NSString *)title
+                        actionBlock:(void(^)())block;
 
 @end

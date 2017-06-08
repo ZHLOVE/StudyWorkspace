@@ -1,23 +1,22 @@
 //
-//  SecondViewController.m
+//  RAC_TempVC.m
 //  ReactiveObjCDemo
 //
-//  Created by mao wangxin on 2017/5/19.
+//  Created by mao wangxin on 2017/6/8.
 //  Copyright © 2017年 Luke. All rights reserved.
 //
 
-#import "SecondViewController.h"
+#import "RAC_TempVC.h"
 
-@interface SecondViewController ()
+@interface RAC_TempVC ()
 
 @end
 
-@implementation SecondViewController
+@implementation RAC_TempVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-    
+    // Do any additional setup after loading the view from its nib.
 }
 
 /**

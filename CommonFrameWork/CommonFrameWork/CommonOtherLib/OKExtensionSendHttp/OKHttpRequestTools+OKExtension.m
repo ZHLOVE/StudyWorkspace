@@ -59,13 +59,13 @@ static char const * const kRequestTimeCountKey    = "kRequestTimeCountKey";
 + (void)showReqLoadingView:(OKHttpRequestModel *)requestModel show:(BOOL)show
 {
     if (show) {
-        if (requestModel.loadView && !requestModel.dataTableView) {
+        if (requestModel.loadView) {
             [requestModel.loadView endEditing:YES];
             [MBProgressHUD hideLoadingFromView:requestModel.loadView];
             [MBProgressHUD showLoadingWithView:requestModel.loadView text:RequestLoadingTip];
         }
     } else {
-        if (requestModel.loadView && !requestModel.dataTableView) {
+        if (requestModel.loadView) {
             [MBProgressHUD hideLoadingFromView:requestModel.loadView];
         }
     }
@@ -131,12 +131,18 @@ static char const * const kRequestTimeCountKey    = "kRequestTimeCountKey";
             
             /** <3>.是否需要缓存 */
             if (isCacheData == NO && requestModel.requestCachePolicy == RequestStoreCacheData) {
-                NSData  *jsonData = [NSJSONSerialization dataWithJSONObject:responseObject options:NSJSONWritingPrettyPrinted error:nil];
-                NSString *jsonStr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+                NSData  *jsonData = [NSJSONSerialization dataWithJSONObject:responseObject
+                                                                    options:NSJSONWritingPrettyPrinted
+                                                                      error:nil];
+                NSString *jsonStr = [[NSString alloc] initWithData:jsonData
+                                                          encoding:NSUTF8StringEncoding];
                 NSData * data = [jsonStr dataUsingEncoding:NSUTF8StringEncoding];
                 if (data) { //保存数据到数据库
-                    NSString *cachekey = [self getCacheKeyByRequestUrl:requestModel.requestUrl parameter:requestModel.parameters];//缓存key
-                    [OKFMDBTool saveDataToDB:data byObjectId:cachekey toTable:JsonDataTableType];
+                    NSString *cachekey = [self getCacheKeyByRequestUrl:requestModel.requestUrl
+                                                             parameter:requestModel.parameters];//缓存key
+                    [OKFMDBTool saveDataToDB:data
+                                  byObjectId:cachekey
+                                     toTable:JsonDataTableType];
                 }
             }
         } else { //请求code不正确,走失败
@@ -148,8 +154,10 @@ static char const * const kRequestTimeCountKey    = "kRequestTimeCountKey";
     //如果有网络缓存, 则立即返回缓存, 同时继续请求网络最新数据
     if (successBlock && requestModel.requestCachePolicy == RequestStoreCacheData) {
         //缓存key
-        NSString *cachekey = [self getCacheKeyByRequestUrl:requestModel.requestUrl parameter:requestModel.parameters];
-        NSDictionary *cacheDic = [OKFMDBTool getObjectById:cachekey fromTable:JsonDataTableType];
+        NSString *cachekey = [self getCacheKeyByRequestUrl:requestModel.requestUrl
+                                                 parameter:requestModel.parameters];
+        NSDictionary *cacheDic = [OKFMDBTool getObjectById:cachekey
+                                                 fromTable:JsonDataTableType];
         if (cacheDic) {
             NSLog(@"\n请求接口基地址= %@\n\n请求参数= %@\n\n缓存数据成功返回= %@",requestModel.requestUrl,requestModel.parameters,cacheDic);
             succResultBlock(cacheDic,YES);
@@ -173,7 +181,9 @@ static char const * const kRequestTimeCountKey    = "kRequestTimeCountKey";
                 
                 //给requestModel关联一个重复请求次数的key
                 objc_setAssociatedObject(requestModel, kRequestTimeCountKey, @(countNum), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-                sessionDataTask = [OKHttpRequestTools sendExtensionRequest:requestModel success:successBlock failure:failureBlock];
+                sessionDataTask = [OKHttpRequestTools sendExtensionRequest:requestModel
+                                                                   success:successBlock
+                                                                   failure:failureBlock];
             } else {
                 failResultBlock(error);
             }

@@ -7,10 +7,11 @@
 //
 
 #import "OKCommonTipView.h"
-#import "UIButton+OKExtension.h"
 #import "UIView+OKExtension.h"
 
+#ifndef UIColorFromHex
 #define UIColorFromHex(hexValue)            ([UIColor colorWithRed:((float)((hexValue & 0xFF0000) >> 16))/255.0 green:((float)((hexValue & 0x00FF00) >> 8))/255.0 blue:((float)(hexValue & 0x0000FF))/255.0 alpha:1.0])
+#endif
 
 
 @implementation MBProgressHUD (Extension)
@@ -73,77 +74,107 @@
 
 @end
 
+@interface OKCommonTipView ()
+@property (nonatomic, copy) void(^block)();
+@end
+
 @implementation OKCommonTipView
 
 /**
- *  根据类型显示提示view
+ 返回一个提示空白view
+ 
+ @param frame 提示View大小
+ @param image 图片名字
+ @param text 提示文字
+ @param title 按钮标题, 不要按钮可不传
+ @param block 点击按钮回调Block
+ @return 提示空白view
  */
-+ (UIView *)tipViewByFrame:(CGRect)frame
-              tipImageName:(NSString *)imageName
-                   tipText:(id)tipText
-               actionTitle:(NSString *)actionTitle
-               actionBlock:(void(^)())touchBlock
++ (OKCommonTipView *)tipViewByFrame:(CGRect)frame
+                           tipImage:(UIImage *)image
+                            tipText:(id)text
+                        actionTitle:(NSString *)title
+                        actionBlock:(void(^)())block
 {
-    OKCommonTipView *tipBgView = [[OKCommonTipView alloc] initWithFrame:frame];
-    tipBgView.tag = kRequestTipViewTag;
-    tipBgView.backgroundColor = UIColorFromHex(0xf5f6f8);
-    
-    UIImage *image = [UIImage imageNamed:imageName];
-    if (!image) {
-        NSBundle *bundle = [NSBundle bundleForClass:[OKCommonTipView class]];
-        NSString *imageNamePath = [NSString stringWithFormat:@"commonImage.bundle/%@",imageName];
-        image = [UIImage imageNamed:imageNamePath inBundle:bundle compatibleWithTraitCollection:nil];
-    }
-    
-    //中间文字
-    UILabel *_tipLabel = nil;
-    if (tipText) {
-        _tipLabel = [[UILabel alloc] init];
-        _tipLabel.font = [UIFont boldSystemFontOfSize:14];
-        _tipLabel.textColor = UIColorFromHex(0x666666);
-        _tipLabel.textAlignment = NSTextAlignmentCenter;
-        [tipBgView addSubview:_tipLabel];
+    OKCommonTipView *tipView = [[OKCommonTipView alloc] initWithFrame:frame
+                                                             tipImage:image
+                                                              tipText:text
+                                                          actionTitle:title
+                                                          actionBlock:block];
+    tipView.tag = kRequestTipViewTag;
+    tipView.backgroundColor = UIColorFromHex(0xf5f6f8);
+    return tipView;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame
+                     tipImage:(UIImage *)image
+                      tipText:(id)text
+                  actionTitle:(NSString *)title
+                  actionBlock:(void(^)())block
+{
+    self = [super initWithFrame:frame];
+    if(self){
+        self.block = block;
         
-        if ([tipText isKindOfClass:[NSString class]]) {
-            _tipLabel.text = tipText;
-        } else if ([tipText isKindOfClass:[NSAttributedString class]]) {
-            _tipLabel.attributedText = tipText;
+        //中间文字
+        UILabel *_tipLabel = nil;
+        if (text) {
+            _tipLabel = [[UILabel alloc] init];
+            _tipLabel.font = [UIFont boldSystemFontOfSize:14];
+            _tipLabel.textColor = UIColorFromHex(0x666666);
+            _tipLabel.textAlignment = NSTextAlignmentCenter;
+            [self addSubview:_tipLabel];
+            
+            if ([text isKindOfClass:[NSString class]]) {
+                _tipLabel.text = text;
+            } else if ([text isKindOfClass:[NSAttributedString class]]) {
+                _tipLabel.attributedText = text;
+            }
+            [_tipLabel sizeToFit];
+            _tipLabel.x = (frame.size.width - _tipLabel.width)/2;
+            _tipLabel.y = frame.size.height *0.4;
         }
-        [_tipLabel sizeToFit];
-        _tipLabel.x = (frame.size.width - _tipLabel.width)/2;
-        _tipLabel.y = frame.size.height *0.4;
+        
+        //顶部图片
+        UIImageView *_tipImageView = nil;
+        if (image && _tipLabel) {
+            CGFloat tipImageX = (frame.size.width-image.size.width)/2;
+            _tipImageView = [[UIImageView alloc] initWithImage:image];
+            _tipImageView.frame = CGRectMake(tipImageX, 0, image.size.width, image.size.height);
+            [self addSubview:_tipImageView];
+            _tipImageView.y = CGRectGetMinY(_tipLabel.frame) - (_tipImageView.height);
+            _tipImageView.contentMode = UIViewContentModeScaleAspectFill;
+        }
+        
+        //底部按钮
+        if (title && block && _tipLabel) {
+            CGFloat actionBtnW = 80;
+            CGFloat actionBtnX = (frame.size.width - actionBtnW)/2;
+            CGFloat actionBtnY = CGRectGetMaxY(_tipLabel.frame) + 15;
+            UIButton *actionBtn = [[UIButton alloc] initWithFrame:CGRectMake(actionBtnX, actionBtnY, actionBtnW, 30)];
+            [actionBtn setTitle:title forState:0];
+            actionBtn.backgroundColor = [UIColor whiteColor];
+            actionBtn.layer.cornerRadius = 6;
+            actionBtn.layer.borderColor = UIColorFromHex(0x666666).CGColor;
+            actionBtn.layer.borderWidth = 1;
+            [actionBtn setTitleColor:UIColorFromHex(0x666666) forState:0];
+            actionBtn.titleLabel.font = [UIFont boldSystemFontOfSize:14];
+            [actionBtn addTarget:self action:@selector(buttonAction) forControlEvents:(UIControlEventTouchUpInside)];
+            [self addSubview:actionBtn];
+            self.actionBtn = actionBtn;
+        }
+    }    
+    return self;
+}
+
+/**
+ * 提示按钮点击事件
+ */
+- (void)buttonAction
+{
+    if (self.block) {
+        self.block();
     }
-    
-    //顶部图片
-    UIImageView *_tipImageView = nil;
-    if (image && _tipLabel) {
-        CGFloat tipImageX = (frame.size.width-image.size.width)/2;
-        _tipImageView = [[UIImageView alloc] initWithImage:image];
-        _tipImageView.frame = CGRectMake(tipImageX, 0, image.size.width, image.size.height);
-        [tipBgView addSubview:_tipImageView];
-        _tipImageView.y = CGRectGetMinY(_tipLabel.frame) - (_tipImageView.height);
-        _tipImageView.contentMode = UIViewContentModeScaleAspectFill;
-    }
-    
-    //底部按钮
-    if (actionTitle && touchBlock && _tipLabel) {
-        CGFloat actionBtnW = 80;
-        CGFloat actionBtnX = (frame.size.width - actionBtnW)/2;
-        CGFloat actionBtnY = CGRectGetMaxY(_tipLabel.frame) + 15;
-        UIButton *actionBtn = [[UIButton alloc] initWithFrame:CGRectMake(actionBtnX, actionBtnY, actionBtnW, 30)];
-        [actionBtn setTitle:actionTitle forState:0];
-        actionBtn.backgroundColor = [UIColor whiteColor];
-        actionBtn.layer.cornerRadius = 6;
-        actionBtn.layer.borderColor = UIColorFromHex(0x666666).CGColor;
-        actionBtn.layer.borderWidth = 1;
-        [actionBtn setTitleColor:UIColorFromHex(0x666666) forState:0];
-        actionBtn.titleLabel.font = [UIFont boldSystemFontOfSize:14];
-        [actionBtn addTouchUpInsideHandler:^(UIButton *btn) {
-            touchBlock();
-        }];
-        [tipBgView addSubview:actionBtn];
-    }
-    return tipBgView;
 }
 
 @end

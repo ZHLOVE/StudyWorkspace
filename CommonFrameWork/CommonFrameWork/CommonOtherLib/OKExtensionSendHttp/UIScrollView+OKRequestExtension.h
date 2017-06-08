@@ -22,16 +22,28 @@ typedef enum : NSUInteger {
 @interface UIScrollView (OKRequestExtension)
 
 /** 空数据提示 */
-@property (nonatomic, strong) NSString *emptyString;
+@property (nonatomic, strong) NSString *reqEmptyTipString;
 
 /** 空数据提示图片 */
-@property (nonatomic, strong) NSString *emptyImageName;
+@property (nonatomic, strong) UIImage *reqEmptyTipImage;
 
-/** 网络连接失败提示 */
-@property (nonatomic, strong) NSString *netErrorString;
+/** 请求失败提示 */
+@property (nonatomic, strong) NSString *reqFailTipString;
 
 /** 请求失败提示图片 */
-@property (nonatomic, strong) NSString *errorImageName;
+@property (nonatomic, strong) UIImage *reqFailTipImage;
+
+/** 网络连接失败提示 */
+@property (nonatomic, strong) NSString *netErrorTipString;
+
+/** 网络连接失败图片 */
+@property (nonatomic, strong) UIImage *netErrorTipImage;
+
+/** 按钮点击的Target */
+@property (nonatomic, strong) id actionTarget;
+
+/** 按钮点击的事件 */
+@property (nonatomic, assign) SEL actionSEL;
 
 
 #pragma mark - 给表格添加上下拉刷新事件

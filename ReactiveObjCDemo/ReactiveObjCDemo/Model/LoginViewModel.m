@@ -53,6 +53,7 @@
         NSLog(@"获取命令中的信号源==%@",x);
     }];
     
+    //skip:跳过1次执行
     [[_loginCommand.executing skip:1] subscribeNext:^(NSNumber * _Nullable x) {
         @strongify(self)
         
