@@ -39,6 +39,9 @@ typedef enum : NSUInteger {
 /** 网络连接失败图片 */
 @property (nonatomic, strong) UIImage *netErrorTipImage;
 
+/** 按钮标题 */
+@property (nonatomic, strong) NSString *actionBtnTitle;
+
 /** 按钮点击的Target */
 @property (nonatomic, strong) id actionTarget;
 
@@ -63,7 +66,7 @@ typedef enum : NSUInteger {
 /**
  调用此方法,会自动处理表格上下拉刷新,分页,添加空白页等操作
  
- @param responseData 网络请求回调数据
+ @param responseData 网络请求回调数据 (NSDictionary,NSError)
  */
 - (void)showRequestTip:(id)responseData;
 

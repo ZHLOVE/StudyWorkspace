@@ -11,6 +11,7 @@
 #import <AFNetworkReachabilityManager.h>
 #import "UIButton+OKExtension.h"
 #import "OKPubilcKeyDefiner.h"
+#import "UIView+OKExtension.h"
 #import <MJRefresh.h>
 
 /** 网络连接失败 */
@@ -25,6 +26,7 @@ static char const * const kReqFailTipStringKey      = "kReqFailTipStringKey";
 static char const * const kReqFailTipImageKey       = "kReqFailTipImageKey";
 static char const * const kNetErrorTipStringKey     = "kNetErrorTipStringKey";
 static char const * const kNetErrorTipImageKey      = "kNetErrorTipImageKey";
+static char const * const kActionBtnTitleKey        = "kActionBtnTitleKey";
 static char const * const kActionTargetKey          = "kActionTargetKey";
 static char const * const kActionSELKey             = "kActionSELKey";
 
@@ -105,6 +107,18 @@ static char const * const kActionSELKey             = "kActionSELKey";
 
 #pragma mark - ========== 按钮点击的Target ==========
 
+- (void)setActionBtnTitle:(NSString *)actionBtnTitle
+{
+    objc_setAssociatedObject(self, kActionBtnTitleKey, actionBtnTitle, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (NSString *)actionBtnTitle
+{
+    return objc_getAssociatedObject(self, kActionBtnTitleKey);
+}
+
+#pragma mark - ========== 按钮点击的Target ==========
+
 - (void)setActionTarget:(id)actionTarget
 {
     objc_setAssociatedObject(self, kActionTargetKey, actionTarget, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
@@ -147,10 +161,7 @@ static char const * const kActionSELKey             = "kActionSELKey";
             //1.先移除页面上已有的提示视图
             [weakSelf removeOldTipBgView];
             
-            //2.先移除页面上已有的提示视图
-            [weakSelf removeOldTipBgView];
-            
-            //每次下拉刷新时先结束上啦
+            //2.每次下拉刷新时先结束上啦
             [weakSelf.mj_footer endRefreshing];
             
             headerBlock();
@@ -342,22 +353,22 @@ static char const * const kActionSELKey             = "kActionSELKey";
                                    compatibleWithTraitCollection:nil];
         
     } else if (state == RequesErrorNoNetWork) { //网络连接失败
-        tipText = self.netErrorTipString ? : @"网络开小差, 请稍后再试哦!";
         actionTitle = @"重新加载";
+        tipText = self.netErrorTipString ? : @"网络开小差, 请稍后再试哦!";
         tipImage = self.netErrorTipImage ? : [UIImage imageNamed:@"commonImage.bundle/networkfail_icon"
                                                         inBundle:bundle
                                    compatibleWithTraitCollection:nil];
         
     } else if (state == RequestFailStatus) { //请求失败
-        tipText = self.reqFailTipString ? : @"加载失败了哦!";
         actionTitle = @"重新加载";
+        tipText = self.reqFailTipString ? : @"加载失败了哦!";
         tipImage = self.reqFailTipImage ? : [UIImage imageNamed:@"commonImage.bundle/loading_fail_icon"
                                                        inBundle:bundle
                                   compatibleWithTraitCollection:nil];
     }
     
     //这里防止表格有偏移量，一定要设置y的起始位置为0
-    OKCommonTipView *tipBgView = [OKCommonTipView tipViewByFrame:self.bounds
+    OKCommonTipView *tipBgView = [OKCommonTipView tipViewByFrame:self.superview.bounds
                                                         tipImage:tipImage
                                                          tipText:tipText
                                                      actionTitle:actionTitle
@@ -378,12 +389,19 @@ static char const * const kActionSELKey             = "kActionSELKey";
                   [weakSelf.actionTarget performSelector:weakSelf.actionSEL];
             );
         }];
+        
+        //替换按钮标题
+        if (self.actionBtnTitle.length) {
+            [tipBgView.actionBtn setTitle:self.actionBtnTitle forState:0];
+            [tipBgView.actionBtn sizeToFit];
+            tipBgView.actionBtn.width += 30;
+        }
     }
     
     if (self.backgroundColor) {
         tipBgView.backgroundColor = self.backgroundColor;
     }
-    [self addSubview:tipBgView];
+    [self.superview addSubview:tipBgView];
 }
 
 /**
@@ -435,7 +453,7 @@ static char const * const kActionSELKey             = "kActionSELKey";
  */
 - (void)removeOldTipBgView
 {
-    for (UIView *tempView in self.subviews) {
+    for (UIView *tempView in self.superview.subviews) {
         if ([tempView isKindOfClass:[OKCommonTipView class]] ||
             tempView.tag == kRequestTipViewTag) {
             [tempView removeFromSuperview];
