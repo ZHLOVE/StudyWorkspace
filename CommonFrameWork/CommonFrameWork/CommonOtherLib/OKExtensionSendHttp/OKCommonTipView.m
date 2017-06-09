@@ -71,8 +71,8 @@
     [HUD showAnimated:YES];
 }
 
-
 @end
+
 
 @interface OKCommonTipView ()
 @property (nonatomic, copy) void(^block)();
@@ -93,7 +93,7 @@
 + (OKCommonTipView *)tipViewByFrame:(CGRect)frame
                            tipImage:(UIImage *)image
                             tipText:(id)text
-                        actionTitle:(NSString *)title
+                        actionTitle:(id)title
                         actionBlock:(void(^)())block
 {
     OKCommonTipView *tipView = [[OKCommonTipView alloc] initWithFrame:frame
@@ -109,12 +109,27 @@
 - (instancetype)initWithFrame:(CGRect)frame
                      tipImage:(UIImage *)image
                       tipText:(id)text
-                  actionTitle:(NSString *)title
+                  actionTitle:(id)title
                   actionBlock:(void(^)())block
 {
     self = [super initWithFrame:frame];
     if(self){
         self.block = block;
+        
+        CGFloat spaceMargin = 5;
+        UIView *contenView = [[UIView alloc] init];
+        contenView.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
+        contenView.backgroundColor = [UIColor clearColor];
+        [self addSubview:contenView];
+        
+        //顶部图片
+        UIImageView *_tipImageView = nil;
+        if (image) {
+            _tipImageView = [[UIImageView alloc] initWithImage:image];
+            _tipImageView.contentMode = UIViewContentModeScaleAspectFill;
+            [contenView addSubview:_tipImageView];
+            _tipImageView.centerX = contenView.width/2;
+        }
         
         //中间文字
         UILabel *_tipLabel = nil;
@@ -123,7 +138,8 @@
             _tipLabel.font = [UIFont boldSystemFontOfSize:14];
             _tipLabel.textColor = UIColorFromHex(0x666666);
             _tipLabel.textAlignment = NSTextAlignmentCenter;
-            [self addSubview:_tipLabel];
+            _tipLabel.numberOfLines = 0;
+            [contenView addSubview:_tipLabel];
             
             if ([text isKindOfClass:[NSString class]]) {
                 _tipLabel.text = text;
@@ -131,38 +147,40 @@
                 _tipLabel.attributedText = text;
             }
             [_tipLabel sizeToFit];
-            _tipLabel.x = (frame.size.width - _tipLabel.width)/2;
-            _tipLabel.y = frame.size.height *0.4;
-        }
-        
-        //顶部图片
-        UIImageView *_tipImageView = nil;
-        if (image && _tipLabel) {
-            CGFloat tipImageX = (frame.size.width-image.size.width)/2;
-            _tipImageView = [[UIImageView alloc] initWithImage:image];
-            _tipImageView.frame = CGRectMake(tipImageX, 0, image.size.width, image.size.height);
-            [self addSubview:_tipImageView];
-            _tipImageView.y = CGRectGetMinY(_tipLabel.frame) - (_tipImageView.height);
-            _tipImageView.contentMode = UIViewContentModeScaleAspectFill;
+            _tipLabel.centerX = contenView.width/2;
+            _tipLabel.y = _tipImageView ? CGRectGetMaxY(_tipImageView.frame)+spaceMargin : 0;
         }
         
         //底部按钮
-        if (title && block && _tipLabel) {
-            CGFloat actionBtnW = 80;
-            CGFloat actionBtnX = (frame.size.width - actionBtnW)/2;
-            CGFloat actionBtnY = CGRectGetMaxY(_tipLabel.frame) + 15;
-            UIButton *actionBtn = [[UIButton alloc] initWithFrame:CGRectMake(actionBtnX, actionBtnY, actionBtnW, 30)];
-            [actionBtn setTitle:title forState:0];
+        if (title) {
+            UIButton *actionBtn = [[UIButton alloc] init];
             actionBtn.backgroundColor = [UIColor whiteColor];
             actionBtn.layer.cornerRadius = 6;
             actionBtn.layer.borderColor = UIColorFromHex(0x666666).CGColor;
             actionBtn.layer.borderWidth = 1;
             [actionBtn setTitleColor:UIColorFromHex(0x666666) forState:0];
             actionBtn.titleLabel.font = [UIFont boldSystemFontOfSize:14];
+            actionBtn.titleLabel.numberOfLines = 0;
             [actionBtn addTarget:self action:@selector(buttonAction) forControlEvents:(UIControlEventTouchUpInside)];
-            [self addSubview:actionBtn];
+            [contenView addSubview:actionBtn];
+            
+            if ([title isKindOfClass:[NSString class]]) {
+                [actionBtn setTitle:title forState:0];
+            } else if ([title isKindOfClass:[NSAttributedString class]]) {
+                [actionBtn setAttributedTitle:title forState:00];
+            }
+            [actionBtn sizeToFit];
+            actionBtn.width += 30;
+            actionBtn.centerX = contenView.width/2;
+            if (_tipLabel) {
+                actionBtn.y = CGRectGetMaxY(_tipLabel.frame)+spaceMargin;
+            } else if (_tipImageView){
+                actionBtn.y = CGRectGetMaxY(_tipImageView.frame)+spaceMargin;
+            }
             self.actionBtn = actionBtn;
         }
+        contenView.height = CGRectGetMaxY(self.actionBtn.frame);
+        contenView.y = (frame.size.height-contenView.height)/2;
     }    
     return self;
 }

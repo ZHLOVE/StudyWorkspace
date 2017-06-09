@@ -9,6 +9,7 @@
 #import "UIScrollView+OKRequestExtension.h"
 #import "OKCommonTipView.h"
 #import <AFNetworkReachabilityManager.h>
+#import "UIButton+OKExtension.h"
 #import "OKPubilcKeyDefiner.h"
 #import <MJRefresh.h>
 
@@ -90,6 +91,18 @@ static char const * const kActionSELKey             = "kActionSELKey";
     return objc_getAssociatedObject(self, kNetErrorTipStringKey);
 }
 
+#pragma mark - ========== 网络错误图片 ==========
+
+- (void)setNetErrorTipImage:(UIImage *)netErrorTipImage
+{
+    objc_setAssociatedObject(self, kNetErrorTipImageKey, netErrorTipImage, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (NSString *)netErrorTipImage
+{
+    return objc_getAssociatedObject(self, kNetErrorTipImageKey);
+}
+
 #pragma mark - ========== 按钮点击的Target ==========
 
 - (void)setActionTarget:(id)actionTarget
@@ -163,7 +176,6 @@ static char const * const kActionSELKey             = "kActionSELKey";
  */
 - (void)showRequestTip:(id)responseData
 {
-    //请求回调后收起上下拉控件
     if (self.mj_header) {
         [self.mj_header endRefreshing];
     }
@@ -179,44 +191,32 @@ static char const * const kActionSELKey             = "kActionSELKey";
             //根据状态,显示背景提示Viwe
             if (![AFNetworkReachabilityManager sharedManager].reachable) {//没有网络
                 WEAKSELF
-                [self showTipBotton:YES TipStatus:RequesErrorNoNetWork tipString:nil clickBlock:^{
+                [self showTipBotton:YES
+                          TipStatus:RequesErrorNoNetWork
+                          tipString:nil
+                         clickBlock:^{
                     //移除提示视图,重新请求
                     [weakSelf removeTipViewAndRefresh];
                 }];
                 
             } else {
-                [self showTipBotton:YES TipStatus:RequestEmptyDataStatus tipString:nil clickBlock:nil];
+                [self showTipBotton:YES
+                          TipStatus:RequestEmptyDataStatus
+                          tipString:nil
+                         clickBlock:nil];
             }
             
         } else { //页面有数据
             //隐藏背景提示Viwe
-            [self showTipBotton:NO TipStatus:RequestNormalStatus tipString:nil clickBlock:nil];
+            [self showTipBotton:NO
+                      TipStatus:RequestNormalStatus
+                      tipString:nil
+                     clickBlock:nil];
             
-            if (!self.mj_footer) return;
-            
-            //控制上啦控件显示的分页逻辑
-            if ([((NSDictionary *)responseData).allKeys containsObject:kTotalPageKey] &&
-                [((NSDictionary *)responseData).allKeys containsObject:kCurrentPageKey] ) {
-                NSInteger totalPage = [responseData[kTotalPageKey] integerValue];
-                NSInteger currentPage = [responseData[kCurrentPageKey] integerValue];
-                
-                if (totalPage > currentPage) {
-                    self.mj_footer.hidden = NO;
-                } else {
-                    [self.mj_footer endRefreshingWithNoMoreData];
-                    self.mj_footer.hidden = YES;
-                }
-            } else if([((NSDictionary *)responseData).allKeys containsObject:kListKey]){
-                NSArray *dataArr = responseData[kListKey];
-                if (dataArr.count>0) {
-                    self.mj_footer.hidden = NO;
-                } else {
-                    [self.mj_footer endRefreshingWithNoMoreData];
-                    self.mj_footer.hidden = YES;
-                }
-            } else {
-                self.mj_footer.hidden = NO;
-            }
+            if (self.mj_footer) {
+                //控制刷新控件显示的分页逻辑
+                [self setRefreshStatus:responseData];
+            };
         }
         
     } else if([responseData isKindOfClass:[NSError class]]){ //请求失败处理
@@ -226,20 +226,89 @@ static char const * const kActionSELKey             = "kActionSELKey";
             //根据状态,显示背景提示Viwe
             WEAKSELF
             if (![AFNetworkReachabilityManager sharedManager].reachable) { //没有网络
-                [self showTipBotton:YES TipStatus:RequesErrorNoNetWork tipString:NetworkConnectFailTips clickBlock:^{
+                [self showTipBotton:YES
+                          TipStatus:RequesErrorNoNetWork
+                          tipString:NetworkConnectFailTips
+                         clickBlock:^{
                     //移除提示视图,重新请求
                     [weakSelf removeTipViewAndRefresh];
                 }];
             } else {
-                [self showTipBotton:YES TipStatus:RequestFailStatus tipString:error.domain clickBlock:^{
+                [self showTipBotton:YES
+                          TipStatus:RequestFailStatus
+                          tipString:error.domain
+                         clickBlock:^{
                     //移除提示视图,重新请求
                     [weakSelf removeTipViewAndRefresh];
                 }];
             }
         } else { //页面有数据
             //隐藏背景提示Viwe
-            [self showTipBotton:NO TipStatus:RequestFailStatus tipString:error.domain clickBlock:nil];
+            [self showTipBotton:NO
+                      TipStatus:RequestFailStatus
+                      tipString:error.domain
+                     clickBlock:nil];
         }
+    }
+}
+
+/**
+ * 判断页面是否有数据
+ */
+- (BOOL)contentViewIsEmptyData
+{
+    BOOL isEmpty = NO;
+    
+    //如果是UITableView
+    if ([self isKindOfClass:[UITableView class]]) {
+        UITableView *tableView = (UITableView *)self;
+        if (tableView.numberOfSections==0 ||
+            (tableView.numberOfSections==1 && [tableView numberOfRowsInSection:0] == 0)) {
+            isEmpty = YES;
+        }
+        
+    } else if ([self isKindOfClass:[UICollectionView class]]) {
+        UICollectionView *collectionView = (UICollectionView *)self;
+        if (collectionView.numberOfSections==0 ||
+            (collectionView.numberOfSections==1 && [collectionView numberOfItemsInSection:0] == 0)) {
+            isEmpty = YES;
+        }
+    } else {
+        if (self.hidden || self.alpha == 0) {
+            return NO;
+        } else {
+            return YES;
+        }
+    }
+    return isEmpty;
+}
+
+/**
+ * 控制刷新控件显示的分页逻辑
+ */
+- (void)setRefreshStatus:(NSDictionary *)responseData
+{
+    if ([responseData.allKeys containsObject:kTotalPageKey] &&
+        [responseData.allKeys containsObject:kCurrentPageKey]) {
+        NSInteger totalPage = [responseData[kTotalPageKey] integerValue];
+        NSInteger currentPage = [responseData[kCurrentPageKey] integerValue];
+        
+        if (totalPage > currentPage) {
+            self.mj_footer.hidden = NO;
+        } else {
+            [self.mj_footer endRefreshingWithNoMoreData];
+            self.mj_footer.hidden = YES;
+        }
+    } else if([responseData.allKeys containsObject:kListKey]){
+        NSArray *dataArr = responseData[kListKey];
+        if (dataArr.count>0) {
+            self.mj_footer.hidden = NO;
+        } else {
+            [self.mj_footer endRefreshingWithNoMoreData];
+            self.mj_footer.hidden = YES;
+        }
+    } else {
+        self.mj_footer.hidden = NO;
     }
 }
 
@@ -299,8 +368,16 @@ static char const * const kActionSELKey             = "kActionSELKey";
         OKUndeclaredSelectorLeakWarning(
           [tipBgView.actionBtn removeTarget:tipBgView action:@selector(buttonAction) forControlEvents:(UIControlEventTouchUpInside)];
         );
-        //重新添加按钮事件
-        [tipBgView.actionBtn addTarget:self.actionTarget action:self.actionSEL forControlEvents:(UIControlEventTouchUpInside)];
+        
+        WEAKSELF //重新添加按钮事件
+        [tipBgView.actionBtn addTouchUpInsideHandler:^(UIButton *btn) {
+            //先移除页面上已有的提示CCParkingRequestTipView视图
+            [weakSelf removeOldTipBgView];
+            
+            OKPerformSelectorLeakWarning(
+                  [weakSelf.actionTarget performSelector:weakSelf.actionSEL];
+            );
+        }];
     }
     
     if (self.backgroundColor) {
@@ -365,37 +442,6 @@ static char const * const kActionSELKey             = "kActionSELKey";
             break;
         }
     }
-}
-
-/**
- * 判断页面是否有数据
- */
-- (BOOL)contentViewIsEmptyData
-{
-    BOOL isEmpty = NO;
-    
-    //如果是UITableView
-    if ([self isKindOfClass:[UITableView class]]) {
-        UITableView *tableView = (UITableView *)self;
-        if (tableView.numberOfSections==0 ||
-            (tableView.numberOfSections==1 && [tableView numberOfRowsInSection:0] == 0)) {
-            isEmpty = YES;
-        }
-        
-    } else if ([self isKindOfClass:[UICollectionView class]]) {
-        UICollectionView *collectionView = (UICollectionView *)self;
-        if (collectionView.numberOfSections==0 ||
-            (collectionView.numberOfSections==1 && [collectionView numberOfItemsInSection:0] == 0)) {
-            isEmpty = YES;
-        }
-    } else {
-        if (self.hidden || self.alpha == 0) {
-            return NO;
-        } else {
-            return YES;
-        }
-    }
-    return isEmpty;
 }
 
 @end

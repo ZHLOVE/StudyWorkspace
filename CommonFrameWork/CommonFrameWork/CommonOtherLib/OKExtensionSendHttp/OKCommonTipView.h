@@ -47,7 +47,7 @@
 + (OKCommonTipView *)tipViewByFrame:(CGRect)frame
                            tipImage:(UIImage *)image
                             tipText:(id)text
-                        actionTitle:(NSString *)title
+                        actionTitle:(id)title
                         actionBlock:(void(^)())block;
 
 @end
