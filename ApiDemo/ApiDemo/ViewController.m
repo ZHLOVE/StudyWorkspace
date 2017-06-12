@@ -20,7 +20,7 @@
     
     // --- 要添加测试的VC，在此处把类名加上即可
     [self.tableDataArr addObjectsFromArray:@[@{@"StudyInvocationVC":@"NSInvocation的使用"},
-
+                                             @{@"StudyMessageSendVC":@"OC消息转发机制"},
                                              ]];
     self.plainTableView.rowHeight = 60;
     [self.plainTableView reloadData];

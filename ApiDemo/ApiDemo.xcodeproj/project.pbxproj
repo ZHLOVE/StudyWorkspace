@@ -16,6 +16,7 @@
 		B552B87B1EEE87F20095D992 /* CommonFrameWork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B552B87A1EEE87F20095D992 /* CommonFrameWork.framework */; };
 		B552B87C1EEE87F20095D992 /* CommonFrameWork.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B552B87A1EEE87F20095D992 /* CommonFrameWork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B552B8841EEE8B370095D992 /* StudyInvocationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B552B8831EEE8B370095D992 /* StudyInvocationVC.m */; };
+		B552B8871EEE90720095D992 /* StudyMessageSendVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B552B8861EEE90720095D992 /* StudyMessageSendVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -46,6 +47,8 @@
 		B552B87A1EEE87F20095D992 /* CommonFrameWork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CommonFrameWork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B552B8821EEE8B370095D992 /* StudyInvocationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudyInvocationVC.h; sourceTree = "<group>"; };
 		B552B8831EEE8B370095D992 /* StudyInvocationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudyInvocationVC.m; sourceTree = "<group>"; };
+		B552B8851EEE90720095D992 /* StudyMessageSendVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudyMessageSendVC.h; sourceTree = "<group>"; };
+		B552B8861EEE90720095D992 /* StudyMessageSendVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudyMessageSendVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +110,8 @@
 			children = (
 				B552B8821EEE8B370095D992 /* StudyInvocationVC.h */,
 				B552B8831EEE8B370095D992 /* StudyInvocationVC.m */,
+				B552B8851EEE90720095D992 /* StudyMessageSendVC.h */,
+				B552B8861EEE90720095D992 /* StudyMessageSendVC.m */,
 			);
 			path = ApiClass;
 			sourceTree = "<group>";
@@ -187,6 +192,7 @@
 				B552B86B1EEE87420095D992 /* ViewController.m in Sources */,
 				B552B8681EEE87410095D992 /* AppDelegate.m in Sources */,
 				B552B8841EEE8B370095D992 /* StudyInvocationVC.m in Sources */,
+				B552B8871EEE90720095D992 /* StudyMessageSendVC.m in Sources */,
 				B552B8651EEE87410095D992 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

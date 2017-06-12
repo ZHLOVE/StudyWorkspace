@@ -15,7 +15,6 @@
 
 @implementation StudyInvocationVC
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
