@@ -81,9 +81,9 @@
 		B5768FCD1E4C126300FF7C0C = {
 			isa = PBXGroup;
 			children = (
-				B57690051E4C172E00FF7C0C /* CommonFrameWork.framework */,
 				B5768FD81E4C126400FF7C0C /* SlideApp */,
 				B5768FD71E4C126400FF7C0C /* Products */,
+				B57690051E4C172E00FF7C0C /* CommonFrameWork.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -378,6 +378,7 @@
 				B5768FEF1E4C126400FF7C0C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -2,10 +2,10 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:ReactiveObjCDemo/ReactiveObjCDemo.xcodeproj">
+      location = "group:CommonFrameWork/CommonFrameWork.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:CommonFrameWork/CommonFrameWork.xcodeproj">
+      location = "group:ReactiveObjCDemo/ReactiveObjCDemo.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:PodsDemo/PodsDemo.xcodeproj">
@@ -21,6 +21,9 @@
    </FileRef>
    <FileRef
       location = "group:DrawDemo/DrawDemo.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:ApiDemo/ApiDemo.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

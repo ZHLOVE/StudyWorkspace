@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+/** 单个按钮提示Alert弹框, 没有事件只做提示使用 */
+#define OKAlertSingleBtnView(titleStr,messageStr,cancelTitle) [OKAlertView alertWithCallBackBlock:nil title:titleStr message:messageStr cancelButtonName:cancelTitle otherButtonTitles: nil];
+
 
 typedef void(^OKAlertViewCallBackBlock)(NSInteger buttonIndex);
 

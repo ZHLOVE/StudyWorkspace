@@ -108,10 +108,6 @@
 #define GetUserDefault(key)  key!=nil ? [[NSUserDefaults standardUserDefaults] objectForKey:key] : nil
 
 
-/** 单个按钮提示Alert弹框, 没有事件只做提示使用 */
-#define OKAlertSingleBtnView(titleStr,messageStr,cancelTitle) [OKAlertView alertWithCallBackBlock:nil title:titleStr message:messageStr cancelButtonName:cancelTitle otherButtonTitles: nil];
-
-
 /*----------------------忽略警告的宏----------------------------*/
 /**
  * 忽略警告的宏
