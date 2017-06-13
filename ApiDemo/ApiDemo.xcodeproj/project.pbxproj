@@ -82,12 +82,12 @@
 		B552B8621EEE87410095D992 /* ApiDemo */ = {
 			isa = PBXGroup;
 			children = (
-				B552B87E1EEE8A520095D992 /* ApiClass */,
 				B552B8661EEE87410095D992 /* AppDelegate.h */,
 				B552B8671EEE87410095D992 /* AppDelegate.m */,
 				B552B8691EEE87420095D992 /* ViewController.h */,
 				B552B86A1EEE87420095D992 /* ViewController.m */,
 				B552B86C1EEE87420095D992 /* Main.storyboard */,
+				B552B87E1EEE8A520095D992 /* ApiClass */,
 				B552B86F1EEE87420095D992 /* Assets.xcassets */,
 				B552B8711EEE87420095D992 /* LaunchScreen.storyboard */,
 				B552B8741EEE87420095D992 /* Info.plist */,

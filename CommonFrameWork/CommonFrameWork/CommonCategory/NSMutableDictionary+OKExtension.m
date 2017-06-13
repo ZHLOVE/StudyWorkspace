@@ -15,6 +15,9 @@
     [self ok_exchangeInstanceMethod:NSClassFromString(@"__NSDictionaryM") originSelector:@selector(setObject:forKey:) otherSelector:@selector(ok_setObject:forKey:)];
 }
 
+/**
+ * 替换原生的`setObject:`方法防止插入nil空数据
+ */
 - (void)ok_setObject:(id)anObject forKey:(id <NSCopying>)aKey
 {
     if (!anObject || !aKey) return;

@@ -80,10 +80,10 @@
             [textAttr addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0,allString.length)];
             self.attributedText = textAttr;
         }
-        [self sizeToFit];
+        //[self sizeToFit];
         
     } else {
-        self.text = @"文字,颜色,字体 每个数组至少有一个";
+        NSLog(@"文字,颜色,字体 每个数组至少有一个");
     }
 }
 

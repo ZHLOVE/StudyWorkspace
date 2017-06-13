@@ -18,6 +18,7 @@
 #define IP_ADDR_IPv6    @"ipv6"
 
 @implementation UIDevice (OKExtension)
+
 /**
  *  获取设备型号
  */
@@ -48,6 +49,7 @@
     UIScreenMode *screenMode = [[UIScreen mainScreen] currentMode];
     return [NSString stringWithFormat:@"%.0fx%.0f",screenMode.size.width,screenMode.size.height];
 }
+
 /**
  *  获取 uuid  唯一标识
  */
@@ -57,6 +59,7 @@
 
     return identifierForVendor;
 }
+
 /**
  *  获取IP地址
  */
@@ -76,6 +79,7 @@
      } ];
     return address ? address : @"0.0.0.0";
 }
+
 + (NSDictionary *)ok_getIPAddresses
 {
     NSMutableDictionary *addresses = [NSMutableDictionary dictionaryWithCapacity:8];

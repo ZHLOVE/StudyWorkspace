@@ -4,7 +4,7 @@
 ![建好的目录](http://ww2.sinaimg.cn/large/b04498f4gw1fbfwyf1e1yj205h047aa6.jpg) 
  
 ###二.在目录中使用命令行直接创建Podfile文件, 
-命令: touch Podfile
+命令: `touch Podfile`
 ####2.1 在创建好的Podfile文件里面添加需要使用pod的项目和路径;
 ####2.2 如下:
  

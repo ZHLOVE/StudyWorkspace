@@ -124,7 +124,6 @@
 		B53E3ACA1EE10F4F00F538AF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				B5BBC7801EE50878007C8D48 /* SliderVC */,
 				B5BBC7731EE4F2B4007C8D48 /* DrawTabBarVC.h */,
 				B5BBC7741EE4F2B4007C8D48 /* DrawTabBarVC.m */,
 				B5BBC7701EE4F2B4007C8D48 /* DrawAppLeftVC.h */,
@@ -133,6 +132,7 @@
 				B5BBC77B1EE5073A007C8D48 /* DrawHomeVC.h */,
 				B5BBC77C1EE5073A007C8D48 /* DrawHomeVC.m */,
 				B5BBC77D1EE5073A007C8D48 /* DrawHomeVC.xib */,
+				B5BBC7801EE50878007C8D48 /* SliderVC */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

@@ -252,7 +252,9 @@ static char const * const KHasOpen           = "KHasOpen";
 }
 
 /**
- * 是否关闭侧滑视图
+ 是否关闭侧滑视图
+ 
+ @param openFlag @1：打开，@2关闭
  */
 - (void)showAppSliderView:(NSNumber *)openFlag
 {

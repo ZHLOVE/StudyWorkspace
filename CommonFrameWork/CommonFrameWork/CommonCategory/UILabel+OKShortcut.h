@@ -4,7 +4,7 @@
 //
 //  Created by mao wangxin on 2017/4/11.
 //  Copyright © 2017年 Luke. All rights reserved.
-//  利用函数式点语法来写UILabel控件
+//  利用链式编程语法来写UILabel控件
 
 /** eg:用法
  UILabel.initWithFrame(CGRectMake(50, 300, 100, 50))

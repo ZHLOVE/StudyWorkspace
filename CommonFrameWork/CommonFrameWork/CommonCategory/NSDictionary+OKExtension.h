@@ -9,14 +9,20 @@
 #import <Foundation/Foundation.h>
 
 @interface NSDictionary (OKExtension)
+
+
 /**
  * 转化为字符串
  */
 - (NSString *)ok_toString;
 
+
 /**
- * 根据字段的属性，生成字典的模型类代码
+ * 根据字典模型打印出指定模型类的每个@property属性字符串,
+ * 方便在创建实体Model模型时直接粘贴打印出来的字符串即可
+ *
+ * @param className 模型类名称string
  */
-- (void)propertyCode;
+- (void)printPropertyWithClassName:(NSString *)className;
 
 @end

@@ -66,7 +66,7 @@
 - (void)showFakeNavBarWhenScreenEdgePanBack;
 
 /**
- *  获取最顶层的控制器
+ *  获取App最顶层的控制器
  */
 + (UIViewController *)currentTopViewController;
 

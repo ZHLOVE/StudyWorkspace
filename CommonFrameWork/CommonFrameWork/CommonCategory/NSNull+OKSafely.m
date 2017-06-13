@@ -17,6 +17,9 @@
     }
 }
 
+/**
+ *  防止服务端数据返回NSNull时,客户端操作导致的崩溃
+ */
 - (NSMethodSignature *)methodSignatureForSelector:(SEL)selector
 {
     NSMethodSignature *sig = [[NSNull class] instanceMethodSignatureForSelector:selector];

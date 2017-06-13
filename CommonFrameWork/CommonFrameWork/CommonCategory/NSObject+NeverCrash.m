@@ -11,7 +11,7 @@
 
 @implementation NSObject (NeverCrash)
 
-///**
+///** 在弹出键盘出来时会崩溃，暂时注释
 // *  利用消息转发机制，做永不崩溃处理
 // */
 //#pragma clang diagnostic push

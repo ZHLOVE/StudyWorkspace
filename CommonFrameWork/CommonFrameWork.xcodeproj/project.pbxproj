@@ -64,8 +64,6 @@
 		B56E18FA1E49D2A60051C7AE /* OKFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B56E18F81E49D2A60051C7AE /* OKFileManager.m */; };
 		B56E18FD1E49D4F60051C7AE /* OKLocalNotification.h in Headers */ = {isa = PBXBuildFile; fileRef = B56E18FB1E49D4F60051C7AE /* OKLocalNotification.h */; };
 		B56E18FE1E49D4F60051C7AE /* OKLocalNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = B56E18FC1E49D4F60051C7AE /* OKLocalNotification.m */; };
-		B57AB38D1E65151100F76D7C /* NSObject+OKPrintModelProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = B57AB38B1E65151100F76D7C /* NSObject+OKPrintModelProperty.h */; };
-		B57AB38E1E65151100F76D7C /* NSObject+OKPrintModelProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = B57AB38C1E65151100F76D7C /* NSObject+OKPrintModelProperty.m */; };
 		B584C7B21E31BAD500CB6C81 /* OKColorDefiner.h in Headers */ = {isa = PBXBuildFile; fileRef = B584C7AB1E31BAD500CB6C81 /* OKColorDefiner.h */; };
 		B584C7B31E31BAD500CB6C81 /* OKFrameDefiner.h in Headers */ = {isa = PBXBuildFile; fileRef = B584C7AC1E31BAD500CB6C81 /* OKFrameDefiner.h */; };
 		B584C7B41E31BAD500CB6C81 /* OKPubilcKeyDefiner.h in Headers */ = {isa = PBXBuildFile; fileRef = B584C7AD1E31BAD500CB6C81 /* OKPubilcKeyDefiner.h */; };
@@ -221,8 +219,6 @@
 		B56E18F81E49D2A60051C7AE /* OKFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OKFileManager.m; sourceTree = "<group>"; };
 		B56E18FB1E49D4F60051C7AE /* OKLocalNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKLocalNotification.h; sourceTree = "<group>"; };
 		B56E18FC1E49D4F60051C7AE /* OKLocalNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OKLocalNotification.m; sourceTree = "<group>"; };
-		B57AB38B1E65151100F76D7C /* NSObject+OKPrintModelProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+OKPrintModelProperty.h"; sourceTree = "<group>"; };
-		B57AB38C1E65151100F76D7C /* NSObject+OKPrintModelProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+OKPrintModelProperty.m"; sourceTree = "<group>"; };
 		B584C7AB1E31BAD500CB6C81 /* OKColorDefiner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKColorDefiner.h; sourceTree = "<group>"; };
 		B584C7AC1E31BAD500CB6C81 /* OKFrameDefiner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKFrameDefiner.h; sourceTree = "<group>"; };
 		B584C7AD1E31BAD500CB6C81 /* OKPubilcKeyDefiner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKPubilcKeyDefiner.h; sourceTree = "<group>"; };
@@ -378,9 +374,9 @@
 			isa = PBXGroup;
 			children = (
 				B50310BB1E1E607F00C11EC4 /* Foundation+Log.m */,
+				B50310BE1E1E607F00C11EC4 /* GTMDefines.h */,
 				B50310BC1E1E607F00C11EC4 /* GTMBase64.h */,
 				B50310BD1E1E607F00C11EC4 /* GTMBase64.m */,
-				B50310BE1E1E607F00C11EC4 /* GTMDefines.h */,
 				B50310BF1E1E607F00C11EC4 /* NSArray+OKExtention.h */,
 				B50310C01E1E607F00C11EC4 /* NSArray+OKExtention.m */,
 				B50310C11E1E607F00C11EC4 /* NSDate+OKExtension.h */,
@@ -425,18 +421,16 @@
 				B50310E11E1E607F00C11EC4 /* UITextField+OKExtension.m */,
 				B50310E21E1E607F00C11EC4 /* UIView+OKExtension.h */,
 				B50310E31E1E607F00C11EC4 /* UIView+OKExtension.m */,
-				B5877F121ECAFE9800A3A521 /* UIView+OKBadge.h */,
-				B5877F131ECAFE9800A3A521 /* UIView+OKBadge.m */,
 				B50310E41E1E607F00C11EC4 /* UIView+OKTool.h */,
 				B50310E51E1E607F00C11EC4 /* UIView+OKTool.m */,
+				B5877F121ECAFE9800A3A521 /* UIView+OKBadge.h */,
+				B5877F131ECAFE9800A3A521 /* UIView+OKBadge.m */,
 				A30693501E1E98C30023DE5E /* UITabBar+BadgeView.h */,
 				A30693511E1E98C30023DE5E /* UITabBar+BadgeView.m */,
 				A3FC95E71E2FA688001EA205 /* UINavigationController+OKExtension.h */,
 				A3FC95E81E2FA688001EA205 /* UINavigationController+OKExtension.m */,
 				B584C84B1E31E62900CB6C81 /* UIViewController+OKExtension.h */,
 				B584C84C1E31E62900CB6C81 /* UIViewController+OKExtension.m */,
-				B57AB38B1E65151100F76D7C /* NSObject+OKPrintModelProperty.h */,
-				B57AB38C1E65151100F76D7C /* NSObject+OKPrintModelProperty.m */,
 				B5BBC7931EE5094A007C8D48 /* UITabBarController+OKSliderApp.h */,
 				B5BBC7941EE5094A007C8D48 /* UITabBarController+OKSliderApp.m */,
 			);
@@ -696,7 +690,6 @@
 				B50311631E1E607F00C11EC4 /* OKHttpRequestTools.h in Headers */,
 				B503115D1E1E607F00C11EC4 /* UIView+OKTool.h in Headers */,
 				B503113A1E1E607F00C11EC4 /* NSDate+OKExtension.h in Headers */,
-				B57AB38D1E65151100F76D7C /* NSObject+OKPrintModelProperty.h in Headers */,
 				B584C83C1E31BEC000CB6C81 /* ZLPhotoPickerFooterCollectionReusableView.h in Headers */,
 				B584C80E1E31BEC000CB6C81 /* OKHttpRequestTools+OKExtension.h in Headers */,
 				B584C8491E31E0E700CB6C81 /* UIBarButtonItem+OKExtension.h in Headers */,
@@ -898,7 +891,6 @@
 				B584C8371E31BEC000CB6C81 /* ZLPhotoPickerViewController.m in Sources */,
 				B584C7BC1E31BD7F00CB6C81 /* OKUtils.m in Sources */,
 				B50311661E1E607F00C11EC4 /* OKActionSheetView.m in Sources */,
-				B57AB38E1E65151100F76D7C /* NSObject+OKPrintModelProperty.m in Sources */,
 				B584C8461E31DE3200CB6C81 /* OKBaseNavigationVC.m in Sources */,
 				B584C8131E31BEC000CB6C81 /* OKPhotoBrowserHelp.m in Sources */,
 				B50311461E1E607F00C11EC4 /* NSObject+OKRuntime.m in Sources */,

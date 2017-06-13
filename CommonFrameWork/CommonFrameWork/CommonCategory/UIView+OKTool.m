@@ -61,7 +61,7 @@
  */
 + (instancetype)viewFromXib
 {
-    return [[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self) owner:nil options:nil].firstObject;
+    return [[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self) owner:self options:nil].firstObject;
 }
 
 /**
