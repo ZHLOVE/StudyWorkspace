@@ -33,14 +33,22 @@
 - (void)refreshTableData
 {
     if (!self.hasChange) {
+        [self.tableDataArr removeAllObjects];
         [self.tableDataArr addObjectsFromArray:@[@{@"StudyInvocationVC":@"NSInvocation的使用"},
                                                  @{@"StudyMessageSendVC":@"OC消息转发机制"},
                                                  ]];
+        
+        [self.plainTableView reloadData];
+        
     } else {
-        [self.tableDataArr removeAllObjects];
+        //刷新方式一:
+//        [self.tableDataArr removeAllObjects];
+//        [self.plainTableView reloadData];
+        
+        //刷新方式二:
+        [self.tableDataArr removeObjectsInRange:NSMakeRange(0, 2)];
+        [self.plainTableView reloadSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, 1)] withRowAnimation:UITableViewRowAnimationNone];
     }
-    
-    [self.plainTableView reloadData];
     
     self.hasChange = !self.hasChange;
 }
