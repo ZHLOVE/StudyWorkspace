@@ -60,6 +60,14 @@ typedef enum : NSUInteger {
 - (void)addheaderRefresh:(OKRefreshingBlock)headerBlock
              footerBlock:(OKRefreshingBlock)footerBlock;
 
+/**
+ * 设置提示图片和文字
+ */
+- (void)showTipBotton:(BOOL)show
+            TipStatus:(TableVieTipStatus)state
+            tipString:(NSString *)tipString
+           clickBlock:(void(^)())blk;
+
 
 #pragma mark - 处理表格上下拉刷新,分页,添加空白页事件
 

@@ -122,6 +122,8 @@
         contenView.backgroundColor = [UIColor clearColor];
         [self addSubview:contenView];
         
+        CGFloat contenViewMaxHeight = 0;
+        
         //顶部图片
         UIImageView *_tipImageView = nil;
         if (image) {
@@ -129,6 +131,8 @@
             _tipImageView.contentMode = UIViewContentModeScaleAspectFill;
             [contenView addSubview:_tipImageView];
             _tipImageView.centerX = contenView.width/2;
+            
+            contenViewMaxHeight = CGRectGetMaxY(_tipImageView.frame)+spaceMargin;
         }
         
         //中间文字
@@ -148,7 +152,9 @@
             }
             [_tipLabel sizeToFit];
             _tipLabel.centerX = contenView.width/2;
-            _tipLabel.y = _tipImageView ? CGRectGetMaxY(_tipImageView.frame)+spaceMargin : 0;
+            _tipLabel.y = contenViewMaxHeight;
+            
+            contenViewMaxHeight = CGRectGetMaxY(_tipLabel.frame)+spaceMargin;
         }
         
         //底部按钮
@@ -172,14 +178,12 @@
             [actionBtn sizeToFit];
             actionBtn.width += 30;
             actionBtn.centerX = contenView.width/2;
-            if (_tipLabel) {
-                actionBtn.y = CGRectGetMaxY(_tipLabel.frame)+spaceMargin;
-            } else if (_tipImageView){
-                actionBtn.y = CGRectGetMaxY(_tipImageView.frame)+spaceMargin;
-            }
+            actionBtn.y = contenViewMaxHeight;
+            
+            contenViewMaxHeight = CGRectGetMaxY(actionBtn.frame)+spaceMargin;
             self.actionBtn = actionBtn;
         }
-        contenView.height = CGRectGetMaxY(self.actionBtn.frame);
+        contenView.height = contenViewMaxHeight;
         contenView.y = (frame.size.height-contenView.height)/2;
     }    
     return self;

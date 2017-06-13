@@ -8,9 +8,10 @@
 
 #import "ViewController.h"
 #import <UIViewController+OKExtension.h>
+#import "UITableView+OKExtension.h"
 
 @interface ViewController ()
-
+@property (nonatomic, assign) BOOL hasChange;
 @end
 
 @implementation ViewController
@@ -18,13 +19,32 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // --- 要添加测试的VC，在此处把类名加上即可
-    [self.tableDataArr addObjectsFromArray:@[@{@"StudyInvocationVC":@"NSInvocation的使用"},
-                                             @{@"StudyMessageSendVC":@"OC消息转发机制"},
-                                             ]];
+    self.plainTableView.automaticShowTipView = YES;
     self.plainTableView.rowHeight = 60;
-    [self.plainTableView reloadData];
+    [self refreshTableData];
+    
+    //删除数据
+    [self addRightBarButtonItem:@"刷新数据" target:self selector:@selector(refreshTableData)];
 }
+
+/**
+ * 要添加测试的VC，在此处把类名加上即可
+ */
+- (void)refreshTableData
+{
+    if (!self.hasChange) {
+        [self.tableDataArr addObjectsFromArray:@[@{@"StudyInvocationVC":@"NSInvocation的使用"},
+                                                 @{@"StudyMessageSendVC":@"OC消息转发机制"},
+                                                 ]];
+    } else {
+        [self.tableDataArr removeAllObjects];
+    }
+    
+    [self.plainTableView reloadData];
+    
+    self.hasChange = !self.hasChange;
+}
+
 
 #pragma mark - /*** UITaleviewDelegate ***/
 

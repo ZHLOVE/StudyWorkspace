@@ -401,6 +401,7 @@ static char const * const kActionSELKey             = "kActionSELKey";
     if (self.backgroundColor) {
         tipBgView.backgroundColor = self.backgroundColor;
     }
+    tipBgView.center = self.superview.center;
     [self.superview addSubview:tipBgView];
 }
 
