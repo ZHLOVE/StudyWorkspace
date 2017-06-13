@@ -79,6 +79,26 @@
     }
 }
 
+
+/**
+ * 使用系统的返回按钮样式，
+ * 注意：如果想要获取系统返回按钮的点击事件，
+ * 可以打开《UINavigationController+OKExtension.m》类中的<navigationBar:shouldPopItem:>方法，
+ * 在要操作的控制器中实现<navigationShouldPopOnBackButton>返回一个BOOL值来控制
+ */
+- (void)shouldUseSystemBackBtnStyle
+{
+    //此方法一定要在控制器的<viewDidLoad>和<viewDidAppear>中调用，否则无效
+    
+    //设置返回按钮图片
+    UIImage *backImage = [UIImage imageNamed:@"commonImage.bundle/backBarButtonItemImage"];
+    self.navigationController.navigationBar.backIndicatorTransitionMaskImage = backImage;
+    self.navigationController.navigationBar.backIndicatorImage = backImage;
+    
+    //置空返回按钮标题
+    self.navigationController.navigationBar.backItem.title = @"";
+}
+
 /**
  *  返回到指定控制器
  */

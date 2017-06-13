@@ -15,15 +15,56 @@
 
 @implementation StudyInvocationVC
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    //使用系统的返回按钮样式
+    [self testNavBackBtn];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    OKAlertSingleBtnView(@"提示", @"查看控制台打印日志", @"好的");
+    ShowAlertToast(@"查看控制台打印日志");
     
     //NSInvocation的使用
     [self testNSInvocation];
     
+    //使用系统的返回按钮样式
+    [self testNavBackBtn];
+    
 }
+
+/**
+ * 使用系统的返回按钮样式
+ */
+- (void)testNavBackBtn
+{
+    //设置返回按钮图片
+    UIImage *backImage = [UIImage imageNamed:@"backBarButtonItemImage"];
+    self.navigationController.navigationBar.backIndicatorTransitionMaskImage = backImage;
+    self.navigationController.navigationBar.backIndicatorImage = backImage;
+    
+    //设置返回按钮标题
+    self.navigationController.navigationBar.backItem.title = @"";
+    
+    UIBarButtonItem *item = self.navigationItem.backBarButtonItem;
+    UINavigationBar *navigationBar = self.navigationController.navigationBar;
+    UINavigationItem *backItem = self.navigationController.navigationBar.backItem;
+    
+    NSLog(@"backItem===%@===%@===%@",backItem,item,navigationBar);
+}
+
+/**
+ * 控制系统返回按钮是否能点击返回
+ */
+- (BOOL)navigationShouldPopOnBackButton
+{
+    OKAlertSingleBtnView(@"提示", @"查看控制台打印日志", @"好的");
+    return YES;
+}
+
 
 /**
  * NSInvocation的使用

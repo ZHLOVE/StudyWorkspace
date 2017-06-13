@@ -50,6 +50,14 @@
 - (void)setNavRightBarItemEnable:(BOOL)enable titleColor:(UIColor *)color;
 
 /**
+ * 使用系统的返回按钮样式，
+ * 注意：如果想要获取系统返回按钮的点击事件，
+ * 可以打开《UINavigationController+OKExtension.m》类中的<navigationBar:shouldPopItem:>方法，
+ * 在要操作的控制器中实现<navigationShouldPopOnBackButton>返回一个BOOL值来控制
+ */
+- (void)shouldUseSystemBackBtnStyle;
+
+/**
  *  返回到指定控制器
  */
 - (BOOL)shouldPopToCustomVC:(NSString *)classStr;

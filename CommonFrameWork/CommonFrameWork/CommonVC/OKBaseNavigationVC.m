@@ -75,12 +75,13 @@
 }
 
 /**
- *  返回时移除所有通知
+ *  注意：在返回时不能移除通知，因为有个bug，有时即使走了popViewControllerAnimated等方法也没有返回上衣页面
  */
 - (UIViewController *)popViewControllerAnimated:(BOOL)animated {
     //[self viewAnimation];
+    //[[NSNotificationCenter defaultCenter] removeObserver:vc];
+    
     UIViewController *vc = [super popViewControllerAnimated:animated];
-    [[NSNotificationCenter defaultCenter] removeObserver:vc];
     return vc;
 }
 
@@ -101,9 +102,6 @@
 - (NSArray *)popToViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
     NSArray *vcArr = [super popToViewController:viewController animated:animated];
-    for (UIViewController *vc in vcArr) {
-        [[NSNotificationCenter defaultCenter] removeObserver:vc];
-    }
     return vcArr;
 }
 
@@ -113,9 +111,6 @@
 - (NSArray *)popToRootViewControllerAnimated:(BOOL)animated
 {
     NSArray *vcArr = [super popToRootViewControllerAnimated:animated];
-    for (UIViewController *vc in vcArr) {
-        [[NSNotificationCenter defaultCenter] removeObserver:vc];
-    }
     return vcArr;
 }
 
