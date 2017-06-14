@@ -44,7 +44,7 @@ static char const * const kRememberReachabilityStatusKey = "kRememberReachabilit
 /**
  *  监听网络改变回调
  */
-+ (void)reachabilityChangeBlock:(void (^)(AFNetworkReachabilityStatus currentStatus, AFNetworkReachabilityStatus lastReachabilityStatus))block
++ (void)reachabilityChangeBlock:(void (^)(AFNetworkReachabilityStatus currentStatus, AFNetworkReachabilityStatus beforeStatus))block
 {
     [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         

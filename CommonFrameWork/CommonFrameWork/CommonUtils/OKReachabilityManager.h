@@ -18,7 +18,7 @@
  currentStatus: 当前状态,
  lastStatus:    改变前的网络状态
  */
-+ (void)reachabilityChangeBlock:(void (^)(AFNetworkReachabilityStatus currentStatus, AFNetworkReachabilityStatus lastStatus))block;
++ (void)reachabilityChangeBlock:(void (^)(AFNetworkReachabilityStatus currentStatus, AFNetworkReachabilityStatus beforeStatus))block;
 
 /**
  *  网络是否可用

@@ -23,10 +23,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"刷新数据" style:UIBarButtonItemStylePlain target:self action:@selector(navBarItemAction)];
     
     self.plainTableView.rowHeight = 60;
-    self.plainTableView.tableFooterView = [[UIView alloc] init];
     
     WEAKSELF(weakSelf)
     [self.plainTableView addheaderRefresh:^{
@@ -34,15 +32,11 @@
     } footerBlock:^{
         [weakSelf requestData:NO];
     }];
+    
+    //刷新数据
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"刷新数据" style:UIBarButtonItemStylePlain target:self.plainTableView.mj_header action:@selector(beginRefreshing)];
 }
 
-/**
- 请求数据
- */
-- (void)navBarItemAction
-{
-    [self.plainTableView.mj_header beginRefreshing];
-}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -78,8 +72,8 @@
     
     model.loadView = self.view;
     model.dataTableView = self.plainTableView;
-    //    model.sessionDataTaskArr = self.sessionDataTaskArr;
-    //    model.requestCachePolicy = RequestStoreCacheData;
+//    model.sessionDataTaskArr = self.sessionDataTaskArr;
+//    model.requestCachePolicy = RequestStoreCacheData;
     
     NSLog(@"发送请求中====%zd",self.pageNum);
     [OKHttpRequestTools sendExtensionRequest:model success:^(id returnValue) {

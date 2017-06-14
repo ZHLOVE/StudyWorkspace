@@ -102,7 +102,7 @@
                                                           actionTitle:title
                                                           actionBlock:block];
     tipView.tag = kRequestTipViewTag;
-    tipView.backgroundColor = UIColorFromHex(0xf5f6f8);
+    tipView.backgroundColor = [UIColor clearColor];
     return tipView;
 }
 
@@ -128,6 +128,7 @@
         UIImageView *_tipImageView = nil;
         if (image) {
             _tipImageView = [[UIImageView alloc] initWithImage:image];
+            _tipImageView.backgroundColor = [UIColor clearColor];
             _tipImageView.contentMode = UIViewContentModeScaleAspectFill;
             [contenView addSubview:_tipImageView];
             _tipImageView.centerX = contenView.width/2;
@@ -139,6 +140,7 @@
         UILabel *_tipLabel = nil;
         if (text) {
             _tipLabel = [[UILabel alloc] init];
+            _tipLabel.backgroundColor = [UIColor clearColor];
             _tipLabel.font = [UIFont boldSystemFontOfSize:14];
             _tipLabel.textColor = UIColorFromHex(0x666666);
             _tipLabel.textAlignment = NSTextAlignmentCenter;
@@ -160,7 +162,7 @@
         //底部按钮
         if (title) {
             UIButton *actionBtn = [[UIButton alloc] init];
-            actionBtn.backgroundColor = [UIColor whiteColor];
+            actionBtn.backgroundColor = [UIColor clearColor];
             actionBtn.layer.cornerRadius = 6;
             actionBtn.layer.borderColor = UIColorFromHex(0x666666).CGColor;
             actionBtn.layer.borderWidth = 1;

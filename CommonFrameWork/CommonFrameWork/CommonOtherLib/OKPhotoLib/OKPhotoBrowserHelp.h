@@ -18,6 +18,8 @@
  @param currentIndex 展示数组中的当前页数
  @param photos 展示的图片数组, 里面元素存放 <ZLPhotoPickerBrowserPhoto>对象
  */
-+ (void)showPhotoBrowser:(UIViewController *)superVC currentIndex:(NSInteger)currentIndex photos:(NSArray<ZLPhotoPickerBrowserPhoto *>*)photos;
++ (void)showPhotoBrowser:(UIViewController *)superVC
+            currentIndex:(NSInteger)currentIndex
+                  photos:(NSArray<ZLPhotoPickerBrowserPhoto *>*)photos;
 
 @end

@@ -27,12 +27,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [OKReachabilityManager reachabilityChangeBlock:^(AFNetworkReachabilityStatus currentStatus, AFNetworkReachabilityStatus lastReachabilityStatus) {
+    self.navigationController.navigationBar.tintColor = [UIColor clearColor];
+    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+    
+    [OKReachabilityManager reachabilityChangeBlock:^(AFNetworkReachabilityStatus currentStatus, AFNetworkReachabilityStatus beforeStatus) {
         
-        NSLog(@"监听网络改变回调===%zd===%zd",currentStatus,lastReachabilityStatus);
+        NSLog(@"监听网络改变回调===%zd===%zd",currentStatus,beforeStatus);
     }];
 }
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:arc4random_uniform(255)/255.0 green:arc4random_uniform(255)/255.0 blue:arc4random_uniform(255)/255.0 alpha:1];
+}
 
 /**
  列表请求

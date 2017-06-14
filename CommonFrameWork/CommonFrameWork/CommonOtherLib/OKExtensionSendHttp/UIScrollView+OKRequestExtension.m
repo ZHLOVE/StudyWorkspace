@@ -368,7 +368,7 @@ static char const * const kActionSELKey             = "kActionSELKey";
     }
     
     //这里防止表格有偏移量，一定要设置y的起始位置为0
-    OKCommonTipView *tipBgView = [OKCommonTipView tipViewByFrame:self.superview.bounds
+    OKCommonTipView *tipBgView = [OKCommonTipView tipViewByFrame:self.bounds
                                                         tipImage:tipImage
                                                          tipText:tipText
                                                      actionTitle:actionTitle
@@ -397,12 +397,8 @@ static char const * const kActionSELKey             = "kActionSELKey";
             tipBgView.actionBtn.width += 30;
         }
     }
-    
-    if (self.backgroundColor) {
-        tipBgView.backgroundColor = self.backgroundColor;
-    }
-    tipBgView.center = self.superview.center;
-    [self.superview addSubview:tipBgView];
+    tipBgView.center = self.center;
+    [self addSubview:tipBgView];
 }
 
 /**
@@ -454,7 +450,7 @@ static char const * const kActionSELKey             = "kActionSELKey";
  */
 - (void)removeOldTipBgView
 {
-    for (UIView *tempView in self.superview.subviews) {
+    for (UIView *tempView in self.subviews) {
         if ([tempView isKindOfClass:[OKCommonTipView class]] ||
             tempView.tag == kRequestTipViewTag) {
             [tempView removeFromSuperview];

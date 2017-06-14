@@ -16,7 +16,6 @@
 		B53E3AB91EE1036200F538AF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B53E3AB51EE1036200F538AF /* main.m */; };
 		B53E3ABA1EE1036200F538AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B53E3AB61EE1036200F538AF /* Main.storyboard */; };
 		B53E3AC31EE1065D00F538AF /* PodSendReqVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B53E3AC11EE1065D00F538AF /* PodSendReqVC.m */; };
-		B53E3AC41EE1065D00F538AF /* PodSendReqVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B53E3AC21EE1065D00F538AF /* PodSendReqVC.xib */; };
 		B57A67081E1E4B0200ACB5EC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B57A67071E1E4B0200ACB5EC /* AppDelegate.m */; };
 		B57A67131E1E4B0200ACB5EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B57A67121E1E4B0200ACB5EC /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -48,7 +47,6 @@
 		B53E3AB61EE1036200F538AF /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B53E3AC01EE1065D00F538AF /* PodSendReqVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PodSendReqVC.h; sourceTree = "<group>"; };
 		B53E3AC11EE1065D00F538AF /* PodSendReqVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PodSendReqVC.m; sourceTree = "<group>"; };
-		B53E3AC21EE1065D00F538AF /* PodSendReqVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PodSendReqVC.xib; sourceTree = "<group>"; };
 		B57A67001E1E4B0200ACB5EC /* PodsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PodsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B57A67061E1E4B0200ACB5EC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B57A67071E1E4B0200ACB5EC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -88,7 +86,6 @@
 				B53E3AA51EE102CA00F538AF /* PodSecondVC.m */,
 				B53E3AC01EE1065D00F538AF /* PodSendReqVC.h */,
 				B53E3AC11EE1065D00F538AF /* PodSendReqVC.m */,
-				B53E3AC21EE1065D00F538AF /* PodSendReqVC.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -223,7 +220,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B53E3AC41EE1065D00F538AF /* PodSendReqVC.xib in Resources */,
 				B53E3ABA1EE1036200F538AF /* Main.storyboard in Resources */,
 				B53E3AB81EE1036200F538AF /* LaunchScreen.storyboard in Resources */,
 				B57A67131E1E4B0200ACB5EC /* Assets.xcassets in Resources */,
