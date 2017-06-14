@@ -16,12 +16,12 @@
  *
  *  @param tipStr 提示语
  */
-+ (void)showLoadingWithView:(UIView *)view text:(NSString *)tipStr;
++ (void)showLoadingToView:(UIView *)view text:(NSString *)tipStr;
 
 /**
  *  隐藏指定view上创建的MBProgressHUD
  */
-+ (void)hideLoadingFromView:(UIView *)view;
++ (void)hideLoadingFromView:(UIView *)fromView;
 
 
 @end

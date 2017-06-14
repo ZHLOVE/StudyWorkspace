@@ -62,7 +62,7 @@ static char const * const kRequestTimeCountKey    = "kRequestTimeCountKey";
         if (requestModel.loadView) {
             [requestModel.loadView endEditing:YES];
             [MBProgressHUD hideLoadingFromView:requestModel.loadView];
-            [MBProgressHUD showLoadingWithView:requestModel.loadView text:RequestLoadingTip];
+            [MBProgressHUD showLoadingToView:requestModel.loadView text:RequestLoadingTip];
         }
     } else {
         if (requestModel.loadView) {

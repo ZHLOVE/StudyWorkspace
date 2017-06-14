@@ -19,56 +19,37 @@
 #pragma mark - 弹框在指定view上
 
 /**
- *  获取子view
- */
-+ (UIView *)getHUDFromSubview:(UIView *)addView
-{
-    if (addView) {
-        for (UIView *tipVieww in addView.subviews) {
-            if ([tipVieww isKindOfClass:[MBProgressHUD class]]) {
-                if (tipVieww.superview) {
-                    [tipVieww removeFromSuperview];
-                }
-            }
-        }
-    } else {
-        addView = [UIApplication sharedApplication].keyWindow;
-    }
-    return addView;
-}
-
-/**
  *  隐藏指定view上创建的MBProgressHUD
  */
-+ (void)hideLoadingFromView:(UIView *)view
++ (void)hideLoadingFromView:(UIView *)fromView
 {
-    for (UIView *tipView in view.subviews) {
+    for (UIView *tipView in fromView.subviews) {
         if ([tipView isKindOfClass:[MBProgressHUD class]]) {
-            MBProgressHUD *HUD = (MBProgressHUD *)tipView;
+            [(MBProgressHUD *)tipView hideAnimated:YES];
             if (tipView.superview) {
                 [tipView removeFromSuperview];
             }
-            [HUD showAnimated:YES];
         }
     }
 }
-
 
 /**
  *  在指定view上显示转圈的MBProgressHUD (不会自动消失,需要手动调用隐藏方法)
  *
  *  @param tipStr 提示语
  */
-+ (void)showLoadingWithView:(UIView *)addView text:(NSString *)tipStr
++ (void)showLoadingToView:(UIView *)addView text:(NSString *)tipStr
 {
-    addView = [self getHUDFromSubview:addView];
+    if (!addView || !tipStr || tipStr.length==0) return;
+    
+    [self hideLoadingFromView:addView];
     
     MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:addView];
-    [addView addSubview:HUD];
     HUD.mode = MBProgressHUDModeIndeterminate;
     HUD.userInteractionEnabled = NO;
     HUD.label.text = tipStr;
     [HUD showAnimated:YES];
+    [addView addSubview:HUD];
 }
 
 @end

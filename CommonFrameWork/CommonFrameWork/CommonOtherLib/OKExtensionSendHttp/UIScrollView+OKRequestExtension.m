@@ -299,25 +299,27 @@ static char const * const kActionSELKey             = "kActionSELKey";
  */
 - (void)setRefreshStatus:(NSDictionary *)responseData
 {
-    if ([responseData.allKeys containsObject:kTotalPageKey] &&
-        [responseData.allKeys containsObject:kCurrentPageKey]) {
-        NSInteger totalPage = [responseData[kTotalPageKey] integerValue];
-        NSInteger currentPage = [responseData[kCurrentPageKey] integerValue];
+    id totalPage = responseData[kTotalPageKey];
+    id currentPage = responseData[kCurrentPageKey];
+    NSArray *dataArr = responseData[kListKey];
+    
+    if (totalPage && currentPage) {
         
-        if (totalPage > currentPage) {
+        if ([totalPage integerValue] > [currentPage integerValue]) {
             self.mj_footer.hidden = NO;
         } else {
             [self.mj_footer endRefreshingWithNoMoreData];
             self.mj_footer.hidden = YES;
         }
-    } else if([responseData.allKeys containsObject:kListKey]){
-        NSArray *dataArr = responseData[kListKey];
+        
+    } else if([dataArr isKindOfClass:[NSArray class]]){
         if (dataArr.count>0) {
             self.mj_footer.hidden = NO;
         } else {
             [self.mj_footer endRefreshingWithNoMoreData];
             self.mj_footer.hidden = YES;
         }
+        
     } else {
         self.mj_footer.hidden = NO;
     }
@@ -330,7 +332,7 @@ static char const * const kActionSELKey             = "kActionSELKey";
  */
 - (void)showTipBotton:(BOOL)show
             TipStatus:(TableVieTipStatus)state
-            tipString:(NSString *)tipString
+            tipString:(NSString *)errorTip
            clickBlock:(void(^)())blk
 {
     //先移除页面上已有的提示CCParkingRequestTipView视图
@@ -338,7 +340,7 @@ static char const * const kActionSELKey             = "kActionSELKey";
     
     if (!show) return;
     
-    NSString *tipText = nil;
+    NSString *customTip = nil;
     UIImage *tipImage = nil;
     NSString *actionTitle = nil;
     NSBundle *bundle = [NSBundle bundleForClass:[OKCommonTipView class]];
@@ -347,21 +349,21 @@ static char const * const kActionSELKey             = "kActionSELKey";
         //不需要处理, 留给后面扩展
         
     } else if (state == RequestEmptyDataStatus) { //请求空数据
-        tipText = self.reqEmptyTipString ? : @"暂无数据 ";
+        customTip = self.reqEmptyTipString ? : @"暂无数据 ";
         tipImage = self.reqEmptyTipImage ? : [UIImage imageNamed:@"commonImage.bundle/empty_data_icon"
                                                         inBundle:bundle
                                    compatibleWithTraitCollection:nil];
         
     } else if (state == RequesErrorNoNetWork) { //网络连接失败
         actionTitle = @"重新加载";
-        tipText = self.netErrorTipString ? : @"网络开小差, 请稍后再试哦!";
+        customTip = self.netErrorTipString ? : @"网络开小差, 请稍后再试哦!";
         tipImage = self.netErrorTipImage ? : [UIImage imageNamed:@"commonImage.bundle/networkfail_icon"
                                                         inBundle:bundle
                                    compatibleWithTraitCollection:nil];
         
     } else if (state == RequestFailStatus) { //请求失败
         actionTitle = @"重新加载";
-        tipText = self.reqFailTipString ? : @"加载失败了哦!";
+        customTip = self.reqFailTipString ? : @"加载失败了哦!";
         tipImage = self.reqFailTipImage ? : [UIImage imageNamed:@"commonImage.bundle/loading_fail_icon"
                                                        inBundle:bundle
                                   compatibleWithTraitCollection:nil];
@@ -370,14 +372,16 @@ static char const * const kActionSELKey             = "kActionSELKey";
     //这里防止表格有偏移量，一定要设置y的起始位置为0
     OKCommonTipView *tipBgView = [OKCommonTipView tipViewByFrame:self.bounds
                                                         tipImage:tipImage
-                                                         tipText:tipText
+                                                         tipText:(errorTip ? : customTip)
                                                      actionTitle:actionTitle
                                                      actionBlock:blk];
     
     if (self.actionTarget && [self.actionTarget respondsToSelector:self.actionSEL]) {
         //移除之前的按钮事件
         OKUndeclaredSelectorLeakWarning(
-          [tipBgView.actionBtn removeTarget:tipBgView action:@selector(buttonAction) forControlEvents:(UIControlEventTouchUpInside)];
+          [tipBgView.actionBtn removeTarget:tipBgView
+                                     action:@selector(buttonAction)
+                           forControlEvents:(UIControlEventTouchUpInside)];
         );
         
         WEAKSELF //重新添加按钮事件
