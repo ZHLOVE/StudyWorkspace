@@ -127,7 +127,7 @@ static char const * const kRequestUrlKey    = "kRequestUrlKey";
     //请求地址为空则不请求
     if (!requestModel.requestUrl) {
         if (failResultBlock) {
-            failResultBlock([NSError errorWithDomain:RequestFailCommomTip code:[kServiceErrorStatues integerValue] userInfo:nil]);
+            failResultBlock([NSError errorWithDomain:RequestFailCommomTip code:kServiceErrorStatues userInfo:nil]);
         }
         return nil;
     };
@@ -135,10 +135,10 @@ static char const * const kRequestUrlKey    = "kRequestUrlKey";
     //成功回调
     void(^succResultBlock)(id responseObject) = ^(id responseObject){
         
-        NSInteger code = [responseObject[kRequestCodeKey] integerValue];
-        if ([responseObject isKindOfClass:[NSDictionary class]] &&
-            responseObject[kRequestCodeKey] &&
-            (code == [kRequestSuccessStatues integerValue] || code == kRequestTipsStatuesMin))
+        id code = responseObject[kRequestCodeKey];
+        if ([responseObject isKindOfClass:[NSDictionary class]] && code &&
+            ([code integerValue] == kRequestSuccessStatues ||
+             [code integerValue] == kRequestTipsStatuesMin))
         {
             NSLog(@"\n请求接口基地址= %@\n\n请求参数= %@\n\n网络数据成功返回= %@\n\n",requestModel.requestUrl,requestModel.parameters,responseObject);
             /** <1>.回调页面请求 */
@@ -147,11 +147,11 @@ static char const * const kRequestUrlKey    = "kRequestUrlKey";
             }
             
         } else { //请求code不正确,走失败
-            NSString *tipMsg = [NSString stringWithFormat:@"%@",responseObject[kRequestMessageKey]];
-            failResultBlock([NSError errorWithDomain:tipMsg code:code userInfo:nil]);
+            NSString *tipMsg = [NSString stringWithFormat:@"%@",responseObject[kRequestMessageKey] ? : @""];
+            failResultBlock([NSError errorWithDomain:tipMsg code:[code integerValue] userInfo:nil]);
             
             /** 单点登录问题,发送通知.注册相应的通知*/
-            if (code == [kLoginFail integerValue]) {
+            if ([code integerValue] == [kLoginFail integerValue]) {
                 [[NSNotificationCenter defaultCenter] postNotificationName:kTokenExpiryNotification object:responseObject[kRequestMessageKey]];
             }
         }

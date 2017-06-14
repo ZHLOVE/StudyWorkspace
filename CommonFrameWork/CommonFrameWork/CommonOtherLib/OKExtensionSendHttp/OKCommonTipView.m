@@ -7,12 +7,10 @@
 //
 
 #import "OKCommonTipView.h"
-#import "UIView+OKExtension.h"
 
 #ifndef UIColorFromHex
 #define UIColorFromHex(hexValue)            ([UIColor colorWithRed:((float)((hexValue & 0xFF0000) >> 16))/255.0 green:((float)((hexValue & 0x00FF00) >> 8))/255.0 blue:((float)(hexValue & 0x0000FF))/255.0 alpha:1.0])
 #endif
-
 
 @implementation MBProgressHUD (Extension)
 
@@ -112,7 +110,8 @@
             _tipImageView.backgroundColor = [UIColor clearColor];
             _tipImageView.contentMode = UIViewContentModeScaleAspectFill;
             [contenView addSubview:_tipImageView];
-            _tipImageView.centerX = contenView.width/2;
+            //设置frame
+            _tipImageView.frame = CGRectMake((frame.size.width-image.size.width)/2, 0, image.size.width, image.size.height);
             
             contenViewMaxHeight = CGRectGetMaxY(_tipImageView.frame)+spaceMargin;
         }
@@ -134,8 +133,11 @@
                 _tipLabel.attributedText = text;
             }
             [_tipLabel sizeToFit];
-            _tipLabel.centerX = contenView.width/2;
-            _tipLabel.y = contenViewMaxHeight;
+            //设置frame
+            _tipLabel.frame = CGRectMake((frame.size.width-_tipLabel.bounds.size.width)/2,
+                                         contenViewMaxHeight,
+                                         _tipLabel.bounds.size.width,
+                                         _tipLabel.bounds.size.height);
             
             contenViewMaxHeight = CGRectGetMaxY(_tipLabel.frame)+spaceMargin;
         }
@@ -152,23 +154,28 @@
             actionBtn.titleLabel.numberOfLines = 0;
             [actionBtn addTarget:self action:@selector(buttonAction) forControlEvents:(UIControlEventTouchUpInside)];
             [contenView addSubview:actionBtn];
+            self.actionBtn = actionBtn;
             
             if ([title isKindOfClass:[NSString class]]) {
                 [actionBtn setTitle:title forState:0];
             } else if ([title isKindOfClass:[NSAttributedString class]]) {
-                [actionBtn setAttributedTitle:title forState:00];
+                [actionBtn setAttributedTitle:title forState:0];
             }
             [actionBtn sizeToFit];
-            actionBtn.width += 30;
-            actionBtn.centerX = contenView.width/2;
-            actionBtn.y = contenViewMaxHeight;
             
-            contenViewMaxHeight = CGRectGetMaxY(actionBtn.frame)+spaceMargin;
-            self.actionBtn = actionBtn;
+            //设置frame
+            CGFloat btnW = actionBtn.bounds.size.width+30;
+            actionBtn.frame = CGRectMake((contenView.bounds.size.width-btnW)/2, contenViewMaxHeight,
+                                         btnW, actionBtn.bounds.size.height);
+            
+            contenViewMaxHeight = CGRectGetMaxY(actionBtn.frame);
         }
-        contenView.height = contenViewMaxHeight;
-        contenView.y = (frame.size.height-contenView.height)/2;
-    }    
+        
+        //设置contenView位置
+        contenView.frame = CGRectMake(0,(frame.size.height-contenViewMaxHeight)/2,
+                                      frame.size.width,
+                                      contenViewMaxHeight);
+    }
     return self;
 }
 

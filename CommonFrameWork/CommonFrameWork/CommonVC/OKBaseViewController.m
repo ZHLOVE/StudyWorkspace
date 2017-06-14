@@ -82,7 +82,7 @@
 - (UITableView *)plainTableView
 {
     if (!_plainTableView) {
-        _plainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Screen_Width, Screen_Height-(kStatusBarAndNavigationBarHeight+kTabbarHeight)) style:UITableViewStylePlain];
+        _plainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Screen_Width, Screen_Height-kStatusBarAndNavigationBarHeight) style:UITableViewStylePlain];
         _plainTableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
         _plainTableView.rowHeight = kDefaultCellHeight;
         _plainTableView.backgroundColor = self.view.backgroundColor;
@@ -97,7 +97,7 @@
 - (UITableView *)groupedTableView
 {
     if (!_groupedTableView) {
-        _groupedTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Screen_Width, Screen_Height-(kStatusBarAndNavigationBarHeight+kTabbarHeight)) style:UITableViewStyleGrouped];
+        _groupedTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Screen_Width, Screen_Height-kStatusBarAndNavigationBarHeight) style:UITableViewStyleGrouped];
         _groupedTableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
         _groupedTableView.rowHeight = kDefaultCellHeight;
         _groupedTableView.backgroundColor = self.view.backgroundColor;

@@ -14,6 +14,9 @@
 #import "OKPubilcKeyDefiner.h"
 #import <objc/runtime.h>
 
+//重复请求3次
+#define kRepeatRequestTime      3
+
 //重复请求次数key
 static char const * const kRequestTimeCountKey    = "kRequestTimeCountKey";
 
@@ -71,6 +74,38 @@ static char const * const kRequestTimeCountKey    = "kRequestTimeCountKey";
     }
 }
 
+/**
+ * 获取缓存字典
+ */
++ (NSDictionary *)getCacheDataByReqModel:(OKHttpRequestModel *)requestModel
+{
+    //缓存key
+    NSString *cachekey = [self getCacheKeyByRequestUrl:requestModel.requestUrl parameter:requestModel.parameters];
+    
+    NSDictionary *cacheDic = [OKFMDBTool getObjectById:cachekey fromTable:JsonDataTableType];
+    return cacheDic;
+}
+
+/**
+ * 保存网络数据到数据库
+ */
++ (BOOL)saveReqDataToCache:(NSDictionary *)responseObject requestModel:(OKHttpRequestModel *)requestModel
+{
+    NSData  *jsonData = [NSJSONSerialization dataWithJSONObject:responseObject options:NSJSONWritingPrettyPrinted error:nil];
+    
+    NSString *jsonStr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    
+    NSData * data = [jsonStr dataUsingEncoding:NSUTF8StringEncoding];
+    if (data) {
+        //缓存key
+        NSString *cachekey = [self getCacheKeyByRequestUrl:requestModel.requestUrl parameter:requestModel.parameters];
+        
+        //保存数据到数据库
+        return [OKFMDBTool saveDataToDB:data byObjectId:cachekey toTable:JsonDataTableType];
+    }
+    return  NO;
+}
+
 #pragma mark - 包装请求入口
 
 /**
@@ -95,16 +130,6 @@ static char const * const kRequestTimeCountKey    = "kRequestTimeCountKey";
         
         //如果请求完成后需要判断页面表格下拉控件,分页,空白提示页的状态
         [self showTipViewAndDataPageWhenReqComplete:requestModel reqData:error];
-        
-        //如果需要提示错误信息,错误码在200-500内才提示服务端错误信息
-        // 先注释, 引用了View 模块的 alert
-        //        if (!requestModel.forbidTipErrorInfo) {
-        //            if (error.code > kRequestTipsStatuesMin && error.code < kRequestTipsStatuesMax) {
-        //                ShowAlertToast(error.domain);
-        //            } else {
-        //                ShowAlertToast(RequestFailCommomTip);
-        //            }
-        //        }
     };
     
     //成功回调
@@ -116,10 +141,10 @@ static char const * const kRequestTimeCountKey    = "kRequestTimeCountKey";
         [self showReqLoadingView:requestModel show:NO];
         
         //请求状态码为0表示成功，否则失败
-        NSInteger code = [responseObject[kRequestCodeKey] integerValue];
-        if ([responseObject isKindOfClass:[NSDictionary class]] &&
-            responseObject[kRequestCodeKey] &&
-            (code == [kRequestSuccessStatues integerValue] || code == kRequestTipsStatuesMin))
+        id code = responseObject[kRequestCodeKey];
+        if ([responseObject isKindOfClass:[NSDictionary class]] && code &&
+            ([code integerValue] == kRequestSuccessStatues ||
+             [code integerValue] == kRequestTipsStatuesMin))
         {
             /** <1>.回调页面请求 */
             if (successBlock) {
@@ -131,33 +156,19 @@ static char const * const kRequestTimeCountKey    = "kRequestTimeCountKey";
             
             /** <3>.是否需要缓存 */
             if (isCacheData == NO && requestModel.requestCachePolicy == RequestStoreCacheData) {
-                NSData  *jsonData = [NSJSONSerialization dataWithJSONObject:responseObject
-                                                                    options:NSJSONWritingPrettyPrinted
-                                                                      error:nil];
-                NSString *jsonStr = [[NSString alloc] initWithData:jsonData
-                                                          encoding:NSUTF8StringEncoding];
-                NSData * data = [jsonStr dataUsingEncoding:NSUTF8StringEncoding];
-                if (data) { //保存数据到数据库
-                    NSString *cachekey = [self getCacheKeyByRequestUrl:requestModel.requestUrl
-                                                             parameter:requestModel.parameters];//缓存key
-                    [OKFMDBTool saveDataToDB:data
-                                  byObjectId:cachekey
-                                     toTable:JsonDataTableType];
-                }
+                //保存网络数据到数据库
+                [self saveReqDataToCache:responseObject requestModel:requestModel];
             }
+            
         } else { //请求code不正确,走失败
-            NSString *tipMsg = [NSString stringWithFormat:@"%@",responseObject[kRequestMessageKey]];
-            failResultBlock([NSError errorWithDomain:tipMsg code:code userInfo:nil]);
+            NSString *tipMsg = [NSString stringWithFormat:@"%@",responseObject[kRequestMessageKey] ? : @""];
+            failResultBlock([NSError errorWithDomain:tipMsg code:[code integerValue] userInfo:nil]);
         }
     };
     
     //如果有网络缓存, 则立即返回缓存, 同时继续请求网络最新数据
     if (successBlock && requestModel.requestCachePolicy == RequestStoreCacheData) {
-        //缓存key
-        NSString *cachekey = [self getCacheKeyByRequestUrl:requestModel.requestUrl
-                                                 parameter:requestModel.parameters];
-        NSDictionary *cacheDic = [OKFMDBTool getObjectById:cachekey
-                                                 fromTable:JsonDataTableType];
+        NSDictionary *cacheDic = [self getCacheDataByReqModel:requestModel];
         if (cacheDic) {
             NSLog(@"\n请求接口基地址= %@\n\n请求参数= %@\n\n缓存数据成功返回= %@",requestModel.requestUrl,requestModel.parameters,cacheDic);
             succResultBlock(cacheDic,YES);
@@ -173,9 +184,10 @@ static char const * const kRequestTimeCountKey    = "kRequestTimeCountKey";
         succResultBlock(returnValue, NO);
         
     } failure:^(NSError *error) {
+        
         if (requestModel.attemptRequestWhenFail) {
             NSInteger countNum = [objc_getAssociatedObject(requestModel, kRequestTimeCountKey) integerValue];
-            if (countNum<3) {
+            if (countNum<kRepeatRequestTime) {
                 countNum++;
                 NSLog(@"\n请求已失败，尝试第-----%zd-----次请求===%@\n\n",countNum,requestModel.requestUrl);
                 

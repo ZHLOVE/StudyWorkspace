@@ -7,11 +7,8 @@
 //
 
 #import "UIScrollView+OKRequestExtension.h"
-#import "OKCommonTipView.h"
 #import <AFNetworkReachabilityManager.h>
-#import "UIButton+OKExtension.h"
-#import "OKPubilcKeyDefiner.h"
-#import "UIView+OKExtension.h"
+#import "OKCommonTipView.h"
 #import <MJRefresh.h>
 
 /** 网络连接失败 */
@@ -19,6 +16,11 @@
 #define kTotalPageKey                               @"totalPage"
 #define kCurrentPageKey                             @"currentPage"
 #define kListKey                                    @"list"
+
+/*  弱引用 */
+#define WEAKSELF                                    typeof(self) __weak weakSelf = self;
+/*  强引用 */
+#define STRONGSELF                                  typeof(weakSelf) __strong strongSelf = weakSelf;
 
 static char const * const kReqEmptyTipStringKey     = "kReqEmptyTipStringKey";
 static char const * const kReqEmptyTipImageKey      = "kReqEmptyTipImageKey";
@@ -143,6 +145,14 @@ static char const * const kActionSELKey             = "kActionSELKey";
     return NSSelectorFromString(selString);
 }
 
+/**
+ * 开始监听网络
+ */
++ (void)load
+{
+    //AFN需要提前监听网络
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+}
 
 #pragma mark - 给表格添加上下拉刷新事件
 
@@ -157,12 +167,13 @@ static char const * const kActionSELKey             = "kActionSELKey";
     if (headerBlock) {
         WEAKSELF
         self.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            STRONGSELF
             
             //1.先移除页面上已有的提示视图
-            [weakSelf removeOldTipBgView];
+            [strongSelf removeOldTipBgView];
             
             //2.每次下拉刷新时先结束上啦
-            [weakSelf.mj_footer endRefreshing];
+            [strongSelf.mj_footer endRefreshing];
             
             headerBlock();
         }];
@@ -202,27 +213,24 @@ static char const * const kActionSELKey             = "kActionSELKey";
             //根据状态,显示背景提示Viwe
             if (![AFNetworkReachabilityManager sharedManager].reachable) {//没有网络
                 WEAKSELF
-                [self showTipBotton:YES
-                          TipStatus:RequesErrorNoNetWork
-                          tipString:nil
-                         clickBlock:^{
-                    //移除提示视图,重新请求
-                    [weakSelf removeTipViewAndRefresh];
-                }];
+                [self showTipWithStatus:RequesErrorNoNetWork
+                              tipString:nil
+                             clickBlock:^{
+                                 STRONGSELF
+                                 //移除提示视图,重新请求
+                                 [strongSelf removeTipViewAndRefresh];
+                             }];
                 
             } else {
-                [self showTipBotton:YES
-                          TipStatus:RequestEmptyDataStatus
-                          tipString:nil
-                         clickBlock:nil];
+                [self showTipWithStatus:RequestEmptyDataStatus
+                              tipString:nil
+                             clickBlock:nil];
             }
             
         } else { //页面有数据
-            //隐藏背景提示Viwe
-            [self showTipBotton:NO
-                      TipStatus:RequestNormalStatus
-                      tipString:nil
-                     clickBlock:nil];
+            
+            //移除页面上已有的提示视图
+            [self removeOldTipBgView];
             
             if (self.mj_footer) {
                 //控制刷新控件显示的分页逻辑
@@ -237,28 +245,28 @@ static char const * const kActionSELKey             = "kActionSELKey";
             //根据状态,显示背景提示Viwe
             WEAKSELF
             if (![AFNetworkReachabilityManager sharedManager].reachable) { //没有网络
-                [self showTipBotton:YES
-                          TipStatus:RequesErrorNoNetWork
-                          tipString:NetworkConnectFailTips
-                         clickBlock:^{
-                    //移除提示视图,重新请求
-                    [weakSelf removeTipViewAndRefresh];
-                }];
+                
+                [self showTipWithStatus:RequesErrorNoNetWork
+                              tipString:NetworkConnectFailTips
+                             clickBlock:^{
+                                 STRONGSELF
+                                 //移除提示视图,重新请求
+                                 [strongSelf removeTipViewAndRefresh];
+                             }];
+                
             } else {
-                [self showTipBotton:YES
-                          TipStatus:RequestFailStatus
-                          tipString:error.domain
-                         clickBlock:^{
-                    //移除提示视图,重新请求
-                    [weakSelf removeTipViewAndRefresh];
-                }];
+                [self showTipWithStatus:RequestFailStatus
+                              tipString:error.domain
+                             clickBlock:^{
+                                 STRONGSELF
+                                 //移除提示视图,重新请求
+                                 [strongSelf removeTipViewAndRefresh];
+                             }];
             }
         } else { //页面有数据
-            //隐藏背景提示Viwe
-            [self showTipBotton:NO
-                      TipStatus:RequestFailStatus
-                      tipString:error.domain
-                     clickBlock:nil];
+            
+            //移除页面上已有的提示视图
+            [self removeOldTipBgView];
         }
     }
 }
@@ -286,9 +294,9 @@ static char const * const kActionSELKey             = "kActionSELKey";
         }
     } else {
         if (self.hidden || self.alpha == 0) {
-            return NO;
+            isEmpty = NO;
         } else {
-            return YES;
+            isEmpty = YES;
         }
     }
     return isEmpty;
@@ -330,77 +338,68 @@ static char const * const kActionSELKey             = "kActionSELKey";
 /**
  * 设置提示图片和文字
  */
-- (void)showTipBotton:(BOOL)show
-            TipStatus:(TableVieTipStatus)state
-            tipString:(NSString *)errorTip
-           clickBlock:(void(^)())blk
+- (void)showTipWithStatus:(TableVieTipStatus)state
+                tipString:(NSString *)errorTip
+               clickBlock:(void(^)())block
 {
-    //先移除页面上已有的提示CCParkingRequestTipView视图
+    //先移除页面上已有的提示视图
     [self removeOldTipBgView];
-    
-    if (!show) return;
     
     NSString *customTip = nil;
     UIImage *tipImage = nil;
     NSString *actionTitle = nil;
-    NSBundle *bundle = [NSBundle bundleForClass:[OKCommonTipView class]];
+    
+    //获取NSBundle里的图片资源
+    UIImage *(^tipImageBlcok)(NSString *) = ^UIImage *(NSString *imgName){
+        return [UIImage imageNamed:imgName
+                          inBundle:[NSBundle bundleForClass:[OKCommonTipView class]]
+     compatibleWithTraitCollection:nil];;
+    };
     
     if (state == RequestNormalStatus) { //正常状态
         //不需要处理, 留给后面扩展
         
     } else if (state == RequestEmptyDataStatus) { //请求空数据
-        customTip = self.reqEmptyTipString ? : @"暂无数据 ";
-        tipImage = self.reqEmptyTipImage ? : [UIImage imageNamed:@"commonImage.bundle/empty_data_icon"
-                                                        inBundle:bundle
-                                   compatibleWithTraitCollection:nil];
+        customTip = self.reqEmptyTipString ? : @"暂无数据";
+        tipImage = self.reqEmptyTipImage ? : tipImageBlcok(@"commonImage.bundle/empty_data_icon");
         
     } else if (state == RequesErrorNoNetWork) { //网络连接失败
-        actionTitle = @"重新加载";
+        
+        actionTitle = self.actionBtnTitle.length ? self.actionBtnTitle : @"重新加载";
         customTip = self.netErrorTipString ? : @"网络开小差, 请稍后再试哦!";
-        tipImage = self.netErrorTipImage ? : [UIImage imageNamed:@"commonImage.bundle/networkfail_icon"
-                                                        inBundle:bundle
-                                   compatibleWithTraitCollection:nil];
+        tipImage = self.netErrorTipImage ? : tipImageBlcok(@"commonImage.bundle/networkfail_icon");
         
     } else if (state == RequestFailStatus) { //请求失败
-        actionTitle = @"重新加载";
+        
+        actionTitle = self.actionBtnTitle.length ? self.actionBtnTitle : @"重新加载";
         customTip = self.reqFailTipString ? : @"加载失败了哦!";
-        tipImage = self.reqFailTipImage ? : [UIImage imageNamed:@"commonImage.bundle/loading_fail_icon"
-                                                       inBundle:bundle
-                                  compatibleWithTraitCollection:nil];
+        tipImage = self.reqFailTipImage ? : tipImageBlcok(@"commonImage.bundle/loading_fail_icon");
     }
     
-    //这里防止表格有偏移量，一定要设置y的起始位置为0
+    customTip = errorTip.length>0 ? errorTip : customTip;
+    
+    //如果额外设置了按钮事件
+    if (self.actionTarget && [self.actionTarget respondsToSelector:self.actionSEL]) {
+        WEAKSELF
+        block = ^(){
+            STRONGSELF
+            //1. 先移除页面上已有的提示视图
+            [strongSelf removeOldTipBgView];
+            
+            //2. 重新添加按钮事件
+            OKPerformSelectorLeakWarning(
+                                         [strongSelf.actionTarget performSelector:strongSelf.actionSEL];
+                                         );
+        };
+    }
+    
+    //需要显示的自定义提示view
     OKCommonTipView *tipBgView = [OKCommonTipView tipViewByFrame:self.bounds
                                                         tipImage:tipImage
-                                                         tipText:(errorTip ? : customTip)
+                                                         tipText:customTip
                                                      actionTitle:actionTitle
-                                                     actionBlock:blk];
-    
-    if (self.actionTarget && [self.actionTarget respondsToSelector:self.actionSEL]) {
-        //移除之前的按钮事件
-        OKUndeclaredSelectorLeakWarning(
-          [tipBgView.actionBtn removeTarget:tipBgView
-                                     action:@selector(buttonAction)
-                           forControlEvents:(UIControlEventTouchUpInside)];
-        );
-        
-        WEAKSELF //重新添加按钮事件
-        [tipBgView.actionBtn addTouchUpInsideHandler:^(UIButton *btn) {
-            //先移除页面上已有的提示CCParkingRequestTipView视图
-            [weakSelf removeOldTipBgView];
-            
-            OKPerformSelectorLeakWarning(
-                  [weakSelf.actionTarget performSelector:weakSelf.actionSEL];
-            );
-        }];
-        
-        //替换按钮标题
-        if (self.actionBtnTitle.length) {
-            [tipBgView.actionBtn setTitle:self.actionBtnTitle forState:0];
-            [tipBgView.actionBtn sizeToFit];
-            tipBgView.actionBtn.width += 30;
-        }
-    }
+                                                     actionBlock:block];
+    tipBgView.backgroundColor = [UIColor clearColor];
     tipBgView.center = self.center;
     [self addSubview:tipBgView];
 }
@@ -431,17 +430,17 @@ static char const * const kActionSELKey             = "kActionSELKey";
             for (UIView *tempView in superVC.view.subviews) {
                 if ([tempView isKindOfClass:[UIWebView class]]) {
                     
-                    OKPerformSelectorLeakWarning(
-                     if ([tempView respondsToSelector:@selector(reload)]) {
-                         NSLog(@"webview执行重新加载");
-                         
-                         //1.先移除页面上已有的提示视图
-                         [self removeOldTipBgView];
-                         
-                         //2.执行webview重新载入
-                         [tempView performSelector:@selector(reload)];
-                     }
-                 );
+                    if ([tempView respondsToSelector:@selector(reload)]) {
+                        NSLog(@"webview执行重新加载");
+                        
+                        //1.先移除页面上已有的提示视图
+                        [self removeOldTipBgView];
+                        
+                        OKPerformSelectorLeakWarning(
+                                                     //2.执行webview重新载入
+                                                     [tempView performSelector:@selector(reload)];
+                                                     );
+                    }
                     break;
                 }
             }
@@ -450,7 +449,7 @@ static char const * const kActionSELKey             = "kActionSELKey";
 }
 
 /**
- 先移除页面上已有的提示CCParkingRequestTipView视图
+ 先移除页面上已有的提示视图
  */
 - (void)removeOldTipBgView
 {
