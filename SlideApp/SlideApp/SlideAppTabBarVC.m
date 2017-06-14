@@ -86,11 +86,10 @@
                                   imageName:(NSString *)imageName
                               selectedImage:(NSString *)selectedImageName
 {
-    UIImage *norImage = [[UIImage imageNamed:imageName] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    UIImage *serImage = [[UIImage imageNamed:selectedImageName] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    UIImage *norImage = [UIImage imageNamed:imageName];
+    UIImage *serImage = [UIImage imageNamed:selectedImageName];
     
     UITabBarItem *item = [[UITabBarItem alloc] initWithTitle:title image:norImage selectedImage:serImage];
-    [item setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor brownColor], NSForegroundColorAttributeName, nil] forState:UIControlStateSelected];
     return item;
 }
 

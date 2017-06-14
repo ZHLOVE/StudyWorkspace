@@ -9,29 +9,45 @@
 #import "AppTabBarVC1.h"
 
 @interface AppTabBarVC1 ()
-
+@property (weak, nonatomic) IBOutlet UILabel *textLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @end
 
 @implementation AppTabBarVC1
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    NSLog(@"\n====%@\n====%@",self.view.window.tintColor,self.view.tintColor);
+    
+    self.view.window.tintColor = [UIColor redColor];
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)btnAction:(UIButton *)sender
+{
+    self.view.window.tintColor = nil;
+    self.view.tintColor = nil;
+    
 }
-*/
+
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
+    
+    // self.view.tintColor = [UIColor redColor];
+    
+    NSLog(@"\n====%@\n====%@",self.view.window.tintColor,self.view.tintColor);
+    
+    self.view.tintColor = [UIColor redColor];
+    
+    self.view.window.tintColor = [UIColor redColor];
+}
 
 @end
