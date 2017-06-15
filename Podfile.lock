@@ -27,9 +27,9 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
-  - FMDB (~> 2.6.2)
+  - FMDB
   - Masonry
-  - MBProgressHUD (~> 1.0.0)
+  - MBProgressHUD
   - MJRefresh
   - ReactiveObjC
   - SDWebImage
@@ -43,6 +43,6 @@ SPEC CHECKSUMS:
   ReactiveObjC: 7b6782ae39f9ac0f57205c3b0c0b69b9dd7048c0
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
 
-PODFILE CHECKSUM: 0925120880c5ca6ea81121d700b961f7577b4b3c
+PODFILE CHECKSUM: 5cebf37fad5af9c73cdeda30138314dfeaed072b
 
 COCOAPODS: 1.1.1

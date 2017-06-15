@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="XibThreeVC">
+            <connections>
+                <outlet property="view" destination="vqZ-1u-9be" id="R6C-Hm-WSj"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="vqZ-1u-9be">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v1L-L9-fsd">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HoA-U2-XRA" userLabel="View1">
+                            <rect key="frame" x="0.0" y="10" width="375" height="350"/>
+                            <color key="backgroundColor" red="0.59443587060000003" green="0.84189790490000005" blue="0.26915398239999999" alpha="0.50829409250000002" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="350" id="k7t-i0-BZX"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3jD-fH-bur" userLabel="View2">
+                            <rect key="frame" x="0.0" y="375" width="375" height="450"/>
+                            <color key="backgroundColor" red="0.97254901959999995" green="0.62352941179999999" blue="0.094117647060000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="450" id="XN1-xx-J14"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tH3-6l-fwy" userLabel="View3">
+                            <rect key="frame" x="0.0" y="840" width="375" height="250"/>
+                            <color key="backgroundColor" red="0.44403754340000001" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="250" id="pn0-9G-Ong"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="0.5" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="tH3-6l-fwy" secondAttribute="trailing" id="3UT-gB-T4R"/>
+                        <constraint firstAttribute="trailing" secondItem="HoA-U2-XRA" secondAttribute="trailing" id="5Zh-LC-geD"/>
+                        <constraint firstItem="3jD-fH-bur" firstAttribute="top" secondItem="HoA-U2-XRA" secondAttribute="bottom" constant="15" id="79t-kh-dgH"/>
+                        <constraint firstItem="tH3-6l-fwy" firstAttribute="leading" secondItem="v1L-L9-fsd" secondAttribute="leading" id="BQo-0x-LN8"/>
+                        <constraint firstItem="HoA-U2-XRA" firstAttribute="width" secondItem="v1L-L9-fsd" secondAttribute="width" id="XTl-Xo-MzM"/>
+                        <constraint firstItem="tH3-6l-fwy" firstAttribute="top" secondItem="3jD-fH-bur" secondAttribute="bottom" constant="15" id="g8p-mh-Z88"/>
+                        <constraint firstItem="3jD-fH-bur" firstAttribute="leading" secondItem="v1L-L9-fsd" secondAttribute="leading" id="hWj-kZ-hcx"/>
+                        <constraint firstAttribute="trailing" secondItem="3jD-fH-bur" secondAttribute="trailing" id="k05-Tz-sPV"/>
+                        <constraint firstItem="HoA-U2-XRA" firstAttribute="top" secondItem="v1L-L9-fsd" secondAttribute="top" constant="10" id="lfJ-0h-dk9"/>
+                        <constraint firstAttribute="bottom" secondItem="tH3-6l-fwy" secondAttribute="bottom" constant="15" id="uMZ-ph-YVz"/>
+                        <constraint firstItem="HoA-U2-XRA" firstAttribute="leading" secondItem="v1L-L9-fsd" secondAttribute="leading" id="ykU-v1-tM2"/>
+                    </constraints>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="v1L-L9-fsd" secondAttribute="trailing" id="PrL-nK-ANU"/>
+                <constraint firstAttribute="bottom" secondItem="v1L-L9-fsd" secondAttribute="bottom" id="XeB-5q-VME"/>
+                <constraint firstItem="v1L-L9-fsd" firstAttribute="top" secondItem="vqZ-1u-9be" secondAttribute="top" id="dW2-Nc-7gh"/>
+                <constraint firstItem="v1L-L9-fsd" firstAttribute="leading" secondItem="vqZ-1u-9be" secondAttribute="leading" id="jte-J3-wXC"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

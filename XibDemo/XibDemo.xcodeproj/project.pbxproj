@@ -17,13 +17,33 @@
 		B57A66B31E1E1EC400ACB5EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B57A66B11E1E1EC400ACB5EC /* Main.storyboard */; };
 		B57A66B51E1E1EC400ACB5EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B57A66B41E1E1EC400ACB5EC /* Assets.xcassets */; };
 		B57A66B81E1E1EC400ACB5EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B57A66B61E1E1EC400ACB5EC /* LaunchScreen.storyboard */; };
-		B582DEAC1EE169CC0043284C /* XibTempVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B582DEAA1EE169CC0043284C /* XibTempVC.m */; };
 		B582DEB01EE171780043284C /* XibFourVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B582DEAF1EE171780043284C /* XibFourVC.m */; };
+		B582FD9D1EF28FC3000BEC51 /* CommonFrameWork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B582FD9C1EF28FC3000BEC51 /* CommonFrameWork.framework */; };
+		B582FD9E1EF28FC3000BEC51 /* CommonFrameWork.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B582FD9C1EF28FC3000BEC51 /* CommonFrameWork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B582FDA21EF2905F000BEC51 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B582FDA11EF2905F000BEC51 /* MainViewController.m */; };
+		B582FDA41EF291B2000BEC51 /* XibFirstVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B582FDA31EF291B2000BEC51 /* XibFirstVC.xib */; };
+		B582FDA61EF2923B000BEC51 /* XibSecondVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B582FDA51EF2923B000BEC51 /* XibSecondVC.xib */; };
+		B582FDA81EF29289000BEC51 /* XibThreeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B582FDA71EF29289000BEC51 /* XibThreeVC.xib */; };
+		B582FDAA1EF295C9000BEC51 /* XibFourVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B582FDA91EF295C9000BEC51 /* XibFourVC.xib */; };
 		B5861A861EE697AF00AA5F01 /* DataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B5861A851EE697AF00AA5F01 /* DataModel.m */; };
 		B5861A881EE699BE00AA5F01 /* DataModel.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5861A871EE699BE00AA5F01 /* DataModel.xib */; };
 		B5861A8C1EE69FAF00AA5F01 /* TempVC2.m in Sources */ = {isa = PBXBuildFile; fileRef = B5861A8A1EE69FAF00AA5F01 /* TempVC2.m */; };
 		B5861A8D1EE69FAF00AA5F01 /* TempVC2.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5861A8B1EE69FAF00AA5F01 /* TempVC2.xib */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B582FD9F1EF28FC3000BEC51 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B582FD9E1EF28FC3000BEC51 /* CommonFrameWork.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		B53E3AE61EE1562F00F538AF /* XibFirstVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XibFirstVC.h; sourceTree = "<group>"; };
@@ -43,10 +63,15 @@
 		B57A66B41E1E1EC400ACB5EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B57A66B71E1E1EC400ACB5EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B57A66B91E1E1EC400ACB5EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B582DEA91EE169CC0043284C /* XibTempVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XibTempVC.h; sourceTree = "<group>"; };
-		B582DEAA1EE169CC0043284C /* XibTempVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XibTempVC.m; sourceTree = "<group>"; };
 		B582DEAE1EE171780043284C /* XibFourVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XibFourVC.h; sourceTree = "<group>"; };
 		B582DEAF1EE171780043284C /* XibFourVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XibFourVC.m; sourceTree = "<group>"; };
+		B582FD9C1EF28FC3000BEC51 /* CommonFrameWork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CommonFrameWork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B582FDA01EF2905F000BEC51 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		B582FDA11EF2905F000BEC51 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		B582FDA31EF291B2000BEC51 /* XibFirstVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XibFirstVC.xib; sourceTree = "<group>"; };
+		B582FDA51EF2923B000BEC51 /* XibSecondVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XibSecondVC.xib; sourceTree = "<group>"; };
+		B582FDA71EF29289000BEC51 /* XibThreeVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XibThreeVC.xib; sourceTree = "<group>"; };
+		B582FDA91EF295C9000BEC51 /* XibFourVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XibFourVC.xib; sourceTree = "<group>"; };
 		B5861A841EE697AF00AA5F01 /* DataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModel.h; sourceTree = "<group>"; };
 		B5861A851EE697AF00AA5F01 /* DataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataModel.m; sourceTree = "<group>"; };
 		B5861A871EE699BE00AA5F01 /* DataModel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DataModel.xib; sourceTree = "<group>"; };
@@ -60,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B582FD9D1EF28FC3000BEC51 /* CommonFrameWork.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,14 +97,16 @@
 			children = (
 				B53E3AE61EE1562F00F538AF /* XibFirstVC.h */,
 				B53E3AE71EE1562F00F538AF /* XibFirstVC.m */,
+				B582FDA31EF291B2000BEC51 /* XibFirstVC.xib */,
 				B53E3AE81EE1562F00F538AF /* XibSecondVC.h */,
 				B53E3AE91EE1562F00F538AF /* XibSecondVC.m */,
+				B582FDA51EF2923B000BEC51 /* XibSecondVC.xib */,
 				B53E3AEA1EE1562F00F538AF /* XibThreeVC.h */,
 				B53E3AEB1EE1562F00F538AF /* XibThreeVC.m */,
+				B582FDA71EF29289000BEC51 /* XibThreeVC.xib */,
 				B582DEAE1EE171780043284C /* XibFourVC.h */,
 				B582DEAF1EE171780043284C /* XibFourVC.m */,
-				B582DEA91EE169CC0043284C /* XibTempVC.h */,
-				B582DEAA1EE169CC0043284C /* XibTempVC.m */,
+				B582FDA91EF295C9000BEC51 /* XibFourVC.xib */,
 				B5861A891EE69FAF00AA5F01 /* TempVC2.h */,
 				B5861A8A1EE69FAF00AA5F01 /* TempVC2.m */,
 				B5861A8B1EE69FAF00AA5F01 /* TempVC2.xib */,
@@ -99,6 +127,7 @@
 		B57A66991E1E1EC400ACB5EC = {
 			isa = PBXGroup;
 			children = (
+				B582FD9C1EF28FC3000BEC51 /* CommonFrameWork.framework */,
 				B57A66A41E1E1EC400ACB5EC /* XibDemo */,
 				B57A66A31E1E1EC400ACB5EC /* Products */,
 			);
@@ -117,6 +146,8 @@
 			children = (
 				B57A66A81E1E1EC400ACB5EC /* AppDelegate.h */,
 				B57A66A91E1E1EC400ACB5EC /* AppDelegate.m */,
+				B582FDA01EF2905F000BEC51 /* MainViewController.h */,
+				B582FDA11EF2905F000BEC51 /* MainViewController.m */,
 				B53E3AE51EE1562F00F538AF /* Controller */,
 				B53E3AED1EE1562F00F538AF /* View */,
 				B5861A831EE6977C00AA5F01 /* Model */,
@@ -157,6 +188,7 @@
 				B57A669E1E1E1EC400ACB5EC /* Sources */,
 				B57A669F1E1E1EC400ACB5EC /* Frameworks */,
 				B57A66A01E1E1EC400ACB5EC /* Resources */,
+				B582FD9F1EF28FC3000BEC51 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -206,10 +238,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B582FDAA1EF295C9000BEC51 /* XibFourVC.xib in Resources */,
+				B582FDA61EF2923B000BEC51 /* XibSecondVC.xib in Resources */,
 				B57A66B81E1E1EC400ACB5EC /* LaunchScreen.storyboard in Resources */,
 				B5861A8D1EE69FAF00AA5F01 /* TempVC2.xib in Resources */,
+				B582FDA81EF29289000BEC51 /* XibThreeVC.xib in Resources */,
 				B53E3AF51EE1562F00F538AF /* LukeView.xib in Resources */,
 				B5861A881EE699BE00AA5F01 /* DataModel.xib in Resources */,
+				B582FDA41EF291B2000BEC51 /* XibFirstVC.xib in Resources */,
 				B57A66B51E1E1EC400ACB5EC /* Assets.xcassets in Resources */,
 				B57A66B31E1E1EC400ACB5EC /* Main.storyboard in Resources */,
 			);
@@ -222,7 +258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B582DEAC1EE169CC0043284C /* XibTempVC.m in Sources */,
+				B582FDA21EF2905F000BEC51 /* MainViewController.m in Sources */,
 				B53E3AF21EE1562F00F538AF /* XibSecondVC.m in Sources */,
 				B5861A861EE697AF00AA5F01 /* DataModel.m in Sources */,
 				B53E3AF41EE1562F00F538AF /* LukeView.m in Sources */,
@@ -355,6 +391,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = P8FFNR95EQ;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../CommonFrameWork/**";
 				INFOPLIST_FILE = XibDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -369,6 +406,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = P8FFNR95EQ;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../CommonFrameWork/**";
 				INFOPLIST_FILE = XibDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

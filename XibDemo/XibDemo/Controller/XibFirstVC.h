@@ -6,10 +6,10 @@
 //  Copyright © 2017年 okdeer. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "OKBaseViewController.h"
 #import "DataModel.h"
 
-@interface XibFirstVC : UIViewController
+@interface XibFirstVC : OKBaseViewController
 
 @end
 

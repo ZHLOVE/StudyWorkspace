@@ -11,7 +11,6 @@
 @interface XibSecondVC ()
 
 @property (weak, nonatomic) IBOutlet UILabel *textLabel;
-@property (weak, nonatomic) IBOutlet UIButton *sharkBtn;
 @property (strong, nonatomic) UILabel *customLabel;
 @end
 

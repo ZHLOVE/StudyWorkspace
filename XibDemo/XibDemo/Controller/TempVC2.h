@@ -6,8 +6,8 @@
 //  Copyright © 2017年 okdeer. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "OKBaseViewController.h"
 
-@interface TempVC2 : UIViewController
+@interface TempVC2 : OKBaseViewController
 
 @end

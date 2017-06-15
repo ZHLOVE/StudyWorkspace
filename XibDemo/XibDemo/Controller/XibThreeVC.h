@@ -6,8 +6,8 @@
 //  Copyright © 2017年 okdeer. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "OKBaseViewController.h"
 
-@interface XibThreeVC : UIViewController
+@interface XibThreeVC : OKBaseViewController
 
 @end

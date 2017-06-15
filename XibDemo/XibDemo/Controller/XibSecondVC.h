@@ -6,9 +6,9 @@
 //  Copyright © 2017年 okdeer. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "OKBaseViewController.h"
 
-@interface XibSecondVC : UIViewController
+@interface XibSecondVC : OKBaseViewController
 
 
 @end
