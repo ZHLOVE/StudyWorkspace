@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="196" id="KGk-i7-Jjw" customClass="TableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="502" height="196"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="502" height="195.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017-06-15 21:40" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2kA-Pg-CU9">
+                        <rect key="frame" x="106" y="52" width="102" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="现在回想25岁的时候，当初的担忧真的是杞人忧天了。我现在写代码也完全没问题，偶尔也会写点代码练练手，自娱自乐一下" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sVV-OY-Q35">
+                        <rect key="frame" x="15" y="106" width="472" height="33.5"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_CustonServer" translatesAutoresizingMaskIntoConstraints="NO" id="wDB-TT-mjw">
+                        <rect key="frame" x="16" y="16" width="80" height="80"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="80" id="6WM-6d-gOo"/>
+                            <constraint firstAttribute="width" secondItem="wDB-TT-mjw" secondAttribute="height" multiplier="1:1" id="Kcz-1h-fjb"/>
+                        </constraints>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ehg-Wa-DWV">
+                        <rect key="frame" x="15" y="152" width="472" height="35"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="35" id="nvG-iQ-nbx"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <state key="normal" title="赞一个">
+                            <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="praiseAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="NCu-nl-uae"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="抱紧我的小黄鱼" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P6B-hm-1pt">
+                        <rect key="frame" x="106" y="21" width="121.5" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="wDB-TT-mjw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="3mk-pr-ECc"/>
+                    <constraint firstItem="sVV-OY-Q35" firstAttribute="top" secondItem="wDB-TT-mjw" secondAttribute="bottom" constant="10" id="CKJ-me-qWp"/>
+                    <constraint firstItem="wDB-TT-mjw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="Jvn-l3-3m7"/>
+                    <constraint firstAttribute="trailing" secondItem="sVV-OY-Q35" secondAttribute="trailing" constant="15" id="QMN-Kk-NUm"/>
+                    <constraint firstItem="2kA-Pg-CU9" firstAttribute="leading" secondItem="P6B-hm-1pt" secondAttribute="leading" id="RD2-Wh-v2i"/>
+                    <constraint firstItem="2kA-Pg-CU9" firstAttribute="top" secondItem="P6B-hm-1pt" secondAttribute="bottom" constant="10" id="ahU-Y8-6uK"/>
+                    <constraint firstItem="P6B-hm-1pt" firstAttribute="top" secondItem="wDB-TT-mjw" secondAttribute="top" constant="5" id="cvQ-w5-z9n"/>
+                    <constraint firstItem="ehg-Wa-DWV" firstAttribute="trailing" secondItem="sVV-OY-Q35" secondAttribute="trailing" id="gRe-X4-ca8"/>
+                    <constraint firstItem="ehg-Wa-DWV" firstAttribute="leading" secondItem="sVV-OY-Q35" secondAttribute="leading" id="sSs-PX-PZj"/>
+                    <constraint firstItem="sVV-OY-Q35" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="vue-7c-ed2"/>
+                    <constraint firstItem="ehg-Wa-DWV" firstAttribute="top" secondItem="sVV-OY-Q35" secondAttribute="bottom" constant="12.5" id="wS5-gB-gfR"/>
+                    <constraint firstItem="P6B-hm-1pt" firstAttribute="leading" secondItem="wDB-TT-mjw" secondAttribute="trailing" constant="10" id="zdn-67-mWW"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="praiseBtn" destination="ehg-Wa-DWV" id="x7W-zp-IJ8"/>
+                <outlet property="weiboTextLab" destination="sVV-OY-Q35" id="zmQ-Mh-g3q"/>
+            </connections>
+            <point key="canvasLocation" x="-43" y="-52"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="icon_CustonServer" width="200" height="200"/>
+    </resources>
+</document>

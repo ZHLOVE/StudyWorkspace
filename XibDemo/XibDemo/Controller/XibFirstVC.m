@@ -8,7 +8,6 @@
 
 #import "XibFirstVC.h"
 #import <objc/runtime.h>
-#import "LukeView.h"
 #import "TempVC2.h"
 
 static char const * const kMyName      = "myName";

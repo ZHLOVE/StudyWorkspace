@@ -7,12 +7,17 @@
 //
 
 #import "DataModel.h"
+#import "TableViewCell.h"
 
 @implementation DataModel
 
-- (IBAction)testModelMethod:(id)sender
+- (void)setWeiboContent:(NSString *)weiboContent
 {
+    _weiboContent = weiboContent;
     
+    TableViewCell *cell = [[[NSBundle mainBundle] loadNibNamed:@"TableViewCell" owner:nil options:nil] lastObject];
+
+    self.cellHeight = [cell getHeightByModel:self];
 }
 
 @end

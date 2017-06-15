@@ -16,6 +16,8 @@
 }
 
 
+- (IBAction)praiseAction:(UIButton *)sender {
+}
 /**
  *  绘制二次贝兹曲线
  *  通过调用CGContextAddQuadCurveToPoint()来绘制
