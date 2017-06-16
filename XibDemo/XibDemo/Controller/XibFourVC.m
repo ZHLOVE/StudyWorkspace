@@ -46,7 +46,7 @@ static NSString *const kTableCellID = @"cellIdInfo";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableCellID];
-    [cell getHeightByModel:self.tableDataArr[indexPath.row]];
+    cell.dataModel = self.tableDataArr[indexPath.row];
     return cell;
 }
 

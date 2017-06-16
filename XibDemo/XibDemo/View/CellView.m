@@ -1,21 +1,20 @@
 //
-//  TableViewCell.m
+//  CellView.m
 //  XibDemo
 //
-//  Created by Luke on 2017/6/15.
+//  Created by mao wangxin on 2017/6/16.
 //  Copyright © 2017年 okdeer. All rights reserved.
 //
 
-#import "TableViewCell.h"
-#import <OKFrameDefiner.h>
-#import <UIView+OKExtension.h>
+#import "CellView.h"
 
-@interface TableViewCell ()
+#import <OKFrameDefiner.h>
+
+@interface  CellView ()
 @property (weak, nonatomic) IBOutlet UILabel *weiboTextLab;
-@property (weak, nonatomic) IBOutlet UIButton *praiseBtn;
 @end
 
-@implementation TableViewCell
+@implementation CellView
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -29,19 +28,12 @@
     self.weiboTextLab.text = dataModel.weiboContent;
 }
 
-- (CGFloat)cellHeight
-{
-    [self layoutIfNeeded];
-    
-    CGFloat btnMaxH = CGRectGetMaxY(self.praiseBtn.frame) + 10;
-    NSLog(@"cellHeight===%.2f",btnMaxH);
-    return btnMaxH;
-}
-
 - (void)drawRect:(CGRect)rect
 {
     [super drawRect:rect];
-    CGFloat btnMaxH = CGRectGetMaxY(self.praiseBtn.frame)+ 10;
+    
+    CGFloat btnMaxH = CGRectGetMaxY(self.praiseBtn.frame);
+    
     NSLog(@"drawRect===%.2f",btnMaxH);
 }
 
@@ -52,5 +44,6 @@
         self.praiseBlock(@"哈哈");
     }
 }
+
 
 @end

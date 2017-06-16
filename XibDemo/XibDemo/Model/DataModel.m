@@ -16,8 +16,8 @@
     _weiboContent = weiboContent;
     
     TableViewCell *cell = [[[NSBundle mainBundle] loadNibNamed:@"TableViewCell" owner:nil options:nil] lastObject];
-
-    self.cellHeight = [cell getHeightByModel:self];
+    cell.dataModel = self;
+    self.cellHeight = cell.cellHeight;
 }
 
 @end
