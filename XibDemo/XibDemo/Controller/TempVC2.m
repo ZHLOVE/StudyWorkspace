@@ -18,34 +18,37 @@
     [super viewDidLoad];
     
     NSLog(@"self.view===%@===%zd",self.view,self.view.tag);
-    
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+/**
+ *  添加xib
+ */
+- (IBAction)addSubViewAction:(UIButton *)sender
 {
     NSArray *xibArr = [[NSBundle mainBundle] loadNibNamed:@"TempVC2" owner:self options:nil];
     
     for (UIView *xibView in xibArr) {
         NSLog(@"当前所以子视图====%@===%zd",xibView,xibView.tag);
         
-        if (xibView.tag == 2017) {
-            NSLog(@"xibView.tag==2017: =======%@",xibView);
-            
-        } else if (xibView.tag == 2015) {
+        if (xibView.tag == 2015) {
             NSLog(@"xibView.tag==2015: =======%@",xibView);
+            
+        } else if (xibView.tag == 2017) {
+            NSLog(@"xibView.tag==2017: =======%@",xibView);
             
             xibView.bounds = CGRectMake(0, 0, 200, 200);
             xibView.center = self.view.center;
             [self.view addSubview:xibView];
         }
     }
-
 }
 
-- (IBAction)addSubViewAction:(UIButton *)sender
+/**
+ *  移除xib
+ */
+- (IBAction)removeSubview
 {
-    // 根据指定线的ID跳转到目标Vc
-    [self performSegueWithIdentifier:@"SendValue" sender:@"哈哈"];
+    [[self.view viewWithTag:2017] removeFromSuperview];
 }
 
 #pragma mark - Navigation

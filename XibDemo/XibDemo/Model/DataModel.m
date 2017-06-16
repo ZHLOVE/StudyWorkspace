@@ -15,6 +15,7 @@
 {
     _weiboContent = weiboContent;
     
+    //利用Xib计算Cell高度
     TableViewCell *cell = [[[NSBundle mainBundle] loadNibNamed:@"TableViewCell" owner:nil options:nil] lastObject];
     cell.dataModel = self;
     self.cellHeight = cell.cellHeight;

@@ -53,4 +53,19 @@
     }
 }
 
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+{
+    [super setSelected:selected animated:animated];
+    
+    self.weiboTextLab.backgroundColor = [UIColor groupTableViewBackgroundColor];
+}
+
+
+- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated
+{
+    [super setHighlighted:highlighted animated:animated];
+    
+    self.weiboTextLab.backgroundColor = [UIColor groupTableViewBackgroundColor];
+}
+
 @end

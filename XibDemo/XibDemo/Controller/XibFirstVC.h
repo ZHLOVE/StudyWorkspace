@@ -7,7 +7,6 @@
 //
 
 #import "OKBaseViewController.h"
-#import "DataModel.h"
 
 @interface XibFirstVC : OKBaseViewController
 

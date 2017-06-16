@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TempVC2">
             <connections>
-                <outlet property="view" destination="xEs-yd-z5Y" id="Zrc-er-uCB"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="aQe-Pj-yV6"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -20,19 +20,28 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" tag="2016" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eH8-r5-2Z6">
-                    <rect key="frame" x="149" y="70" width="77" height="30"/>
+                    <rect key="frame" x="53" y="70" width="77" height="30"/>
                     <state key="normal" title="添加子视图"/>
                     <connections>
                         <action selector="addSubViewAction:" destination="-1" eventType="touchUpInside" id="m2f-vN-Fnh"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5pY-dP-NBg">
+                    <rect key="frame" x="226" y="70" width="77" height="30"/>
+                    <state key="normal" title="移除子视图"/>
+                    <connections>
+                        <action selector="removeSubview" destination="-1" eventType="touchUpInside" id="r16-0A-t60"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="eH8-r5-2Z6" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="14f-JA-lmu"/>
+                <constraint firstItem="eH8-r5-2Z6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="53" id="OtZ-Dd-Tvp"/>
+                <constraint firstItem="5pY-dP-NBg" firstAttribute="top" secondItem="eH8-r5-2Z6" secondAttribute="top" id="Ucq-Cd-arB"/>
+                <constraint firstAttribute="trailing" secondItem="5pY-dP-NBg" secondAttribute="trailing" constant="72" id="hid-KP-O97"/>
                 <constraint firstItem="eH8-r5-2Z6" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="70" id="qIl-rO-47f"/>
             </constraints>
-            <point key="canvasLocation" x="-347" y="-69.5"/>
+            <point key="canvasLocation" x="1579" y="-353"/>
         </view>
         <view tag="2017" contentMode="scaleToFill" id="xEs-yd-z5Y">
             <rect key="frame" x="0.0" y="0.0" width="323" height="177"/>
@@ -48,7 +57,7 @@
                 <constraint firstItem="bOL-X8-m2P" firstAttribute="centerY" secondItem="xEs-yd-z5Y" secondAttribute="centerY" id="dRO-Nw-6jh"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="148.5" y="-213.5"/>
+            <point key="canvasLocation" x="-94" y="-981"/>
         </view>
     </objects>
 </document>

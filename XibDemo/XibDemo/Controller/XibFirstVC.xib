@@ -59,20 +59,11 @@
                         <constraint firstItem="RHO-gU-GVS" firstAttribute="leading" secondItem="pbD-j0-ktD" secondAttribute="leading" constant="20" id="x9f-PP-cSH"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F98-SD-VNv">
-                    <rect key="frame" x="172.5" y="138" width="31" height="30"/>
-                    <state key="normal" title="跳转"/>
-                    <connections>
-                        <action selector="jumpBtnAction:" destination="-1" eventType="touchUpInside" id="QHf-sV-TSy"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="pbD-j0-ktD" firstAttribute="top" secondItem="F98-SD-VNv" secondAttribute="bottom" constant="60" id="Hsk-Ww-ikf"/>
                 <constraint firstItem="pbD-j0-ktD" firstAttribute="centerX" secondItem="2uc-zE-Lvt" secondAttribute="centerX" id="JDk-dY-TEE"/>
                 <constraint firstItem="pbD-j0-ktD" firstAttribute="centerY" secondItem="2uc-zE-Lvt" secondAttribute="centerY" id="bbB-NG-TUm"/>
-                <constraint firstItem="F98-SD-VNv" firstAttribute="centerX" secondItem="2uc-zE-Lvt" secondAttribute="centerX" id="bwX-Ze-kOd"/>
             </constraints>
             <point key="canvasLocation" x="-1935" y="-2042"/>
         </view>

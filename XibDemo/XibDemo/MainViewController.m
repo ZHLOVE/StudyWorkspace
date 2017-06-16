@@ -15,11 +15,11 @@
     [super viewDidLoad];
     
     // --- 要添加测试的VC，在此处把类名加上即可
-    [self.tableDataArr addObjectsFromArray:@[@{@"XibFirstVC":@"测试约束"},
-                                             @{@"XibSecondVC":@"测试动画"},
-                                             @{@"XibThreeVC":@"测试ScrollView"},
-                                             @{@"XibFourVC":@"测试跳转"},
-                                             @{@"TempVC2":@"Storyboard跳转"},
+    [self.tableDataArr addObjectsFromArray:@[@{@"XibFirstVC":@"Xib约束容器大小"},
+                                             @{@"XibSecondVC":@"Xib约束动画"},
+                                             @{@"XibThreeVC":@"Xib约束ScrollView"},
+                                             @{@"XibFourVC":@"Xib计算Cell高度"},
+                                             @{@"TempVC2":@"同一个Xib文件多个Xib视图"},
                                              ]];
     self.plainTableView.rowHeight = 60;
     [self.plainTableView reloadData];
@@ -52,8 +52,8 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     NSDictionary *celLDic = [self.tableDataArr objectAtIndex:indexPath.row];
-    NSString *className = celLDic.allKeys[0];
-    [self pushToViewController:className propertyDic:@{@"title":className}];
+    [self pushToViewController:celLDic.allKeys[0]
+                   propertyDic:@{@"title":celLDic.allValues[0]}];
 }
 
 @end
