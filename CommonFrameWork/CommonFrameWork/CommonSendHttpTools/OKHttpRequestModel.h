@@ -23,11 +23,11 @@
 #define RequestLoadingTip                       @"请求中..."
 
 static NSString *const kRepeatRequest           = @"-1";                        /**< 重复请求的标志 */
-static NSString *const kRequestCodeKey          = @"code";                      /**< 请求code 的key */
+static NSString *const kRequestCodeKey          = @"errorCode";                      /**< 请求code 的key */
 static NSString *const kRequestMessageKey       = @"message";                   /**< 请求message 的key */
 static NSString *const kRequestDataKey          = @"data";                      /**< 请求data 的key */
-static NSString *const kRequestListkey          = @"list";                      /**< 请求list 的key */
-static NSInteger const kRequestSuccessStatues   = 0;                            /**< 请求成功的code */
+static NSString *const kRequestListkey          = @"postList";                      /**< 请求list 的key */
+static NSInteger const kRequestSuccessStatues   = 1;                            /**< 请求成功的code */
 static NSInteger const kServiceErrorStatues     = 9;                            /**< 请求失败的标志 */
 static NSInteger const kRequestTipsStatuesMin   = 200;                          /**< 提示后台的code最小值 */
 static NSInteger const kRequestTipsStatuesMax   = 500;                          /**< 提示后台的code最大值 */

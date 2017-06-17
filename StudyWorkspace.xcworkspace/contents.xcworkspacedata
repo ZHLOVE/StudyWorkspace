@@ -26,6 +26,9 @@
       location = "group:ApiDemo/ApiDemo.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:TimeLineDemo/TimeLineDemo.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>

@@ -34,6 +34,7 @@ target :'CommonFrameWork' do
     pod 'SDWebImage'
     pod 'FMDB'
     pod 'MJRefresh'
+#    pod 'MJExtension'
     pod 'MBProgressHUD'
     project 'CommonFrameWork/CommonFrameWork.xcodeproj'
 end

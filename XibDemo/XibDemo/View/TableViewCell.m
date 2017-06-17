@@ -38,13 +38,6 @@
     return btnMaxH;
 }
 
-- (void)drawRect:(CGRect)rect
-{
-    [super drawRect:rect];
-    CGFloat btnMaxH = CGRectGetMaxY(self.praiseBtn.frame)+ 10;
-    NSLog(@"drawRect===%.2f",btnMaxH);
-}
-
 - (IBAction)praiseAction:(UIButton *)sender
 {
     NSLog(@"赞一个");

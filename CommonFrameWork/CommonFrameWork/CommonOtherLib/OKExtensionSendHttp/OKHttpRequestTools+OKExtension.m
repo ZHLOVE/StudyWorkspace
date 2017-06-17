@@ -142,7 +142,7 @@ static char const * const kRequestTimeCountKey    = "kRequestTimeCountKey";
         
         //请求状态码为0表示成功，否则失败
         id code = responseObject[kRequestCodeKey];
-        if ([responseObject isKindOfClass:[NSDictionary class]] && code &&
+        if ([responseObject isKindOfClass:[NSDictionary class]] && /*code && */
             ([code integerValue] == kRequestSuccessStatues ||
              [code integerValue] == kRequestTipsStatuesMin))
         {

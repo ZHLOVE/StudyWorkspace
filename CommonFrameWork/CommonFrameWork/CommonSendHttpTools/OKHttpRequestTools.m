@@ -136,7 +136,7 @@ static char const * const kRequestUrlKey    = "kRequestUrlKey";
     void(^succResultBlock)(id responseObject) = ^(id responseObject){
         
         id code = responseObject[kRequestCodeKey];
-        if ([responseObject isKindOfClass:[NSDictionary class]] && code &&
+        if ([responseObject isKindOfClass:[NSDictionary class]] && /*code && */
             ([code integerValue] == kRequestSuccessStatues ||
              [code integerValue] == kRequestTipsStatuesMin))
         {
