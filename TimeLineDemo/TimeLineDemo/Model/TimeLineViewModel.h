@@ -1,6 +1,6 @@
 //
-//  TableViewModel.h
-//  Weixin_TimeLine
+//  TimeLineViewModel.h
+//  TimeLineDemo
 //
 //  Created by Luke on 2017/6/17.
 //  Copyright © 2017年 Demo. All rights reserved.
@@ -11,12 +11,6 @@
 
 @class Postlist;
 @class Post;
-@class Imagelist;
-
-@interface Imagelist : NSObject
-/** <#属性注释#> */
-@property (nonatomic, copy) NSString *username;
-@end
 
 @interface Post : NSObject
 
@@ -29,7 +23,7 @@
 /** <#属性注释#> */
 @property (nonatomic, copy) NSString *title;
 /** <#属性注释#> */
-@property (nonatomic, strong) NSArray<Imagelist *> *imageList;
+@property (nonatomic, strong) NSArray *imageList;
 /** <#属性注释#> */
 @property (nonatomic, copy) NSString *watch;
 /** <#属性注释#> */
@@ -61,29 +55,23 @@
 @end
 
 
-@interface Postlist : NSObject
+@interface TimeLineDataModel : NSObject
 
 /** <#属性注释#> */
 @property (nonatomic, strong) Post *post;
 /** <#属性注释#> */
 @property (nonatomic, copy) NSString *postType;
-@end
-
-
-@interface TableDataModel : NSObject
-
-/** <#属性注释#> */
-@property (nonatomic, strong) NSArray<Postlist *> *postList;
-/** <#属性注释#> */
-@property (nonatomic, assign) NSInteger errorCode;
-
 /** cell高度 */
 @property (nonatomic, assign) CGFloat cellHeight;
+
+- (void)calculateCellHeight;
+
 @end
 
 /**
  *  视图逻辑处理器
  */
-@interface TableViewModel : NSObject
+@interface TimeLineViewModel : NSObject
 
 @end
+

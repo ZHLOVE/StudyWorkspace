@@ -7,17 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9982680EE86B74BFF0940EF4 /* libPods-TimeLineDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 633613F156E2FF163E6CFD88 /* libPods-TimeLineDemo.a */; };
 		A3057A871EF56FBD003EF465 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A3057A861EF56FBD003EF465 /* main.m */; };
 		A3057A8A1EF56FBD003EF465 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A3057A891EF56FBD003EF465 /* AppDelegate.m */; };
 		A3057A901EF56FBD003EF465 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3057A8E1EF56FBD003EF465 /* Main.storyboard */; };
 		A3057A921EF56FBD003EF465 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3057A911EF56FBD003EF465 /* Assets.xcassets */; };
 		A3057A951EF56FBE003EF465 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3057A931EF56FBE003EF465 /* LaunchScreen.storyboard */; };
-		A3057AA41EF5703C003EF465 /* TableViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3057A9F1EF5703C003EF465 /* TableViewModel.m */; };
-		A3057AA51EF5703D003EF465 /* TableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A3057AA21EF5703C003EF465 /* TableCell.m */; };
-		A3057AA61EF5703D003EF465 /* TableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3057AA31EF5703C003EF465 /* TableCell.xib */; };
 		A3057AA81EF5705B003EF465 /* CommonFrameWork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3057AA71EF5705B003EF465 /* CommonFrameWork.framework */; };
 		A3057AA91EF5705B003EF465 /* CommonFrameWork.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A3057AA71EF5705B003EF465 /* CommonFrameWork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A3057AB01EF570E5003EF465 /* TimeLineVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A3057AAF1EF570E5003EF465 /* TimeLineVC.m */; };
+		A3057AB31EF5734B003EF465 /* TimeLineViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3057AB21EF5734B003EF465 /* TimeLineViewModel.m */; };
+		A3057AB71EF5735F003EF465 /* TimeLineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A3057AB51EF5735F003EF465 /* TimeLineCell.m */; };
+		A3057AB81EF5735F003EF465 /* TimeLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3057AB61EF5735F003EF465 /* TimeLineCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,6 +36,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0B3AE44D59EAFBB9429EAF0E /* Pods-TimeLineDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeLineDemo.release.xcconfig"; path = "../Pods/Target Support Files/Pods-TimeLineDemo/Pods-TimeLineDemo.release.xcconfig"; sourceTree = "<group>"; };
+		633613F156E2FF163E6CFD88 /* libPods-TimeLineDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TimeLineDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3057A821EF56FBD003EF465 /* TimeLineDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeLineDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3057A861EF56FBD003EF465 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A3057A881EF56FBD003EF465 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -43,14 +46,15 @@
 		A3057A911EF56FBD003EF465 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A3057A941EF56FBE003EF465 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A3057A961EF56FBE003EF465 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A3057A9E1EF5703C003EF465 /* TableViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewModel.h; sourceTree = "<group>"; };
-		A3057A9F1EF5703C003EF465 /* TableViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewModel.m; sourceTree = "<group>"; };
-		A3057AA11EF5703C003EF465 /* TableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableCell.h; sourceTree = "<group>"; };
-		A3057AA21EF5703C003EF465 /* TableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableCell.m; sourceTree = "<group>"; };
-		A3057AA31EF5703C003EF465 /* TableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableCell.xib; sourceTree = "<group>"; };
 		A3057AA71EF5705B003EF465 /* CommonFrameWork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CommonFrameWork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3057AAE1EF570E5003EF465 /* TimeLineVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeLineVC.h; sourceTree = "<group>"; };
 		A3057AAF1EF570E5003EF465 /* TimeLineVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeLineVC.m; sourceTree = "<group>"; };
+		A3057AB11EF5734B003EF465 /* TimeLineViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeLineViewModel.h; sourceTree = "<group>"; };
+		A3057AB21EF5734B003EF465 /* TimeLineViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeLineViewModel.m; sourceTree = "<group>"; };
+		A3057AB41EF5735F003EF465 /* TimeLineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeLineCell.h; sourceTree = "<group>"; };
+		A3057AB51EF5735F003EF465 /* TimeLineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeLineCell.m; sourceTree = "<group>"; };
+		A3057AB61EF5735F003EF465 /* TimeLineCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimeLineCell.xib; sourceTree = "<group>"; };
+		E3FFCEF81639B18AC24ED7B1 /* Pods-TimeLineDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeLineDemo.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-TimeLineDemo/Pods-TimeLineDemo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,18 +63,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3057AA81EF5705B003EF465 /* CommonFrameWork.framework in Frameworks */,
+				9982680EE86B74BFF0940EF4 /* libPods-TimeLineDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		154DCB41FEA8933BBA8B2079 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				633613F156E2FF163E6CFD88 /* libPods-TimeLineDemo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A3057A791EF56FBD003EF465 = {
 			isa = PBXGroup;
 			children = (
 				A3057AA71EF5705B003EF465 /* CommonFrameWork.framework */,
 				A3057A841EF56FBD003EF465 /* TimeLineDemo */,
 				A3057A831EF56FBD003EF465 /* Products */,
+				B57C74E50096C36A34B4AD77 /* Pods */,
+				154DCB41FEA8933BBA8B2079 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -119,8 +134,8 @@
 		A3057A9D1EF5703C003EF465 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A3057A9E1EF5703C003EF465 /* TableViewModel.h */,
-				A3057A9F1EF5703C003EF465 /* TableViewModel.m */,
+				A3057AB11EF5734B003EF465 /* TimeLineViewModel.h */,
+				A3057AB21EF5734B003EF465 /* TimeLineViewModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -128,11 +143,20 @@
 		A3057AA01EF5703C003EF465 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A3057AA11EF5703C003EF465 /* TableCell.h */,
-				A3057AA21EF5703C003EF465 /* TableCell.m */,
-				A3057AA31EF5703C003EF465 /* TableCell.xib */,
+				A3057AB41EF5735F003EF465 /* TimeLineCell.h */,
+				A3057AB51EF5735F003EF465 /* TimeLineCell.m */,
+				A3057AB61EF5735F003EF465 /* TimeLineCell.xib */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		B57C74E50096C36A34B4AD77 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E3FFCEF81639B18AC24ED7B1 /* Pods-TimeLineDemo.debug.xcconfig */,
+				0B3AE44D59EAFBB9429EAF0E /* Pods-TimeLineDemo.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,10 +166,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A3057A991EF56FBE003EF465 /* Build configuration list for PBXNativeTarget "TimeLineDemo" */;
 			buildPhases = (
+				F4C4D61C66F0C8F60C0FD02C /* [CP] Check Pods Manifest.lock */,
 				A3057A7E1EF56FBD003EF465 /* Sources */,
 				A3057A7F1EF56FBD003EF465 /* Frameworks */,
 				A3057A801EF56FBD003EF465 /* Resources */,
 				A3057AAA1EF5705B003EF465 /* Embed Frameworks */,
+				7B5FA7C11B7474E6A79E1D82 /* [CP] Embed Pods Frameworks */,
+				EEFCA8A34B11EA3BB828DBA2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -197,21 +224,69 @@
 			files = (
 				A3057A951EF56FBE003EF465 /* LaunchScreen.storyboard in Resources */,
 				A3057A921EF56FBD003EF465 /* Assets.xcassets in Resources */,
-				A3057AA61EF5703D003EF465 /* TableCell.xib in Resources */,
 				A3057A901EF56FBD003EF465 /* Main.storyboard in Resources */,
+				A3057AB81EF5735F003EF465 /* TimeLineCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7B5FA7C11B7474E6A79E1D82 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-TimeLineDemo/Pods-TimeLineDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EEFCA8A34B11EA3BB828DBA2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-TimeLineDemo/Pods-TimeLineDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F4C4D61C66F0C8F60C0FD02C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A3057A7E1EF56FBD003EF465 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A3057AA41EF5703C003EF465 /* TableViewModel.m in Sources */,
+				A3057AB31EF5734B003EF465 /* TimeLineViewModel.m in Sources */,
 				A3057A8A1EF56FBD003EF465 /* AppDelegate.m in Sources */,
-				A3057AA51EF5703D003EF465 /* TableCell.m in Sources */,
+				A3057AB71EF5735F003EF465 /* TimeLineCell.m in Sources */,
 				A3057A871EF56FBD003EF465 /* main.m in Sources */,
 				A3057AB01EF570E5003EF465 /* TimeLineVC.m in Sources */,
 			);
@@ -331,6 +406,7 @@
 		};
 		A3057A9A1EF56FBE003EF465 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E3FFCEF81639B18AC24ED7B1 /* Pods-TimeLineDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = P8FFNR95EQ;
@@ -345,6 +421,7 @@
 		};
 		A3057A9B1EF56FBE003EF465 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0B3AE44D59EAFBB9429EAF0E /* Pods-TimeLineDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = P8FFNR95EQ;
@@ -376,6 +453,7 @@
 				A3057A9B1EF56FBE003EF465 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

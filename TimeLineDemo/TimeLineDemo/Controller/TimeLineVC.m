@@ -7,11 +7,12 @@
 //
 
 #import "TimeLineVC.h"
-#import "TableCell.h"
-#import "TableViewModel.h"
+#import "TimeLineCell.h"
+#import "TimeLineViewModel.h"
 #import <OKPubilcKeyDefiner.h>
 #import "OKHttpRequestTools+OKExtension.h"
 #import <NSDictionary+OKExtension.h>
+#import <MJExtension.h>
 
 //请求数据地址
 #define Url_DocList     @"http://direct.wap.zol.com.cn/bbs/getRecommendBook.php?bbsid=dcbbs&ssid=%242a%2407%24403c8f4a8f512e730e163b7ad3d6b3123e6d5c15525674a76080dbb7f8cacc42&v=3.0&vs=iph561";
@@ -29,7 +30,7 @@ static NSString *const kTableCellID = @"cellIdInfo";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.plainTableView registerNib:[UINib nibWithNibName:@"TableCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:kTableCellID];
+    [self.plainTableView registerNib:[UINib nibWithNibName:@"TimeLineCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:kTableCellID];
     
     WEAKSELF
     [self.plainTableView addheaderRefresh:^{
@@ -37,7 +38,6 @@ static NSString *const kTableCellID = @"cellIdInfo";
     } footerBlock:^{
         [weakSelf requestData:NO];
     }];
-    
 }
 
 /**
@@ -67,7 +67,7 @@ static NSString *const kTableCellID = @"cellIdInfo";
         if (firstPage) {
             [self.tableDataArr removeAllObjects];
         }
-        [returnValue printPropertyWithClassName:@"DataModel"];
+//        [returnValue printPropertyWithClassName:@"DataModel"];
         
         //包装数据
         [self convertData:returnValue];
@@ -82,10 +82,10 @@ static NSString *const kTableCellID = @"cellIdInfo";
  */
 - (void)convertData:(NSDictionary *)dataDic
 {
-    TableDataModel *model = [TableDataModel new];
-    [model setValuesForKeysWithDictionary:dataDic];
-    
-    [self.tableDataArr addObjectsFromArray:model.postList];
+    NSMutableArray<TimeLineDataModel *> *modelArr = [TimeLineDataModel mj_objectArrayWithKeyValuesArray:dataDic[@"postList"]];
+    //计算每个模型cell的高度
+    [modelArr makeObjectsPerformSelector:@selector(calculateCellHeight)];
+    [self.tableDataArr addObjectsFromArray:modelArr];
     [self.plainTableView reloadData];
 }
 
@@ -93,14 +93,15 @@ static NSString *const kTableCellID = @"cellIdInfo";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    TableDataModel *model = self.tableDataArr[indexPath.row];
+    TimeLineDataModel *model = self.tableDataArr[indexPath.row];
     return model.cellHeight;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    TableCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableCellID];
+    TimeLineCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableCellID];
     cell.dataModel = self.tableDataArr[indexPath.row];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
