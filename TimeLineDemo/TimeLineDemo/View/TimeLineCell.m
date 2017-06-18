@@ -10,6 +10,8 @@
 #import "UIImageView+WebCache.h"
 #import <OKFrameDefiner.h>
 #import <UIView+OKExtension.h>
+#import "OKPhotoBrowserHelp.h"
+#import <UIView+OKTool.h>
 
 #define kImgSize ((Screen_Width-75-10-15)/3)
 
@@ -56,8 +58,10 @@
         imgView.backgroundColor = [UIColor grayColor];
         imgView.contentMode = UIViewContentModeScaleAspectFill;
         imgView.clipsToBounds = YES;
+        imgView.userInteractionEnabled = YES;
         imgView.tag = 2017+i;
         imgView.hidden = YES;
+        [imgView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showPhotoBrowser:)]];
         
         int row = i / maxCols;
         int col = i % maxCols;
@@ -67,6 +71,27 @@
         imgView.height = imgSize;
         [self.picView addSubview:imgView];
     }
+}
+
+/**
+ *  点击查看大图
+ */
+- (void)showPhotoBrowser:(UITapGestureRecognizer *)tap
+{
+    NSMutableArray<ZLPhotoPickerBrowserPhoto *> *dataArr = [NSMutableArray array];
+    NSInteger showIndex = 0;
+    
+    for (UIImageView *imgView in self.picView.subviews) {
+        if (imgView.hidden == NO) {
+            if ((tap.view.tag-2017) == imgView.tag) {
+                showIndex = imgView.tag;
+            }
+            ZLPhotoPickerBrowserPhoto *pickerBrowserPhoto = [ZLPhotoPickerBrowserPhoto photoAnyImageObjWith:imgView.image];
+            [dataArr addObject:pickerBrowserPhoto];
+        }
+    }
+    
+    [OKPhotoBrowserHelp showPhotoBrowser:self.superViewController currentIndex:showIndex photos:dataArr];
 }
 
 /**
@@ -82,6 +107,12 @@
     self.useNameLab.text = dataModel.post.username;
     //主题
     self.themeLab.text = dataModel.post.title;
+    //自动折行设置
+//    self.themeLab.lineBreakMode = NSLineBreakByCharWrapping;
+    //不加这句代码高度会不准确
+    self.themeLab.preferredMaxLayoutWidth = Screen_Width-75-15;
+    
+//    [self.themeLab systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
     //描述
     self.descLab.text = dataModel.post.content;
     //相机
