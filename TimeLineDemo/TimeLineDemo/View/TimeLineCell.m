@@ -42,6 +42,18 @@
     self.dcBtn.layer.borderWidth = 1;
     self.dcBtn.layer.masksToBounds = YES;
     
+    //设置cell样式
+    [self setCellCustomStyle];
+    
+    //添加图片View
+    [self addCustomImageView];
+}
+
+/**
+ *  设置cell样式
+ */
+- (void)setCellCustomStyle
+{
     if ([self respondsToSelector:@selector(setLayoutMargins:)]) {
         self.layoutMargins = UIEdgeInsetsZero;
     }
@@ -49,7 +61,14 @@
         self.separatorInset = UIEdgeInsetsZero;
     }
     
-    CGFloat buttonStartX = 0;
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
+}
+
+/**
+ *  添加图片View
+ */
+- (void)addCustomImageView
+{
     CGFloat margin = 5;
     int maxCols = 3;
     CGFloat imgSize = kImgSize;
@@ -61,12 +80,13 @@
         imgView.userInteractionEnabled = YES;
         imgView.tag = 2017+i;
         imgView.hidden = YES;
-        [imgView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showPhotoBrowser:)]];
-        
+        [imgView addGestureRecognizer:[[UITapGestureRecognizer alloc]
+                                       initWithTarget:self
+                                       action:@selector(showPhotoBrowser:)]];
         int row = i / maxCols;
         int col = i % maxCols;
-        imgView.x = buttonStartX + col * (margin + imgSize);
-        imgView.y = buttonStartX + row * (margin + imgSize);
+        imgView.x = col * (margin + imgSize);
+        imgView.y = row * (margin + imgSize);
         imgView.width = imgSize;
         imgView.height = imgSize;
         [self.picView addSubview:imgView];
@@ -83,14 +103,13 @@
     
     for (UIImageView *imgView in self.picView.subviews) {
         if (imgView.hidden == NO) {
-            if ((tap.view.tag-2017) == imgView.tag) {
-                showIndex = imgView.tag;
+            if (tap.view.tag == imgView.tag) {
+                showIndex = imgView.tag-2017;
             }
             ZLPhotoPickerBrowserPhoto *pickerBrowserPhoto = [ZLPhotoPickerBrowserPhoto photoAnyImageObjWith:imgView.image];
             [dataArr addObject:pickerBrowserPhoto];
         }
     }
-    
     [OKPhotoBrowserHelp showPhotoBrowser:self.superViewController currentIndex:showIndex photos:dataArr];
 }
 
@@ -108,11 +127,10 @@
     //主题
     self.themeLab.text = dataModel.post.title;
     //自动折行设置
-//    self.themeLab.lineBreakMode = NSLineBreakByCharWrapping;
+    //self.themeLab.lineBreakMode = NSLineBreakByCharWrapping;
+    // [self.themeLab systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
     //不加这句代码高度会不准确
     self.themeLab.preferredMaxLayoutWidth = Screen_Width-75-15;
-    
-//    [self.themeLab systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
     //描述
     self.descLab.text = dataModel.post.content;
     //相机
@@ -134,8 +152,6 @@
  */
 - (void)setupPicViewHeight
 {
-    [self layoutIfNeeded];
-    
     CGFloat margin = 5;
     CGFloat maxHeight = 0;
     CGFloat imgH = kImgSize;
@@ -171,8 +187,6 @@
             }
         }
     }
-    
-    NSLog(@"设置所有图片高度===%.2f====%.2f====%.2f-------%zd",imgH, maxHeight, margin, picArr.count);
     [self updateConstraintsIfNeeded];
     [self layoutIfNeeded];
 }

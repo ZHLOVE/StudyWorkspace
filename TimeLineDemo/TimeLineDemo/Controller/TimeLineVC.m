@@ -11,7 +11,6 @@
 #import "TimeLineViewModel.h"
 #import <OKPubilcKeyDefiner.h>
 #import "OKHttpRequestTools+OKExtension.h"
-#import <NSDictionary+OKExtension.h>
 #import <MJExtension.h>
 #import <UIViewController+OKExtension.h>
 #import <MJRefresh.h>
@@ -82,12 +81,10 @@ static NSString *const kTableCellID = @"cellIdInfo";
     }
     self.params = info;
     
-    OKHttpRequestModel *model = [[OKHttpRequestModel alloc] init];
+    OKHttpRequestModel *model = [OKHttpRequestModel new];
     model.requestType = HttpRequestTypeGET;
     model.requestUrl = Url_DocList;
     model.parameters = info;
-    
-    //model.loadView = self.view;
     model.dataTableView = self.plainTableView;
     
     [OKHttpRequestTools sendExtensionRequest:model success:^(id returnValue) {
@@ -95,8 +92,6 @@ static NSString *const kTableCellID = @"cellIdInfo";
         if (firstPage) {
             [self.tableDataArr removeAllObjects];
         }
-//        [returnValue printPropertyWithClassName:@"DataModel"];
-        
         //包装数据
         [self convertData:returnValue];
         
@@ -129,7 +124,6 @@ static NSString *const kTableCellID = @"cellIdInfo";
 {
     TimeLineCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableCellID];
     cell.dataModel = self.tableDataArr[indexPath.row];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 

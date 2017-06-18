@@ -90,9 +90,9 @@
             ALAssetsLibrary *assetsLibrary = [[ALAssetsLibrary alloc]init];
             [assetsLibrary writeImageToSavedPhotosAlbum:[_photoImageView.image CGImage] orientation:(ALAssetOrientation)_photoImageView.image.imageOrientation completionBlock:^(NSURL *assetURL, NSError *error) {
                 if (error) {
-                    NSLog(@"Save image fail：%@",error);
+                    [self showMessageWithText:@"保存失败"];
                 }else{
-                    NSLog(@"Save image succeed.");
+                    [self showMessageWithText:@"保存成功"];
                 }
             }];
         }else{
@@ -116,7 +116,7 @@
     alertLabel.layer.cornerRadius = 10.0f;
     [[UIApplication sharedApplication].keyWindow addSubview:alertLabel];
     
-    [UIView animateWithDuration:.5 animations:^{
+    [UIView animateWithDuration:2 animations:^{
         alertLabel.alpha = 0.0;
     } completion:^(BOOL finished) {
         [alertLabel removeFromSuperview];
