@@ -22,40 +22,36 @@ typedef void (^OKRefreshingBlock)();
 
 typedef enum : NSUInteger {
     RequestNormalStatus,    //0 正常状态
-    RequestEmptyDataStatus, //1 空数据
-    RequestFailStatus,      //2 加载失败
-    RequesErrorNoNetWork,   //3 网络连接失败
+    RequestEmptyDataStatus, //1 空数据状态
+    RequestFailStatus,      //2 请求失败状态
+    RequesNoNetWorkStatus,  //3 网络连接失败状态
 } TableVieTipStatus;
 
 
 @interface UIScrollView (OKRequestExtension)
 
+
+/** 如果是UItableView设置,没有更多数据提示 */
+@property (nonatomic, strong) NSString *footerTipString;
+
 /** 空数据提示 */
 @property (nonatomic, strong) NSString *reqEmptyTipString;
-
 /** 空数据提示图片 */
 @property (nonatomic, strong) UIImage *reqEmptyTipImage;
-
 /** 请求失败提示 */
 @property (nonatomic, strong) NSString *reqFailTipString;
-
 /** 请求失败提示图片 */
 @property (nonatomic, strong) UIImage *reqFailTipImage;
-
 /** 网络连接失败提示 */
 @property (nonatomic, strong) NSString *netErrorTipString;
-
 /** 网络连接失败图片 */
 @property (nonatomic, strong) UIImage *netErrorTipImage;
-
 /** 按钮标题 */
-@property (nonatomic, strong) NSString *actionBtnTitle;
-
+@property (nonatomic, strong) NSString *emptyDataBtnTitle;
 /** 按钮点击的Target */
-@property (nonatomic, strong) id actionTarget;
-
+@property (nonatomic, strong) id emptyDataActionTarget;
 /** 按钮点击的事件 */
-@property (nonatomic, assign) SEL actionSEL;
+@property (nonatomic, assign) SEL emptyDataActionSEL;
 
 
 #pragma mark - 给表格添加上下拉刷新事件

@@ -20,7 +20,7 @@
 #define RequestFailCommomTip                    @"请求失败, 请重试!"
 
 /** 请求转圈的统一提示*/
-#define RequestLoadingTip                       @"请求中..."
+#define RequestLoadingTip                       @"正在拼命加载..."
 
 static NSString *const kRepeatRequest           = @"-1";                        /**< 重复请求的标志 */
 static NSString *const kRequestCodeKey          = @"errorCode";                      /**< 请求code 的key */

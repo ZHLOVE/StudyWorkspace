@@ -133,6 +133,8 @@
     self.themeLab.preferredMaxLayoutWidth = Screen_Width-75-15;
     //描述
     self.descLab.text = dataModel.post.content;
+    //不加这句代码高度会不准确
+    self.descLab.preferredMaxLayoutWidth = Screen_Width-75-15;
     //相机
     [self.dcBtn setTitle:dataModel.post.boardname forState:0];
     //时间

@@ -64,7 +64,7 @@ static char const * const kAutomaticShowTipViewKey    = "kAutomaticShowTipViewKe
  */
 - (void)ok_reloadData
 {
-    //NSLog(@"交换表格系统刷新方法");
+    NSLog(@"交换表格系统刷新方法");
     [self ok_reloadData];
     
     //是否显示自定义提示view

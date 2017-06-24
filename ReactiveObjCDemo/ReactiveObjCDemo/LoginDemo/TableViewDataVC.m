@@ -33,9 +33,9 @@
     self.requesViewModel.tableView = self.plainTableView;
     self.plainTableView.netErrorTipString = @"运营商的网络有问题哦";
     self.plainTableView.reqFailTipString = @"尼玛后台又出问题了啊";
-    self.plainTableView.actionBtnTitle = @"再试一次吧";
-    self.plainTableView.actionTarget = self;
-    self.plainTableView.actionSEL = @selector(refreshData);
+    self.plainTableView.emptyDataBtnTitle = @"再试一次吧";
+    self.plainTableView.emptyDataActionTarget = self;
+    self.plainTableView.emptyDataActionSEL = @selector(refreshData);
     
     self.requesViewModel.vcView = self.view;
     
