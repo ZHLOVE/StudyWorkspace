@@ -27,12 +27,12 @@ static char const * const kAutomaticShowTipViewKey    = "kAutomaticShowTipViewKe
     method_exchangeImplementations(otherMehtod, originMehtod);
 }
 
-+(void)initialize
++(void)load
 {
     //交换刷新表格方法
-//    [self ok_exchangeInstanceMethod:[self class]
-//                     originSelector:@selector(reloadData)
-//                      otherSelector:@selector(ok_reloadData)];
+    [self ok_exchangeInstanceMethod:[self class]
+                     originSelector:@selector(reloadData)
+                      otherSelector:@selector(ok_reloadData)];
     //交换删除表格方法
     [self ok_exchangeInstanceMethod:[self class]
                      originSelector:@selector(deleteRowsAtIndexPaths:withRowAnimation:)
@@ -42,7 +42,6 @@ static char const * const kAutomaticShowTipViewKey    = "kAutomaticShowTipViewKe
                      originSelector:@selector(reloadSections:withRowAnimation:)
                       otherSelector:@selector(ok_reloadSections:withRowAnimation:)];
 }
-
 
 #pragma mark - ========== 是否自动显示请求提示view ==========
 
@@ -67,8 +66,8 @@ static char const * const kAutomaticShowTipViewKey    = "kAutomaticShowTipViewKe
     NSLog(@"交换表格系统刷新方法");
     [self ok_reloadData];
     
-    //是否显示自定义提示view
-    [self convertShowTipView];
+    //显示自定义提示view <注意：这里一定要延迟，因为MJrefresh也替换了reloadData方法，否则不能收起刷新控件>
+    [self performSelector:@selector(convertShowTipView) withObject:nil afterDelay:0.5];
 }
 
 /**

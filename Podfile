@@ -11,7 +11,7 @@ project 'TimeLineDemo/TimeLineDemo.xcodeproj'
 target :'ReactiveObjCDemo' do
 #    use_frameworks!
     platform :ios, '8.0'
-#    pod 'ReactiveObjC'
+#    pod 'ReactiveObjC' //在主库中已经添加了（CommonFrameWork）
     project 'ReactiveObjCDemo/ReactiveObjCDemo.xcodeproj'
 end
 

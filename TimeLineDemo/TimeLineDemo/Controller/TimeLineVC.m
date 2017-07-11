@@ -17,7 +17,7 @@
 #import <UITableView+OKExtension.h>
 
 //请求数据地址
-#define Url_DocList  @"http://direct.wap.zol.com.cn/bbs/getRecommendBook.php?ssid=%242a%2407%24403c8f4a8f512e730e163b7ad3d6b3123e6d5c15525674a76080dbb7f8cacc42&v=3.0&vs=iph561"
+#define Url_DocList  @"http://direct0.wap.zol.com.cn/bbs/getRecommendBook.php?ssid=%242a%2407%24403c8f4a8f512e730e163b7ad3d6b3123e6d5c15525674a76080dbb7f8cacc42&v=3.0&vs=iph561"
 
 
 static NSString *const kTableCellID = @"cellIdInfo";
@@ -36,7 +36,7 @@ static NSString *const kTableCellID = @"cellIdInfo";
     
     [self.plainTableView registerNib:[UINib nibWithNibName:@"TimeLineCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:kTableCellID];
     
-//    self.plainTableView.automaticShowTipView = YES;
+    self.plainTableView.automaticShowTipView = YES;
     
     WEAKSELF
     [self.plainTableView addheaderRefresh:^{
@@ -88,9 +88,9 @@ static NSString *const kTableCellID = @"cellIdInfo";
     model.requestType = HttpRequestTypeGET;
     model.requestUrl = Url_DocList;
     model.parameters = info;
-    model.dataTableView = self.plainTableView;
-    
-    [OKHttpRequestTools sendExtensionRequest:model success:^(id returnValue) {
+//    model.dataTableView = self.plainTableView;
+//    sendExtensionRequest
+    [OKHttpRequestTools sendOKRequest:model success:^(id returnValue) {
         if (self.params != info) return;
         if (firstPage) {
             [self.tableDataArr removeAllObjects];
@@ -100,6 +100,7 @@ static NSString *const kTableCellID = @"cellIdInfo";
         
     } failure:^(NSError *error) {
         if (!firstPage) self.pageNum --;
+        [self.plainTableView reloadData];
     }];
 }
 
