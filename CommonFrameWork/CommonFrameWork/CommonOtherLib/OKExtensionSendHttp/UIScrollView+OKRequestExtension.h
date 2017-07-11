@@ -31,9 +31,14 @@ typedef enum : NSUInteger {
 @interface UIScrollView (OKRequestExtension)
 
 
-/** 如果是UItableView设置,没有更多数据提示 */
-@property (nonatomic, strong) NSString *footerTipString;
+/** 一个属性即可自动设置显示请求提示view，(但是在请求失败时只能显示无数据提示) */
+@property (nonatomic, assign) BOOL automaticShowTipView;
 
+/**
+ * 以下所有的属性需要配合 <showRequestTip:> 方法使用
+ */
+/** 如果是UItableView,设置没有更多数据提示 */
+@property (nonatomic, strong) NSString *footerTipString;
 /** 空数据提示 */
 @property (nonatomic, strong) NSString *reqEmptyTipString;
 /** 空数据提示图片 */
@@ -54,7 +59,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign) SEL emptyDataActionSEL;
 
 
-#pragma mark - 给表格添加上下拉刷新事件
+#pragma mark -- 给表格添加上下拉刷新事件
 
 /**
  初始化表格的上下拉刷新控件
@@ -66,14 +71,13 @@ typedef enum : NSUInteger {
              footerBlock:(OKRefreshingBlock)footerBlock;
 
 
-#pragma mark - 处理表格上下拉刷新,分页,添加空白页事件
+#pragma mark -- 处理表格上下拉刷新,分页,添加空白页事件
 
 /**
- 调用此方法,会自动处理表格上下拉刷新,分页,添加空白页等操作
- 
+ 调用此方法,会自动处理表格上下拉刷新,分页,添加空白页等操作，
+ 使用方法：--> 需要在网络请求的成功和失败回调中调用即可
  @param responseData 网络请求回调数据 (NSDictionary,NSError)
  */
 - (void)showRequestTip:(id)responseData;
-
 
 @end

@@ -17,12 +17,12 @@
 #define kTotalPageKey                               @"totalPage"
 #define kCurrentPageKey                             @"currentPage"
 #define kListKey                                    @"list"
-
 /*  弱引用 */
 #define WEAKSELF                                    typeof(self) __weak weakSelf = self;
 /*  强引用 */
 #define STRONGSELF                                  typeof(weakSelf) __strong strongSelf = weakSelf;
 
+static char const * const kAutomaticShowTipViewKey  = "kAutomaticShowTipViewKey";
 static char const * const kFooterTipStringKey       = "kFooterTipStringKey";
 static char const * const kReqEmptyTipStringKey     = "kReqEmptyTipStringKey";
 static char const * const kReqEmptyTipImageKey      = "kReqEmptyTipImageKey";
@@ -34,10 +34,30 @@ static char const * const kActionBtnTitleKey        = "kActionBtnTitleKey";
 static char const * const kActionTargetKey          = "kActionTargetKey";
 static char const * const kActionSELKey             = "kActionSELKey";
 
+@implementation NSObject (MJRefresh)
+
++ (void)ok_exchangeInstanceMethod:(SEL)originSelector otherSelector:(SEL)otherSelector
+{
+    method_exchangeImplementations(class_getInstanceMethod(self, originSelector), class_getInstanceMethod(self, otherSelector));
+}
+@end
 
 @implementation UIScrollView (OKRequestExtension)
 
-#pragma mark - ========== UItableView"没有更多数据"提示 ==========
+// ==================== 是否自动显示请求提示view ====================
+
+- (void)setAutomaticShowTipView:(BOOL)automaticShowTipView
+{
+    objc_setAssociatedObject(self, kAutomaticShowTipViewKey, @(automaticShowTipView), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (BOOL)automaticShowTipView
+{
+    id value = objc_getAssociatedObject(self, kAutomaticShowTipViewKey);
+    return [value boolValue];
+}
+
+// ==================== UItableView"没有更多数据"提示 ====================
 
 - (void)setFooterTipString:(NSString *)footerTipString
 {
@@ -49,7 +69,7 @@ static char const * const kActionSELKey             = "kActionSELKey";
     return objc_getAssociatedObject(self, kFooterTipStringKey);
 }
 
-#pragma mark - ========== 请求空数据提示 ==========
+// ==================== 请求空数据提示 ====================
 
 - (void)setReqEmptyTipString:(NSString *)reqEmptyTipString
 {
@@ -62,7 +82,7 @@ static char const * const kActionSELKey             = "kActionSELKey";
     return emptyTip ? : @"暂无数据";
 }
 
-#pragma mark - ========== 请求空数据图片 ==========
+// ==================== 请求空数据图片 ====================
 
 - (void)setReqEmptyTipImage:(UIImage *)reqEmptyTipImage
 {
@@ -78,7 +98,7 @@ static char const * const kActionSELKey             = "kActionSELKey";
     return image;
 }
 
-#pragma mark - ========== 请求失败提示 ==========
+// ==================== 请求失败提示 ====================
 
 - (void)setReqFailTipString:(NSString *)reqFailTipString
 {
@@ -91,7 +111,7 @@ static char const * const kActionSELKey             = "kActionSELKey";
     return tipStr ? : @"加载失败了哦!";
 }
 
-#pragma mark - ========== 请求失败图片 ==========
+// ==================== 请求失败图片 ====================
 
 - (void)setReqFailTipImage:(UIImage *)reqFailTipImage
 {
@@ -107,7 +127,7 @@ static char const * const kActionSELKey             = "kActionSELKey";
     return image;
 }
 
-#pragma mark - ========== 网络错误提示 ==========
+// ==================== 网络错误提示 ====================
 
 - (void)setNetErrorTipString:(NSString *)netErrorTipString
 {
@@ -120,7 +140,7 @@ static char const * const kActionSELKey             = "kActionSELKey";
     return tipStr ? : NetworkConnectFailTips;
 }
 
-#pragma mark - ========== 网络错误图片 ==========
+// ==================== 网络错误图片 ====================
 
 - (void)setNetErrorTipImage:(UIImage *)netErrorTipImage
 {
@@ -136,7 +156,7 @@ static char const * const kActionSELKey             = "kActionSELKey";
     return image;
 }
 
-#pragma mark - ========== 按钮点击的Target ==========
+// ==================== 按钮点击的Target ====================
 
 - (void)setEmptyDataBtnTitle:(NSString *)emptyDataBtnTitle
 {
@@ -148,7 +168,7 @@ static char const * const kActionSELKey             = "kActionSELKey";
     return objc_getAssociatedObject(self, kActionBtnTitleKey);
 }
 
-#pragma mark - ========== 按钮点击的Target ==========
+// ==================== 按钮点击的Target ====================
 
 - (void)setEmptyDataActionTarget:(id)emptyDataActionTarget
 {
@@ -160,7 +180,7 @@ static char const * const kActionSELKey             = "kActionSELKey";
     return objc_getAssociatedObject(self, kActionTargetKey);
 }
 
-#pragma mark - ========== 按钮点击的事件 ==========
+// ==================== 按钮点击的事件 ====================
 
 - (void)setEmptyDataActionSEL:(SEL)emptyDataActionSEL
 {
@@ -296,7 +316,7 @@ static char const * const kActionSELKey             = "kActionSELKey";
             };
         }
         
-    } else if([responseData isKindOfClass:[NSError class]]){ //请求失败处理
+    } else if(!responseData || [responseData isKindOfClass:[NSError class]]){ //请求失败处理
         if ([self contentViewIsEmptyData]) {//页面没有数据
             WEAKSELF
             //根据状态,显示背景提示Viwe
@@ -512,6 +532,161 @@ static char const * const kActionSELKey             = "kActionSELKey";
         }
     }
     return isEmpty;
+}
+
+/**
+ *  处理自动根据表格数据来显示提示view
+ */
+- (void)convertShowTipView
+{
+    //需要显示提示view
+    if (self.automaticShowTipView) {
+        
+        /** 给表格添加请求失败提示事件
+         * <注意：这里一定要延迟，因为MJRefresh库也替换了reloadData方法，否则不能收起刷新控件>
+         */
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self showRequestTip:[NSDictionary new]];
+        });
+    }
+}
+
+@end
+
+#pragma mark -===========监听UITableView刷新方法===========
+
+@implementation UITableView (OKRequestTipView)
+
+/**
+ * 监听表格所有的刷新方法
+ */
++(void)load
+{
+    //交换刷新表格方法
+    [self ok_exchangeInstanceMethod:@selector(reloadData)
+                      otherSelector:@selector(ok_reloadData)];
+    //交换删除表格方法
+    [self ok_exchangeInstanceMethod:@selector(deleteRowsAtIndexPaths:withRowAnimation:)
+                      otherSelector:@selector(ok_deleteRowsAtIndexPaths:withRowAnimation:)];
+    //交换刷新表格Sections方法
+    [self ok_exchangeInstanceMethod:@selector(reloadSections:withRowAnimation:)
+                      otherSelector:@selector(ok_reloadSections:withRowAnimation:)];
+}
+
+- (void)ok_reloadData
+{
+    NSLog(@"交换表格系统刷新方法");
+    [self ok_reloadData];
+    
+    //显示自定义提示view
+    [self convertShowTipView];
+}
+
+- (void)ok_deleteRowsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths
+                 withRowAnimation:(UITableViewRowAnimation)animation
+{
+    NSLog(@"交换删除表格方法");
+    [self ok_deleteRowsAtIndexPaths:indexPaths withRowAnimation:animation];
+    
+    //是否显示自定义提示view
+    [self convertShowTipView];
+}
+
+- (void)ok_reloadSections:(NSIndexSet *)sections
+         withRowAnimation:(UITableViewRowAnimation)animation
+{
+    NSLog(@"交换刷新表格Sections方法");
+    [self ok_reloadSections:sections withRowAnimation:animation];
+    
+    //是否显示自定义提示view
+    [self convertShowTipView];
+}
+
+@end
+
+#pragma mark -===========监听UICollectionView刷新方法===========
+
+@implementation UICollectionView (OKRequestTipView)
+
+/**
+ * 监听CollectionView所有的刷新方法
+ */
++ (void)load
+{
+    [self ok_exchangeInstanceMethod:@selector(reloadData)
+                      otherSelector:@selector(ok_reloadData)];
+    
+    [self ok_exchangeInstanceMethod:@selector(deleteSections:)
+                      otherSelector:@selector(ok_deleteSections:)];
+    
+    [self ok_exchangeInstanceMethod:@selector(reloadSections:)
+                      otherSelector:@selector(ok_reloadSections:)];
+    
+    [self ok_exchangeInstanceMethod:@selector(deleteItemsAtIndexPaths:)
+                      otherSelector:@selector(ok_deleteItemsAtIndexPaths:)];
+    
+    [self ok_exchangeInstanceMethod:@selector(reloadItemsAtIndexPaths:)
+                      otherSelector:@selector(ok_reloadItemsAtIndexPaths:)];
+}
+
+- (void)ok_reloadData
+{
+    NSLog(@"交换刷新CollectionView系统方法");
+    [self ok_reloadData];
+    
+    //显示自定义提示view
+    [self convertShowTipView];
+}
+
+- (void)ok_deleteSections:(NSIndexSet *)sections
+{
+    [self ok_deleteSections:sections];
+    
+    [self convertShowTipView];
+}
+
+- (void)ok_reloadSections:(NSIndexSet *)sections
+{
+    [self ok_reloadSections:sections];
+    
+    [self convertShowTipView];
+}
+
+- (void)ok_deleteItemsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths
+{
+    [self ok_deleteItemsAtIndexPaths:indexPaths];
+    
+    [self convertShowTipView];
+}
+
+- (void)ok_reloadItemsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths
+{
+    [self ok_reloadItemsAtIndexPaths:indexPaths];
+    
+    [self convertShowTipView];
+}
+
+@end
+
+#pragma mark -===========监听UIWebView刷新方法===========
+
+@implementation UIWebView (OKRequestTipView)
+
+/**
+ * 监听UIWebView所有的刷新方法
+ */
++ (void)load
+{
+    [self ok_exchangeInstanceMethod:@selector(reload)
+                      otherSelector:@selector(ok_reload)];
+    
+}
+
+- (void)ok_reload
+{
+    [self ok_reload];
+    
+    [self.scrollView convertShowTipView];
 }
 
 @end

@@ -11,19 +11,16 @@
 #import "TimeLineViewModel.h"
 #import <OKPubilcKeyDefiner.h>
 #import "OKHttpRequestTools+OKExtension.h"
-#import <MJExtension.h>
 #import <UIViewController+OKExtension.h>
+#import <MJExtension.h>
 #import <MJRefresh.h>
-#import <UITableView+OKExtension.h>
 
 //请求数据地址
-#define Url_DocList  @"http://direct0.wap.zol.com.cn/bbs/getRecommendBook.php?ssid=%242a%2407%24403c8f4a8f512e730e163b7ad3d6b3123e6d5c15525674a76080dbb7f8cacc42&v=3.0&vs=iph561"
-
+#define Url_DocList  @"http://direct.wap.zol.com.cn/bbs/getRecommendBook.php?ssid=%242a%2407%24403c8f4a8f512e730e163b7ad3d6b3123e6d5c15525674a76080dbb7f8cacc42&v=3.0&vs=iph561"
 
 static NSString *const kTableCellID = @"cellIdInfo";
 
 @interface TimeLineVC ()
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, assign) NSInteger pageNum;
 @property (nonatomic, strong) NSDictionary *params;
 @property (nonatomic, strong) NSString *bbsid;
@@ -57,13 +54,18 @@ static NSString *const kTableCellID = @"cellIdInfo";
     NSArray *idTypeArr = @[@{@"dcbbs":@"摄影"},
                             @{@"sjbbs":@"手机"},
                             @{@"nbbbs":@"电脑"},
+                            @{@"朋友圈":@""},
                             @{@"otherbbs":@"家电"},
                             @{@"diybbs":@"硬件"}];
     NSDictionary *dic = idTypeArr[arc4random() % idTypeArr.count];
-    self.bbsid = dic.allKeys[0];
     NSString *typeTitle = dic.allValues[0];
-    self.title = [NSString stringWithFormat:@"朋友圈-<%@>",typeTitle];
-    
+    if (typeTitle.length>0) {
+        self.title = [NSString stringWithFormat:@"朋友圈-<%@>",typeTitle];
+        self.bbsid = dic.allKeys[0];
+    } else {
+        self.bbsid = nil;
+        self.title = @"朋友圈";
+    }
     [self.plainTableView.mj_header beginRefreshing];
 }
 
@@ -89,8 +91,8 @@ static NSString *const kTableCellID = @"cellIdInfo";
     model.requestUrl = Url_DocList;
     model.parameters = info;
 //    model.dataTableView = self.plainTableView;
-//    sendExtensionRequest
-    [OKHttpRequestTools sendOKRequest:model success:^(id returnValue) {
+
+    [OKHttpRequestTools sendExtensionRequest:model success:^(id returnValue) {
         if (self.params != info) return;
         if (firstPage) {
             [self.tableDataArr removeAllObjects];
