@@ -30,9 +30,9 @@ static char const * const kAutomaticShowTipViewKey    = "kAutomaticShowTipViewKe
 +(void)initialize
 {
     //交换刷新表格方法
-    [self ok_exchangeInstanceMethod:[self class]
-                     originSelector:@selector(reloadData)
-                      otherSelector:@selector(ok_reloadData)];
+//    [self ok_exchangeInstanceMethod:[self class]
+//                     originSelector:@selector(reloadData)
+//                      otherSelector:@selector(ok_reloadData)];
     //交换删除表格方法
     [self ok_exchangeInstanceMethod:[self class]
                      originSelector:@selector(deleteRowsAtIndexPaths:withRowAnimation:)
