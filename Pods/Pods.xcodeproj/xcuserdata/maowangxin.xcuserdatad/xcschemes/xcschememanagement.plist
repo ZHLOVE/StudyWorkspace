@@ -59,7 +59,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>ReactiveObjC.xcscheme</key>
+		<key>ReactiveCocoa.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -77,7 +77,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2CA14D70CC829797B1CED81CD101C0AF</key>
+		<key>35D98909856761517F32FFC1A9A58852</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -92,22 +92,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6F0462FEFBFAFF79370680EFB2E5BD02</key>
+		<key>6982B931FA01E85E1E2252E00DF99F2A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>8642CC820CE8C5B88C113D7F47AF4BC3</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>90428B25034B67981BAFFEAFEEA8DDAF</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>9C6B17EA73D5DA35B18EAAA1EAE30E01</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -133,6 +123,16 @@
 			<true/>
 		</dict>
 		<key>EBDA2C76C7AB19EC078A761028441713</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F63E74564A19B9A80C7E61E3EDEF7988</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FA8EA7A688CB9A45672E5C84A51AFBF8</key>
 		<dict>
 			<key>primary</key>
 			<true/>

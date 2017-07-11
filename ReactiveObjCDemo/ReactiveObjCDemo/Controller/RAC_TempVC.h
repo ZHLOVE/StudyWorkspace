@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ReactiveObjC.h"
+#import <ReactiveCocoa.h>
 
 @interface RAC_TempVC : UIViewController
 

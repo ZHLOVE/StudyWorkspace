@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <ReactiveObjC/ReactiveObjC.h>
+#import <ReactiveCocoa.h>
 
 @interface TableDataModel : NSObject
 

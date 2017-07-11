@@ -8,7 +8,7 @@
 
 #import "LoginVC.h"
 #import "RAC_TempVC.h"
-#import <ReactiveObjC/ReactiveObjC.h>
+#import <ReactiveCocoa.h>
 #import "LoginViewModel.h"
 
 @interface LoginVC ()

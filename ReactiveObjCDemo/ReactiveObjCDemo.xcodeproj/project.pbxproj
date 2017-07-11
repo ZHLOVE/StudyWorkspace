@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		55ABB7DB886F57DB3DABE2D7 /* Pods_ReactiveObjCDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4C6ABB908FB7D69DEDF484 /* Pods_ReactiveObjCDemo.framework */; };
+		02CF7B6D47B8BE602D035619 /* libPods-ReactiveObjCDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 723C93A86D71D87D63EE5CF3 /* libPods-ReactiveObjCDemo.a */; };
 		B57FBAA61EE900E200D97C29 /* RAC_TempVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B57FBAA41EE900E200D97C29 /* RAC_TempVC.m */; };
 		B57FBAA71EE900E200D97C29 /* RAC_TempVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B57FBAA51EE900E200D97C29 /* RAC_TempVC.xib */; };
 		B57FBAA91EE92B0C00D97C29 /* CommonFrameWork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B57FBAA81EE92B0C00D97C29 /* CommonFrameWork.framework */; };
@@ -40,6 +40,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		723C93A86D71D87D63EE5CF3 /* libPods-ReactiveObjCDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ReactiveObjCDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7489C7B8DC008731AA975DA5 /* Pods-ReactiveObjCDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactiveObjCDemo.release.xcconfig"; path = "../Pods/Target Support Files/Pods-ReactiveObjCDemo/Pods-ReactiveObjCDemo.release.xcconfig"; sourceTree = "<group>"; };
 		92FF33B454F868FBB6ED3127 /* Pods-ReactiveObjCDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactiveObjCDemo.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-ReactiveObjCDemo/Pods-ReactiveObjCDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		B57FBAA31EE900E200D97C29 /* RAC_TempVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RAC_TempVC.h; sourceTree = "<group>"; };
@@ -66,7 +67,6 @@
 		B58AAACE1EE81212003F033B /* LoginViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewModel.m; sourceTree = "<group>"; };
 		B58AAAD01EE81212003F033B /* OkView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OkView.h; sourceTree = "<group>"; };
 		B58AAAD11EE81212003F033B /* OkView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OkView.m; sourceTree = "<group>"; };
-		CB4C6ABB908FB7D69DEDF484 /* Pods_ReactiveObjCDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReactiveObjCDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +75,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B57FBAA91EE92B0C00D97C29 /* CommonFrameWork.framework in Frameworks */,
-				55ABB7DB886F57DB3DABE2D7 /* Pods_ReactiveObjCDemo.framework in Frameworks */,
+				02CF7B6D47B8BE602D035619 /* libPods-ReactiveObjCDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,8 +172,8 @@
 		CD06A892A8277482FA085971 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CB4C6ABB908FB7D69DEDF484 /* Pods_ReactiveObjCDemo.framework */,
 				B57FBAA81EE92B0C00D97C29 /* CommonFrameWork.framework */,
+				723C93A86D71D87D63EE5CF3 /* libPods-ReactiveObjCDemo.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

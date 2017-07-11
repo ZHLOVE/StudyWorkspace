@@ -9,9 +9,9 @@ project 'TimeLineDemo/TimeLineDemo.xcodeproj'
 
 #步骤2:->添加工程的target, 和xcodeproj文件所在的项目路径
 target :'ReactiveObjCDemo' do
-    use_frameworks!
+#    use_frameworks!
     platform :ios, '8.0'
-    pod 'ReactiveObjC'
+#    pod 'ReactiveObjC'
     project 'ReactiveObjCDemo/ReactiveObjCDemo.xcodeproj'
 end
 
@@ -42,5 +42,6 @@ target :'CommonFrameWork' do
     pod 'MJRefresh'
     pod 'MJExtension'
     pod 'MBProgressHUD'
+    pod 'ReactiveCocoa'
     project 'CommonFrameWork/CommonFrameWork.xcodeproj'
 end
