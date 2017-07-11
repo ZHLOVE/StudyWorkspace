@@ -54,6 +54,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-TimeLineDemo.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>ReactiveObjC.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -123,6 +128,11 @@
 			<true/>
 		</dict>
 		<key>E2738FB2543A13914BAFD1C728459DF0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EBDA2C76C7AB19EC078A761028441713</key>
 		<dict>
 			<key>primary</key>
 			<true/>

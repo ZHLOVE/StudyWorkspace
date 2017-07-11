@@ -28,6 +28,11 @@ target :'DrawDemo' do
     project 'DrawDemo/DrawDemo.xcodeproj'
 end
 
+target :'TimeLineDemo' do
+    platform :ios, '8.0'
+    project 'TimeLineDemo/TimeLineDemo.xcodeproj'
+end
+
 
 target :'CommonFrameWork' do
     platform :ios, '7.0'
