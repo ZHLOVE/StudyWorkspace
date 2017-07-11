@@ -27,12 +27,6 @@
 // 给定一个不要渲染的图片名称,生成一个最原始的图片
 + (UIImage *)imageWithOriginalImageName:(NSString *)imageName;
 
-// 模糊效果(渲染很耗时间,建议在子线程中渲染)
-- (UIImage *)blurImage;
-- (UIImage *)blurImageWithMask:(UIImage *)maskImage;
-- (UIImage *)blurImageWithRadius:(CGFloat)radius;
-- (UIImage *)blurImageAtFrame:(CGRect)frame;
-
 // 灰度效果
 - (UIImage *)grayScale;
 

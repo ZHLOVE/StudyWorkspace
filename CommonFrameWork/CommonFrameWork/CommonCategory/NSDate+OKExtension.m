@@ -164,10 +164,10 @@ static NSDateFormatter *_okFormatter = nil;
 
 //获取今天周几
 + (NSInteger)nowWeekday {
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSDateComponents *comps = [[NSDateComponents alloc] init];
-    NSInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSWeekdayCalendarUnit |
-    NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    NSInteger unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitWeekday |
+    NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
     NSDate *now = [NSDate date];
     // 话说在真机上需要设置区域，才能正确获取本地日期，天朝代码:zh_CN
     calendar.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];

@@ -58,16 +58,9 @@
     
     [self cancleLocalPushWithKey:key];
     
-    NSUInteger notificationType; //UIUserNotificationType(>= iOS8) and UIRemoteNotificatioNType(< iOS8) use same value
+     //UIUserNotificationType(>= iOS8) and UIRemoteNotificatioNType(< iOS8) use same value
     UIApplication *application = [UIApplication sharedApplication];
-    if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_7_1) {
-        notificationType = [[application currentUserNotificationSettings] types];
-    } else {
-        notificationType = [application enabledRemoteNotificationTypes];
-    }
-    if (notificationType == UIRemoteNotificationTypeNone) {
-        return;
-    }
+    NSUInteger notificationType = [[application currentUserNotificationSettings] types];
     
     // ios8后，需要添加这个注册，才能得到授权
     if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)]) {

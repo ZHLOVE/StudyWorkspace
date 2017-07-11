@@ -81,9 +81,14 @@
 //// 放大缩小一张图片的情况下（查看头像）/ 缩略图是toImageView.image 原图URL
 //- (void)showHeadPortrait:(UIImageView *)toImageView originUrl:(NSString *)originUrl;
 
+// Category Functions.
+- (UIView *)getParsentView:(UIView *)view;
+- (id)getParsentViewController:(UIView *)view;
+
 // @function
 // 展示控制器
 - (void)showPickerVc:(UIViewController *)vc;
 - (void)showPushPickerVc:(UIViewController *)vc;
+
 
 @end

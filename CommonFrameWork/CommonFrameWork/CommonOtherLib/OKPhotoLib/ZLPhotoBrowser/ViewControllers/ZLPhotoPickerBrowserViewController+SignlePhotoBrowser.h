@@ -9,9 +9,6 @@
 #import "ZLPhotoPickerBrowserViewController.h"
 
 @interface ZLPhotoPickerBrowserViewController (SignlePhotoBrowser)
-// Category Functions.
-- (UIView *)getParsentView:(UIView *)view;
-- (id)getParsentViewController:(UIView *)view;
 
 - (void)showHeadPortrait:(UIImageView *)toImageView;
 - (void)showHeadPortrait:(UIImageView *)toImageView originUrl:(NSString *)originUrl;
