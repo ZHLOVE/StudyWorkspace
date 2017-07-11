@@ -60,7 +60,7 @@ static NSString *const kTableCellID = @"cellIdInfo";
     NSDictionary *dic = idTypeArr[arc4random() % idTypeArr.count];
     NSString *typeTitle = dic.allValues[0];
     if (typeTitle.length>0) {
-        self.title = [NSString stringWithFormat:@"朋友圈-<%@>",typeTitle];
+        self.title = typeTitle;
         self.bbsid = dic.allKeys[0];
     } else {
         self.bbsid = nil;

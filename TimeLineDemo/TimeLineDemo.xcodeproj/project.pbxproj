@@ -419,6 +419,7 @@
 			baseConfigurationReference = E3FFCEF81639B18AC24ED7B1 /* Pods-TimeLineDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = P8FFNR95EQ;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/../CommonFrameWork/**";
 				INFOPLIST_FILE = TimeLineDemo/Info.plist;
@@ -434,6 +435,7 @@
 			baseConfigurationReference = 0B3AE44D59EAFBB9429EAF0E /* Pods-TimeLineDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = P8FFNR95EQ;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/../CommonFrameWork/**";
 				INFOPLIST_FILE = TimeLineDemo/Info.plist;
