@@ -23,6 +23,8 @@
 @property (weak, nonatomic) IBOutlet UIView *picView;
 /* 图片View高度约束 */
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *picViewHeightConst;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *picBottomSpaceConst;
+
 @property (weak, nonatomic) IBOutlet UIButton *dcBtn;
 @property (weak, nonatomic) IBOutlet UILabel *timeLab;
 @property (weak, nonatomic) IBOutlet UIButton *readBtn;
@@ -124,17 +126,21 @@
     [self.userImageView sd_setImageWithURL:[NSURL URLWithString:dataModel.post.userIcon]];
     //名字
     self.useNameLab.text = dataModel.post.username;
+    
     //主题
     self.themeLab.text = dataModel.post.title;
+//    self.themeLab.attributedText = [[NSAttributedString alloc] initWithString:dataModel.post.title];
+    self.themeLab.preferredMaxLayoutWidth = Screen_Width-75-15;//不加这句代码themeLab高度会不准确
+    
     //自动折行设置
     //self.themeLab.lineBreakMode = NSLineBreakByCharWrapping;
     // [self.themeLab systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
-    //不加这句代码高度会不准确
-    self.themeLab.preferredMaxLayoutWidth = Screen_Width-75-15;
+    
     //描述
     self.descLab.text = dataModel.post.content;
-    //不加这句代码高度会不准确
-    self.descLab.preferredMaxLayoutWidth = Screen_Width-75-15;
+//    self.descLab.attributedText = [[NSAttributedString alloc] initWithString:dataModel.post.content];
+    self.descLab.preferredMaxLayoutWidth = Screen_Width-75-15;//不加这句代码descLab高度会不准确
+    
     //相机
     [self.dcBtn setTitle:dataModel.post.boardname forState:0];
     //时间
@@ -170,11 +176,13 @@
             
         } else {
             margin = margin*2;
-            maxHeight = imgH*3;
+            maxHeight = imgH*3; 
         }
+        self.picBottomSpaceConst.constant = 15;
     } else {
         margin = margin*0;
         maxHeight = imgH*0;
+        self.picBottomSpaceConst.constant = margin;
     }
     self.picViewHeightConst.constant = maxHeight + margin;
     
