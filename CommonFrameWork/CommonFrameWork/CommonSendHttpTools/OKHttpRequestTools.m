@@ -303,7 +303,7 @@ static char const * const kRequestUrlKey    = "kRequestUrlKey";
     if (errorInfo && [errorInfo isKindOfClass:[NSDictionary class]]) {
         NSString *absoluteUrl = errorInfo[@"NSErrorFailingURLStringKey"];
         if (absoluteUrl.length>0) {
-            NSLog(@"‼️ get请求请求绝对地址: %@",absoluteUrl);
+            NSLog(@"‼️ 请求接口绝对地址: %@",absoluteUrl);
         }
     }
 #endif

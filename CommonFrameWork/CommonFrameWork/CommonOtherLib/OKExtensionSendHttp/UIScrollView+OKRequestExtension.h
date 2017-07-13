@@ -8,15 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-//-忽略警告的宏1-
-#define OKPerformSelectorLeakWarning(Stuff) \
-do { \
-_Pragma("clang diagnostic push") \
-_Pragma("clang diagnostic ignored \"-Warc-performSelector-leaks\"") \
-Stuff; \
-_Pragma("clang diagnostic pop") \
-} while (0)
-
 /** 进入刷新状态的回调 */
 typedef void (^OKRefreshingBlock)();
 

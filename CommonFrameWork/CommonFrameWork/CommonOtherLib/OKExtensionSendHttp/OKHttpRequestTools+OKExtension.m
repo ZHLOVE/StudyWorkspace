@@ -14,7 +14,7 @@
 #import "OKPubilcKeyDefiner.h"
 #import <objc/runtime.h>
 
-//重复请求3次
+//请求失败后再重复请求的次数
 #define kRepeatRequestTime      3
 
 //重复请求次数key
@@ -80,9 +80,10 @@ static char const * const kRequestTimeCountKey    = "kRequestTimeCountKey";
 + (NSDictionary *)getCacheDataByReqModel:(OKHttpRequestModel *)requestModel
 {
     //缓存key
-    NSString *cachekey = [self getCacheKeyByRequestUrl:requestModel.requestUrl parameter:requestModel.parameters];
-    
-    NSDictionary *cacheDic = [OKFMDBTool getObjectById:cachekey fromTable:JsonDataTableType];
+    NSString *cachekey = [self getCacheKeyByRequestUrl:requestModel.requestUrl
+                                             parameter:requestModel.parameters];
+    NSDictionary *cacheDic = [OKFMDBTool getObjectById:cachekey
+                                             fromTable:JsonDataTableType];
     return cacheDic;
 }
 
@@ -92,16 +93,17 @@ static char const * const kRequestTimeCountKey    = "kRequestTimeCountKey";
 + (BOOL)saveReqDataToCache:(NSDictionary *)responseObject requestModel:(OKHttpRequestModel *)requestModel
 {
     NSData  *jsonData = [NSJSONSerialization dataWithJSONObject:responseObject options:NSJSONWritingPrettyPrinted error:nil];
-    
     NSString *jsonStr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    
     NSData * data = [jsonStr dataUsingEncoding:NSUTF8StringEncoding];
     if (data) {
         //缓存key
-        NSString *cachekey = [self getCacheKeyByRequestUrl:requestModel.requestUrl parameter:requestModel.parameters];
+        NSString *cachekey = [self getCacheKeyByRequestUrl:requestModel.requestUrl
+                                                 parameter:requestModel.parameters];
         
         //保存数据到数据库
-        return [OKFMDBTool saveDataToDB:data byObjectId:cachekey toTable:JsonDataTableType];
+        return [OKFMDBTool saveDataToDB:data
+                             byObjectId:cachekey
+                                toTable:JsonDataTableType];
     }
     return  NO;
 }
@@ -189,7 +191,7 @@ static char const * const kRequestTimeCountKey    = "kRequestTimeCountKey";
             NSInteger countNum = [objc_getAssociatedObject(requestModel, kRequestTimeCountKey) integerValue];
             if (countNum<kRepeatRequestTime) {
                 countNum++;
-                NSLog(@"❌❌❌请求已失败，尝试第-----%zd-----次请求===%@",countNum,requestModel.requestUrl);
+                NSLog(@"⁉️⁉️⁉️请求已失败，尝试第-----%zd-----次请求===%@",countNum,requestModel.requestUrl);
                 
                 //给requestModel关联一个重复请求次数的key
                 objc_setAssociatedObject(requestModel, kRequestTimeCountKey, @(countNum), OBJC_ASSOCIATION_RETAIN_NONATOMIC);

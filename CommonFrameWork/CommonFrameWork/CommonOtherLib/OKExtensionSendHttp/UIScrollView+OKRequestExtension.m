@@ -22,6 +22,15 @@
 /*  强引用 */
 #define STRONGSELF                                  typeof(weakSelf) __strong strongSelf = weakSelf;
 
+//-忽略警告的宏-
+#define OKPerformSelectorLeakWarning(Stuff) \
+do { \
+_Pragma("clang diagnostic push") \
+_Pragma("clang diagnostic ignored \"-Warc-performSelector-leaks\"") \
+Stuff; \
+_Pragma("clang diagnostic pop") \
+} while (0)
+
 static char const * const kAutomaticShowTipViewKey  = "kAutomaticShowTipViewKey";
 static char const * const kFooterTipStringKey       = "kFooterTipStringKey";
 static char const * const kReqEmptyTipStringKey     = "kReqEmptyTipStringKey";
