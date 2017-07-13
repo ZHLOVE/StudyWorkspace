@@ -24,7 +24,6 @@
 /* 图片View高度约束 */
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *picViewHeightConst;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *picBottomSpaceConst;
-
 @property (weak, nonatomic) IBOutlet UIButton *dcBtn;
 @property (weak, nonatomic) IBOutlet UILabel *timeLab;
 @property (weak, nonatomic) IBOutlet UIButton *readBtn;
