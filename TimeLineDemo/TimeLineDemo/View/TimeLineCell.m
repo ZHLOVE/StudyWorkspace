@@ -127,8 +127,8 @@
     self.useNameLab.text = dataModel.post.username;
     
     //主题
-    self.themeLab.text = dataModel.post.title;
-//    self.themeLab.attributedText = [[NSAttributedString alloc] initWithString:dataModel.post.title];
+//    self.themeLab.text = dataModel.post.title;
+    self.themeLab.attributedText = [self getAttributedStr:dataModel.post.title];
     self.themeLab.preferredMaxLayoutWidth = Screen_Width-75-15;//不加这句代码themeLab高度会不准确
     
     //自动折行设置
@@ -136,8 +136,8 @@
     // [self.themeLab systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
     
     //描述
-    self.descLab.text = dataModel.post.content;
-//    self.descLab.attributedText = [[NSAttributedString alloc] initWithString:dataModel.post.content];
+//    self.descLab.text = dataModel.post.content;
+    self.descLab.attributedText = [self getAttributedStr:dataModel.post.content];
     self.descLab.preferredMaxLayoutWidth = Screen_Width-75-15;//不加这句代码descLab高度会不准确
     
     //相机
@@ -153,6 +153,17 @@
     [self setupPicViewHeight];
 }
 
+/**
+ * 设置文字换行富文本
+ */
+- (NSMutableAttributedString *)getAttributedStr:(NSString *)text
+{
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:text];
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    [paragraphStyle setLineSpacing:5];//调整行间距
+    [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [text length])];
+    return attributedString;
+}
 
 /**
  *  设置所有图片高度
