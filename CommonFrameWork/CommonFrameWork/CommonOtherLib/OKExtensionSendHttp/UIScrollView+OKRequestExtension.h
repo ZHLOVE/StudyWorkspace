@@ -37,17 +37,17 @@ typedef enum : NSUInteger {
 /**
  * 以下所有的属性需要配合 <showRequestTip:> 方法使用
  */
-/** 如果是UItableView,设置没有更多数据提示 */
+/** 如果是UItableView,底部显示没有更多数据提示 */
 @property (nonatomic, strong) NSString *footerTipString;
-/** 空数据提示 */
+/** 空数据文字 */
 @property (nonatomic, strong) NSString *reqEmptyTipString;
-/** 空数据提示图片 */
+/** 空数据图片 */
 @property (nonatomic, strong) UIImage *reqEmptyTipImage;
-/** 请求失败提示 */
+/** 请求失败文字 */
 @property (nonatomic, strong) NSString *reqFailTipString;
-/** 请求失败提示图片 */
+/** 请求失败图片 */
 @property (nonatomic, strong) UIImage *reqFailTipImage;
-/** 网络连接失败提示 */
+/** 网络连接失败文字 */
 @property (nonatomic, strong) NSString *netErrorTipString;
 /** 网络连接失败图片 */
 @property (nonatomic, strong) UIImage *netErrorTipImage;

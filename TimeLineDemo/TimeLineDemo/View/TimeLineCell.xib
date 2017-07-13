@@ -121,7 +121,7 @@
                 <outlet property="useNameLab" destination="nmy-gI-Cnw" id="LDs-jr-m36"/>
                 <outlet property="userImageView" destination="MaP-iV-kFg" id="dkR-eV-aVW"/>
             </connections>
-            <point key="canvasLocation" x="790" y="-487"/>
+            <point key="canvasLocation" x="-45" y="-476"/>
         </tableViewCell>
     </objects>
     <resources>

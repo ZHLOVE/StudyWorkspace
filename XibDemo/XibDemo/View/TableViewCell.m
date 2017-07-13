@@ -34,7 +34,7 @@
     [self layoutIfNeeded];
     
     CGFloat btnMaxH = CGRectGetMaxY(self.praiseBtn.frame) + 10;
-    NSLog(@"cellHeight===%.2f",btnMaxH);
+    NSLog(@"TableViewCell===%.2f",btnMaxH);
     return btnMaxH;
 }
 

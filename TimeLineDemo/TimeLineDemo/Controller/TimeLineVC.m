@@ -33,7 +33,7 @@ static NSString *const kTableCellID = @"cellIdInfo";
     
     [self.plainTableView registerNib:[UINib nibWithNibName:@"TimeLineCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:kTableCellID];
     
-    self.plainTableView.automaticShowTipView = YES;
+//    self.plainTableView.automaticShowTipView = YES;
     
     WEAKSELF
     [self.plainTableView addheaderRefresh:^{
@@ -90,7 +90,7 @@ static NSString *const kTableCellID = @"cellIdInfo";
     model.requestType = HttpRequestTypeGET;
     model.requestUrl = Url_DocList;
     model.parameters = info;
-//    model.dataTableView = self.plainTableView;
+    model.dataTableView = self.plainTableView;
 
     [OKHttpRequestTools sendExtensionRequest:model success:^(id returnValue) {
         if (self.params != info) return;
