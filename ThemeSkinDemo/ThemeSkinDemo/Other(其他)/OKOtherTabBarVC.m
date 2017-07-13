@@ -63,7 +63,7 @@
     UIImage *serImage = [ImageNamed(selectedImageName) imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     UITabBarItem *item = [[UITabBarItem alloc] initWithTitle:title image:norImage selectedImage:serImage];
-    [item setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:UIColorFromHex(0xfe9b00), NSForegroundColorAttributeName, nil] forState:UIControlStateSelected];
+    [item setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:UIColorFromHex(0xfe9b00), NSForegroundColorAttributeName, nil] forState:UIControlStateHighlighted];
     return item;
 }
 

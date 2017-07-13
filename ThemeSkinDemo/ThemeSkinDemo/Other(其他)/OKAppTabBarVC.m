@@ -32,7 +32,7 @@
     
     UITabBarItem *item = [UITabBarItem appearance];
     [item setTitleTextAttributes:attrs forState:UIControlStateNormal];
-    [item setTitleTextAttributes:selectedAttrs forState:UIControlStateSelected];
+    [item setTitleTextAttributes:selectedAttrs forState:UIControlStateHighlighted];
 }
 */
 

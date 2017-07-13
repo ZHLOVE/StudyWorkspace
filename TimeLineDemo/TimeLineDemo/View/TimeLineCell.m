@@ -76,7 +76,7 @@
     CGFloat imgSize = kImgSize;
     for (int i=0; i<9; i++) {
         UIImageView *imgView = [UIImageView new];
-        imgView.backgroundColor = [UIColor grayColor];
+        imgView.backgroundColor = [UIColor groupTableViewBackgroundColor];
         imgView.contentMode = UIViewContentModeScaleAspectFill;
         imgView.clipsToBounds = YES;
         imgView.userInteractionEnabled = YES;

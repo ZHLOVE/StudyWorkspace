@@ -28,7 +28,7 @@
     
     UIBarButtonItem *item = [UIBarButtonItem appearance];
     [item setTitleTextAttributes:attrs forState:UIControlStateNormal];
-    [item setTitleTextAttributes:selectedAttrs forState:UIControlStateSelected];
+    [item setTitleTextAttributes:selectedAttrs forState:UIControlStateHighlighted];
 }
 
 + (UIBarButtonItem *)barButtonWithTitle:(NSString *)title titleColor:(UIColor *)color target:(id)target selector:(SEL)selector

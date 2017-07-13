@@ -91,7 +91,7 @@
         //选中状态标题文字颜色
         UIColor *selectedTitleColor = infoModel.tabBarSelectedTitleColor;
         if ([selectedTitleColor isKindOfClass:[UIColor class]]) {
-            [item setTitleTextAttributes:@{NSForegroundColorAttributeName:selectedTitleColor} forState:UIControlStateSelected];
+            [item setTitleTextAttributes:@{NSForegroundColorAttributeName:selectedTitleColor} forState:UIControlStateHighlighted];
         }
         
         /** 设置标题和图片偏移量 */

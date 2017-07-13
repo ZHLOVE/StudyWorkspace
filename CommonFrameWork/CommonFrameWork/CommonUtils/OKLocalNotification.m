@@ -59,8 +59,8 @@
     [self cancleLocalPushWithKey:key];
     
      //UIUserNotificationType(>= iOS8) and UIRemoteNotificatioNType(< iOS8) use same value
-    UIApplication *application = [UIApplication sharedApplication];
-    NSUInteger notificationType = [[application currentUserNotificationSettings] types];
+    //UIApplication *application = [UIApplication sharedApplication];
+    //NSUInteger notificationType = [[application currentUserNotificationSettings] types];
     
     // ios8后，需要添加这个注册，才能得到授权
     if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)]) {
@@ -87,10 +87,7 @@
     }
     
     //Badge
-    if ((notificationType & UIRemoteNotificationTypeBadge) != UIRemoteNotificationTypeBadge) {
-    } else {
-        localNotification.applicationIconBadgeNumber = badgeCount;
-    }
+    localNotification.applicationIconBadgeNumber = badgeCount;
     
     if (!fireDate) {
         [[UIApplication sharedApplication] presentLocalNotificationNow:localNotification];
