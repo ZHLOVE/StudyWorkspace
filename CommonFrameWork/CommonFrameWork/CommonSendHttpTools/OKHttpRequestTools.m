@@ -43,7 +43,7 @@ static char const * const kRequestUrlKey    = "kRequestUrlKey";
     if (globalReqManagerArr_.count==0) return;
     
     for (NSURLSessionDataTask *sessionTask in globalReqManagerArr_) {
-        NSLog(@"取消全局请求管理数组中所有请求操作===%@",sessionTask);
+        NSLog(@"‼️取消全局请求管理数组中所有请求操作===%@",sessionTask);
         if ([sessionTask isKindOfClass:[NSURLSessionDataTask class]]) {
             [sessionTask cancel];
         }
@@ -82,7 +82,7 @@ static char const * const kRequestUrlKey    = "kRequestUrlKey";
 {
     //失败回调
     void (^failResultBlock)(NSError *) = ^(NSError *error){
-        NSLog(@"\n请求接口基地址= %@\n\n请求参数= %@\n\n网络数据失败返回= %@\n\n",requestModel.requestUrl,requestModel.parameters,error);
+        NSLog(@"❌❌❌请求接口基地址= %@\n请求参数= %@\n网络数据失败返回= %@\n",requestModel.requestUrl,requestModel.parameters,error);
         //判断Token状态是否为失效
         if (error.code == [kLoginFail integerValue]) {
             //通知页面需要重新登录
@@ -101,7 +101,7 @@ static char const * const kRequestUrlKey    = "kRequestUrlKey";
                 failureBlock(error);
             }
         } else {
-            NSLog(@"页面已主动触发取消请求,此次请求不回调到页面");
+            NSLog(@"‼️页面已主动触发取消请求,此次请求不回调到页面");
         }
     };
     
@@ -140,7 +140,7 @@ static char const * const kRequestUrlKey    = "kRequestUrlKey";
             ([code integerValue] == kRequestSuccessStatues ||
              [code integerValue] == kRequestTipsStatuesMin))
         {
-            NSLog(@"\n请求接口基地址= %@\n\n请求参数= %@\n\n网络数据成功返回= %@\n\n",requestModel.requestUrl,requestModel.parameters,responseObject);
+            NSLog(@"✅✅✅请求接口基地址= %@\n请求参数= %@\n网络数据成功返回= %@\n",requestModel.requestUrl,requestModel.parameters,responseObject);
             /** <1>.回调页面请求 */
             if (successBlock) {
                 successBlock(responseObject);
@@ -199,10 +199,10 @@ static char const * const kRequestUrlKey    = "kRequestUrlKey";
                          parameters:requestModel.parameters
                            progress:nil
                             success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                                NSLog(@"\n get请求请求绝对地址: %@\n\n",task.response.URL.absoluteString);
                                 succResultBlock(responseObject);
                                 
                             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                [self printAbsoluteUrl:error];
                                 failResultBlock(error);
                             }];
         
@@ -214,10 +214,10 @@ static char const * const kRequestUrlKey    = "kRequestUrlKey";
                           parameters:requestModel.parameters
                             progress:nil
                              success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                                 NSLog(@"\n post请求请求绝对地址: %@\n\n",task.response.URL.absoluteString);
                                  succResultBlock(responseObject);
                                  
                              } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                 [self printAbsoluteUrl:error];
                                  failResultBlock(error);
                              }];
         
@@ -228,10 +228,10 @@ static char const * const kRequestUrlKey    = "kRequestUrlKey";
         sessionDataTask = [mgr_ HEAD:requestModel.requestUrl
                           parameters:requestModel.parameters
                              success:^(NSURLSessionDataTask * _Nonnull task) {
-                                 NSLog(@"\n head请求请求绝对地址: %@\n\n",task.response.URL.absoluteString);
                                  succResultBlock(task);
                                  
                              } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                 [self printAbsoluteUrl:error];
                                  failResultBlock(error);
                              }];
         
@@ -242,10 +242,10 @@ static char const * const kRequestUrlKey    = "kRequestUrlKey";
         sessionDataTask = [mgr_ PUT:requestModel.requestUrl
                          parameters:requestModel.parameters
                             success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                                NSLog(@"\n put请求请求绝对地址: %@\n\n",task.response.URL.absoluteString);
                                 succResultBlock(responseObject);
                                 
                             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                [self printAbsoluteUrl:error];
                                 failResultBlock(error);
                             }];
     }
@@ -287,10 +287,26 @@ static char const * const kRequestUrlKey    = "kRequestUrlKey";
             
             if (sessionDataTask.state == NSURLSessionTaskStateCompleted) {
                 [reqArr removeObject:sessionDataTask];
-                NSLog(@"\n移除管理数组中完成了的请求===%@",reqArr);
+                //NSLog(@"\n‼️移除管理数组中完成了的请求===%@",reqArr);
             }
         }
     }
+}
+
+/**
+ * 打印请求的绝对地址
+ */
++ (void)printAbsoluteUrl:(NSError *)error
+{
+#if DEBUG
+    NSDictionary *errorInfo = error.userInfo;
+    if (errorInfo && [errorInfo isKindOfClass:[NSDictionary class]]) {
+        NSString *absoluteUrl = errorInfo[@"NSErrorFailingURLStringKey"];
+        if (absoluteUrl.length>0) {
+            NSLog(@"‼️ get请求请求绝对地址: %@",absoluteUrl);
+        }
+    }
+#endif
 }
 
 @end

@@ -28,10 +28,10 @@ typedef enum : NSUInteger {
 /** 页面上有表格如果传此参数,请求完成后会自动刷新页面,控制表格下拉刷新状态, 请求失败,空数据等 会自动添加空白页 */
 @property (nonatomic, strong) UITableView *dataTableView;
 
-/** 是否在底层提示失败信息 (默认提示) */
+/** 是否在底层提示失败信息 */
 @property (nonatomic, assign) BOOL forbidTipErrorInfo;
 
-/** 是否在失败是尝试重新请求，(如果尝试则3次) */
+/** 是否在失败是尝试3次重新请求*/
 @property (nonatomic, assign) BOOL attemptRequestWhenFail;
 
 /** 是否需要在底层缓存当前网络数据 */

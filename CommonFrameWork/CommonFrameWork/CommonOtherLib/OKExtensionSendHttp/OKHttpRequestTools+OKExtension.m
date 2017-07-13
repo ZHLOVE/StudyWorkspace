@@ -170,7 +170,7 @@ static char const * const kRequestTimeCountKey    = "kRequestTimeCountKey";
     if (successBlock && requestModel.requestCachePolicy == RequestStoreCacheData) {
         NSDictionary *cacheDic = [self getCacheDataByReqModel:requestModel];
         if (cacheDic) {
-            NSLog(@"\n请求接口基地址= %@\n\n请求参数= %@\n\n缓存数据成功返回= %@",requestModel.requestUrl,requestModel.parameters,cacheDic);
+            NSLog(@"❤️❤️❤️请求接口基地址= %@\n\n请求参数= %@\n缓存数据成功返回= %@",requestModel.requestUrl,requestModel.parameters,cacheDic);
             succResultBlock(cacheDic,YES);
         }
     }
@@ -189,7 +189,7 @@ static char const * const kRequestTimeCountKey    = "kRequestTimeCountKey";
             NSInteger countNum = [objc_getAssociatedObject(requestModel, kRequestTimeCountKey) integerValue];
             if (countNum<kRepeatRequestTime) {
                 countNum++;
-                NSLog(@"\n请求已失败，尝试第-----%zd-----次请求===%@\n\n",countNum,requestModel.requestUrl);
+                NSLog(@"❌❌❌请求已失败，尝试第-----%zd-----次请求===%@",countNum,requestModel.requestUrl);
                 
                 //给requestModel关联一个重复请求次数的key
                 objc_setAssociatedObject(requestModel, kRequestTimeCountKey, @(countNum), OBJC_ASSOCIATION_RETAIN_NONATOMIC);

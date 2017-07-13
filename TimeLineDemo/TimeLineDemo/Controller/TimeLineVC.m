@@ -91,6 +91,7 @@ static NSString *const kTableCellID = @"cellIdInfo";
     model.requestUrl = Url_DocList;
     model.parameters = info;
     model.dataTableView = self.plainTableView;
+//    model.attemptRequestWhenFail = YES;
 
     [OKHttpRequestTools sendExtensionRequest:model success:^(id returnValue) {
         if (self.params != info) return;
