@@ -535,8 +535,9 @@ static char const * const kActionSELKey             = "kActionSELKey";
             tipLabel.frame = CGRectMake(0, 0, self.bounds.size.width, 50);
             tipLabel.backgroundColor = [UIColor clearColor];
             tipLabel.textColor = [UIColor lightGrayColor];
-            tipLabel.text = [NSString stringWithFormat:@"----• %@ •----",self.footerTipString];
-            tipLabel.font = [UIFont systemFontOfSize:14];
+            tipLabel.text = [NSString stringWithFormat:@"━━━━━━━━ %@ ━━━━━━━━",self.footerTipString];
+            tipLabel.font = [UIFont boldSystemFontOfSize:14];
+            tipLabel.textColor = [UIColor grayColor];
             tipLabel.textAlignment = NSTextAlignmentCenter;
             
             UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, 1)];
