@@ -6,16 +6,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TimeLineDemo/TimeLineDemo/View/TimeLineCell.m"
-            timestampString = "521633830.711588"
+            timestampString = "522061635.689579"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "178"
-            endingLineNumber = "178"
-            landmarkName = "-setupPicViewHeight"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
+            landmarkName = "-setDataModel:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

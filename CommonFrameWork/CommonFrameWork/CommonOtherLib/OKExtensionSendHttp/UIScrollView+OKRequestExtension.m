@@ -9,14 +9,10 @@
 #import "UIScrollView+OKRequestExtension.h"
 #import <AFNetworkReachabilityManager.h>
 #import "OKCommonTipView.h"
-#import <MJRefresh.h>
 
 /** 网络连接失败 */
 #define NetworkConnectFailTips                      @"网络开小差, 请稍后再试哦!"
 #define AgainRequestTipString                       @"重新加载"
-#define kTotalPageKey                               @"totalPage"
-#define kCurrentPageKey                             @"currentPage"
-#define kListKey                                    @"list"
 /*  弱引用 */
 #define WEAKSELF                                    typeof(self) __weak weakSelf = self;
 /*  强引用 */

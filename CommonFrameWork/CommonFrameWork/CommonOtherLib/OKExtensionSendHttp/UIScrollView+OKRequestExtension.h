@@ -7,6 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MJRefresh.h>
+
+//判断表格数据分页的字段key
+#define kTotalPageKey                               @"totalPage"
+#define kCurrentPageKey                             @"currentPage"
+#define kListKey                                    @"list"
 
 /** 进入刷新状态的回调 */
 typedef void (^OKRefreshingBlock)();
