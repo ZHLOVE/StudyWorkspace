@@ -319,6 +319,7 @@
             if (propertyDic && [propertyDic isKindOfClass:[NSDictionary class]]) {
                 [tempVC setValuesForKeysWithDictionary:propertyDic];
             }
+            tempVC.hidesBottomBarWhenPushed = YES;
             
             if ([self isKindOfClass:[UINavigationController class]]) {
                 [(UINavigationController *)self pushViewController:tempVC animated:YES];
@@ -349,6 +350,7 @@
         if (propertyDic && [propertyDic isKindOfClass:[NSDictionary class]]) {
             [pushVC setValuesForKeysWithDictionary:propertyDic];
         }
+        pushVC.hidesBottomBarWhenPushed = YES;
         
         if ([self isKindOfClass:[UINavigationController class]]) {
             [(UINavigationController *)self pushViewController:pushVC animated:YES];
@@ -388,12 +390,9 @@
                 presentNav = [[UINavigationController alloc] initWithRootViewController:presentVC];
             }
             
-            WEAKSELF
-            UIBarButtonItem *item = [UIBarButtonItem itemWithImage:ImageNamed(@"commonImage.bundle/backBarButtonItemImage") highImage:nil clickBlock:^{
-                [weakSelf dismissViewControllerAnimated:YES completion:nil];
+            presentNav.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImage:ImageNamed(@"commonImage.bundle/backBarButtonItemImage") highImage:nil clickBlock:^{
+                [self dismissViewControllerAnimated:YES completion:nil];
             }];
-            presentNav.navigationItem.leftBarButtonItem = item;
-            
             [self presentViewController:presentNav animated:YES completion:nil];
             
         } else {
