@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <MJRefresh.h>
 
 //判断表格数据分页的字段key
 #define kTotalPageKey                               @"totalPage"

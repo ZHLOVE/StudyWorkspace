@@ -8,7 +8,6 @@
 
 #import "ListDataPresenter.h"
 #import "ListDataModel.h"
-#import <MJExtension.h>
 
 //请求列表地址
 #define kRequestUrl    @"http://lib3.wap.zol.com.cn/index.php?c=Advanced_List_V1&keyword=808.8GB%205400%E8%BD%AC%2032MB&noParam=1&priceId=noPrice&num=15"

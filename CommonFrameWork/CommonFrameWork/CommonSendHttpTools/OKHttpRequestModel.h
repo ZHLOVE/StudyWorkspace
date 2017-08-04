@@ -12,26 +12,25 @@
 
 /** 网络连接失败 */
 #define NetworkConnectFailTip                   @"网络开小差, 请稍后再试哦!"
-
 /** 重复请求 */
 #define RequestRepeatFailTip                    @"重复请求!"
-
 /** 错误码在200-500以外的失败统一提示 */
 #define RequestFailCommomTip                    @"请求失败, 请重试!"
-
 /** 请求转圈的统一提示*/
 #define RequestLoadingTip                       @"正在拼命加载..."
 
-static NSString *const kRepeatRequest           = @"-1";                        /**< 重复请求的标志 */
-static NSString *const kRequestCodeKey          = @"errorCode";                      /**< 请求code 的key */
+#warning 这里有几个key暂时不写const，因为在其他测试Demo中的请求回调可以不统一
+
+static NSString * kRequestCodeKey               = @"code";                      /**< 请求code 的key */
 static NSString *const kRequestMessageKey       = @"message";                   /**< 请求message 的key */
 static NSString *const kRequestDataKey          = @"data";                      /**< 请求data 的key */
-static NSString *const kRequestListkey          = @"postList";                      /**< 请求list 的key */
-static NSInteger const kRequestSuccessStatues   = 1;                            /**< 请求成功的code */
+static NSString * kRequestListkey               = @"list";                      /**< 请求list 的key */
+static NSInteger const kRepeatRequest           = -1;                           /**< 重复请求的标志 */
+static NSInteger const kRequestSuccessStatues   = 0;                            /**< 请求成功的code */
+static NSInteger const kLoginFail               = 4;                            /**< 登录失效标志 */
 static NSInteger const kServiceErrorStatues     = 9;                            /**< 请求失败的标志 */
 static NSInteger const kRequestTipsStatuesMin   = 200;                          /**< 提示后台的code最小值 */
 static NSInteger const kRequestTipsStatuesMax   = 500;                          /**< 提示后台的code最大值 */
-static NSString *const kLoginFail               = @"4";                         /**< 登录失效 */
 static NSString *const kTokenExpiryNotification = @"kTokenExpiryNotification";  /**< token实效的通知名称 */
 
 typedef enum : NSUInteger {

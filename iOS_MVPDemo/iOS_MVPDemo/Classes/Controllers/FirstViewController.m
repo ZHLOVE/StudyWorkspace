@@ -20,7 +20,7 @@ static NSString *cellID         = @"ListDataCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
     //请求数据
     [self requestData];
 }
@@ -43,6 +43,8 @@ static NSString *cellID         = @"ListDataCell";
  */
 - (void)requestData
 {
+    kRequestCodeKey = @"subcateId";//此接口在请求时底层用这个字段判断请求状态
+    self.tableView.tableFooterView = [UIView new];
     WEAKSELF(weakSelf)
     [self.tableView addheaderRefresh:^{
         [weakSelf.presenter reqPageListData:YES callBack:^(NSArray *array) {

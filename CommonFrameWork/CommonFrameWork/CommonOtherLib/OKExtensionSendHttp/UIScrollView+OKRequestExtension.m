@@ -9,6 +9,7 @@
 #import "UIScrollView+OKRequestExtension.h"
 #import <AFNetworkReachabilityManager.h>
 #import "OKCommonTipView.h"
+#import <MJRefresh.h>
 
 /** 网络连接失败 */
 #define NetworkConnectFailTips                      @"网络开小差, 请稍后再试哦!"

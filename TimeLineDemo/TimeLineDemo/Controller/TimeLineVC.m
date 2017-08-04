@@ -86,6 +86,9 @@ static NSString *const kTableCellID = @"cellIdInfo";
     }
     self.params = info;
     
+    kRequestCodeKey = @"errorCode";
+    kRequestListkey = @"postList";
+    
     OKHttpRequestModel *model = [OKHttpRequestModel new];
     model.requestType = HttpRequestTypeGET;
     model.requestUrl = Url_DocList;
