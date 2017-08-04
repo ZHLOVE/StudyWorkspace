@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:iOS_MVPDemo/iOS_MVPDemo.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:CommonFrameWork/CommonFrameWork.xcodeproj">
    </FileRef>
    <FileRef
@@ -30,6 +27,9 @@
    </FileRef>
    <FileRef
       location = "group:TimeLineDemo/TimeLineDemo.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:iOS_MVPDemo/iOS_MVPDemo.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

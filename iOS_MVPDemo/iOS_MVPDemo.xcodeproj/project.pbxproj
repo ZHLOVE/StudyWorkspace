@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B578BE2A1F3422C1008DDF7E /* CommonFrameWork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B578BE251F34202C008DDF7E /* CommonFrameWork.framework */; };
+		B578BE2B1F34268D008DDF7E /* CommonFrameWork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B578BE251F34202C008DDF7E /* CommonFrameWork.framework */; };
+		B578BE2D1F344AB3008DDF7E /* SecondViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B578BE2C1F344AB3008DDF7E /* SecondViewControllerTests.m */; };
 		B5D6C7881F33192A00A90EF8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D6C7871F33192A00A90EF8 /* main.m */; };
 		B5D6C78B1F33192A00A90EF8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D6C78A1F33192A00A90EF8 /* AppDelegate.m */; };
 		B5D6C7941F33192A00A90EF8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5D6C7921F33192A00A90EF8 /* Main.storyboard */; };
@@ -65,6 +68,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B578BE251F34202C008DDF7E /* CommonFrameWork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CommonFrameWork.framework; path = "../../../../Library/Developer/Xcode/DerivedData/StudyWorkspace-fuumaogocjkfofcwruacyynabkyg/Build/Products/Debug-iphonesimulator/CommonFrameWork.framework"; sourceTree = "<group>"; };
+		B578BE2C1F344AB3008DDF7E /* SecondViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewControllerTests.m; sourceTree = "<group>"; };
 		B5D6C7831F33192A00A90EF8 /* iOS_MVPDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOS_MVPDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5D6C7871F33192A00A90EF8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B5D6C7891F33192A00A90EF8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -105,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B578BE2A1F3422C1008DDF7E /* CommonFrameWork.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,12 +118,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B578BE2B1F34268D008DDF7E /* CommonFrameWork.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B578BE241F34202B008DDF7E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B578BE251F34202C008DDF7E /* CommonFrameWork.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B5D6C77A1F33192900A90EF8 = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +141,7 @@
 				B5D6C7A21F33192A00A90EF8 /* iOS_MVPDemoTests */,
 				B5D6C7AD1F33192A00A90EF8 /* iOS_MVPDemoUITests */,
 				B5D6C7841F33192A00A90EF8 /* Products */,
+				B578BE241F34202B008DDF7E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -175,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				B5D6C7AE1F33192A00A90EF8 /* iOS_MVPDemoUITests.m */,
+				B578BE2C1F344AB3008DDF7E /* SecondViewControllerTests.m */,
 				B5D6C7B01F33192A00A90EF8 /* Info.plist */,
 			);
 			path = iOS_MVPDemoUITests;
@@ -404,6 +421,7 @@
 				B5D6C7E21F3331B400A90EF8 /* ListDataPresenter.m in Sources */,
 				B5D6C7ED1F33387D00A90EF8 /* ListDataModel.m in Sources */,
 				B5D6C7DF1F3331B400A90EF8 /* SecondViewController.m in Sources */,
+				B578BE2D1F344AB3008DDF7E /* SecondViewControllerTests.m in Sources */,
 				B5D6C7AF1F33192A00A90EF8 /* iOS_MVPDemoUITests.m in Sources */,
 				B5D6C7DC1F3331B400A90EF8 /* FirstViewController.m in Sources */,
 				B5D6C7E81F3333B100A90EF8 /* ListDataCell.m in Sources */,
@@ -568,6 +586,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = P8FFNR95EQ;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../CommonFrameWork/**";
 				INFOPLIST_FILE = iOS_MVPDemoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.test.luke.iOS-MVPDemoTests";
@@ -581,6 +600,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = P8FFNR95EQ;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../CommonFrameWork/**";
 				INFOPLIST_FILE = iOS_MVPDemoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.test.luke.iOS-MVPDemoTests";
@@ -593,6 +613,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DEVELOPMENT_TEAM = P8FFNR95EQ;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../CommonFrameWork/**";
 				INFOPLIST_FILE = iOS_MVPDemoUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.test.luke.iOS-MVPDemoUITests";
@@ -605,6 +626,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DEVELOPMENT_TEAM = P8FFNR95EQ;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../CommonFrameWork/**";
 				INFOPLIST_FILE = iOS_MVPDemoUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.test.luke.iOS-MVPDemoUITests";

@@ -56,7 +56,7 @@
     OKHttpRequestModel *model = [[OKHttpRequestModel alloc] init];
     model.requestType = HttpRequestTypeGET;
     model.parameters = info;
-    model.requestUrl = kRequestUrl; //可以试着把地址写错,测试请求失败的场景
+    model.requestUrl = kRequestUrl;
     
     model.loadView = _tableView.superview;
     model.dataTableView = _tableView;

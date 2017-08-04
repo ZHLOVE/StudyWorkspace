@@ -8,6 +8,7 @@
 
 #import "FirstViewController.h"
 #import "ListDataCell.h"
+#import <UIViewController+OKExtension.h>
 
 static NSString *cellID         = @"ListDataCell";
 #define WEAKSELF(weakSelf)      __weak __typeof(&*self)weakSelf = self;
@@ -79,6 +80,11 @@ static NSString *cellID         = @"ListDataCell";
     NSDictionary *dic = self.tableDataArr[indexPath.row];
     cell.descTextLab.text = dic[@"name"];
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self pushToViewController:@"FirstViewController" propertyDic:@{@"title":@"单元测试"}];
 }
 
 @end
