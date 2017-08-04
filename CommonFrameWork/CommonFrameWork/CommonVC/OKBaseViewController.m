@@ -175,7 +175,7 @@
 
 - (void)endEdit
 {
-    [[[UIApplication sharedApplication] keyWindow] endEditing:YES];;
+    [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
 }
 
 /**
@@ -183,6 +183,8 @@
  */
 - (void)backBtnClick:(UIButton *)backBtn
 {
+    [self endEdit];
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 

@@ -387,7 +387,15 @@
             } else {
                 presentNav = [[UINavigationController alloc] initWithRootViewController:presentVC];
             }
+            
+            WEAKSELF
+            UIBarButtonItem *item = [UIBarButtonItem itemWithImage:ImageNamed(@"commonImage.bundle/backBarButtonItemImage") highImage:nil clickBlock:^{
+                [weakSelf dismissViewControllerAnimated:YES completion:nil];
+            }];
+            presentNav.navigationItem.leftBarButtonItem = item;
+            
             [self presentViewController:presentNav animated:YES completion:nil];
+            
         } else {
             [self presentViewController:presentVC animated:YES completion:nil];
         }

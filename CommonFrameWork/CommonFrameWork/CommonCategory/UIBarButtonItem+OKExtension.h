@@ -22,9 +22,13 @@
                              clickBlock:(dispatch_block_t)blk;
 
 
-+ (instancetype)itemWithImage:(UIImage *)image
-                    highImage:(UIImage *)highImage
-                       target:(id)target
-                       action:(SEL)action;
++ (UIBarButtonItem *)itemWithImage:(UIImage *)image
+                         highImage:(UIImage *)highImage
+                            target:(id)target
+                            action:(SEL)action;
+
++ (UIBarButtonItem *)itemWithImage:(UIImage *)image
+                         highImage:(UIImage *)highImage
+                        clickBlock:(dispatch_block_t)blk;
 
 @end

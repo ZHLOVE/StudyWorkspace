@@ -30,5 +30,9 @@
  * 取消子类所有请求操作
  */
 - (void)cancelRequestSessionTask;
+/**
+ * 返回上一个控制器，子类可重写
+ */
+- (void)backBtnClick:(UIButton *)sender;
 
 @end
