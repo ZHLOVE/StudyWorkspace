@@ -163,7 +163,8 @@ static const void *kLeftViewWidth = "kLeftViewWidth";
 /**
  *  添加右侧按钮,返回点击回调
  */
-- (UIButton *)setRightViewTitle:(NSString *)title touchBlock:(void(^)(UIButton *))block
+- (UIButton *)setRightViewTitle:(NSString *)title
+                     touchBlock:(void(^)(UIButton *))block
 {
     UIButton *rightBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 172/2, self.height)];
     rightBtn.titleLabel.font = TextFieldFontSize;

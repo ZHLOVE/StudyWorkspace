@@ -17,15 +17,31 @@
 /**
  *  在导航栏左边增加控件
  */
-- (void)addLeftBarButtonItem:(NSString *)title target:(id)target selector:(SEL)selector
+- (void)addLeftBarButtonItem:(NSString *)title
+                      titleColor:(UIColor *)color
+                      target:(id)target
+                    selector:(SEL)selector
 {
-    self.navigationItem.leftBarButtonItem = [UIBarButtonItem barButtonWithTitle:title titleColor:Color_BlackFont target:target selector:selector];
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem barButtonWithTitle:title titleColor:color target:target selector:selector];
 }
 
 /**
  *  在导航栏左边增加控件
  */
-- (void)addLeftBarButtonItem:(UIImage *)normolImage highImage:(UIImage *)highImage target:(id)target selector:(SEL)selector
+- (void)addLeftBarButtonItem:(NSString *)title
+                  titleColor:(UIColor *)color
+                  clickBlock:(dispatch_block_t)block
+{
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem barButtonWithTitle:title titleColor:color clickBlock:block];
+}
+
+/**
+ *  在导航栏左边增加控件
+ */
+- (void)addLeftBarButtonItem:(UIImage *)normolImage
+                   highImage:(UIImage *)highImage
+                      target:(id)target
+                    selector:(SEL)selector
 {
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImage:normolImage highImage:highImage target:target action:selector];
 }
@@ -33,7 +49,10 @@
 /**
  *  在导航栏右边增加控件
  */
-- (void)addRightBarButtonItem:(UIImage *)normolImage highImage:(UIImage *)highImage target:(id)target selector:(SEL)selector
+- (void)addRightBarButtonItem:(UIImage *)normolImage
+                    highImage:(UIImage *)highImage
+                       target:(id)target
+                     selector:(SEL)selector
 {
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithImage:normolImage highImage:highImage target:target action:selector];
 }
@@ -41,55 +60,56 @@
 /**
  *  在导航栏右边增加控件
  */
-- (void)addRightBarButtonItem:(NSString *)title target:(id)target selector:(SEL)selector
+- (void)addRightBarButtonItem:(NSString *)title
+                   titleColor:(UIColor *)color
+                       target:(id)target
+                     selector:(SEL)selector
 {
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem barButtonWithTitle:title titleColor:Color_BlackFont target:target selector:selector];
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem barButtonWithTitle:title titleColor:color target:target selector:selector];
+}
+
+/**
+ *  在导航栏左边增加控件
+ */
+- (void)addRightBarButtonItem:(NSString *)title
+                   titleColor:(UIColor *)color
+                   clickBlock:(dispatch_block_t)block
+{
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem barButtonWithTitle:title titleColor:color clickBlock:block];
 }
 
 /**
  *  设置导航按右侧钮点击状态
  */
 - (void)setRightBarItemEnable:(BOOL)enable
+                   titleColor:(UIColor *)color
 {
     for (UIBarButtonItem *barItem in self.navigationItem.rightBarButtonItems) {
+        
         if (barItem.customView && [barItem.customView isKindOfClass:[UIButton class]]) {
             UIButton *rightBtn = (UIButton *)barItem.customView;
             rightBtn.enabled = enable;
-            UIColor *titleColor = self.navigationController.viewControllers.count>1 ? Color_BlackFont : Color_BlackFont;
-            [rightBtn setTitleColor:enable ? titleColor : [titleColor colorWithAlphaComponent:0.4]  forState:UIControlStateNormal];
-        } else {
-            barItem.enabled = enable;
-        }
-    }
-}
-
-/**
- *  设置导航按右侧钮点击状态
- */
-- (void)setNavRightBarItemEnable:(BOOL)enable titleColor:(UIColor *)color
-{
-    for (UIBarButtonItem *barItem in self.navigationItem.rightBarButtonItems) {
-        if (barItem.customView && [barItem.customView isKindOfClass:[UIButton class]]) {
-            UIButton *rightBtn = (UIButton *)barItem.customView;
-            rightBtn.enabled = enable;
+            
+            if (!color) {
+                color = [rightBtn.currentTitleColor colorWithAlphaComponent:0.4];
+            }
             [rightBtn setTitleColor:color forState:UIControlStateNormal];
+            
         } else {
             barItem.enabled = enable;
         }
     }
 }
-
 
 /**
  * 使用系统的返回按钮样式，
  * 注意：如果想要获取系统返回按钮的点击事件，
  * 可以打开《UINavigationController+OKExtension.m》类中的<navigationBar:shouldPopItem:>方法，
  * 在要操作的控制器中实现<navigationShouldPopOnBackButton>返回一个BOOL值来控制
+ * 注意: 此方法一定要在控制器的<viewDidLoad>和<viewDidAppear>中都调用，否则无效
  */
 - (void)shouldUseSystemBackBtnStyle
 {
-    //此方法一定要在控制器的<viewDidLoad>和<viewDidAppear>中调用，否则无效
-    
     //设置返回按钮图片
     UIImage *backImage = [UIImage imageNamed:@"commonImage.bundle/backBarButtonItemImage"];
     self.navigationController.navigationBar.backIndicatorTransitionMaskImage = backImage;
@@ -100,7 +120,7 @@
 }
 
 /**
- *  返回到指定控制器
+ *  执行返回到指定控制器
  */
 - (BOOL)shouldPopToCustomVC:(NSString *)classStr
 {
@@ -113,17 +133,6 @@
     return NO;
 }
 
-/**
- *  进入到指定控制器
- */
-- (void)pushToCustomVC:(NSString *)classStr title:(NSString *)title
-{
-    UIViewController *VC = [NSClassFromString(classStr) new];
-    if ([VC isKindOfClass:[UIViewController class]]) {
-        VC.title = title;
-        [self.navigationController pushViewController:VC animated:YES];
-    }
-}
 
 /**
  *  此导航条仅供上一个页面没有导航栏, 下一个页面滑动边缘返回时会顶部异常的情况,
@@ -192,24 +201,29 @@
     
     return lastViewController;
 }
+
 /**
  *  获取PresentedViewController
  */
 + (UIViewController *)getPresentedViewController:(UIViewController *)viewController
 {
     while (viewController.presentedViewController) {
-        viewController = viewController.presentedViewController;                // 1. ViewController 下
+        // 1. ViewController 下
+        viewController = viewController.presentedViewController;
         
-        if ([viewController isKindOfClass:[UINavigationController class]]) {                // 2. NavigationController 下
+        // 2. NavigationController 下
+        if ([viewController isKindOfClass:[UINavigationController class]]) {
             viewController =  [self getCurrentViewController:viewController];
         }
         
+        viewController = [self getCurrentViewController:viewController];
+        // 3. UITabBarController 下
         if ([viewController isKindOfClass:[UITabBarController class]]) {
-            viewController = [self getCurrentViewController:viewController];     // 3. UITabBarController 下
         }
     }
     return viewController;
 }
+
 /**
  *  获取当前处于activity状态的view controller
  */
@@ -218,39 +232,30 @@
     UIViewController* activityViewController = nil;
     
     UIWindow *window = [[UIApplication sharedApplication] keyWindow];
-    if(window.windowLevel != UIWindowLevelNormal)
-    {
+    if(window.windowLevel != UIWindowLevelNormal) {
         NSArray *windows = [[UIApplication sharedApplication] windows];
-        for(UIWindow *tmpWin in windows)
-        {
-            if(tmpWin.windowLevel == UIWindowLevelNormal)
-            {
+        for(UIWindow *tmpWin in windows) {
+            if(tmpWin.windowLevel == UIWindowLevelNormal) {
                 window = tmpWin;
                 break;
             }
         }
     }
+    
     NSArray *viewsArray = [window subviews];
-    if([viewsArray count] > 0)
-    {
+    if([viewsArray count] > 0) {
         UIView *frontView = [viewsArray objectAtIndex:0];
         
         id nextResponder = [frontView nextResponder];
         
-        if([nextResponder isKindOfClass:[UIViewController class]])
-        {
+        if([nextResponder isKindOfClass:[UIViewController class]]) {
             activityViewController = nextResponder;
-        }
-        else
-        {
+        } else {
             activityViewController = window.rootViewController;
         }
     }
-    
     return activityViewController;
 }
-
-
 
 /**
  *  判断在导航栏控制器中有没存在该类
@@ -311,8 +316,8 @@
             SEL selector = NSSelectorFromString(selectorStr);
             if (selectorStr.length>0 && [popTargetVC respondsToSelector:selector]) {
                 OKPerformSelectorLeakWarning(
-                                             [popTargetVC performSelector:selector withObject:nil];
-                                             );
+                   [popTargetVC performSelector:selector withObject:nil];
+                 );
             }
         } else {
             //KVC赋值控制器的属性
@@ -339,7 +344,8 @@
  *  @param vcName 当前的控制器
  *  @param propertyDic 控制器需要的参数
  */
-- (void)pushToViewController:(NSString *)vcName propertyDic:(NSDictionary *)propertyDic
+- (void)pushToViewController:(NSString *)vcName
+                 propertyDic:(NSDictionary *)propertyDic
 {
     if (propertyDic && ![propertyDic isKindOfClass:[NSDictionary class]]) {
         NSLog(@"❌❌❌ 页面push失败，携带属性字典错误:%@",propertyDic);
@@ -390,6 +396,7 @@
                 presentNav = [[UINavigationController alloc] initWithRootViewController:presentVC];
             }
             
+            //present时,给返回按添加dismiss事件
             presentNav.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImage:ImageNamed(@"commonImage.bundle/backBarButtonItemImage") highImage:nil clickBlock:^{
                 [self dismissViewControllerAnimated:YES completion:nil];
             }];

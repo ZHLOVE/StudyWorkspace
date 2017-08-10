@@ -212,7 +212,7 @@ static const void *UIButtonBlockKey = &UIButtonBlockKey;
         }
         
     } else {
-        [self setTitle:@"文字,颜色,字体 每个数组至少有一个" forState:0];
+        NSLog(@"文字,颜色,字体 每个数组至少有一个");
     }
 }
 

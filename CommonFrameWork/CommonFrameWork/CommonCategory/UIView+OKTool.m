@@ -24,7 +24,8 @@
  @param lineWidth 天条宽度或高度
  @return 添加的线条
  */
--(instancetype)addLineToPosition:(OKDrawLinePosition)position lineWidth:(CGFloat)lineWidth
+-(instancetype)addLineToPosition:(OKDrawLinePosition)position
+                       lineWidth:(CGFloat)lineWidth
 {
     UIView *line = [[UIView alloc] init];
     switch (position) {

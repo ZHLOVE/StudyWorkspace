@@ -34,7 +34,8 @@
 /**
  *  添加右侧按钮,返回点击回调
  */
-- (UIButton *)setRightViewTitle:(NSString *)title touchBlock:(void(^)(UIButton *))block;
+- (UIButton *)setRightViewTitle:(NSString *)title
+                     touchBlock:(void(^)(UIButton *))block;
 
 /**
  *  快速创建UITextField

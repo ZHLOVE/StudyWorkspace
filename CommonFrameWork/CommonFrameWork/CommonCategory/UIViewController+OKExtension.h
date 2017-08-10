@@ -14,6 +14,7 @@
  *  在导航栏左边增加控件
  */
 - (void)addLeftBarButtonItem:(NSString *)title
+                  titleColor:(UIColor *)color
                       target:(id)target
                     selector:(SEL)selector;
 
@@ -26,6 +27,13 @@
                     selector:(SEL)selector;
 
 /**
+ *  在导航栏左边增加控件
+ */
+- (void)addLeftBarButtonItem:(NSString *)title
+                  titleColor:(UIColor *)color
+                  clickBlock:(dispatch_block_t)block;
+
+/**
  *  在导航栏右边增加控件
  */
 - (void)addRightBarButtonItem:(UIImage *)normolImage
@@ -36,18 +44,21 @@
  *  在导航栏右边增加控件
  */
 - (void)addRightBarButtonItem:(NSString *)title
+                   titleColor:(UIColor *)color
                        target:(id)target
                      selector:(SEL)selector;
-
 /**
- *  设置导航右侧按钮点击状态
+ *  在导航栏左边增加控件
  */
-- (void)setRightBarItemEnable:(BOOL)enable;
+- (void)addRightBarButtonItem:(NSString *)title
+                   titleColor:(UIColor *)color
+                   clickBlock:(dispatch_block_t)block;
 
 /**
  *  设置导航按右侧钮点击状态
  */
-- (void)setNavRightBarItemEnable:(BOOL)enable titleColor:(UIColor *)color;
+- (void)setRightBarItemEnable:(BOOL)enable
+                   titleColor:(UIColor *)color;
 
 /**
  * 使用系统的返回按钮样式，
@@ -62,10 +73,6 @@
  */
 - (BOOL)shouldPopToCustomVC:(NSString *)classStr;
 
-/**
- *  进入到指定控制器
- */
-- (void)pushToCustomVC:(NSString *)classStr title:(NSString *)title;
 
 /**
  *  此导航条仅供上一个页面没有导航栏, 下一个页面手势滑动边缘返回时会顶部异常的情况,
@@ -101,15 +108,16 @@
                        withObject:(NSDictionary *)propertyDic;
 
 /**
- *  执行页面push跳转
+ *  页面执行push跳转
  *
  *  @param vcName 当前的控制器
  *  @param propertyDic  控制器需要的参数
  */
-- (void)pushToViewController:(NSString *)vcName propertyDic:(NSDictionary *)propertyDic;
+- (void)pushToViewController:(NSString *)vcName
+                 propertyDic:(NSDictionary *)propertyDic;
 
 /**
- *  执行页面present跳转
+ *  页面执行present跳转
  *
  *  @param vcName 当前的控制器
  *  @param propertyDic 控制器需要的参数
