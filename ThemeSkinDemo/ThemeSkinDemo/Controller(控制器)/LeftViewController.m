@@ -75,7 +75,7 @@
         _firstVC.view.height += 49;
         [self.view addSubview:_firstVC.view];
         [self addChildViewController:_firstVC];
-        [self addLeftBarButtonItem:@"开关" target:_firstVC selector:@selector(converLeftViewAction:)];
+        [self addLeftBarButtonItem:@"开关" titleColor:[UIColor redColor] target:_firstVC selector:@selector(converLeftViewAction:)];
     }
     return _firstVC;
 }

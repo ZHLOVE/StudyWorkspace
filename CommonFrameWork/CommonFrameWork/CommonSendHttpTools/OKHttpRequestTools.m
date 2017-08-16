@@ -82,7 +82,7 @@ static char const * const kRequestUrlKey    = "kRequestUrlKey";
 {
     //失败回调
     void (^failResultBlock)(NSError *) = ^(NSError *error){
-        NSLog(@"❌❌❌请求接口基地址= %@\n请求参数= %@\n网络数据失败返回= %@\n",requestModel.requestUrl,requestModel.parameters,error);
+        NSLog(@"\n❌❌❌请求接口基地址= %@\n请求参数= %@\n网络数据失败返回= %@\n",requestModel.requestUrl,requestModel.parameters,error);
         //判断Token状态是否为失效
         if (error.code == kLoginFail) {
             //通知页面需要重新登录
@@ -140,7 +140,7 @@ static char const * const kRequestUrlKey    = "kRequestUrlKey";
             ([code integerValue] == kRequestSuccessStatues ||
              [code integerValue] == kRequestTipsStatuesMin))
         {
-            NSLog(@"✅✅✅请求接口基地址= %@\n请求参数= %@\n网络数据成功返回= %@\n",requestModel.requestUrl,requestModel.parameters,responseObject);
+            NSLog(@"\n✅✅✅请求接口基地址= %@\n请求参数= %@\n网络数据成功返回= %@\n",requestModel.requestUrl,requestModel.parameters,responseObject);
             /** <1>.回调页面请求 */
             if (successBlock) {
                 successBlock(responseObject);
