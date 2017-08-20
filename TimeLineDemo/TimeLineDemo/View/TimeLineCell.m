@@ -158,6 +158,8 @@
  */
 - (NSMutableAttributedString *)getAttributedStr:(NSString *)text
 {
+    if (!text) return nil;
+    
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:text];
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     [paragraphStyle setLineSpacing:5];//调整行间距

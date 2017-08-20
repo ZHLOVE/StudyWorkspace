@@ -19,8 +19,6 @@
 		A3057AB31EF5734B003EF465 /* TimeLineViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3057AB21EF5734B003EF465 /* TimeLineViewModel.m */; };
 		A3057AB71EF5735F003EF465 /* TimeLineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A3057AB51EF5735F003EF465 /* TimeLineCell.m */; };
 		A3057AB81EF5735F003EF465 /* TimeLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3057AB61EF5735F003EF465 /* TimeLineCell.xib */; };
-		A32147181EF5969C00690768 /* TimeLineWebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A32147161EF5969C00690768 /* TimeLineWebVC.m */; };
-		A32147191EF5969C00690768 /* TimeLineWebVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A32147171EF5969C00690768 /* TimeLineWebVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -56,9 +54,6 @@
 		A3057AB41EF5735F003EF465 /* TimeLineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeLineCell.h; sourceTree = "<group>"; };
 		A3057AB51EF5735F003EF465 /* TimeLineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeLineCell.m; sourceTree = "<group>"; };
 		A3057AB61EF5735F003EF465 /* TimeLineCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimeLineCell.xib; sourceTree = "<group>"; };
-		A32147151EF5969C00690768 /* TimeLineWebVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeLineWebVC.h; sourceTree = "<group>"; };
-		A32147161EF5969C00690768 /* TimeLineWebVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeLineWebVC.m; sourceTree = "<group>"; };
-		A32147171EF5969C00690768 /* TimeLineWebVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimeLineWebVC.xib; sourceTree = "<group>"; };
 		E3FFCEF81639B18AC24ED7B1 /* Pods-TimeLineDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeLineDemo.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-TimeLineDemo/Pods-TimeLineDemo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -132,9 +127,6 @@
 			children = (
 				A3057AAE1EF570E5003EF465 /* TimeLineVC.h */,
 				A3057AAF1EF570E5003EF465 /* TimeLineVC.m */,
-				A32147151EF5969C00690768 /* TimeLineWebVC.h */,
-				A32147161EF5969C00690768 /* TimeLineWebVC.m */,
-				A32147171EF5969C00690768 /* TimeLineWebVC.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -234,7 +226,6 @@
 				A3057A921EF56FBD003EF465 /* Assets.xcassets in Resources */,
 				A3057A901EF56FBD003EF465 /* Main.storyboard in Resources */,
 				A3057AB81EF5735F003EF465 /* TimeLineCell.xib in Resources */,
-				A32147191EF5969C00690768 /* TimeLineWebVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,7 +288,6 @@
 				A3057A8A1EF56FBD003EF465 /* AppDelegate.m in Sources */,
 				A3057AB71EF5735F003EF465 /* TimeLineCell.m in Sources */,
 				A3057A871EF56FBD003EF465 /* main.m in Sources */,
-				A32147181EF5969C00690768 /* TimeLineWebVC.m in Sources */,
 				A3057AB01EF570E5003EF465 /* TimeLineVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

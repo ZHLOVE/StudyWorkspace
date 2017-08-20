@@ -21,17 +21,31 @@
 /**
  *  在导航栏左边增加控件
  */
+- (void)addLeftBarButtonItem:(NSString *)title
+                  titleColor:(UIColor *)color
+                  clickBlock:(dispatch_block_t)block;
+
+/**
+ *  在导航栏左边增加控件
+ */
 - (void)addLeftBarButtonItem:(UIImage *)normolImage
                    highImage:(UIImage *)highImage
                       target:(id)target
                     selector:(SEL)selector;
 
 /**
+ *  在导航栏右边增加控件
+ */
+- (void)addRightBarButtonItem:(NSString *)title
+                   titleColor:(UIColor *)color
+                       target:(id)target
+                     selector:(SEL)selector;
+/**
  *  在导航栏左边增加控件
  */
-- (void)addLeftBarButtonItem:(NSString *)title
-                  titleColor:(UIColor *)color
-                  clickBlock:(dispatch_block_t)block;
+- (void)addRightBarButtonItem:(NSString *)title
+                   titleColor:(UIColor *)color
+                   clickBlock:(dispatch_block_t)block;
 
 /**
  *  在导航栏右边增加控件
@@ -40,18 +54,12 @@
                     highImage:(UIImage *)highImage
                        target:(id)target
                      selector:(SEL)selector;
+
 /**
  *  在导航栏右边增加控件
  */
-- (void)addRightBarButtonItem:(NSString *)title
-                   titleColor:(UIColor *)color
-                       target:(id)target
-                     selector:(SEL)selector;
-/**
- *  在导航栏左边增加控件
- */
-- (void)addRightBarButtonItem:(NSString *)title
-                   titleColor:(UIColor *)color
+- (void)addRightBarButtonItem:(UIImage *)normolImage
+                    highImage:(UIImage *)highImage
                    clickBlock:(dispatch_block_t)block;
 
 /**

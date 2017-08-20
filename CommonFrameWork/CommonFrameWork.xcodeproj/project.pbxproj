@@ -11,6 +11,8 @@
 		A30693531E1E98C30023DE5E /* UITabBar+BadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = A30693511E1E98C30023DE5E /* UITabBar+BadgeView.m */; };
 		A30693571E1EAB7B0023DE5E /* NSObject+NeverCrash.h in Headers */ = {isa = PBXBuildFile; fileRef = A30693551E1EAB7B0023DE5E /* NSObject+NeverCrash.h */; };
 		A30693581E1EAB7B0023DE5E /* NSObject+NeverCrash.m in Sources */ = {isa = PBXBuildFile; fileRef = A30693561E1EAB7B0023DE5E /* NSObject+NeverCrash.m */; };
+		A30E894C1F4940DC0009951E /* OKBaseWebViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = A30E894A1F4940DC0009951E /* OKBaseWebViewController.h */; };
+		A30E894D1F4940DC0009951E /* OKBaseWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A30E894B1F4940DC0009951E /* OKBaseWebViewController.m */; };
 		A3FC95E91E2FA688001EA205 /* UINavigationController+OKExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = A3FC95E71E2FA688001EA205 /* UINavigationController+OKExtension.h */; };
 		A3FC95EA1E2FA688001EA205 /* UINavigationController+OKExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = A3FC95E81E2FA688001EA205 /* UINavigationController+OKExtension.m */; };
 		B50310AB1E1E5CB200C11EC4 /* CommonFrameWork.h in Headers */ = {isa = PBXBuildFile; fileRef = B50310A91E1E5CB200C11EC4 /* CommonFrameWork.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -164,6 +166,8 @@
 		A30693511E1E98C30023DE5E /* UITabBar+BadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBar+BadgeView.m"; sourceTree = "<group>"; };
 		A30693551E1EAB7B0023DE5E /* NSObject+NeverCrash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+NeverCrash.h"; sourceTree = "<group>"; };
 		A30693561E1EAB7B0023DE5E /* NSObject+NeverCrash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+NeverCrash.m"; sourceTree = "<group>"; };
+		A30E894A1F4940DC0009951E /* OKBaseWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKBaseWebViewController.h; sourceTree = "<group>"; };
+		A30E894B1F4940DC0009951E /* OKBaseWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OKBaseWebViewController.m; sourceTree = "<group>"; };
 		A3FC95E71E2FA688001EA205 /* UINavigationController+OKExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+OKExtension.h"; sourceTree = "<group>"; };
 		A3FC95E81E2FA688001EA205 /* UINavigationController+OKExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+OKExtension.m"; sourceTree = "<group>"; };
 		B50310A61E1E5CB200C11EC4 /* CommonFrameWork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CommonFrameWork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -478,6 +482,8 @@
 				B584C7BF1E31BD9300CB6C81 /* OKBaseViewController.m */,
 				B584C8431E31DE3200CB6C81 /* OKBaseNavigationVC.h */,
 				B584C8441E31DE3200CB6C81 /* OKBaseNavigationVC.m */,
+				A30E894A1F4940DC0009951E /* OKBaseWebViewController.h */,
+				A30E894B1F4940DC0009951E /* OKBaseWebViewController.m */,
 			);
 			path = CommonVC;
 			sourceTree = "<group>";
@@ -681,6 +687,7 @@
 				B50311471E1E607F00C11EC4 /* NSString+OKEncryption.h in Headers */,
 				B50311421E1E607F00C11EC4 /* NSNull+OKSafely.h in Headers */,
 				B50311371E1E607F00C11EC4 /* GTMDefines.h in Headers */,
+				A30E894C1F4940DC0009951E /* OKBaseWebViewController.h in Headers */,
 				B503114D1E1E607F00C11EC4 /* UIButton+OKExtension.h in Headers */,
 				B584C8081E31BEC000CB6C81 /* OKCommonTipView.h in Headers */,
 				B584C84D1E31E62900CB6C81 /* UIViewController+OKExtension.h in Headers */,
@@ -904,6 +911,7 @@
 				B584C8151E31BEC000CB6C81 /* OKPickerPhotoHelp.m in Sources */,
 				B584C8351E31BEC000CB6C81 /* ZLPhotoPickerGroupViewController.m in Sources */,
 				B584C80B1E31BEC000CB6C81 /* OKFMDBTool.m in Sources */,
+				A30E894D1F4940DC0009951E /* OKBaseWebViewController.m in Sources */,
 				B584C8411E31BEC000CB6C81 /* ZLPhotoPickerImageView.m in Sources */,
 				B50311561E1E607F00C11EC4 /* UIImageView+OKExtension.m in Sources */,
 				B5877F251ECB070C00A3A521 /* OKAlertView.m in Sources */,

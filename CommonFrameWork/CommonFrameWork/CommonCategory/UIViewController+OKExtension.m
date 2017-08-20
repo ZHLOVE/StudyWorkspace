@@ -47,14 +47,13 @@
 }
 
 /**
- *  在导航栏右边增加控件
+ *  在导航栏左边增加控件
  */
-- (void)addRightBarButtonItem:(UIImage *)normolImage
-                    highImage:(UIImage *)highImage
-                       target:(id)target
-                     selector:(SEL)selector
+- (void)addLeftBarButtonItem:(UIImage *)normolImage
+                   highImage:(UIImage *)highImage
+                  clickBlock:(dispatch_block_t)block
 {
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithImage:normolImage highImage:highImage target:target action:selector];
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImage:normolImage highImage:highImage clickBlock:block];
 }
 
 /**
@@ -76,6 +75,27 @@
                    clickBlock:(dispatch_block_t)block
 {
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem barButtonWithTitle:title titleColor:color clickBlock:block];
+}
+
+/**
+ *  在导航栏右边增加控件
+ */
+- (void)addRightBarButtonItem:(UIImage *)normolImage
+                    highImage:(UIImage *)highImage
+                       target:(id)target
+                     selector:(SEL)selector
+{
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithImage:normolImage highImage:highImage target:target action:selector];
+}
+
+/**
+ *  在导航栏右边增加控件
+ */
+- (void)addRightBarButtonItem:(UIImage *)normolImage
+                    highImage:(UIImage *)highImage
+                   clickBlock:(dispatch_block_t)block
+{
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithImage:normolImage highImage:highImage clickBlock:block];
 }
 
 /**
@@ -396,11 +416,15 @@
                 presentNav = [[UINavigationController alloc] initWithRootViewController:presentVC];
             }
             
-            //present时,给返回按添加dismiss事件
-            presentNav.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImage:ImageNamed(@"commonImage.bundle/backBarButtonItemImage") highImage:nil clickBlock:^{
-                [self dismissViewControllerAnimated:YES completion:nil];
+            [self presentViewController:presentNav animated:YES completion:^{
+                __weak UIViewController *tempPresentVC = presentVC;
+                
+                //present时,给返回按添加dismiss事件
+                UIImage *image = ImageNamed(@"backBarButtonItemImage");
+                presentVC.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImage:image highImage:nil clickBlock:^{
+                    [tempPresentVC dismissViewControllerAnimated:YES completion:nil];
+                }];
             }];
-            [self presentViewController:presentNav animated:YES completion:nil];
             
         } else {
             [self presentViewController:presentVC animated:YES completion:nil];

@@ -19,6 +19,13 @@
 /*  强引用 */
 #define STRONGSELF                                  typeof(weakSelf) __strong strongSelf = weakSelf;
 
+//重写NSLog,Debug模式下打印日志和当前行数
+#if DEBUG
+#define NSLog(FORMAT, ...) fprintf(stderr,"\nfunction:%s line:%d content:\n%s\n", __FUNCTION__, __LINE__, [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
+#else
+#define NSLog(FORMAT, ...) nil
+#endif
+
 //-忽略警告的宏-
 #define OKPerformSelectorLeakWarning(Stuff) \
 do { \
@@ -377,13 +384,17 @@ static char const * const kActionSELKey             = "kActionSELKey";
     }
     
     //需要显示的自定义提示view
-    OKCommonTipView *tipBgView = [OKCommonTipView tipViewByFrame:self.bounds
+    CGRect rect = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height);
+    OKCommonTipView *tipBgView = [OKCommonTipView tipViewByFrame:rect
                                                         tipImage:tipImage
                                                          tipText:tipString
                                                      actionTitle:actionTitle
                                                      actionBlock:block];
-    tipBgView.backgroundColor = [UIColor clearColor];
-    tipBgView.center = self.center;
+    if (self.backgroundColor) {
+        tipBgView.backgroundColor = self.backgroundColor;
+    } else {
+        tipBgView.backgroundColor = [UIColor clearColor];
+    }
     [self addSubview:tipBgView];
 }
 
@@ -696,7 +707,6 @@ static char const * const kActionSELKey             = "kActionSELKey";
 {
     [self ok_exchangeInstanceMethod:@selector(reload)
                       otherSelector:@selector(ok_reload)];
-    
 }
 
 - (void)ok_reload

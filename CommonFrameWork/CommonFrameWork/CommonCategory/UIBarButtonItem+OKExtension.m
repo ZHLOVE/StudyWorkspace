@@ -88,7 +88,7 @@
     if (target && action) {
         [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
     }
-    return [[self alloc] initWithCustomView:button];
+    return [[UIBarButtonItem alloc] initWithCustomView:button];
 }
 
 + (UIBarButtonItem *)itemWithImage:(UIImage *)image
@@ -96,11 +96,14 @@
                         clickBlock:(dispatch_block_t)blk
 {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setBackgroundImage:image forState:UIControlStateNormal];
-    highImage ? [button setBackgroundImage:highImage forState:UIControlStateHighlighted] : nil;
-    objc_setAssociatedObject(button, "UIBarButtonItem", blk, OBJC_ASSOCIATION_COPY_NONATOMIC);
-    [button addTarget:self action:@selector(click) forControlEvents:(UIControlEventTouchUpInside)];
-    return [[self alloc] initWithCustomView:button];
+    button.frame = CGRectMake(0, 0, image.size.width+20, 40);
+    [button setImage:image forState:UIControlStateNormal];
+    highImage ? [button setImage:highImage forState:UIControlStateHighlighted] : nil;
+    
+    UIBarButtonItem *barButton = [[UIBarButtonItem alloc]initWithCustomView:button];
+    objc_setAssociatedObject(barButton, "UIBarButtonItem", blk, OBJC_ASSOCIATION_COPY_NONATOMIC);
+    [button addTarget:barButton action:@selector(click) forControlEvents:(UIControlEventTouchUpInside)];
+    return barButton;
 }
 
 - (void)click

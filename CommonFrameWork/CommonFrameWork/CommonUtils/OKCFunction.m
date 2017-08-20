@@ -49,7 +49,6 @@ UIImage* ImageFromBundleWithName(NSString *name)
         NSArray *folderArray = [fileManager contentsOfDirectoryAtPath:bundlePath error:nil];
         BOOL isDir = NO;
         
-        
         for (NSString *subFolder in folderArray) {
             NSLog(@"bundlepath===%@====%@",bundlePath,subFolder);
             NSString *fullPath = [bundlePath stringByAppendingPathComponent:subFolder];
@@ -66,5 +65,6 @@ UIImage* ImageFromBundleWithName(NSString *name)
     
     return getImage;
 }
+
 
 @end

@@ -142,11 +142,9 @@ static NSString *const kTableCellID = @"cellIdInfo";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     TimeLineDataModel *model = self.tableDataArr[indexPath.row];
-    NSString *urlString = [NSString stringWithFormat:@"http://m.zol.com.cn/%@/d%@_%@.html",
-                           model.post.bbs,
-                           model.post.boardId,
-                           model.post.bookId];
-    [self pushToViewController:@"TimeLineWebVC"
+    NSString *urlString = [NSString stringWithFormat:@"http://m.zol.com.cn/%@/d%@_%@.html",model.post.bbs,model.post.boardId,model.post.bookId];
+    
+    [self pushToViewController:@"OKBaseWebViewController"
                    propertyDic:@{@"urlString":urlString,@"title":model.post.title}];
 }
 

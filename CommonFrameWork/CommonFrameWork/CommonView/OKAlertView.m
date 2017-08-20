@@ -495,8 +495,10 @@ void ShowAlertWithError(NSError *error, id msg) {
  */
 - (void)showOKAlertView
 {
+    self.contentView.transform = CGAffineTransformMakeScale(1.12, 1.12);
     [UIView animateWithDuration:0.2f delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         self.alpha = 1;
+        self.contentView.transform = CGAffineTransformMakeScale(1.0, 1.0);
     } completion:nil];
 }
 
@@ -507,6 +509,8 @@ void ShowAlertWithError(NSError *error, id msg) {
 {
     [UIView animateWithDuration:0.2f delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         self.alpha = 0.0;
+        self.contentView.transform = CGAffineTransformMakeScale(0.8, 0.8);
+        
     } completion:^(BOOL finished) {
         [self removeFromSuperview];
     }];
@@ -636,7 +640,7 @@ void ShowAlertWithError(NSError *error, id msg) {
 
 - (void)dealloc
 {
-    
+    NSLog(@"OKAlertView dealloc");
 }
 
 @end
