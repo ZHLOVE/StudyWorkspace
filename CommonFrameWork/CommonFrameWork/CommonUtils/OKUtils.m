@@ -10,69 +10,26 @@
 
 @implementation OKUtils
 
-+ (NSString *) nullDefultString: (NSString *)fromString null:(NSString *)nullStr{
-    if ([fromString isEqualToString:@""] || [fromString isEqualToString:@"(null)"] || [fromString isEqualToString:@"<null>"] || [fromString isEqualToString:@"null"] || fromString==nil) {
-        return nullStr;
-    }else{
-        return fromString;
-    }
-}
-+ (NSString *)htmlShuangyinhao:(NSString *)values{
-    if (values == nil) {
+/*
+ 替换字符串中的双引号
+ 注：将字符串中的参数进行替换
+ 参数1：目标替换值
+ 参数2：替换成为的值
+ 参数3：类型为默认：NSLiteralSearch
+ 参数4：替换的范围
+ */
++ (NSString *)replaceShuangyinhao:(NSString *)values
+{
+    if (!values || ![values isKindOfClass:[NSString class]]) {
         return @"";
     }
-    /*
-     字符串的替换
-     注：将字符串中的参数进行替换
-     参数1：目标替换值
-     参数2：替换成为的值
-     参数3：类型为默认：NSLiteralSearch
-     参数4：替换的范围
-     */
+    
     NSMutableString *temp = [NSMutableString stringWithString:values];
     [temp replaceOccurrencesOfString:@"\"" withString:@"'" options:NSLiteralSearch range:NSMakeRange(0, [temp length])];
     [temp replaceOccurrencesOfString:@"\n" withString:@"" options:NSLiteralSearch range:NSMakeRange(0, [temp length])];
     [temp replaceOccurrencesOfString:@"\r" withString:@"" options:NSLiteralSearch range:NSMakeRange(0, [temp length])];
     return temp;
 }
-
-+ (UIColor *) colorWithHexString: (NSString *) stringToConvert
-{
-    NSString *cString = [[stringToConvert stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] uppercaseString];
-    
-    // String should be 6 or 8 characters
-    if ([cString length] < 6) return [UIColor colorWithWhite:1.0 alpha:0.5];
-    
-    // strip 0X if it appears
-    if ([cString hasPrefix:@"0X"]) cString = [cString substringFromIndex:2];
-    if ([cString hasPrefix:@"#"]) cString = [cString substringFromIndex:1];
-    if ([cString length] != 6) return [UIColor colorWithWhite:1.0 alpha:0.5];
-    // Separate into r, g, b substrings
-    NSRange range;
-    range.location = 0;
-    range.length = 2;
-    NSString *rString = [cString substringWithRange:range];
-    
-    range.location = 2;
-    NSString *gString = [cString substringWithRange:range];
-    
-    range.location = 4;
-    NSString *bString = [cString substringWithRange:range];
-    
-    // Scan values
-    unsigned int r, g, b;
-    [[NSScanner scannerWithString:rString] scanHexInt:&r];
-    [[NSScanner scannerWithString:gString] scanHexInt:&g];
-    [[NSScanner scannerWithString:bString] scanHexInt:&b];
-    
-    return [UIColor colorWithRed:((float) r / 255.0f)
-                           green:((float) g / 255.0f)
-                            blue:((float) b / 255.0f)
-                           alpha:1.0f];
-}
-
-
-
 
 #pragma 正则匹配邮箱号
 + (BOOL)checkMailInput:(NSString *)mail{
@@ -238,6 +195,49 @@
     NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",bankNum];
     BOOL isMatch = [pred evaluateWithObject:CarNumber];
     return isMatch;
+}
+
+#pragma mark 是否包含中文
++(BOOL)CheckContainChinese:(NSString *)chinese
+{
+    for(int i=0; i< [chinese length];i++) {
+        int a = [chinese characterAtIndex:i];
+        if( a > 0x4E00 && a < 0x9FFF) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
+#pragma mark - 根据颜色得到图片
++(UIImage *)createImageWithColor:(UIColor *)color
+                       imageSize:(CGSize)size
+{
+    CGSize imageSize = CGSizeMake(size.width, size.height);
+    UIGraphicsBeginImageContextWithOptions(imageSize, 0, [UIScreen mainScreen].scale);
+    [color set];
+    UIRectFill(CGRectMake(0, 0, imageSize.width, imageSize.height));
+    UIImage *pressedColorImg = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return pressedColorImg;
+}
+
+
+
+/**
+ *  格式化价格,是小数就保留两位,不是小数就取整数
+ */
++ (NSString *)formatPriceValue:(CGFloat)originValue
+{
+    //取浮点型的整数位的价格
+    CGFloat intValue = floor(originValue);
+    NSString *formatValue = nil;
+    if ((originValue-intValue) > 0) {//如果不是整数就显示两位
+        formatValue = [NSString stringWithFormat:@"%.2f",originValue];
+    } else {
+        formatValue = [NSString stringWithFormat:@"%.0f",originValue];
+    }
+    return formatValue;
 }
 
 @end

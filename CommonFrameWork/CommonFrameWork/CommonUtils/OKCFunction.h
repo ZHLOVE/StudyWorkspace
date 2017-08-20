@@ -19,4 +19,39 @@
  */
 UIImage* ImageFromBundleWithName(NSString *name);
 
+/**
+ *  产生随机颜色
+ */
+UIColor* randomColor();
+
+/**
+ *  获取应用版本号
+ */
+NSString* currentVersion();
+
+/**
+ *  获取应用使用语音
+ */
+NSString* userLanguage();
+
+/**
+ * 设置应用使用语音
+ */
+void setUserlanguage(NSString *language);
+
+/**
+ * 获取时间
+ */
+NSString *dateString(NSDate *date);
+
+/**
+ * 获取时间
+ */
+NSString *dateStringWithoutHMS(NSDate *date);
+
+/**
+ * 获取时间
+ */
+NSDate *dateFromString(NSString *str);
+
 @end

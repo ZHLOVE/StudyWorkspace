@@ -11,9 +11,11 @@
 
 @interface OKUtils : NSObject
 
-+ (NSString *)htmlShuangyinhao:(NSString *)values;
-+ (UIColor *) colorWithHexString: (NSString *) stringToConvert;
-+ (NSString *) nullDefultString: (NSString *)fromString null:(NSString *)nullStr;
+
+/*
+ 替换字符串中的双引号
+ */
++ (NSString *)replaceShuangyinhao:(NSString *)values;
 
 #pragma 正则匹配邮箱号
 + (BOOL)checkMailInput:(NSString *)mail;
@@ -56,6 +58,13 @@
 
 #pragma 车牌号验证
 + (BOOL) checkCarNumber:(NSString *) CarNumber;
+
+
+#pragma mark 是否包含中文
++(BOOL)CheckContainChinese:(NSString *)chinese;
+#pragma mark - 根据颜色得到图片
++(UIImage *)createImageWithColor:(UIColor *)color
+                       imageSize:(CGSize)size;
 
 
 @end

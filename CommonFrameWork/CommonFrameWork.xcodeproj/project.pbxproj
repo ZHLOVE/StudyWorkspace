@@ -13,6 +13,14 @@
 		A30693581E1EAB7B0023DE5E /* NSObject+NeverCrash.m in Sources */ = {isa = PBXBuildFile; fileRef = A30693561E1EAB7B0023DE5E /* NSObject+NeverCrash.m */; };
 		A30E894C1F4940DC0009951E /* OKBaseWebViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = A30E894A1F4940DC0009951E /* OKBaseWebViewController.h */; };
 		A30E894D1F4940DC0009951E /* OKBaseWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A30E894B1F4940DC0009951E /* OKBaseWebViewController.m */; };
+		A30E89501F4978BD0009951E /* OKAppGuideView.h in Headers */ = {isa = PBXBuildFile; fileRef = A30E894E1F4978BD0009951E /* OKAppGuideView.h */; };
+		A30E89511F4978BD0009951E /* OKAppGuideView.m in Sources */ = {isa = PBXBuildFile; fileRef = A30E894F1F4978BD0009951E /* OKAppGuideView.m */; };
+		A30E89541F49826F0009951E /* OKChooseDateView.h in Headers */ = {isa = PBXBuildFile; fileRef = A30E89521F49826F0009951E /* OKChooseDateView.h */; };
+		A30E89551F49826F0009951E /* OKChooseDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = A30E89531F49826F0009951E /* OKChooseDateView.m */; };
+		A30E89581F4998110009951E /* OKPickerView.h in Headers */ = {isa = PBXBuildFile; fileRef = A30E89561F4998110009951E /* OKPickerView.h */; };
+		A30E89591F4998110009951E /* OKPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A30E89571F4998110009951E /* OKPickerView.m */; };
+		A30E895C1F499BB40009951E /* OKShareView.h in Headers */ = {isa = PBXBuildFile; fileRef = A30E895A1F499BB40009951E /* OKShareView.h */; };
+		A30E895D1F499BB40009951E /* OKShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = A30E895B1F499BB40009951E /* OKShareView.m */; };
 		A3FC95E91E2FA688001EA205 /* UINavigationController+OKExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = A3FC95E71E2FA688001EA205 /* UINavigationController+OKExtension.h */; };
 		A3FC95EA1E2FA688001EA205 /* UINavigationController+OKExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = A3FC95E81E2FA688001EA205 /* UINavigationController+OKExtension.m */; };
 		B50310AB1E1E5CB200C11EC4 /* CommonFrameWork.h in Headers */ = {isa = PBXBuildFile; fileRef = B50310A91E1E5CB200C11EC4 /* CommonFrameWork.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -168,6 +176,14 @@
 		A30693561E1EAB7B0023DE5E /* NSObject+NeverCrash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+NeverCrash.m"; sourceTree = "<group>"; };
 		A30E894A1F4940DC0009951E /* OKBaseWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKBaseWebViewController.h; sourceTree = "<group>"; };
 		A30E894B1F4940DC0009951E /* OKBaseWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OKBaseWebViewController.m; sourceTree = "<group>"; };
+		A30E894E1F4978BD0009951E /* OKAppGuideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKAppGuideView.h; sourceTree = "<group>"; };
+		A30E894F1F4978BD0009951E /* OKAppGuideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OKAppGuideView.m; sourceTree = "<group>"; };
+		A30E89521F49826F0009951E /* OKChooseDateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKChooseDateView.h; sourceTree = "<group>"; };
+		A30E89531F49826F0009951E /* OKChooseDateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OKChooseDateView.m; sourceTree = "<group>"; };
+		A30E89561F4998110009951E /* OKPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKPickerView.h; sourceTree = "<group>"; };
+		A30E89571F4998110009951E /* OKPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OKPickerView.m; sourceTree = "<group>"; };
+		A30E895A1F499BB40009951E /* OKShareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKShareView.h; sourceTree = "<group>"; };
+		A30E895B1F499BB40009951E /* OKShareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OKShareView.m; sourceTree = "<group>"; };
 		A3FC95E71E2FA688001EA205 /* UINavigationController+OKExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+OKExtension.h"; sourceTree = "<group>"; };
 		A3FC95E81E2FA688001EA205 /* UINavigationController+OKExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+OKExtension.m"; sourceTree = "<group>"; };
 		B50310A61E1E5CB200C11EC4 /* CommonFrameWork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CommonFrameWork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -459,6 +475,14 @@
 				B50310EF1E1E607F00C11EC4 /* OKActionSheetView.m */,
 				B5877F221ECB070C00A3A521 /* OKAlertView.h */,
 				B5877F231ECB070C00A3A521 /* OKAlertView.m */,
+				A30E894E1F4978BD0009951E /* OKAppGuideView.h */,
+				A30E894F1F4978BD0009951E /* OKAppGuideView.m */,
+				A30E89521F49826F0009951E /* OKChooseDateView.h */,
+				A30E89531F49826F0009951E /* OKChooseDateView.m */,
+				A30E89561F4998110009951E /* OKPickerView.h */,
+				A30E89571F4998110009951E /* OKPickerView.m */,
+				A30E895A1F499BB40009951E /* OKShareView.h */,
+				A30E895B1F499BB40009951E /* OKShareView.m */,
 			);
 			path = CommonView;
 			sourceTree = "<group>";
@@ -678,6 +702,7 @@
 				B584C83E1E31BEC000CB6C81 /* ZLPhotoPickerGroupTableViewCell.h in Headers */,
 				B584C7B41E31BAD500CB6C81 /* OKPubilcKeyDefiner.h in Headers */,
 				B50311511E1E607F00C11EC4 /* UIImage+OKExtension.h in Headers */,
+				A30E895C1F499BB40009951E /* OKShareView.h in Headers */,
 				B5877F1C1ECB013000A3A521 /* UILabel+OKShortcut.h in Headers */,
 				B503113E1E1E607F00C11EC4 /* NSMutableArray+OKExtension.h in Headers */,
 				B50311451E1E607F00C11EC4 /* NSObject+OKRuntime.h in Headers */,
@@ -689,6 +714,7 @@
 				B50311371E1E607F00C11EC4 /* GTMDefines.h in Headers */,
 				A30E894C1F4940DC0009951E /* OKBaseWebViewController.h in Headers */,
 				B503114D1E1E607F00C11EC4 /* UIButton+OKExtension.h in Headers */,
+				A30E89581F4998110009951E /* OKPickerView.h in Headers */,
 				B584C8081E31BEC000CB6C81 /* OKCommonTipView.h in Headers */,
 				B584C84D1E31E62900CB6C81 /* UIViewController+OKExtension.h in Headers */,
 				B50311571E1E607F00C11EC4 /* UILabel+OKExtension.h in Headers */,
@@ -696,10 +722,12 @@
 				B584C85D1E31F55700CB6C81 /* OKCFunction.h in Headers */,
 				B50311631E1E607F00C11EC4 /* OKHttpRequestTools.h in Headers */,
 				B503115D1E1E607F00C11EC4 /* UIView+OKTool.h in Headers */,
+				A30E89501F4978BD0009951E /* OKAppGuideView.h in Headers */,
 				B503113A1E1E607F00C11EC4 /* NSDate+OKExtension.h in Headers */,
 				B584C83C1E31BEC000CB6C81 /* ZLPhotoPickerFooterCollectionReusableView.h in Headers */,
 				B584C80E1E31BEC000CB6C81 /* OKHttpRequestTools+OKExtension.h in Headers */,
 				B584C8491E31E0E700CB6C81 /* UIBarButtonItem+OKExtension.h in Headers */,
+				A30E89541F49826F0009951E /* OKChooseDateView.h in Headers */,
 				B503113C1E1E607F00C11EC4 /* NSDictionary+OKExtension.h in Headers */,
 				B584C81D1E31BEC000CB6C81 /* ZLPhotoPickerBrowserViewController+SignlePhotoBrowser.h in Headers */,
 				B503114F1E1E607F00C11EC4 /* UIDevice+OKExtension.h in Headers */,
@@ -858,6 +886,7 @@
 				B584C8331E31BEC000CB6C81 /* ZLPhotoPickerAssetsViewController.m in Sources */,
 				B50311431E1E607F00C11EC4 /* NSNull+OKSafely.m in Sources */,
 				B503115A1E1E607F00C11EC4 /* UITextField+OKExtension.m in Sources */,
+				A30E89511F4978BD0009951E /* OKAppGuideView.m in Sources */,
 				B584C84A1E31E0E700CB6C81 /* UIBarButtonItem+OKExtension.m in Sources */,
 				B50311411E1E607F00C11EC4 /* NSMutableDictionary+OKExtension.m in Sources */,
 				B584C85E1E31F55700CB6C81 /* OKCFunction.m in Sources */,
@@ -883,6 +912,8 @@
 				B5BBC7961EE5094A007C8D48 /* UITabBarController+OKSliderApp.m in Sources */,
 				B584C8181E31BEC000CB6C81 /* UIImage+ZLPhotoLib.m in Sources */,
 				B5E8BD301E2F55DD00D0F73D /* OKReachabilityManager.m in Sources */,
+				A30E895D1F499BB40009951E /* OKShareView.m in Sources */,
+				A30E89551F49826F0009951E /* OKChooseDateView.m in Sources */,
 				B50311391E1E607F00C11EC4 /* NSArray+OKExtention.m in Sources */,
 				B5877F211ECB016C00A3A521 /* UIScrollView+OKRequestExtension.m in Sources */,
 				B50311481E1E607F00C11EC4 /* NSString+OKEncryption.m in Sources */,
@@ -909,6 +940,7 @@
 				B584C8201E31BEC000CB6C81 /* ZLPhotoPickerBrowserViewController.m in Sources */,
 				B5877F151ECAFE9800A3A521 /* UIView+OKBadge.m in Sources */,
 				B584C8151E31BEC000CB6C81 /* OKPickerPhotoHelp.m in Sources */,
+				A30E89591F4998110009951E /* OKPickerView.m in Sources */,
 				B584C8351E31BEC000CB6C81 /* ZLPhotoPickerGroupViewController.m in Sources */,
 				B584C80B1E31BEC000CB6C81 /* OKFMDBTool.m in Sources */,
 				A30E894D1F4940DC0009951E /* OKBaseWebViewController.m in Sources */,

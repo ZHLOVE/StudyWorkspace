@@ -30,11 +30,12 @@ UIImage* ImageFromBundleWithName(NSString *name)
     NSMutableArray *allBundleArr = [NSMutableArray arrayWithArray:bundleArr];
     if (allBundleArr.count>0) {
         NSString *bundlePrefix = [allBundleArr[0] lastPathComponent];
-        [allBundleArr removeObjectsInArray:@[[NSString stringWithFormat:@"%@/%@",bundlePrefix,@"AlipaySDK.bundle"],
-                                             [NSString stringWithFormat:@"%@/%@",bundlePrefix,@"AuthorizationBundel.bundle"],
-                                             [NSString stringWithFormat:@"%@/%@",bundlePrefix,@"BuildingTalkBackBundle.bundle"],
-                                             [NSString stringWithFormat:@"%@/%@",bundlePrefix,@"IPCLibary.bundle"],
-                                             [NSString stringWithFormat:@"%@/%@",bundlePrefix,@"MJRefresh.bundle"],]];
+        [allBundleArr removeObjectsInArray:@[
+         [NSString stringWithFormat:@"%@/%@",bundlePrefix,@"AlipaySDK.bundle"],
+         [NSString stringWithFormat:@"%@/%@",bundlePrefix,@"AuthorizationBundel.bundle"],
+         [NSString stringWithFormat:@"%@/%@",bundlePrefix,@"BuildingTalkBackBundle.bundle"],
+         [NSString stringWithFormat:@"%@/%@",bundlePrefix,@"IPCLibary.bundle"],
+         [NSString stringWithFormat:@"%@/%@",bundlePrefix,@"MJRefresh.bundle"],]];
     }
     
     //去自己的bundle下取图片
@@ -50,11 +51,11 @@ UIImage* ImageFromBundleWithName(NSString *name)
         BOOL isDir = NO;
         
         for (NSString *subFolder in folderArray) {
-            NSLog(@"bundlepath===%@====%@",bundlePath,subFolder);
             NSString *fullPath = [bundlePath stringByAppendingPathComponent:subFolder];
             [fileManager fileExistsAtPath:fullPath isDirectory:&isDir];
-            if (isDir) { //文件夹
-                
+            
+            //文件夹
+            if (isDir) {
                 getImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@/%@/%@",bundlePath,subFolder,name] inBundle:[NSBundle bundleForClass:NSClassFromString(@"OKCFunction")] compatibleWithTraitCollection:nil];
                 if (getImage) {
                     return getImage;
@@ -62,8 +63,79 @@ UIImage* ImageFromBundleWithName(NSString *name)
             }
         }
     }
-    
     return getImage;
+}
+
+/**
+ *  产生随机颜色
+ */
+UIColor* randomColor()
+{
+    CGFloat hue = ( arc4random() % 256 / 256.0 ); //0.0 to 1.0
+    CGFloat saturation = ( arc4random() % 128 / 256.0 ) + 0.5; // 0.5 to 1.0,away from white
+    CGFloat brightness = ( arc4random() % 128 / 256.0 ) + 0.5; //0.5 to 1.0,away from black
+    return [UIColor colorWithHue:hue saturation:saturation brightness:brightness alpha:1];
+}
+
+/**
+ *  获取应用版本号
+ */
+NSString* currentVersion()
+{
+    NSDictionary *info = [[NSBundle mainBundle] infoDictionary];
+    NSString *version = [info objectForKey:@"CFBundleShortVersionString"];
+    if (!version) {
+        version = @"IOS_X";
+    }
+    return version;
+}
+
+/**
+ *  获取应用使用语音
+ */
+NSString* userLanguage()
+{
+    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+    NSString *language = [def valueForKey:@"userLanguage"];
+    return language;
+}
+
+/**
+ * 设置应用使用语音
+ */
+void setUserlanguage(NSString *language)
+{
+    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+    //2.持久化
+    [def setValue:language forKey:@"userLanguage"];
+    [def synchronize];
+}
+
+NSString * dateString(NSDate *date)
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSString *currentDateStr = [dateFormatter stringFromDate:date];
+    return currentDateStr;
+}
+
+NSString * dateStringWithoutHMS(NSDate *date)
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSString *currentDateStr = [dateFormatter stringFromDate:date];
+    return [currentDateStr componentsSeparatedByString:@" "].firstObject;
+}
+
+NSDate *dateFromString(NSString *str)
+{
+    NSDateFormatter *dateFormatter=[[NSDateFormatter alloc]init];
+    /** 直接指定时区--东八区*/
+    NSTimeZone* GTMzone = [NSTimeZone timeZoneForSecondsFromGMT:8 * 3600];
+    [dateFormatter setTimeZone:GTMzone];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSDate *date = [dateFormatter dateFromString:str];
+    return date;
 }
 
 
