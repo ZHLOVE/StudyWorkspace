@@ -14,7 +14,6 @@
 #import <UIViewController+OKExtension.h>
 #import <MJExtension.h>
 #import <MJRefresh.h>
-
 #import "OKShareView.h"
 
 //请求数据地址
@@ -143,22 +142,6 @@ static NSString *const kTableCellID = @"cellIdInfo";
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NSArray *shareTitleArr = @[@"微信好友1",@"朋友圈2",@"QQ好友3",@"QQ空间4",@"微信好友5",@"朋友圈6",@"QQ好友7",@"QQ空间8"];
-    
-    NSArray *itemImageArr = @[ImageNamed(@"icon_微信好友"),
-                              ImageNamed(@"icon_微信朋友圈"),
-                              ImageNamed(@"icon_qq好友"),
-                              ImageNamed(@"icon_qq空间"),
-                              ImageNamed(@"icon_微信好友"),
-                              ImageNamed(@"icon_微信朋友圈"),
-                              ImageNamed(@"icon_qq好友"),
-                              ImageNamed(@"icon_qq空间")];
-    
-    [OKShareView showShareViewWithTitle:@"分享" itemTitleArr:shareTitleArr itemImageArr:itemImageArr callBlock:^(NSInteger buttonIndex) {
-        NSLog(@"buttonIndex===%zd",buttonIndex);
-    }];
-    return;
-    
     TimeLineDataModel *model = self.tableDataArr[indexPath.row];
     NSString *urlString = [NSString stringWithFormat:@"http://m.zol.com.cn/%@/d%@_%@.html",model.post.bbs,model.post.boardId,model.post.bookId];
     
@@ -166,5 +149,21 @@ static NSString *const kTableCellID = @"cellIdInfo";
                    propertyDic:@{@"urlString":urlString,@"title":model.post.title}];
 }
 
+/**
+ *  测试分享
+ */
+- (void)shareAction
+{
+    NSArray *shareTitleArr = @[@"微信好友1",@"朋友圈2",@"QQ好友3",@"QQ空间4",
+                               @"微信好友5",@"朋友圈6",@"QQ好友7",@"QQ空间8"];
+    NSArray *itemImageArr = @[ImageNamed(@"icon_微信好友"),ImageNamed(@"icon_微信朋友圈"),
+                              ImageNamed(@"icon_qq好友"),ImageNamed(@"icon_qq空间"),
+                              ImageNamed(@"icon_微信好友"),ImageNamed(@"icon_微信朋友圈"),
+                              ImageNamed(@"icon_qq好友"),ImageNamed(@"icon_qq空间")];
+    
+    [OKShareView showShareViewWithTitle:@"分享" itemTitleArr:shareTitleArr itemImageArr:itemImageArr callBlock:^(NSInteger buttonIndex) {
+        NSLog(@"buttonIndex===%zd",buttonIndex);
+    }];
+}
 
 @end
