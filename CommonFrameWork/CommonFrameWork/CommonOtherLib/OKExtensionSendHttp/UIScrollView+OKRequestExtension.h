@@ -35,6 +35,7 @@ typedef enum : NSUInteger {
  */
 /** 如果是UItableView,底部显示没有更多数据提示 */
 @property (nonatomic, strong) NSString *footerTipString;
+
 /** 空数据文字 */
 @property (nonatomic, strong) NSString *reqEmptyTipString;
 /** 空数据图片 */

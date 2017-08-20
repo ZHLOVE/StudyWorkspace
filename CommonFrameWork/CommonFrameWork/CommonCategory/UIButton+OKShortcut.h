@@ -40,6 +40,7 @@ typedef void (^TouchBlock) (UIButton * button);
 - (UIButton * (^)(UIColor *,UIControlState state))ok_setTitleColor;
 - (UIButton * (^)(UIColor *,UIControlState state))ok_setTitleShadowColor;
 - (UIButton * (^)(UIImage *,UIControlState state))ok_setBackgroundImage;
+- (UIButton * (^)(UIImage *,UIControlState state))ok_setImage;
 - (UIButton * (^)(UIColor *,UIControlState state))ok_setBackgroundColor;
 
 - (UIButton * (^)(NSAttributedString *,UIControlState state))ok_setAttributedTitle;

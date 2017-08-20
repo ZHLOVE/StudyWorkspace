@@ -79,6 +79,14 @@ static void * touchKey = &touchKey;
     };
 }
 
+- (UIButton *(^)(UIImage *,UIControlState state))ok_setImage {
+    
+    return ^UIButton * (UIImage *image,UIControlState state) {
+        [self setImage:image forState:state];
+        return self;
+    };
+}
+
 - (UIButton * (^)(UIColor *,UIControlState state))ok_setBackgroundColor
 {
     return ^UIButton * (UIColor *color,UIControlState state) {

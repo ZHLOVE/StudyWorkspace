@@ -30,18 +30,24 @@
 
 @implementation OKAppGuideView
 
+/**
+ *  展示App新版本引导图
+ */
++(void)showAppGuideView
+{
+    OKAppGuideView *appView = [[OKAppGuideView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    [[UIApplication sharedApplication].delegate.window addSubview:appView];
+}
+
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
         [self initUI];
-        
         self.backgroundColor = Color_BackGround;
-        
         self.jumpBtn.hidden = NO;
     }
     return self;
 }
-
 
 /**
  *  跳过按钮
@@ -62,7 +68,6 @@
     return _jumpBtn;
 }
 
-
 /**
  *  引导页数图片
  */
@@ -70,18 +75,21 @@
 {
     if (!_imageArr) {
         if (IS_IPHONE4) {
-            _imageArr = [[NSArray alloc] initWithObjects:ImageNamed(@"guide1_iPhone4.jpg"),ImageNamed(@"guide2_iPhone4.jpg"),ImageNamed(@"guide3_iPhone4.jpg"),nil];
+            _imageArr = [[NSArray alloc] initWithObjects:
+                         ImageNamed(@"guide1_iPhone4.jpg"),ImageNamed(@"guide2_iPhone4.jpg"),ImageNamed(@"guide3_iPhone4.jpg"),nil];
         } else if (IS_IPHONE5) {
-            _imageArr = [[NSArray alloc] initWithObjects:ImageNamed(@"guide1_iPhone5.jpg"),ImageNamed(@"guide2_iPhone5.jpg"),ImageNamed(@"guide3_iPhone5.jpg"),nil];
+            _imageArr = [[NSArray alloc] initWithObjects:
+                         ImageNamed(@"guide1_iPhone5.jpg"),ImageNamed(@"guide2_iPhone5.jpg"),ImageNamed(@"guide3_iPhone5.jpg"),nil];
         } else if (IS_IPhone6) {
-            _imageArr = [[NSArray alloc] initWithObjects:ImageNamed(@"guide1_iPhone6.jpg"),ImageNamed(@"guide2_iPhone6.jpg"),ImageNamed(@"guide3_iPhone6.jpg"),nil];
+            _imageArr = [[NSArray alloc] initWithObjects:
+                         ImageNamed(@"guide1_iPhone6.jpg"),ImageNamed(@"guide2_iPhone6.jpg"),ImageNamed(@"guide3_iPhone6.jpg"),nil];
         } else if (IS_IPhone6plus) {
-            _imageArr = [[NSArray alloc] initWithObjects:ImageNamed(@"guide1_iPhone6p.jpg"),ImageNamed(@"guide2_iPhone6p.jpg"),ImageNamed(@"guide3_iPhone6p.jpg"),nil];
+            _imageArr = [[NSArray alloc] initWithObjects:
+                         ImageNamed(@"guide1_iPhone6p.jpg"),ImageNamed(@"guide2_iPhone6p.jpg"),ImageNamed(@"guide3_iPhone6p.jpg"),nil];
         }
     }
     return _imageArr;
 }
-
 
 - (void)initUI
 {
@@ -93,7 +101,6 @@
     self.imgScrollView.pagingEnabled = YES;
     self.imgScrollView.contentSize = CGSizeMake(self.imageArr.count * Screen_Width , Screen_Height);
     [self addSubview:self.imgScrollView];
-    
     
     CGFloat buttonMaxY = 0;
     
@@ -127,9 +134,7 @@
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(startLaunching)];
         [imageView addGestureRecognizer:tap];
     }
-    
 }
-
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
@@ -155,12 +160,10 @@
         self.jumpBtn.alpha = 0;
         
     } completion:^(BOOL finished) {
-        [self removeFromSuperview];
         [self.jumpBtn removeFromSuperview];
+        [self removeFromSuperview];
     }];
-    
 }
-
 
 /**
  *  跳过

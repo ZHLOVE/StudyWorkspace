@@ -10,4 +10,10 @@
 
 @interface OKAppGuideView : UIView
 
+/**
+ *  展示App新版本引导图
+ *  <这里只要修改引导页数图片数组名字即可>
+ */
++(void)showAppGuideView;
+
 @end

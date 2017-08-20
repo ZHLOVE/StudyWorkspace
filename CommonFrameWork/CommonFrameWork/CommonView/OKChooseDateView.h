@@ -15,7 +15,7 @@ typedef enum : NSUInteger{
 
 @interface OKChooseDateView : UIView
 
-@property (nonatomic, strong) UIDatePicker *GJDatePicker;
+@property (nonatomic, strong) UIDatePicker *okDatePicker;
 /**开始结束时间是否允许相等*/
 @property(nonatomic,assign)BOOL isSame;
 
@@ -29,8 +29,8 @@ typedef enum : NSUInteger{
  @return 时间控件实例
  */
 +(instancetype)showViewWithStyle:(OKChooseDateViewStyle)dateViewStyle
-                    startDate:(NSString *)startDate
-                       endDate:(NSString *)endDate
+                       startDate:(NSString *)startDate
+                         endDate:(NSString *)endDate
                     callBackHand:(void (^)(NSString *chooseStartDate, NSString *chooseEndDate, BOOL flag))block;
 
 +(instancetype)showWithSingleSelectionBlock:(void (^)(NSString *date, BOOL flag))block;

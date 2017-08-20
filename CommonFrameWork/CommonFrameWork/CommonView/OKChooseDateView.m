@@ -14,29 +14,29 @@
 #import "OKCFunction.h"
 #import "OKAlertView.h"
 
-#define Blue_Color  UIColorFromHex(0x007aff)
-#define Text_Color  UIColorFromHex(0x323232)
+#define Blue_Color              UIColorFromHex(0x007aff)
+#define Text_Color              UIColorFromHex(0x323232)
 //确定Btn
-#define EnsureBtn   ((UIButton *)[_bgView viewWithTag:7778])
+#define EnsureBtn               ((UIButton *)[_bgView viewWithTag:7778])
 //取消Btn
-#define CancelBtn   ((UIButton *)[_bgView viewWithTag:7777])
+#define CancelBtn               ((UIButton *)[_bgView viewWithTag:7777])
 //开始时间Btn
-#define StartBtn    ((GJDateButton *)[_bgView viewWithTag:8888])
+#define StartBtn                ((OKDateButton *)[_bgView viewWithTag:8888])
 //结束时间Btn
-#define EndBtn      ((GJDateButton *)[_bgView viewWithTag:8889])
+#define EndBtn                  ((OKDateButton *)[_bgView viewWithTag:8889])
 // H:M 样式
-#define GJChooseTimeModel (UIDatePickerModeTime)
-/// 时间戳
-#define GJChooseCurrentDate     (GJChooseTimeModel == self.GJDatePicker.datePickerMode?dateFromString(@"2015-06-06 07:00:00"):[self getCurrentDate])
-#define GJChooseEndCurrentDate  (GJChooseTimeModel == self.GJDatePicker.datePickerMode?dateFromString(@"2015-06-06 23:00:00"):[self getCurrentDate])
+#define OKChooseTimeModel       (UIDatePickerModeTime)
+// 时间戳
+#define OKChooseCurrentDate     (OKChooseTimeModel == self.okDatePicker.datePickerMode?dateFromString(@"2015-06-06 07:00:00"):[self getCurrentDate])
+#define OKChooseEndCurrentDate  (OKChooseTimeModel == self.okDatePicker.datePickerMode?dateFromString(@"2015-06-06 23:00:00"):[self getCurrentDate])
 
-#define DEFAULT_H_Single (self.isSingleSelect?1:2)
-#define DEFAULT_H (44.5*DEFAULT_H_Single+216)
+#define DEFAULT_H_Single        (self.isSingleSelect?1:2)
+#define DEFAULT_H               (44.5*DEFAULT_H_Single+216)
 
-@interface GJDateButton : UIButton
+@interface OKDateButton : UIButton
 @end
 
-@implementation GJDateButton
+@implementation OKDateButton
 
 - (void)setSelected:(BOOL)selected
 {
@@ -97,7 +97,7 @@
         }
         case OKHMStyle:
         {
-            OKChooseDateView * dateView = [[self alloc]initWithPickModel:GJChooseTimeModel
+            OKChooseDateView * dateView = [[self alloc]initWithPickModel:OKChooseTimeModel
                                                              AdStartDate:startDate
                                                                AdEndDate:endDate
                                                           SelectionBlock:block];
@@ -204,7 +204,7 @@
         if (self.isSingleSelect) continue;
         
         CGFloat width = _bgView.width/2.f-0.25;
-        GJDateButton *btnDown = [GJDateButton buttonWithType:UIButtonTypeCustom];
+        OKDateButton *btnDown = [OKDateButton buttonWithType:UIButtonTypeCustom];
         btnDown.titleLabel.numberOfLines = 0;
         btnDown.titleLabel.textAlignment = NSTextAlignmentCenter;
         [self setBtn:btnDown withTitle:i==0?@"开始时间":@"结束时间" AdSelect:NO];
@@ -242,22 +242,22 @@
     }
     [self.bgWindow addSubview:self];
     
-    _GJDatePicker = [[UIDatePicker alloc] init];
-    _GJDatePicker.datePickerMode = pickMode;
-    _GJDatePicker.y = 44.5;
-    _GJDatePicker.centerX = _bgView.centerX;
+    _okDatePicker = [[UIDatePicker alloc] init];
+    _okDatePicker.datePickerMode = pickMode;
+    _okDatePicker.y = 44.5;
+    _okDatePicker.centerX = _bgView.centerX;
     NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];//设置为中
-    _GJDatePicker.locale = locale;
-    _GJDatePicker.maximumDate = self.isSingleSelect?[self getFutureTimeWithYears:10]:[NSDate date];
-    _GJDatePicker.minimumDate = self.isSingleSelect?[NSDate date]:dateFromString(@"2010-01-01 08:00:00");
-    _GJDatePicker.transform = CGAffineTransformMakeScale(1.2, 1.2);
+    _okDatePicker.locale = locale;
+    _okDatePicker.maximumDate = self.isSingleSelect?[self getFutureTimeWithYears:10]:[NSDate date];
+    _okDatePicker.minimumDate = self.isSingleSelect?[NSDate date]:dateFromString(@"2010-01-01 08:00:00");
+    _okDatePicker.transform = CGAffineTransformMakeScale(1.2, 1.2);
     
     CGFloat varHeight = self.isSingleSelect?0:44;
-    _GJDatePicker.frame = CGRectMake(0, 44.5, Screen_Width, _bgView.height-44.5-varHeight);
-    if (GJChooseTimeModel == _GJDatePicker.datePickerMode) [_GJDatePicker setLocale:[NSLocale systemLocale]];
-    [_bgView addSubview:_GJDatePicker];
+    _okDatePicker.frame = CGRectMake(0, 44.5, Screen_Width, _bgView.height-44.5-varHeight);
+    if (OKChooseTimeModel == _okDatePicker.datePickerMode) [_okDatePicker setLocale:[NSLocale systemLocale]];
+    [_bgView addSubview:_okDatePicker];
     
-    [_GJDatePicker addTarget:self action:@selector(pickerValueChanged:) forControlEvents:UIControlEventValueChanged];
+    [_okDatePicker addTarget:self action:@selector(pickerValueChanged:) forControlEvents:UIControlEventValueChanged];
     
     [self btnClicked:(UIButton *)[_bgView viewWithTag:8888]];
     
@@ -269,7 +269,7 @@
         }else{
             _startDate = [NSString stringWithFormat:@"%@ 00:00:00",startDate];
         }
-        [_GJDatePicker setDate:dateFromString(_startDate) animated:YES];
+        [_okDatePicker setDate:dateFromString(_startDate) animated:YES];
         [self setBtn:StartBtn withTitle:[@"开始时间\n" stringByAppendingString:startDate] AdSelect:YES];
     }else{
         if (self.isSingleSelect) _startDate = dateString([NSDate date]);
@@ -360,13 +360,13 @@
                 NSString *startDateStr = btn1.titleLabel.attributedText.string;
                 if ([startDateStr isEqualToString:@"开始时间"])
                 {
-                    currDate = GJChooseCurrentDate;
+                    currDate = OKChooseCurrentDate;
                 }else
                 {
                     currDate = [self showDateWithString:startDateStr];
                 }
                 
-                [_GJDatePicker setDate:currDate animated:YES];
+                [_okDatePicker setDate:currDate animated:YES];
                 
                 btn1.userInteractionEnabled = NO;
                 btn2.selected = NO;
@@ -386,13 +386,13 @@
                 NSString *endDateStr = btn2.titleLabel.attributedText.string;
                 if ([endDateStr isEqualToString:@"结束时间"])
                 {
-                    currDate = GJChooseCurrentDate;
+                    currDate = OKChooseCurrentDate;
                 }else
                 {
                     currDate = [self showDateWithString:endDateStr];
                 }
                 
-                [_GJDatePicker setDate:currDate animated:YES];
+                [_okDatePicker setDate:currDate animated:YES];
                 
                 btn1.selected = NO;
                 btn2.userInteractionEnabled = NO;
@@ -474,7 +474,7 @@
     if (!componentsArr.count) return nil;
     NSString *dateTitle = NULL;
     
-    if (GJChooseTimeModel == self.GJDatePicker.datePickerMode)
+    if (OKChooseTimeModel == self.okDatePicker.datePickerMode)
     {
         dateTitle = componentsArr.lastObject;
         // 截取秒位
@@ -494,9 +494,9 @@
     }
     NSDateFormatter *dateFormatter=[[NSDateFormatter alloc]init];
     
-    if (GJChooseTimeModel == self.GJDatePicker.datePickerMode)
+    if (OKChooseTimeModel == self.okDatePicker.datePickerMode)
     {
-        dateString = [NSString stringWithFormat:@"%@ %@:00",dateStringWithoutHMS(GJChooseCurrentDate),dateString];
+        dateString = [NSString stringWithFormat:@"%@ %@:00",dateStringWithoutHMS(OKChooseCurrentDate),dateString];
         [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     }
     else
