@@ -37,6 +37,7 @@ _Pragma("clang diagnostic pop") \
 
 static char const * const kAutomaticShowTipViewKey  = "kAutomaticShowTipViewKey";
 static char const * const kFooterTipStringKey       = "kFooterTipStringKey";
+static char const * const kFooterTipImageKey        = "kFooterTipImageKey";
 static char const * const kReqEmptyTipStringKey     = "kReqEmptyTipStringKey";
 static char const * const kReqEmptyTipImageKey      = "kReqEmptyTipImageKey";
 static char const * const kReqFailTipStringKey      = "kReqFailTipStringKey";
@@ -81,6 +82,19 @@ static char const * const kActionSELKey             = "kActionSELKey";
 {
     return objc_getAssociatedObject(self, kFooterTipStringKey);
 }
+
+// ==================== UItableView"没有更多数据"提示图片 ====================
+
+- (void)setFooterTipImage:(UIImage *)footerTipImage
+{
+    objc_setAssociatedObject(self, kFooterTipImageKey, footerTipImage, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (UIImage *)footerTipImage
+{
+    return objc_getAssociatedObject(self, kFooterTipImageKey);
+}
+
 
 // ==================== 请求空数据提示 ====================
 
@@ -439,10 +453,11 @@ static char const * const kActionSELKey             = "kActionSELKey";
         }
         
     } else {
-        self.mj_footer.hidden = NO;
+        [self.mj_footer endRefreshingWithNoMoreData];
+        self.mj_footer.hidden = YES;
         
         //是否显示表格的FooterView
-        [self showTableFootView:NO];
+        [self showTableFootView:YES];
     }
 }
 
@@ -540,26 +555,80 @@ static char const * const kActionSELKey             = "kActionSELKey";
  */
 - (void)showTableFootView:(BOOL)show
 {
-    if (self.footerTipString && [self isKindOfClass:[UITableView class]]) {
+    //如果是表格，设置没有更多数据footerView
+    if ([self isKindOfClass:[UITableView class]]) {
         UITableView *tableView = (UITableView *)self;
+        
         if (show) {
-            UILabel *tipLabel = [[UILabel alloc] init];
-            tipLabel.frame = CGRectMake(0, 0, self.bounds.size.width, 50);
-            tipLabel.backgroundColor = [UIColor clearColor];
-            tipLabel.textColor = [UIColor lightGrayColor];
-            tipLabel.text = [NSString stringWithFormat:@"━━━━━━━━ %@ ━━━━━━━━",self.footerTipString];
-            tipLabel.font = [UIFont boldSystemFontOfSize:14];
-            tipLabel.textColor = [UIColor grayColor];
-            tipLabel.textAlignment = NSTextAlignmentCenter;
-            
-            UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, 1)];
-            line.backgroundColor = [UIColor groupTableViewBackgroundColor];
-            [tipLabel addSubview:line];
-            tableView.tableFooterView = tipLabel;
+            if (self.footerTipString) {
+                tableView.tableFooterView = self.customFootTipLabel;
+                
+            } else if (self.footerTipImage) {
+                tableView.tableFooterView = self.customFootTipView;
+            }
         } else {
             tableView.tableFooterView = [UIView new];
         }
+        
+    } else if ([self isKindOfClass:[UICollectionView class]]) {
+        UICollectionView *collectionView = (UICollectionView *)self;
+        
+        if (show) {
+            if (self.footerTipString) {
+                UILabel *tipLabel = self.customFootTipLabel;
+                tipLabel.frame = CGRectMake(0, collectionView.frame.size.height, self.bounds.size.width, 50);
+                [collectionView addSubview:tipLabel];
+                
+            } else if (self.footerTipImage) {
+                UIView *footerView = self.customFootTipView;
+                CGRect rect = footerView.frame;
+                rect.origin.y = collectionView.frame.size.height;
+                footerView.frame = rect;
+                [collectionView addSubview:footerView];
+            }
+            
+        } else {
+            UIView *footerView = [collectionView viewWithTag:kRequestTipViewTag];
+            [footerView removeFromSuperview];
+        }
     }
+}
+
+/**
+ * 底部提示文案Label
+ */
+- (UILabel *)customFootTipLabel
+{
+    UILabel *tipLabel = [[UILabel alloc] init];
+    tipLabel.frame = CGRectMake(0, 0, self.bounds.size.width, 50);
+    tipLabel.backgroundColor = [UIColor clearColor];
+    //tipLabel.text = [NSString stringWithFormat:@"━━━━━━ %@ ━━━━━━",self.footerTipString];
+    tipLabel.text = self.footerTipString;
+    tipLabel.font = [UIFont systemFontOfSize:14];
+    tipLabel.numberOfLines = 0;
+    tipLabel.textColor = [UIColor lightGrayColor];
+    tipLabel.textAlignment = NSTextAlignmentCenter;
+    return tipLabel;
+}
+
+/**
+ * 底部提示图片
+ */
+- (UIView *)customFootTipView
+{
+    CGFloat height = self.footerTipImage.size.height;
+    
+    UIView *footerView = [[UIView alloc] init];
+    footerView.backgroundColor = [UIColor clearColor];
+    footerView.frame = CGRectMake(0, 0, self.bounds.size.width, height+30);
+    footerView.tag = kRequestTipViewTag;
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:self.footerTipImage];
+    imageView.backgroundColor = [UIColor clearColor];
+    imageView.contentMode = UIViewContentModeCenter;
+    imageView.center = footerView.center;
+    [footerView addSubview:imageView];
+    return footerView;
 }
 
 /**

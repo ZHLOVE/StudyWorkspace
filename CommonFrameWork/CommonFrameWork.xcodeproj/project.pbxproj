@@ -70,6 +70,8 @@
 		B50311641E1E607F00C11EC4 /* OKHttpRequestTools.m in Sources */ = {isa = PBXBuildFile; fileRef = B50310EC1E1E607F00C11EC4 /* OKHttpRequestTools.m */; };
 		B50311651E1E607F00C11EC4 /* OKActionSheetView.h in Headers */ = {isa = PBXBuildFile; fileRef = B50310EE1E1E607F00C11EC4 /* OKActionSheetView.h */; };
 		B50311661E1E607F00C11EC4 /* OKActionSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = B50310EF1E1E607F00C11EC4 /* OKActionSheetView.m */; };
+		B557134D1F4A77620083C23F /* OKTagetSliderView.h in Headers */ = {isa = PBXBuildFile; fileRef = B557134B1F4A77620083C23F /* OKTagetSliderView.h */; };
+		B557134E1F4A77620083C23F /* OKTagetSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B557134C1F4A77620083C23F /* OKTagetSliderView.m */; };
 		B56E18F91E49D2A60051C7AE /* OKFileManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B56E18F71E49D2A60051C7AE /* OKFileManager.h */; };
 		B56E18FA1E49D2A60051C7AE /* OKFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B56E18F81E49D2A60051C7AE /* OKFileManager.m */; };
 		B56E18FD1E49D4F60051C7AE /* OKLocalNotification.h in Headers */ = {isa = PBXBuildFile; fileRef = B56E18FB1E49D4F60051C7AE /* OKLocalNotification.h */; };
@@ -235,6 +237,8 @@
 		B50310EC1E1E607F00C11EC4 /* OKHttpRequestTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OKHttpRequestTools.m; sourceTree = "<group>"; };
 		B50310EE1E1E607F00C11EC4 /* OKActionSheetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKActionSheetView.h; sourceTree = "<group>"; };
 		B50310EF1E1E607F00C11EC4 /* OKActionSheetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OKActionSheetView.m; sourceTree = "<group>"; };
+		B557134B1F4A77620083C23F /* OKTagetSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKTagetSliderView.h; sourceTree = "<group>"; };
+		B557134C1F4A77620083C23F /* OKTagetSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OKTagetSliderView.m; sourceTree = "<group>"; };
 		B56E18F71E49D2A60051C7AE /* OKFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKFileManager.h; sourceTree = "<group>"; };
 		B56E18F81E49D2A60051C7AE /* OKFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OKFileManager.m; sourceTree = "<group>"; };
 		B56E18FB1E49D4F60051C7AE /* OKLocalNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKLocalNotification.h; sourceTree = "<group>"; };
@@ -479,6 +483,8 @@
 				A30E894F1F4978BD0009951E /* OKAppGuideView.m */,
 				A30E89521F49826F0009951E /* OKChooseDateView.h */,
 				A30E89531F49826F0009951E /* OKChooseDateView.m */,
+				B557134B1F4A77620083C23F /* OKTagetSliderView.h */,
+				B557134C1F4A77620083C23F /* OKTagetSliderView.m */,
 				A30E89561F4998110009951E /* OKPickerView.h */,
 				A30E89571F4998110009951E /* OKPickerView.m */,
 				A30E895A1F499BB40009951E /* OKShareView.h */,
@@ -738,6 +744,7 @@
 				B584C8191E31BEC000CB6C81 /* ZLPhotoPickerBrowserPhoto.h in Headers */,
 				B50311651E1E607F00C11EC4 /* OKActionSheetView.h in Headers */,
 				B584C7B31E31BAD500CB6C81 /* OKFrameDefiner.h in Headers */,
+				B557134D1F4A77620083C23F /* OKTagetSliderView.h in Headers */,
 				B5877F281ECB07DD00A3A521 /* NSAttributedString+OKExtension.h in Headers */,
 				B5BBC7951EE5094A007C8D48 /* UITabBarController+OKSliderApp.h in Headers */,
 				B5877F241ECB070C00A3A521 /* OKAlertView.h in Headers */,
@@ -894,6 +901,7 @@
 				B50311581E1E607F00C11EC4 /* UILabel+OKExtension.m in Sources */,
 				B584C81A1E31BEC000CB6C81 /* ZLPhotoPickerBrowserPhoto.m in Sources */,
 				B50311541E1E607F00C11EC4 /* UIImageView+OKCornerRadius.m in Sources */,
+				B557134E1F4A77620083C23F /* OKTagetSliderView.m in Sources */,
 				B584C81C1E31BEC000CB6C81 /* ZLPhotoRect.m in Sources */,
 				B50311501E1E607F00C11EC4 /* UIDevice+OKExtension.m in Sources */,
 				B584C84E1E31E62900CB6C81 /* UIViewController+OKExtension.m in Sources */,
