@@ -38,10 +38,14 @@
 #define PopGestureRecognizerenabled(ret)   (self.navigationController.interactivePopGestureRecognizer.enabled = ret)
 
 
-//自定义字体大小                               (细体字)[UIFont fontWithName:@"Heiti SC" size:s]
+//自定义字体大小
 //字体的大小
 #undef  FontCustomSize
 #define FontCustomSize(fontName,fontSize)   ([UIFont fontWithName:fontName size:fontSize])
+
+//定义(细体字)
+#undef  FontThinSize
+#define FontThinSize(fontSize)              [UIFont fontWithName:@"Heiti SC" size:fontSize]
 
 //设置系统默认字体的大小
 #undef  FONTSYSTEM
@@ -54,6 +58,8 @@
 //获取 appdelegate
 #define APPDELEGATE                         (AppDelegate *)[[UIApplication sharedApplication] delegate]
 
+//默认数据加载失败
+#define DefaultRequestError                  [NSError errorWithDomain:@"数据加载失败" code:502 userInfo:nil]
 
 /*---------------------打印日志--------------------------*/
 //重写NSLog,Debug模式下打印日志和当前行数

@@ -144,7 +144,7 @@
 - (void)loadWebViewData
 {
     if (!self.urlString) {
-        [self.webView.scrollView showRequestTip:[NSError errorWithDomain:@"数据加载失败" code:502 userInfo:nil]];
+        [self.webView.scrollView showRequestTip:DefaultRequestError];
         return;
     }
     
