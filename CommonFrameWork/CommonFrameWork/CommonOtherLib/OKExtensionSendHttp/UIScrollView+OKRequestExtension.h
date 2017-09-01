@@ -51,11 +51,11 @@ typedef enum : NSUInteger {
 /** 网络连接失败图片 */
 @property (nonatomic, strong) UIImage *netErrorTipImage;
 /** 按钮标题 */
-@property (nonatomic, strong) NSString *emptyDataBtnTitle;
+@property (nonatomic, strong) NSString *customBtnTitle;
 /** 按钮点击的Target */
-@property (nonatomic, strong) id emptyDataActionTarget;
+@property (nonatomic, strong) id customActionTarget;
 /** 按钮点击的事件 */
-@property (nonatomic, assign) SEL emptyDataActionSEL;
+@property (nonatomic, assign) SEL customActionSEL;
 
 
 #pragma mark -- 给表格添加上下拉刷新事件

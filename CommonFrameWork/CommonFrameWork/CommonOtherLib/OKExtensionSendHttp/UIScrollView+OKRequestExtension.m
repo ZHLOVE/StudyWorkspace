@@ -12,8 +12,10 @@
 #import <MJRefresh.h>
 
 /** 网络连接失败 */
-#define NetworkConnectFailTips                      @"网络开小差, 请稍后再试哦!"
-#define AgainRequestTipString                       @"重新加载"
+#define kNetworkConnectDefaultFailTips              @"网络开小差, 请稍后再试哦!"
+#define kAgainRequestDefaultTipString               @"重新加载"
+#define kEmptyDataDefaultTipText                    @"暂无数据"
+#define kReqFailDefaultTipText                      @"数据加载失败"
 /*  弱引用 */
 #define WEAKSELF                                    typeof(self) __weak weakSelf = self;
 /*  强引用 */
@@ -106,7 +108,7 @@ static char const * const kActionSELKey             = "kActionSELKey";
 - (NSString *)reqEmptyTipString
 {
     NSString *emptyTip = objc_getAssociatedObject(self, kReqEmptyTipStringKey);
-    return emptyTip ? : @"暂无数据";
+    return emptyTip ? : kEmptyDataDefaultTipText;
 }
 
 // ==================== 请求空数据图片 ====================
@@ -135,7 +137,7 @@ static char const * const kActionSELKey             = "kActionSELKey";
 - (NSString *)reqFailTipString
 {
     NSString *tipStr = objc_getAssociatedObject(self, kReqFailTipStringKey);
-    return tipStr ? : @"数据加载失败!";
+    return tipStr ? : kReqFailDefaultTipText;
 }
 
 // ==================== 请求失败图片 ====================
@@ -164,7 +166,7 @@ static char const * const kActionSELKey             = "kActionSELKey";
 - (NSString *)netErrorTipString
 {
     NSString *tipStr = objc_getAssociatedObject(self, kNetErrorTipStringKey);
-    return tipStr ? : NetworkConnectFailTips;
+    return tipStr ? : kNetworkConnectDefaultFailTips;
 }
 
 // ==================== 网络错误图片 ====================
@@ -185,37 +187,37 @@ static char const * const kActionSELKey             = "kActionSELKey";
 
 // ==================== 按钮点击的Target ====================
 
-- (void)setEmptyDataBtnTitle:(NSString *)emptyDataBtnTitle
+- (void)setCustomBtnTitle:(NSString *)customBtnTitle
 {
-    objc_setAssociatedObject(self, kActionBtnTitleKey, emptyDataBtnTitle, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, kActionBtnTitleKey, customBtnTitle, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (NSString *)emptyDataBtnTitle
+- (NSString *)customBtnTitle
 {
     return objc_getAssociatedObject(self, kActionBtnTitleKey);
 }
 
 // ==================== 按钮点击的Target ====================
 
-- (void)setEmptyDataActionTarget:(id)emptyDataActionTarget
+- (void)setCustomActionTarget:(id)customActionTarget
 {
-    objc_setAssociatedObject(self, kActionTargetKey, emptyDataActionTarget, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, kActionTargetKey, customActionTarget, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (id)emptyDataActionTarget
+- (id)customActionTarget
 {
     return objc_getAssociatedObject(self, kActionTargetKey);
 }
 
 // ==================== 按钮点击的事件 ====================
 
-- (void)setEmptyDataActionSEL:(SEL)emptyDataActionSEL
+- (void)setCustomActionSEL:(SEL)customActionSEL
 {
-    NSString *selString = NSStringFromSelector(emptyDataActionSEL);
+    NSString *selString = NSStringFromSelector(customActionSEL);
     objc_setAssociatedObject(self, kActionSELKey, selString, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (SEL)emptyDataActionSEL
+- (SEL)customActionSEL
 {
     NSString *selString = objc_getAssociatedObject(self, kActionSELKey);
     return NSSelectorFromString(selString);
@@ -292,44 +294,31 @@ static char const * const kActionSELKey             = "kActionSELKey";
         [self.mj_footer endRefreshing];
     }
     
-    //如果请求成功处理
-    if ([responseData isKindOfClass:[NSDictionary class]]) {
-        if ([self contentViewIsEmptyData]) {//页面没有数据
+    //判断请求状态: responseData为字典就是请求成功, 为NSError或nil则是请求失败
+    BOOL requestSuccess = [responseData isKindOfClass:[NSDictionary class]];
+    
+    if ([self contentViewIsEmptyData]) {//页面没有数据
+        
+        //根据状态,显示背景提示Viwe
+        if (![AFNetworkReachabilityManager sharedManager].reachable) {
+            //显示没有网络提示
+            [self showTipWithStatus:RequesNoNetWorkStatus];
             
-            //根据状态,显示背景提示Viwe
-            if (![AFNetworkReachabilityManager sharedManager].reachable) {//没有网络
-                [self showTipWithStatus:RequesNoNetWorkStatus];
-                
-            } else {//空数据提示
-                [self showTipWithStatus:RequestEmptyDataStatus];
-            }
-            
-        } else { //页面有数据
-            
-            //移除页面上已有的提示视图
-            [self removeOldTipBgView];
-            
-            if (self.mj_footer) {
-                //控制刷新控件显示的分页逻辑
-                [self setPageRefreshStatus:responseData];
-            };
+        } else {
+            //成功:显示空数据提示, 失败:显示请求失败提示
+            TableVieTipStatus status = requestSuccess ? RequestEmptyDataStatus : RequestFailStatus;
+            [self showTipWithStatus:status];
         }
         
-    } else if(!responseData || [responseData isKindOfClass:[NSError class]]){ //请求失败处理
-        if ([self contentViewIsEmptyData]) {//页面没有数据
-            
-            //根据状态,显示背景提示Viwe
-            if (![AFNetworkReachabilityManager sharedManager].reachable) { //没有网络提示
-                [self showTipWithStatus:RequesNoNetWorkStatus];
-                
-            } else {//请求失败提示
-                [self showTipWithStatus:RequestFailStatus];
-            }
-        } else { //页面有数据
-            
-            //移除页面上已有的提示视图
-            [self removeOldTipBgView];
-        }
+    } else { //页面有数据
+        
+        //移除页面上已有的提示视图
+        [self removeOldTipBgView];
+        
+        if (requestSuccess && self.mj_footer) {
+            //控制刷新控件显示的分页逻辑
+            [self setPageRefreshStatus:responseData];
+        };
     }
 }
 
@@ -343,6 +332,9 @@ static char const * const kActionSELKey             = "kActionSELKey";
     //先移除页面上已有的提示视图
     [self removeOldTipBgView];
     
+    //不显示表格的FooterView
+    [self showTableFootView:NO];
+    
     WEAKSELF
     void (^removeTipViewBlock)() = ^(){
         STRONGSELF
@@ -353,16 +345,14 @@ static char const * const kActionSELKey             = "kActionSELKey";
     void (^targetActionBlock)() = ^(){
         STRONGSELF
         //如果额外设置了按钮事件
-        if (strongSelf.emptyDataBtnTitle &&
-            strongSelf.emptyDataActionTarget &&
-            [strongSelf.emptyDataActionTarget respondsToSelector:strongSelf.emptyDataActionSEL]) {
+        if ([strongSelf.customActionTarget respondsToSelector:strongSelf.customActionSEL]) {
             
             //1. 先移除页面上已有的提示视图
             [strongSelf removeOldTipBgView];
             
             //2. 重新添加按钮事件
             OKPerformSelectorLeakWarning(
-               [strongSelf.emptyDataActionTarget performSelector:strongSelf.emptyDataActionSEL];
+               [strongSelf.customActionTarget performSelector:strongSelf.customActionSEL];
             );
         }
     };
@@ -371,28 +361,41 @@ static char const * const kActionSELKey             = "kActionSELKey";
     UIImage *tipImage = nil;
     NSString *actionTitle = nil;
     void (^block)() = nil;
+    BOOL needToSelector = [self.customActionTarget respondsToSelector:self.customActionSEL];
     
     if (state == RequesNoNetWorkStatus) {//没有网络
         
         tipString = self.netErrorTipString;
         tipImage = self.netErrorTipImage;
-        actionTitle = AgainRequestTipString;
-        block = removeTipViewBlock;
-        
+        actionTitle = self.customBtnTitle ? : kAgainRequestDefaultTipString;
+        if (self.mj_header) {
+            block = removeTipViewBlock;
+            
+        } else if (needToSelector) {
+            block = targetActionBlock;
+        } else {
+            actionTitle = nil;
+        }
     } else if (state == RequestEmptyDataStatus) {//空数据提示
         
         tipString = self.reqEmptyTipString;
         tipImage = self.reqEmptyTipImage;
-        actionTitle = self.emptyDataBtnTitle;
+        actionTitle = self.customBtnTitle;
         block = targetActionBlock;
         
     } else if (state == RequestFailStatus) {//请求失败提示
         
         tipString = self.reqFailTipString;
         tipImage = self.reqFailTipImage;
-        actionTitle = AgainRequestTipString;
-        block = removeTipViewBlock;
-        
+        actionTitle = self.customBtnTitle ? : kAgainRequestDefaultTipString;
+        if (self.mj_header) {
+            block = removeTipViewBlock;
+            
+        } else if (needToSelector) {
+            block = targetActionBlock;
+        } else {
+            actionTitle = nil;
+        }
     } else {
         return;
     }
@@ -404,11 +407,7 @@ static char const * const kActionSELKey             = "kActionSELKey";
                                                          tipText:tipString
                                                      actionTitle:actionTitle
                                                      actionBlock:block];
-    if (self.backgroundColor) {
-        tipBgView.backgroundColor = self.backgroundColor;
-    } else {
-        tipBgView.backgroundColor = [UIColor clearColor];
-    }
+    tipBgView.backgroundColor = self.backgroundColor ? : [UIColor clearColor];
     [self addSubview:tipBgView];
 }
 

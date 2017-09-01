@@ -218,7 +218,7 @@
 {
     [self layoutIfNeeded];
     CGFloat btnMaxH = CGRectGetMaxY(self.msgLab.frame) + 15;
-    NSLog(@"TimeLineCell--Height===%.2f",btnMaxH);
+//    NSLog(@"TimeLineCell--Height===%.2f",btnMaxH);
     return btnMaxH;
 }
 

@@ -33,8 +33,8 @@
 {
     [super viewDidLoad];
     
-    self.webView.scrollView.emptyDataActionTarget = self;
-    self.webView.scrollView.emptyDataActionSEL = @selector(loadWebViewData);
+    self.webView.scrollView.customActionTarget = self;
+    self.webView.scrollView.customActionSEL = @selector(loadWebViewData);
     
     //加载Webview
     [self loadWebViewData];
@@ -169,7 +169,7 @@
 
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
-    [MBProgressHUD showLoadingToView:self.view text:@"正在加载中"];
+    [MBProgressHUD showLoadingToView:self.view text:@"拼命加载中"];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView

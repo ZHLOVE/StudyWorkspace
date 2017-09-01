@@ -19,7 +19,6 @@
 /** 右侧按钮标题 */
 @property (nonatomic, strong) NSString *rightBtnTitle;
 
-
 /** 右侧按钮点击回调 */
 @property (nonatomic, copy) void (^rightBtnBlock)();
 

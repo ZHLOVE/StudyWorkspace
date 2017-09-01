@@ -31,9 +31,7 @@ static NSString *const kTableCellID = @"cellIdInfo";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self.plainTableView registerNib:[UINib nibWithNibName:@"TimeLineCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:kTableCellID];
-    
 //    self.plainTableView.automaticShowTipView = YES;
     
     WEAKSELF
@@ -94,7 +92,7 @@ static NSString *const kTableCellID = @"cellIdInfo";
     model.requestType = HttpRequestTypeGET;
     model.requestUrl = Url_DocList;
     model.parameters = info;
-    model.dataTableView = self.plainTableView;
+//    model.dataTableView = self.plainTableView;
     model.attemptRequestWhenFail = YES;
 
     [OKHttpRequestTools sendExtensionRequest:model success:^(id returnValue) {
@@ -104,6 +102,12 @@ static NSString *const kTableCellID = @"cellIdInfo";
         }
         //包装数据
         [self convertData:returnValue];
+        
+        //设置分页面标识
+        NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:returnValue];
+        dic[kTotalPageKey] = @"1000";
+        dic[kCurrentPageKey] = @(self.pageNum);
+        [self.plainTableView showRequestTip:dic];
         
     } failure:^(NSError *error) {
         if (!firstPage) self.pageNum --;
@@ -123,7 +127,7 @@ static NSString *const kTableCellID = @"cellIdInfo";
     [self.plainTableView reloadData];
 }
 
-#pragma mark - /*** UITaleviewDelegate ***/
+#pragma mark -===========UITaleviewDelegate===========
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -140,8 +144,6 @@ static NSString *const kTableCellID = @"cellIdInfo";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
     TimeLineDataModel *model = self.tableDataArr[indexPath.row];
     NSString *urlString = [NSString stringWithFormat:@"http://m.zol.com.cn/%@/d%@_%@.html",model.post.bbs,model.post.boardId,model.post.bookId];
     

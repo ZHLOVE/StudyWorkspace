@@ -46,7 +46,7 @@
             break;
         case OkDrawLine_right:
         {
-            line.frame = CGRectMake(0, self.frame.size.width-lineWidth, lineWidth, self.frame.size.height);
+            line.frame = CGRectMake(self.frame.size.width-lineWidth, 0, lineWidth, self.frame.size.height);
         }
             break;
         default:
