@@ -122,7 +122,11 @@
     _dataModel = dataModel;
     
     //头像
-    [self.userImageView sd_setImageWithURL:[NSURL URLWithString:dataModel.post.userIcon]];
+    NSString *iconUrl = dataModel.post.userIcon;
+    if (iconUrl.length>0) {
+        [self.userImageView sd_setImageWithURL:[NSURL URLWithString:iconUrl]];
+    }
+    
     //名字
     self.useNameLab.text = dataModel.post.username;
     

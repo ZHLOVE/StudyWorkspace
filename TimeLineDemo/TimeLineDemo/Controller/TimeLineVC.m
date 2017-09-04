@@ -15,24 +15,30 @@
 #import <MJExtension.h>
 #import <MJRefresh.h>
 #import "OKShareView.h"
+#import "OKTableDelegateAndDataSource.h"
 
 //请求数据地址
 #define Url_DocList  @"http://direct.wap.zol.com.cn/bbs/getRecommendBook.php?ssid=%242a%2407%24403c8f4a8f512e730e163b7ad3d6b3123e6d5c15525674a76080dbb7f8cacc42&v=3.0&vs=iph561"
 
-static NSString *const kTableCellID = @"cellIdInfo";
+static NSString *const kTableCellID = @"TimeLineCell";
 
 @interface TimeLineVC ()
 @property (nonatomic, assign) NSInteger pageNum;
 @property (nonatomic, strong) NSDictionary *params;
 @property (nonatomic, strong) NSString *bbsid;
+@property (nonatomic, strong) OKTableDelegateAndDataSource *tableDelegateAndDataSource;
 @end
 
 @implementation TimeLineVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     [self.plainTableView registerNib:[UINib nibWithNibName:@"TimeLineCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:kTableCellID];
-//    self.plainTableView.automaticShowTipView = YES;
+    self.plainTableView.reqEmptyTipString = @"暂无更多数据啦";
+    self.plainTableView.reqFailTipString = @"请求失败,请耐心重试哦~";
+    self.plainTableView.delegate = self.tableDelegateAndDataSource;
+    self.plainTableView.dataSource = self.tableDelegateAndDataSource;
     
     WEAKSELF
     [self.plainTableView addheaderRefresh:^{
@@ -43,6 +49,32 @@ static NSString *const kTableCellID = @"cellIdInfo";
     
     //刷新数据
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"刷新数据" style:UIBarButtonItemStylePlain target:self action:@selector(refreshData)];
+}
+
+/**
+ * 初始化
+ */
+- (OKTableDelegateAndDataSource *)tableDelegateAndDataSource
+{
+    if(!_tableDelegateAndDataSource){
+        WEAKSELF
+        _tableDelegateAndDataSource = [OKTableDelegateAndDataSource dataSourceWithClass:@"TimeLineCell" rowDataArr:self.tableDataArr configureCellBlock:^(id cell, id rowData, NSIndexPath *indexPath) {
+            ((TimeLineCell *)cell).dataModel = rowData;
+        }];
+        
+        //cell行高
+        [_tableDelegateAndDataSource setHeightForRowBlcok:^CGFloat(id rowData, NSIndexPath *indexPath){
+            return ((TimeLineDataModel *)rowData).cellHeight;
+        }];
+        
+        [_tableDelegateAndDataSource setDidSelectRowBlcok:^(id rowData, NSIndexPath *indexPath){
+            STRONGSELF
+            TimeLineDataModel *model = rowData;
+            NSString *urlString = [NSString stringWithFormat:@"http://m.zol.com.cn/%@/d%@_%@.html",model.post.bbs,model.post.boardId,model.post.bookId];
+            [strongSelf pushToViewController:@"OKBaseWebViewController" propertyDic:@{@"urlString":urlString,@"title":model.post.title}];
+        }];
+    }
+    return _tableDelegateAndDataSource;
 }
 
 /**
@@ -93,9 +125,9 @@ static NSString *const kTableCellID = @"cellIdInfo";
     model.requestUrl = Url_DocList;
     model.parameters = info;
 //    model.dataTableView = self.plainTableView;
-    model.attemptRequestWhenFail = YES;
-
-    [OKHttpRequestTools sendExtensionRequest:model success:^(id returnValue) {
+//    model.attemptRequestWhenFail = YES;
+//
+    [OKHttpRequestTools sendOKRequest:model success:^(id returnValue) {
         if (self.params != info) return;
         if (firstPage) {
             [self.tableDataArr removeAllObjects];
@@ -111,7 +143,7 @@ static NSString *const kTableCellID = @"cellIdInfo";
         
     } failure:^(NSError *error) {
         if (!firstPage) self.pageNum --;
-        [self.plainTableView reloadData];
+        [self.plainTableView showRequestTip:error];
     }];
 }
 
@@ -124,48 +156,33 @@ static NSString *const kTableCellID = @"cellIdInfo";
     //计算每个模型cell的高度
     [modelArr makeObjectsPerformSelector:@selector(calculateCellHeight)];
     [self.tableDataArr addObjectsFromArray:modelArr];
+    //设置数据源
+    [self.tableDelegateAndDataSource loadRowData:self.tableDataArr];
     [self.plainTableView reloadData];
 }
 
-#pragma mark -===========UITaleviewDelegate===========
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    TimeLineDataModel *model = self.tableDataArr[indexPath.row];
-    return model.cellHeight;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    TimeLineCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableCellID];
-    cell.dataModel = self.tableDataArr[indexPath.row];
-    return cell;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    TimeLineDataModel *model = self.tableDataArr[indexPath.row];
-    NSString *urlString = [NSString stringWithFormat:@"http://m.zol.com.cn/%@/d%@_%@.html",model.post.bbs,model.post.boardId,model.post.bookId];
-    
-    [self pushToViewController:@"OKBaseWebViewController"
-                   propertyDic:@{@"urlString":urlString,@"title":model.post.title}];
-}
-
-/**
- *  测试分享
- */
-- (void)shareAction
-{
-    NSArray *shareTitleArr = @[@"微信好友1",@"朋友圈2",@"QQ好友3",@"QQ空间4",
-                               @"微信好友5",@"朋友圈6",@"QQ好友7",@"QQ空间8"];
-    NSArray *itemImageArr = @[ImageNamed(@"icon_微信好友"),ImageNamed(@"icon_微信朋友圈"),
-                              ImageNamed(@"icon_qq好友"),ImageNamed(@"icon_qq空间"),
-                              ImageNamed(@"icon_微信好友"),ImageNamed(@"icon_微信朋友圈"),
-                              ImageNamed(@"icon_qq好友"),ImageNamed(@"icon_qq空间")];
-    
-    [OKShareView showShareViewWithTitle:@"分享" itemTitleArr:shareTitleArr itemImageArr:itemImageArr callBlock:^(NSInteger buttonIndex) {
-        NSLog(@"buttonIndex===%zd",buttonIndex);
-    }];
-}
+//#pragma mark -===========UITaleviewDelegate===========
+//
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    TimeLineDataModel *model = self.tableDataArr[indexPath.row];
+//    return model.cellHeight;
+//}
+//
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    TimeLineCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableCellID];
+//    cell.dataModel = self.tableDataArr[indexPath.row];
+//    return cell;
+//}
+//
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    TimeLineDataModel *model = self.tableDataArr[indexPath.row];
+//    NSString *urlString = [NSString stringWithFormat:@"http://m.zol.com.cn/%@/d%@_%@.html",model.post.bbs,model.post.boardId,model.post.bookId];
+//    
+//    [self pushToViewController:@"OKBaseWebViewController"
+//                   propertyDic:@{@"urlString":urlString,@"title":model.post.title}];
+//}
 
 @end
