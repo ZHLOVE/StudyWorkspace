@@ -58,11 +58,25 @@
 }
 
 /**
- *  快速根据xib创建View
+ * 设置圆角，边框宽度和颜色
  */
-+ (instancetype)viewFromXib
+- (void)ok_setCornerRadius:(CGFloat)radius
+               borderColor:(UIColor *)color
+               borderWidth:(CGFloat)borderWidth
 {
-    return [[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self) owner:self options:nil].firstObject;
+    if (radius >= 0) {
+        [self.layer setCornerRadius:radius];
+    }
+    self.layer.borderColor = color ? color.CGColor : [UIColor clearColor].CGColor;
+    self.layer.borderWidth = borderWidth;
+    self.layer.masksToBounds = YES;
+}
+
+/**
+ * 设置圆角
+ */
+- (void)ok_setCornerRadius:(CGFloat)radius {
+    [self ok_setCornerRadius:radius borderColor:nil borderWidth:0];
 }
 
 /**
@@ -90,6 +104,27 @@
         rsp = rsp.nextResponder;
     }
     return (UIViewController *)rsp;
+}
+
+/**
+ *  快速根据xib创建View
+ */
++ (instancetype)viewFromXib
+{
+    return [[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self) owner:self options:nil].firstObject;
+}
+
+@end
+
+@implementation UITableView (XibTool)
+
+/**
+ * 注册Xib Cell
+ */
+- (void)registerXib:(Class)className cellId:(NSString *)identifier
+{
+    [self registerNib:[UINib nibWithNibName:NSStringFromClass(className)
+                                     bundle:[NSBundle mainBundle]] forCellReuseIdentifier:identifier];
 }
 
 @end

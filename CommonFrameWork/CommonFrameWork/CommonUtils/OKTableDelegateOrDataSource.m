@@ -10,39 +10,47 @@
 #import "UIScrollView+OKRequestExtension.h"
 #import "OKPubilcKeyDefiner.h"
 #import "OKFrameDefiner.h"
+#import <UIView+OKTool.h>
 
 #define kMinSectionHeight          (0.001)
 
 @interface OKTableDelegateOrDataSource ()
-@property (nonatomic, strong) Class cellCalss;
-@property (nonatomic, copy) NSString *cellIdentifier;
-@property (nonatomic, copy) TableViewCellConfigureBlock configureBlock;
+@property (nonatomic, strong) Class CellCalss;
+@property (nonatomic, assign) BOOL isXibCell;
+@property (nonatomic, copy)   NSString *cellIdentifier;
+@property (nonatomic, copy)   TableViewCellConfigureBlock configureBlock;
 @end
 
 @implementation OKTableDelegateOrDataSource
 
 /**
- * 初始化Plain类型表格dataSource
+ * 创建表格dataSource
  */
-+ (instancetype)dataSourceWithClass:(NSString *)className
++ (instancetype)createWithCellClass:(Class)cellClass
+                          isXibCell:(BOOL)isXibCell
                  configureCellBlock:(TableViewCellConfigureBlock)configureBlock
 {
-    if (![className isKindOfClass:[NSString class]] || className.length==0) {
+    NSString *className = NSStringFromClass(cellClass);
+    if (!cellClass || className.length==0) {
         return nil;
     } else {
         return [[OKTableDelegateOrDataSource alloc] initWithClass:className
-                                              configureCellBlock:configureBlock];
+                                                        isXibCell:isXibCell
+                                               configureCellBlock:configureBlock];
     }
 }
 
+
 - (instancetype)initWithClass:(NSString *)className
+                    isXibCell:(BOOL)isXibCell
            configureCellBlock:(TableViewCellConfigureBlock)configureBlock
 {
     self = [super init];
     if (self) {
-        _cellCalss = NSClassFromString(className);
-        _cellIdentifier = className;
-        _configureBlock = configureBlock;
+        self.isXibCell = isXibCell;
+        self.CellCalss = NSClassFromString(className);
+        self.cellIdentifier = className;
+        self.configureBlock = configureBlock;
     }
     return self;
 }
@@ -65,7 +73,7 @@
             if (indexPath.row < rowDataArr.count) {
                 return rowDataArr[indexPath.row];
             }
-        }        
+        }
     }
     return nil;
 }
@@ -103,8 +111,17 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:_cellIdentifier];
     if (!cell) {
-        if ([_cellCalss isSubclassOfClass:[UITableViewCell class]]) {
-            cell = [[_cellCalss alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:_cellIdentifier];
+        NSAssert([_CellCalss isSubclassOfClass:[UITableViewCell class]], @"❌❌❌初始化参数:cellClass 必须为UITableViewCell的类型");
+        
+        if (self.isXibCell && [_cellIdentifier isEqualToString:@"UITableViewCell"]) {
+            NSAssert(NO, @"❌❌❌请检查初始化参数:cellClass类是否为Xib");
+        }
+        
+        if (self.isXibCell) {//注册xib Cell
+            cell = [_CellCalss viewFromXib];
+            
+        } else { //初始化非Xib Cell
+            cell = [[_CellCalss alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:_cellIdentifier];
         }
     }
     id rowData = [self rowDataForIndexPath:indexPath];

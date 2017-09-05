@@ -43,9 +43,10 @@ typedef void (^TableViewCellConfigureBlock) (id cell, id rowData, NSIndexPath *i
 @property (nonatomic, copy) void (^didSelectRowBlcok)(id rowData, NSIndexPath *indexPath);
 
 /**
- * 初始化表格dataSource
+ * 创建表格dataSource
  */
-+ (instancetype)dataSourceWithClass:(NSString *)className
++ (instancetype)createWithCellClass:(Class)cellClass
+                          isXibCell:(BOOL)isXibCell
                  configureCellBlock:(TableViewCellConfigureBlock)configureBlock;
 
 /**

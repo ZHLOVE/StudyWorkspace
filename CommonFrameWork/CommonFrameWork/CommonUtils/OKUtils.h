@@ -62,9 +62,15 @@
 #pragma mark 是否包含中文
 +(BOOL)CheckContainChinese:(NSString *)chinese;
 
-#pragma mark - 根据颜色得到图片
-+(UIImage *)createImageWithColor:(UIColor *)color
-                       imageSize:(CGSize)size;
+/**
+ *  格式化价格,是小数就保留两位,不是小数就取整数
+ */
++ (NSString *)formatPriceValue:(CGFloat)originValue;
+
+/**
+ * 时间格式实现几天前，几小时前，几分钟前, (类似于微博时间)
+ */
++ (NSString *)compareCurrentTime:(NSString *)str;
 
 
 @end

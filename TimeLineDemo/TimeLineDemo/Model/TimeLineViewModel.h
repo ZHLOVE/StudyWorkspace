@@ -64,6 +64,7 @@
 /** cell高度 */
 @property (nonatomic, assign) CGFloat cellHeight;
 
+//利用Xib计算Cell高度
 - (void)calculateCellHeight;
 
 @end

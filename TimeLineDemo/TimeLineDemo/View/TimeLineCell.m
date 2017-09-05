@@ -21,8 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *themeLab;
 @property (weak, nonatomic) IBOutlet UILabel *descLab;
 @property (weak, nonatomic) IBOutlet UIView *picView;
-/* 图片View高度约束 */
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *picViewHeightConst;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *picViewHeightConst;/* 图片View高度约束 */
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *picBottomSpaceConst;
 @property (weak, nonatomic) IBOutlet UIButton *dcBtn;
 @property (weak, nonatomic) IBOutlet UILabel *timeLab;
@@ -131,7 +130,7 @@
     self.useNameLab.text = dataModel.post.username;
     
     //主题
-//    self.themeLab.text = dataModel.post.title;
+    //self.themeLab.text = dataModel.post.title;
     self.themeLab.attributedText = [self getAttributedStr:dataModel.post.title];
     self.themeLab.preferredMaxLayoutWidth = Screen_Width-75-15;//不加这句代码themeLab高度会不准确
     
@@ -140,7 +139,7 @@
     // [self.themeLab systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
     
     //描述
-//    self.descLab.text = dataModel.post.content;
+    //self.descLab.text = dataModel.post.content;
     self.descLab.attributedText = [self getAttributedStr:dataModel.post.content];
     self.descLab.preferredMaxLayoutWidth = Screen_Width-75-15;//不加这句代码descLab高度会不准确
     

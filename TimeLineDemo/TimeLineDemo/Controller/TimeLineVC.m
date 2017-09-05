@@ -16,10 +16,10 @@
 #import <MJRefresh.h>
 #import "OKTableDelegateOrDataSource.h"
 #import <OKAlertView.h>
+#import <UIView+OKTool.h>
 
 //请求数据地址
 #define Url_DocList  @"http://direct.wap.zol.com.cn/bbs/getRecommendBook.php?ssid=%242a%2407%24403c8f4a8f512e730e163b7ad3d6b3123e6d5c15525674a76080dbb7f8cacc42&v=3.0&vs=iph561"
-static NSString *const kTableCellID = @"TimeLineCell";
 
 @interface TimeLineVC ()
 @property (nonatomic, assign) NSInteger pageNum;
@@ -32,7 +32,6 @@ static NSString *const kTableCellID = @"TimeLineCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.plainTableView registerNib:[UINib nibWithNibName:@"TimeLineCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:kTableCellID];
     self.plainTableView.reqEmptyTipString = @"暂无数据哦";
     self.plainTableView.reqFailTipString = @"请求失败,请耐心重试哦~";
     self.plainTableView.footerTipString = @"—— 没有更多数据啦 ——";
@@ -75,41 +74,13 @@ static NSString *const kTableCellID = @"TimeLineCell";
 }
 
 /**
- * 初始化
+ * 自定义表格DataSource类
  */
 - (OKTableDelegateOrDataSource *)tableDelegateAndDataSource
 {
     if(!_tableDelegateAndDataSource){
         WEAKSELF
-        _tableDelegateAndDataSource = [OKTableDelegateOrDataSource dataSourceWithClass:@"TimeLineCell" configureCellBlock:^(id cell, id rowData, NSIndexPath *indexPath) {
-            ((TimeLineCell *)cell).dataModel = rowData;
-        }];
-        
-//        //获取UITableViewStyleGrouped表格Section数目
-//        [_tableDelegateAndDataSource setGroupTabNumberOfSections:^NSInteger(){
-//            STRONGSELF
-//            return strongSelf.tableDataArr.count;
-//        }];
-//        
-//        //获取UITableViewStyleGrouped表格每个section的数据源
-//        [_tableDelegateAndDataSource setGroupTabDataOfSections:^NSArray* (NSInteger section){
-//            STRONGSELF
-//            TimeLineDataModel *model = strongSelf.tableDataArr[section];
-//            if (model) {
-//                return @[model];
-//            } else {
-//                r/eturn @[];
-//            }
-//        }];
-//
-//        //获取SectionView高度Block
-//        [_tableDelegateAndDataSource setHeightForSectionBlcok:^CGFloat(SectionType sectionType,NSInteger section){
-//            if (sectionType == FooterType) {
-//                return 0.001;
-//            } else {
-//                return 15;
-//            }
-//        }];
+        _tableDelegateAndDataSource = [OKTableDelegateOrDataSource createWithCellClass:[TimeLineCell class] isXibCell:YES configureCellBlock:nil];
 
         //获取UITableViewStylePlain表格所有row数据源
         [_tableDelegateAndDataSource setPlainTabDataArrBlcok:^NSArray* (){
@@ -188,8 +159,7 @@ static NSString *const kTableCellID = @"TimeLineCell";
 - (void)convertData:(NSDictionary *)dataDic
 {
     NSMutableArray<TimeLineDataModel *> *modelArr = [TimeLineDataModel mj_objectArrayWithKeyValuesArray:dataDic[@"postList"]];
-    //计算每个模型cell的高度
-    [modelArr makeObjectsPerformSelector:@selector(calculateCellHeight)];
+    [modelArr makeObjectsPerformSelector:@selector(calculateCellHeight)];//计算每个模型cell的高度
     [self.tableDataArr addObjectsFromArray:modelArr];
     [self.plainTableView reloadData];
 }

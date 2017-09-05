@@ -28,9 +28,16 @@ typedef enum : NSUInteger {
                        lineWidth:(CGFloat)lineWidth;
 
 /**
- *  快速根据xib创建View
+ * 设置圆角，边框宽度和颜色
  */
-+ (instancetype)viewFromXib;
+- (void)ok_setCornerRadius:(CGFloat)radius
+               borderColor:(UIColor *)color
+               borderWidth:(CGFloat)borderWidth;
+
+/**
+ * 设置圆角
+ */
+- (void)ok_setCornerRadius:(CGFloat)radius;
 
 /**
  *  判断self和view是否重叠
@@ -43,5 +50,19 @@ typedef enum : NSUInteger {
  @return 控制器
  */
 - (UIViewController *)superViewController;
+
+/**
+ *  快速根据xib创建View
+ */
++ (instancetype)viewFromXib;
+
+@end
+
+@interface UITableView (XibTool)
+
+/**
+ * 注册Xib Cell
+ */
+- (void)registerXib:(Class)className cellId:(NSString *)identifier;
 
 @end
