@@ -7,11 +7,11 @@
 //
 
 #import "OKHttpRequestTools+OKExtension.h"
+#import "NSString+OKEncryption.h"
 #import <AFNetworking.h>
 #import "OKCommonTipView.h"
 #import "OKFMDBTool.h"
 #import "OKAlertView.h"
-#import "OKPubilcKeyDefiner.h"
 #import <objc/runtime.h>
 
 //请求失败后再重复请求的次数
@@ -40,7 +40,7 @@ static char const * const kRequestTimeCountKey    = "kRequestTimeCountKey";
             key = [NSString stringWithFormat:@"%@%@%@",key,dickey,valus];
         }
     }
-    return key;//[CNUtils md5:key];
+    return [NSString md5:key];
 }
 
 #pragma mark - 包装请求入口
@@ -71,6 +71,17 @@ static char const * const kRequestTimeCountKey    = "kRequestTimeCountKey";
         if (requestModel.loadView) {
             [MBProgressHUD hideLoadingFromView:requestModel.loadView];
         }
+    }
+}
+
+/**
+ * 如果需要提示错误信息,则弹框提示
+ */
++ (void)showReqErrorTipText:(OKHttpRequestModel *)requestModel error:(NSError *)error
+{
+    if (!requestModel.forbidTipErrorInfo && !requestModel.dataTableView) {
+        //错误码在200-500以内,则按照服务端的错误信息提示
+        ShowAlertWithError(error, RequestFailCommomTip);
     }
 }
 
@@ -129,6 +140,9 @@ static char const * const kRequestTimeCountKey    = "kRequestTimeCountKey";
         }
         //判断是否需要显示和隐藏请求转圈和提示view
         [self showReqLoadingView:requestModel show:NO];
+        
+        //如果需要提示错误信息,则弹框提示
+        [self showReqErrorTipText:requestModel error:error];
         
         //如果请求完成后需要判断页面表格下拉控件,分页,空白提示页的状态
         [self showTipViewAndDataPageWhenReqComplete:requestModel reqData:error];

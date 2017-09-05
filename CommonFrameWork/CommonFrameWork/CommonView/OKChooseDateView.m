@@ -511,7 +511,7 @@
 {
     if (NULL == currDaty) return nil;
     NSCalendar *cal = [NSCalendar currentCalendar];
-    NSDateComponents *components = [cal components:( NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit ) fromDate:[[NSDate alloc] init]];
+    NSDateComponents *components = [cal components:( NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond ) fromDate:[[NSDate alloc] init]];
     [components setDay:+1];
     return [cal dateByAddingComponents:components toDate:currDaty options:0];
 }
@@ -519,7 +519,7 @@
 -(NSDate *)getFutureTimeWithYears:(NSInteger)year
 {
     NSCalendar *cal = [NSCalendar currentCalendar];
-    NSDateComponents *components = [cal components:( NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit ) fromDate:[[NSDate alloc] init]];
+    NSDateComponents *components = [cal components:( NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond ) fromDate:[[NSDate alloc] init]];
     [components setYear:+year];
     return [cal dateByAddingComponents:components toDate:[NSDate date] options:0];
     

@@ -14,29 +14,28 @@
 #import <UIViewController+OKExtension.h>
 #import <MJExtension.h>
 #import <MJRefresh.h>
-#import "OKShareView.h"
-#import "OKTableDelegateAndDataSource.h"
+#import "OKTableDelegateOrDataSource.h"
+#import <OKAlertView.h>
 
 //请求数据地址
 #define Url_DocList  @"http://direct.wap.zol.com.cn/bbs/getRecommendBook.php?ssid=%242a%2407%24403c8f4a8f512e730e163b7ad3d6b3123e6d5c15525674a76080dbb7f8cacc42&v=3.0&vs=iph561"
-
 static NSString *const kTableCellID = @"TimeLineCell";
 
 @interface TimeLineVC ()
 @property (nonatomic, assign) NSInteger pageNum;
 @property (nonatomic, strong) NSDictionary *params;
 @property (nonatomic, strong) NSString *bbsid;
-@property (nonatomic, strong) OKTableDelegateAndDataSource *tableDelegateAndDataSource;
+@property (nonatomic, strong) OKTableDelegateOrDataSource *tableDelegateAndDataSource;
 @end
 
 @implementation TimeLineVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self.plainTableView registerNib:[UINib nibWithNibName:@"TimeLineCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:kTableCellID];
-    self.plainTableView.reqEmptyTipString = @"暂无更多数据啦";
+    self.plainTableView.reqEmptyTipString = @"暂无数据哦";
     self.plainTableView.reqFailTipString = @"请求失败,请耐心重试哦~";
+    self.plainTableView.footerTipString = @"—— 没有更多数据啦 ——";
     self.plainTableView.delegate = self.tableDelegateAndDataSource;
     self.plainTableView.dataSource = self.tableDelegateAndDataSource;
     
@@ -47,19 +46,75 @@ static NSString *const kTableCellID = @"TimeLineCell";
         [weakSelf requestData:NO];
     }];
     
-    //刷新数据
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"刷新数据" style:UIBarButtonItemStylePlain target:self action:@selector(refreshData)];
+    //点击导航条按钮刷新数据
+    [self addNavigationRightItem];
+}
+
+/**
+ * 刷新数据
+ */
+- (void)addNavigationRightItem
+{
+    WEAKSELF
+    [self addRightBarButtonItem:@"刷新数据" titleColor:nil clickBlock:^{
+        STRONGSELF
+        NSArray *idTypeArr = @[@{@"dcbbs":@"摄影"}, @{@"sjbbs":@"手机"},
+                               @{@"nbbbs":@"电脑"}, @{@"朋友圈":@""},
+                               @{@"otherbbs":@"家电"}, @{@"diybbs":@"硬件"}];
+        NSDictionary *dic = idTypeArr[(arc4random() % idTypeArr.count)];
+        NSString *typeTitle = dic.allValues[0];
+        if (typeTitle.length>0) {
+            strongSelf.title = typeTitle;
+            strongSelf.bbsid = dic.allKeys[0];
+        } else {
+            strongSelf.bbsid = nil;
+            strongSelf.title = @"朋友圈";
+        }
+        [strongSelf.plainTableView.mj_header beginRefreshing];
+    }];
 }
 
 /**
  * 初始化
  */
-- (OKTableDelegateAndDataSource *)tableDelegateAndDataSource
+- (OKTableDelegateOrDataSource *)tableDelegateAndDataSource
 {
     if(!_tableDelegateAndDataSource){
         WEAKSELF
-        _tableDelegateAndDataSource = [OKTableDelegateAndDataSource dataSourceWithClass:@"TimeLineCell" rowDataArr:self.tableDataArr configureCellBlock:^(id cell, id rowData, NSIndexPath *indexPath) {
+        _tableDelegateAndDataSource = [OKTableDelegateOrDataSource dataSourceWithClass:@"TimeLineCell" configureCellBlock:^(id cell, id rowData, NSIndexPath *indexPath) {
             ((TimeLineCell *)cell).dataModel = rowData;
+        }];
+        
+//        //获取UITableViewStyleGrouped表格Section数目
+//        [_tableDelegateAndDataSource setGroupTabNumberOfSections:^NSInteger(){
+//            STRONGSELF
+//            return strongSelf.tableDataArr.count;
+//        }];
+//        
+//        //获取UITableViewStyleGrouped表格每个section的数据源
+//        [_tableDelegateAndDataSource setGroupTabDataOfSections:^NSArray* (NSInteger section){
+//            STRONGSELF
+//            TimeLineDataModel *model = strongSelf.tableDataArr[section];
+//            if (model) {
+//                return @[model];
+//            } else {
+//                r/eturn @[];
+//            }
+//        }];
+//
+//        //获取SectionView高度Block
+//        [_tableDelegateAndDataSource setHeightForSectionBlcok:^CGFloat(SectionType sectionType,NSInteger section){
+//            if (sectionType == FooterType) {
+//                return 0.001;
+//            } else {
+//                return 15;
+//            }
+//        }];
+
+        //获取UITableViewStylePlain表格所有row数据源
+        [_tableDelegateAndDataSource setPlainTabDataArrBlcok:^NSArray* (){
+            STRONGSELF
+            return strongSelf.tableDataArr;
         }];
         
         //cell行高
@@ -67,6 +122,7 @@ static NSString *const kTableCellID = @"TimeLineCell";
             return ((TimeLineDataModel *)rowData).cellHeight;
         }];
         
+        //点击Cell回调
         [_tableDelegateAndDataSource setDidSelectRowBlcok:^(id rowData, NSIndexPath *indexPath){
             STRONGSELF
             TimeLineDataModel *model = rowData;
@@ -75,29 +131,6 @@ static NSString *const kTableCellID = @"TimeLineCell";
         }];
     }
     return _tableDelegateAndDataSource;
-}
-
-/**
- *  刷新数据
- */
-- (void)refreshData
-{
-    NSArray *idTypeArr = @[@{@"dcbbs":@"摄影"},
-                            @{@"sjbbs":@"手机"},
-                            @{@"nbbbs":@"电脑"},
-                            @{@"朋友圈":@""},
-                            @{@"otherbbs":@"家电"},
-                            @{@"diybbs":@"硬件"}];
-    NSDictionary *dic = idTypeArr[arc4random() % idTypeArr.count];
-    NSString *typeTitle = dic.allValues[0];
-    if (typeTitle.length>0) {
-        self.title = typeTitle;
-        self.bbsid = dic.allKeys[0];
-    } else {
-        self.bbsid = nil;
-        self.title = @"朋友圈";
-    }
-    [self.plainTableView.mj_header beginRefreshing];
 }
 
 /**
@@ -124,9 +157,8 @@ static NSString *const kTableCellID = @"TimeLineCell";
     model.requestType = HttpRequestTypeGET;
     model.requestUrl = Url_DocList;
     model.parameters = info;
-//    model.dataTableView = self.plainTableView;
-//    model.attemptRequestWhenFail = YES;
-//
+//    model.dataTableView = self.plainTableView;//sendExtensionRequest
+
     [OKHttpRequestTools sendOKRequest:model success:^(id returnValue) {
         if (self.params != info) return;
         if (firstPage) {
@@ -135,15 +167,18 @@ static NSString *const kTableCellID = @"TimeLineCell";
         //包装数据
         [self convertData:returnValue];
         
-        //设置分页面标识
+        //设置数据分页标识
         NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:returnValue];
-        dic[kTotalPageKey] = @"1000";
-        dic[kCurrentPageKey] = @(self.pageNum);
+        dic[kTotalPageKey] = @"100";//总页数
+        dic[kCurrentPageKey] = @(self.pageNum);//当前页数
         [self.plainTableView showRequestTip:dic];
         
     } failure:^(NSError *error) {
         if (!firstPage) self.pageNum --;
         [self.plainTableView showRequestTip:error];
+        if (self.tableDataArr.count>0) {
+            ShowAlertWithError(error, RequestFailCommomTip);
+        }
     }];
 }
 
@@ -156,33 +191,7 @@ static NSString *const kTableCellID = @"TimeLineCell";
     //计算每个模型cell的高度
     [modelArr makeObjectsPerformSelector:@selector(calculateCellHeight)];
     [self.tableDataArr addObjectsFromArray:modelArr];
-    //设置数据源
-    [self.tableDelegateAndDataSource loadRowData:self.tableDataArr];
     [self.plainTableView reloadData];
 }
-
-//#pragma mark -===========UITaleviewDelegate===========
-//
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    TimeLineDataModel *model = self.tableDataArr[indexPath.row];
-//    return model.cellHeight;
-//}
-//
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    TimeLineCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableCellID];
-//    cell.dataModel = self.tableDataArr[indexPath.row];
-//    return cell;
-//}
-//
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    TimeLineDataModel *model = self.tableDataArr[indexPath.row];
-//    NSString *urlString = [NSString stringWithFormat:@"http://m.zol.com.cn/%@/d%@_%@.html",model.post.bbs,model.post.boardId,model.post.bookId];
-//    
-//    [self pushToViewController:@"OKBaseWebViewController"
-//                   propertyDic:@{@"urlString":urlString,@"title":model.post.title}];
-//}
 
 @end

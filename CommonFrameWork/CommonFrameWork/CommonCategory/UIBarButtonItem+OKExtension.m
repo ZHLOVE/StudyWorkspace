@@ -38,6 +38,7 @@
                                  target:(id)target
                                selector:(SEL)selector
 {
+    color = color ? : [UIColor blackColor];    
     CGFloat width = [title widthWithFont:FontSystemSize(16) constrainedToHeight:20];
     UIButton *addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     addBtn.frame = CGRectMake(0, 0, width, 40);
@@ -46,7 +47,7 @@
     [addBtn setTitleColor:color forState:UIControlStateNormal];
     [addBtn setTitleColor:[color colorWithAlphaComponent:0.4] forState:UIControlStateHighlighted];
     addBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
-    addBtn.titleLabel.font = FontSystemSize(16);
+    addBtn.titleLabel.font = FontSystemSize(12);
     addBtn.titleLabel.textAlignment = NSTextAlignmentRight;
     if (target && selector) {
         [addBtn addTarget:target action:selector forControlEvents:UIControlEventTouchUpInside];
@@ -59,7 +60,7 @@
                              titleColor:(UIColor *)color
                              clickBlock:(dispatch_block_t)blk
 {
-    color = [UIColor blackColor];
+    color = color ? : [UIColor blackColor];
     CGFloat width = [title widthWithFont:FontSystemSize(16) constrainedToHeight:20];
     UIButton *addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     addBtn.frame = CGRectMake(0, 0, width, 40);
@@ -68,7 +69,7 @@
     [addBtn setTitleColor:color forState:UIControlStateNormal];
     [addBtn setTitleColor:[color colorWithAlphaComponent:0.4] forState:UIControlStateHighlighted];
     addBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
-    addBtn.titleLabel.font = FontSystemSize(16);
+    addBtn.titleLabel.font = FontSystemSize(12);
     addBtn.titleLabel.textAlignment = NSTextAlignmentRight;
     UIBarButtonItem *barButton = [[UIBarButtonItem alloc]initWithCustomView:addBtn];
     [addBtn addTarget:barButton action:@selector(click) forControlEvents:UIControlEventTouchUpInside];

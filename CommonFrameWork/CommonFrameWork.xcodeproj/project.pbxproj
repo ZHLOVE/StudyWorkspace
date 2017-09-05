@@ -163,8 +163,8 @@
 		B5877F251ECB070C00A3A521 /* OKAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5877F231ECB070C00A3A521 /* OKAlertView.m */; };
 		B5877F281ECB07DD00A3A521 /* NSAttributedString+OKExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = B5877F261ECB07DD00A3A521 /* NSAttributedString+OKExtension.h */; };
 		B5877F291ECB07DD00A3A521 /* NSAttributedString+OKExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B5877F271ECB07DD00A3A521 /* NSAttributedString+OKExtension.m */; };
-		B59C5DC01F5D48CB000600DB /* OKTableDelegateAndDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = B59C5DBE1F5D48CB000600DB /* OKTableDelegateAndDataSource.h */; };
-		B59C5DC11F5D48CB000600DB /* OKTableDelegateAndDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B59C5DBF1F5D48CB000600DB /* OKTableDelegateAndDataSource.m */; };
+		B59C5DC01F5D48CB000600DB /* OKTableDelegateOrDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = B59C5DBE1F5D48CB000600DB /* OKTableDelegateOrDataSource.h */; };
+		B59C5DC11F5D48CB000600DB /* OKTableDelegateOrDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B59C5DBF1F5D48CB000600DB /* OKTableDelegateOrDataSource.m */; };
 		B5BBC7951EE5094A007C8D48 /* UITabBarController+OKSliderApp.h in Headers */ = {isa = PBXBuildFile; fileRef = B5BBC7931EE5094A007C8D48 /* UITabBarController+OKSliderApp.h */; };
 		B5BBC7961EE5094A007C8D48 /* UITabBarController+OKSliderApp.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC7941EE5094A007C8D48 /* UITabBarController+OKSliderApp.m */; };
 		B5E8BD2F1E2F55DD00D0F73D /* OKReachabilityManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B5E8BD2D1E2F55DD00D0F73D /* OKReachabilityManager.h */; };
@@ -332,8 +332,8 @@
 		B5877F231ECB070C00A3A521 /* OKAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OKAlertView.m; sourceTree = "<group>"; };
 		B5877F261ECB07DD00A3A521 /* NSAttributedString+OKExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+OKExtension.h"; sourceTree = "<group>"; };
 		B5877F271ECB07DD00A3A521 /* NSAttributedString+OKExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+OKExtension.m"; sourceTree = "<group>"; };
-		B59C5DBE1F5D48CB000600DB /* OKTableDelegateAndDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKTableDelegateAndDataSource.h; sourceTree = "<group>"; };
-		B59C5DBF1F5D48CB000600DB /* OKTableDelegateAndDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OKTableDelegateAndDataSource.m; sourceTree = "<group>"; };
+		B59C5DBE1F5D48CB000600DB /* OKTableDelegateOrDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKTableDelegateOrDataSource.h; sourceTree = "<group>"; };
+		B59C5DBF1F5D48CB000600DB /* OKTableDelegateOrDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OKTableDelegateOrDataSource.m; sourceTree = "<group>"; };
 		B5BBC7931EE5094A007C8D48 /* UITabBarController+OKSliderApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBarController+OKSliderApp.h"; sourceTree = "<group>"; };
 		B5BBC7941EE5094A007C8D48 /* UITabBarController+OKSliderApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBarController+OKSliderApp.m"; sourceTree = "<group>"; };
 		B5E8BD2D1E2F55DD00D0F73D /* OKReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKReachabilityManager.h; sourceTree = "<group>"; };
@@ -681,8 +681,8 @@
 				B584C7BA1E31BD7F00CB6C81 /* OKUtils.m */,
 				B584C85B1E31F55700CB6C81 /* OKCFunction.h */,
 				B584C85C1E31F55700CB6C81 /* OKCFunction.m */,
-				B59C5DBE1F5D48CB000600DB /* OKTableDelegateAndDataSource.h */,
-				B59C5DBF1F5D48CB000600DB /* OKTableDelegateAndDataSource.m */,
+				B59C5DBE1F5D48CB000600DB /* OKTableDelegateOrDataSource.h */,
+				B59C5DBF1F5D48CB000600DB /* OKTableDelegateOrDataSource.m */,
 			);
 			path = CommonUtils;
 			sourceTree = "<group>";
@@ -755,7 +755,7 @@
 				B5BBC7951EE5094A007C8D48 /* UITabBarController+OKSliderApp.h in Headers */,
 				B5877F241ECB070C00A3A521 /* OKAlertView.h in Headers */,
 				B584C7BB1E31BD7F00CB6C81 /* OKUtils.h in Headers */,
-				B59C5DC01F5D48CB000600DB /* OKTableDelegateAndDataSource.h in Headers */,
+				B59C5DC01F5D48CB000600DB /* OKTableDelegateOrDataSource.h in Headers */,
 				B584C82C1E31BEC000CB6C81 /* ZLPhotoAssets.h in Headers */,
 				B5877F201ECB016C00A3A521 /* UIScrollView+OKRequestExtension.h in Headers */,
 				B50310AB1E1E5CB200C11EC4 /* CommonFrameWork.h in Headers */,
@@ -910,7 +910,7 @@
 				B50311541E1E607F00C11EC4 /* UIImageView+OKCornerRadius.m in Sources */,
 				B557134E1F4A77620083C23F /* OKTagetSliderView.m in Sources */,
 				B584C81C1E31BEC000CB6C81 /* ZLPhotoRect.m in Sources */,
-				B59C5DC11F5D48CB000600DB /* OKTableDelegateAndDataSource.m in Sources */,
+				B59C5DC11F5D48CB000600DB /* OKTableDelegateOrDataSource.m in Sources */,
 				B50311501E1E607F00C11EC4 /* UIDevice+OKExtension.m in Sources */,
 				B584C84E1E31E62900CB6C81 /* UIViewController+OKExtension.m in Sources */,
 				B50311521E1E607F00C11EC4 /* UIImage+OKExtension.m in Sources */,

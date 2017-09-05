@@ -1,49 +1,46 @@
 //
-//  OKTableDelegateAndDataSource.m
+//  OKTableDelegateOrDataSource.m
 //  OkdeerSeller
 //
 //  Created by mao wangxin on 2017/8/15.
 //  Copyright © 2017年 Okdeer. All rights reserved.
 //
 
-#import "OKTableDelegateAndDataSource.h"
+#import "OKTableDelegateOrDataSource.h"
 #import "UIScrollView+OKRequestExtension.h"
 #import "OKPubilcKeyDefiner.h"
 #import "OKFrameDefiner.h"
 
-@interface OKTableDelegateAndDataSource ()
-@property (nonatomic, strong) NSArray *rowDataArr;
+#define kMinSectionHeight          (0.001)
+
+@interface OKTableDelegateOrDataSource ()
 @property (nonatomic, strong) Class cellCalss;
 @property (nonatomic, copy) NSString *cellIdentifier;
 @property (nonatomic, copy) TableViewCellConfigureBlock configureBlock;
 @end
 
-@implementation OKTableDelegateAndDataSource
+@implementation OKTableDelegateOrDataSource
 
 /**
  * 初始化Plain类型表格dataSource
  */
 + (instancetype)dataSourceWithClass:(NSString *)className
-                         rowDataArr:(NSArray *)rowDataArr
                  configureCellBlock:(TableViewCellConfigureBlock)configureBlock
 {
     if (![className isKindOfClass:[NSString class]] || className.length==0) {
         return nil;
     } else {
-        return [[OKTableDelegateAndDataSource alloc] initWithClass:className
-                                                      rowDataArr:rowDataArr
+        return [[OKTableDelegateOrDataSource alloc] initWithClass:className
                                               configureCellBlock:configureBlock];
     }
 }
 
 - (instancetype)initWithClass:(NSString *)className
-                   rowDataArr:(NSArray *)rowDataArr
            configureCellBlock:(TableViewCellConfigureBlock)configureBlock
 {
     self = [super init];
     if (self) {
         _cellCalss = NSClassFromString(className);
-        _rowDataArr = rowDataArr;
         _cellIdentifier = className;
         _configureBlock = configureBlock;
     }
@@ -62,22 +59,15 @@
                 return arrary[indexPath.row];
             }
         }
-    } else {
-        if (indexPath.row < self.rowDataArr.count) {
-            return self.rowDataArr[indexPath.row];
-        }
+    } else if (self.plainTabDataArrBlcok) {
+        NSArray *rowDataArr = self.plainTabDataArrBlcok();
+        if ([rowDataArr isKindOfClass:[NSArray class]]) {
+            if (indexPath.row < rowDataArr.count) {
+                return rowDataArr[indexPath.row];
+            }
+        }        
     }
     return nil;
-}
-
-/**
- *  赋值数据源
- */
-- (void)loadRowData:(NSArray *)rowDataArr
-{
-    if (!self.groupTabNumberOfSections) { //表格类型为:UITableViewStylePlain
-        self.rowDataArr = rowDataArr;
-    }
 }
 
 #pragma mark -===========UITableViewDataSource===========
@@ -87,11 +77,12 @@
     if (self.groupTabNumberOfSections) {
         return self.groupTabNumberOfSections();
     } else {
-        if (_rowDataArr.count != 0) {
-            return 1;
-        } else {
-            return 0;
+        if (self.plainTabDataArrBlcok) {
+            if (self.plainTabDataArrBlcok().count != 0) {
+                return 1;
+            }
         }
+        return 0;
     }
 }
 
@@ -101,7 +92,10 @@
         NSArray *arrary = self.groupTabDataOfSections(section);
         return arrary.count;
     } else {
-        return _rowDataArr.count;
+        if (self.plainTabDataArrBlcok) {
+            return self.plainTabDataArrBlcok().count;
+        }
+        return 0;
     }
 }
 
@@ -117,7 +111,7 @@
     if (self.configureBlock) {
         self.configureBlock(cell, rowData, indexPath);
     } else {
-        SEL sel = @selector(setDataModel:);
+        SEL sel = NSSelectorFromString(@"setDataModel:");
         if ([cell respondsToSelector:sel]) {
             OKPerformSelectorLeakWarning(
              [cell performSelector:sel withObject:rowData];
@@ -144,7 +138,7 @@
     if (self.heightForSectionBlcok) {
         return self.heightForSectionBlcok(HeaderType, section);
     } else {
-        return OKMaxPixelSize;
+        return kMinSectionHeight;
     }
 }
 
@@ -153,7 +147,7 @@
     if (self.heightForSectionBlcok) {
         return self.heightForSectionBlcok(FooterType, section);
     } else {
-        return OKMaxPixelSize;
+        return kMinSectionHeight;
     }
 }
 
@@ -188,6 +182,7 @@
     self.configureBlock = nil;
     self.groupTabNumberOfSections = nil;
     self.groupTabDataOfSections = nil;
+    self.plainTabDataArrBlcok = nil;
     self.heightForRowBlcok = nil;
     self.heightForSectionBlcok = nil;
     self.viewForSectionBlcok = nil;

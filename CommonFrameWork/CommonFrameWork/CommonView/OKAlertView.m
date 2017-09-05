@@ -10,6 +10,7 @@
 #import "NSObject+OKRuntime.h"
 #import "NSString+OKExtention.h"
 #import "NSAttributedString+OKExtension.h"
+#import "OKHttpRequestModel.h"
 
 //进制颜色转换
 #ifndef ColorFromHex
@@ -480,7 +481,7 @@ void ShowAlertWithError(NSError *error, id msg) {
     
     NSString *errorMsg = error.domain;
     NSInteger code = error.code;
-    if (code > 200 && code < 500 && errorMsg.length) {
+    if (code > kRequestTipsStatuesMin && code < kRequestTipsStatuesMax && errorMsg.length) {
         ShowAlertToastByTitle(@"提示", errorMsg);
     }
     else if (msg){
@@ -496,7 +497,7 @@ void ShowAlertWithError(NSError *error, id msg) {
 - (void)showOKAlertView
 {
     self.contentView.transform = CGAffineTransformMakeScale(1.12, 1.12);
-    [UIView animateWithDuration:0.2f delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+    [UIView animateWithDuration:0.15f delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         self.alpha = 1;
         self.contentView.transform = CGAffineTransformMakeScale(1.0, 1.0);
     } completion:nil];
@@ -507,7 +508,7 @@ void ShowAlertWithError(NSError *error, id msg) {
  */
 - (void)dismissOKAlertView:(id)sender
 {
-    [UIView animateWithDuration:0.2f delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+    [UIView animateWithDuration:0.1f delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         self.alpha = 0.0;
         self.contentView.transform = CGAffineTransformMakeScale(0.8, 0.8);
         

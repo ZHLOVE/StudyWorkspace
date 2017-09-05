@@ -12,7 +12,7 @@
 #import <MJRefresh.h>
 
 /** 网络连接失败 */
-#define kNetworkConnectDefaultFailTips              @"网络开小差, 请稍后再试哦!"
+#define kNetworkConnectDefaultFailTips              @"网络开小差, 请稍后再试"
 #define kAgainRequestDefaultTipString               @"重新加载"
 #define kEmptyDataDefaultTipText                    @"暂无数据"
 #define kReqFailDefaultTipText                      @"数据加载失败"
@@ -82,7 +82,7 @@ static char const * const kActionSELKey             = "kActionSELKey";
 
 - (NSString *)footerTipString
 {
-    return objc_getAssociatedObject(self, kFooterTipStringKey);
+    return objc_getAssociatedObject(self, kFooterTipStringKey);//@"—— 没有更多数据啦 ——"
 }
 
 // ==================== UItableView"没有更多数据"提示图片 ====================
@@ -510,7 +510,7 @@ static char const * const kActionSELKey             = "kActionSELKey";
 - (void)removeOldTipBgView
 {
     for (UIView *tempView in self.subviews) {
-        if ([tempView isKindOfClass:[OKCommonTipView class]] ||
+        if ([tempView isKindOfClass:[OKCommonTipView class]] &&
             tempView.tag == kRequestTipViewTag) {
             [tempView removeFromSuperview];
             break;

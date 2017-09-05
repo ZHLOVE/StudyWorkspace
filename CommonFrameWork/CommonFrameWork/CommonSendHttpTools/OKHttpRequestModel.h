@@ -11,15 +11,15 @@
 //************客户端自定义错误码提示*******************
 
 /** 网络连接失败 */
-#define NetworkConnectFailTip                   @"网络开小差, 请稍后再试哦!"
+#define NetworkConnectFailTip                   @"网络开小差, 请稍后再试"
 /** 重复请求 */
 #define RequestRepeatFailTip                    @"重复请求!"
 /** 错误码在200-500以外的失败统一提示 */
-#define RequestFailCommomTip                    @"请求失败, 请重试!"
+#define RequestFailCommomTip                    @"数据加载失败, 请重试"
 /** 请求转圈的统一提示*/
-#define RequestLoadingTip                       @"正在拼命加载..."
+#define RequestLoadingTip                       @"正在拼命加载中..."
 
-#warning 这里有几个key暂时不写const，因为在其他测试Demo中的请求回调可以不统一
+//#warning 这里有几个key暂时不写const，因为在其他测试Demo中的请求回调可以不统一
 
 static NSString * kRequestCodeKey               = @"code";                      /**< 请求code 的key */
 static NSString *const kRequestMessageKey       = @"message";                   /**< 请求message 的key */

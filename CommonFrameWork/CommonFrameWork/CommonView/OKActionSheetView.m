@@ -749,7 +749,7 @@ typedef enum : NSUInteger {
         contentViewY = 0;
     }
     
-    [UIView animateWithDuration:0.25f delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+    [UIView animateWithDuration:0.15f delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         self.alpha = 1;
         self.contentView.y = contentViewY;
     } completion:nil];
@@ -767,7 +767,7 @@ typedef enum : NSUInteger {
         contentViewY = -(self.contentView.height);
     }
     
-    [UIView animateWithDuration:0.2f delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+    [UIView animateWithDuration:0.15f delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         self.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0];
         self.contentView.y = contentViewY;
         //self.alpha = 0;
