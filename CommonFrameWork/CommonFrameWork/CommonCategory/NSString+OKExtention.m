@@ -311,14 +311,14 @@
     
     //是手机号
     if (self.length==11 && [OKUtils checkTelNumber:self]) {
-        NSString *prefix = [self substringToIndex:2];
-        NSString *suffix = [self substringWithRange:NSMakeRange(7, 10)];
+        NSString *prefix = [self substringToIndex:3];
+        NSString *suffix = [self substringWithRange:NSMakeRange(7,4)];
         
-        if (formatStyle == FormatToSpaceStyle) { //空格样式 186 1111 2222
-            NSString *middle = [self substringWithRange:NSMakeRange(3, 6)];
+        if (formatStyle == FormatPhoneSpaceStyle) { //空格样式 186 1111 2222
+            NSString *middle = [self substringWithRange:NSMakeRange(4, 4)];
             return [NSString stringWithFormat:@"%@ %@ %@",prefix,middle,suffix];
             
-        } else if (formatStyle == FormatToBlurryStyle) {//模糊的：186****2222
+        } else if (formatStyle == FormatPhoneBlurryStyle) {//模糊的：186****2222
             NSString *middle = @"****";
             return [NSString stringWithFormat:@"%@%@%@",prefix,middle,suffix];
         }

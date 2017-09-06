@@ -10,8 +10,8 @@
 #import <UIKit/UIKit.h>
 
 typedef enum : NSUInteger {
-    FormatToSpaceStyle=0,     //空格样式： 186 1111 2222
-    FormatToBlurryStyle,    //模糊的： 186****2222
+    FormatPhoneSpaceStyle=0,     //空格样式： 186 1111 2222
+    FormatPhoneBlurryStyle,    //模糊的： 186****2222
 } FormatPhoneStyle;
 
 @interface NSString (OKExtention)
