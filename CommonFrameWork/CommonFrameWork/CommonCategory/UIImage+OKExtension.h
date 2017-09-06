@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+#define kImageDataKey @"imageData"
+#define kJpgKey @"JPG"
+
 @interface UIImage (OKExtension)
 
 + (UIImage *(^)(UIColor *))withColor;
@@ -42,5 +45,35 @@
 
 // 将自身填充到指定的size
 - (UIImage *)fillClipSize:(CGSize)size;
+
+//重新设置图片大小
++ (UIImage *)ok_resizeImage:(NSString *)imageName viewframe:(CGRect)viewframe resizeframe:(CGRect)sizeframe;
+
+//图片处理  压缩
++ (NSArray *)ok_disposeImagesWithArray:(NSArray *)imageArray;
+
+// 按比例缩放图片
++ (UIImage *)ok_scaleToSize:(UIImage *)img size:(CGSize)size;
+
+//压缩图片
++ (NSData *)ok_compressedData:(CGFloat)compressionQuality image:(UIImage *)image;
+
+//压缩图片
++ (CGFloat)ok_compressionQuality:(UIImage *)image;
+
+//获取带边框的圆形图片
+- (UIImage *)ok_circleImageWithBorderWidth:(CGFloat)borderWidth borderColor:(UIColor *)borderColor;
+
+//给图片添加图片水印
+- (UIImage *)ok_watermarkImageWithMarkImage:(UIImage *)image inRect:(CGRect)rect;
+
+//给图片添加文字水印
+- (UIImage *)ok_watermarkImageWithMarkString:(NSAttributedString *)string inRect:(CGRect)rect;
+
+//截屏
++ (UIImage *)ok_screenShotImageWithView:(UIView *)view size:(CGSize )size;
+
+//获取图片数据的类型
+- (NSString *)ok_typeForImageData:(NSData *)data;
 
 @end

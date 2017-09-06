@@ -18,7 +18,6 @@
 #define IP_ADDR_IPv6    @"ipv6"
 
 @implementation UIDevice (OKExtension)
-
 /**
  *  获取设备型号
  */
@@ -49,17 +48,15 @@
     UIScreenMode *screenMode = [[UIScreen mainScreen] currentMode];
     return [NSString stringWithFormat:@"%.0fx%.0f",screenMode.size.width,screenMode.size.height];
 }
-
 /**
  *  获取 uuid  唯一标识
  */
 + (NSString *)ok_obtainUUID
 {
     NSString *identifierForVendor = [[UIDevice currentDevice].identifierForVendor UUIDString];
-
+    
     return identifierForVendor;
 }
-
 /**
  *  获取IP地址
  */
@@ -67,10 +64,10 @@
     NSArray *searchArray = preferIPv4 ?
     @[ IOS_WIFI @"/" IP_ADDR_IPv4, IOS_WIFI @"/" IP_ADDR_IPv6, IOS_CELLULAR @"/" IP_ADDR_IPv4, IOS_CELLULAR @"/" IP_ADDR_IPv6 ] :
     @[ IOS_WIFI @"/" IP_ADDR_IPv6, IOS_WIFI @"/" IP_ADDR_IPv4, IOS_CELLULAR @"/" IP_ADDR_IPv6, IOS_CELLULAR @"/" IP_ADDR_IPv4 ] ;
-
+    
     NSDictionary *addresses = [self ok_getIPAddresses];
     //NSLog(@"addresses: %@", addresses);
-
+    
     __block NSString *address;
     [searchArray enumerateObjectsUsingBlock:^(NSString *key, NSUInteger idx, BOOL *stop)
      {
@@ -79,11 +76,10 @@
      } ];
     return address ? address : @"0.0.0.0";
 }
-
 + (NSDictionary *)ok_getIPAddresses
 {
     NSMutableDictionary *addresses = [NSMutableDictionary dictionaryWithCapacity:8];
-
+    
     // retrieve the current interfaces - returns 0 on success
     struct ifaddrs *interfaces;
     if(!getifaddrs(&interfaces)) {
@@ -106,8 +102,38 @@
         // Free memory
         freeifaddrs(interfaces);
     }
-
+    
     // The dictionary keys have the form "interface" "/" "ipv4 or ipv6"
     return [addresses count] ? addresses : nil;
 }
+
+/**
+ *  获取设置推送声音状态
+ */
++ (BOOL)ok_isNotifySound{
+    BOOL isNotifySound = NO;
+    if ([UIDevice currentDevice].systemVersion.floatValue >= 8.0)
+    {
+        UIUserNotificationType types = [[UIApplication sharedApplication] currentUserNotificationSettings].types;
+        isNotifySound = (types & UIUserNotificationTypeSound) == UIUserNotificationTypeSound;
+    }
+    return isNotifySound;
+}
+
+/**
+ *  获取时间戳  毫秒
+ *
+ *  @return 毫秒
+ */
++ (NSString *)ok_obtainTimeInterval{
+    NSTimeInterval interval = [[NSDate date] timeIntervalSince1970] * 1000;
+    NSString *timeInterval = [NSString stringWithFormat:@"%f",interval];
+    NSInteger maxLength = 13;
+    if (timeInterval.length > maxLength) {
+        timeInterval = [timeInterval substringToIndex:maxLength];
+    }
+    //    CCLog(@"%f",interval);
+    return timeInterval;
+}
+
 @end

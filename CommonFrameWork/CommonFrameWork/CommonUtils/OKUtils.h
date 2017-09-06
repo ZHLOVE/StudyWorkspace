@@ -63,6 +63,36 @@
 +(BOOL)CheckContainChinese:(NSString *)chinese;
 
 /**
+ * 判断是否是有效价格
+ */
++ (BOOL)ok_validPrice:(NSString *)text;
+
+/**
+ * 是否是正数
+ */
++ (BOOL)ok_isPositiveNumber:(NSString *)text;
+
+/**
+ * 对特殊字符编码(不包含#)
+ */
++ (NSString *)ok_urlStringEncoding:(NSString *)text;
+
+/**
+ * 对参数进行编码
+ */
++ (NSString *)ok_parameterEncoding:(NSString *)text;
+
+/**
+ *  判断是不是http字符串（在传图片时，判断是本地图片或者是网络图片）
+ */
++ (BOOL)ok_isHttpString:(NSString *)text;
+
+/**
+ *  去除emoji表情
+ */
++ (NSString *)ok_toString:(id)obj;
+
+/**
  *  格式化价格,是小数就保留两位,不是小数就取整数
  */
 + (NSString *)formatPriceValue:(CGFloat)originValue;

@@ -244,6 +244,81 @@
 }
 
 /**
+ * 判断是否是有效价格
+ */
++ (BOOL)ok_validPrice:(NSString *)text {
+    NSString *regex = @"^[0-9]+(\\.[0-9]{1,2})?$";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",regex];
+    return [predicate evaluateWithObject:text];
+    
+}
+
+/**
+ * 是否是正数
+ */
++ (BOOL)ok_isPositiveNumber:(NSString *)text {
+    NSString *regex = @"^[1-9][0-9]*$";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",regex];
+    return [predicate evaluateWithObject:text];
+}
+
+
+//对特殊字符编码(不包含#)
++ (NSString *)ok_urlStringEncoding:(NSString *)text {
+    NSCharacterSet *uRLCombinedCharacterSet = [[NSCharacterSet characterSetWithCharactersInString:@" \"+<>[\\]^`{|}"] invertedSet];
+    return [text stringByAddingPercentEncodingWithAllowedCharacters:uRLCombinedCharacterSet];
+}
+
+//对参数进行编码
++ (NSString *)ok_parameterEncoding:(NSString *)text {
+    NSCharacterSet *uRLCombinedCharacterSet = [[NSCharacterSet characterSetWithCharactersInString:@" \"+%<>[\\]^`{|}/"] invertedSet];   //对"%"和"／"进行了编码
+    return [text stringByAddingPercentEncodingWithAllowedCharacters:uRLCombinedCharacterSet];
+}
+
+/**
+ *  判断是不是http字符串（在传图片时，判断是本地图片或者是网络图片）
+ *  @return BOOL
+ */
++ (BOOL)ok_isHttpString:(NSString *)text{
+    
+    NSString *httpStrRegex = @"^http[s]{0,1}://.+";
+    NSRegularExpression *regular = [[NSRegularExpression alloc] initWithPattern:httpStrRegex options:0 error:nil];
+    NSArray *array = [regular matchesInString:text options:0 range:NSMakeRange(0, text.length)];
+    
+    return array.count ;
+}
+
+/**
+ *  去除emoji表情
+ *
+ *  返回NSString字符串
+ */
++ (NSString *)ok_toString:(id)obj
+{
+    if (obj) {
+        if ([obj isKindOfClass:[NSString class]]) {
+            return obj;
+        }
+        
+        if (![obj isKindOfClass:[NSNull class]] && ![obj isEqual:nil] && ![obj isEqual:[NSNull null]]) {
+            NSString *result = [NSString stringWithFormat:@"%@",obj];
+            if (result && result.length > 0) {
+                return result;
+            }
+            else{
+                return @"";
+            }
+        }
+        else{
+            return @"";
+        }
+    }
+    else{
+        return @"";
+    }
+}
+
+/**
  *  格式化价格,是小数就保留两位,不是小数就取整数
  */
 + (NSString *)formatPriceValue:(CGFloat)originValue

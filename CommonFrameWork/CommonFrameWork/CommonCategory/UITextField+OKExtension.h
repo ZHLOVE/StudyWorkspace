@@ -20,7 +20,7 @@
 /** 占位文字 */
 @property (nonatomic, copy) NSString *placeholderText;
 
-/** 占位文字颜色 */
+/** 占位文字颜色  要在placeholder设置之前才有效.*/
 @property (nonatomic, strong) UIColor *placeholderColor;
 
 /** 设置右侧按钮是否可点击 */

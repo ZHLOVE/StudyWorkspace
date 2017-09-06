@@ -9,7 +9,8 @@
 #import "UIImageView+OKExtension.h"
 #import <objc/message.h>
 #import "NSObject+OKRuntime.h"
-
+#import "UIImageView+WebCache.h"
+#import "OKUtils.h"
 
 static const void *UIRenderColorKey = &UIRenderColorKey;
 
@@ -36,6 +37,22 @@ static const void *UIRenderColorKey = &UIRenderColorKey;
         image = [image imageWithRenderingMode:(UIImageRenderingModeAlwaysTemplate)];
     }
     [self ok_setImage:image];
+}
+
+- (void)ok_setImageWithString:(NSString *)image withDefaultImage:(UIImage *)defaultImage {
+    
+    if ([OKUtils ok_isHttpString:image]) {
+        [self sd_setImageWithURL:[NSURL URLWithString:[OKUtils ok_urlStringEncoding:image]] placeholderImage:defaultImage];
+    } else{
+        if (image.length > 0) {
+            [self setImage:[UIImage imageNamed:image]];
+            if (!self.image) {
+                [self setImage:defaultImage];
+            }
+        } else{
+            [self setImage:defaultImage];
+        }
+    }
 }
 
 

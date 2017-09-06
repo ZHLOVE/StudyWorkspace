@@ -8,6 +8,7 @@
 
 #import "NSString+OKExtention.h"
 #import <UIKit/UIKit.h>
+#import "OKUtils.h"
 
 @implementation NSString (OKExtention)
 /**
@@ -299,6 +300,30 @@
     }
     
     return textAttr;
+}
+
+/**
+ * 格式化电话号码样式
+ */
+- (NSString *)formatPhoneNumStyle:(FormatPhoneStyle)formatStyle
+{
+    if (formatStyle > 1) return self;
+    
+    //是手机号
+    if (self.length==11 && [OKUtils checkTelNumber:self]) {
+        NSString *prefix = [self substringToIndex:2];
+        NSString *suffix = [self substringWithRange:NSMakeRange(7, 10)];
+        
+        if (formatStyle == FormatToSpaceStyle) { //空格样式 186 1111 2222
+            NSString *middle = [self substringWithRange:NSMakeRange(3, 6)];
+            return [NSString stringWithFormat:@"%@ %@ %@",prefix,middle,suffix];
+            
+        } else if (formatStyle == FormatToBlurryStyle) {//模糊的：186****2222
+            NSString *middle = @"****";
+            return [NSString stringWithFormat:@"%@%@%@",prefix,middle,suffix];
+        }
+    }
+    return self;
 }
 
 @end

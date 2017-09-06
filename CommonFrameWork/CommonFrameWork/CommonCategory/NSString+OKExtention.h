@@ -9,6 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+typedef enum : NSUInteger {
+    FormatToSpaceStyle=0,     //空格样式： 186 1111 2222
+    FormatToBlurryStyle,    //模糊的： 186****2222
+} FormatPhoneStyle;
+
 @interface NSString (OKExtention)
 
 /**
@@ -96,6 +101,11 @@
                                              colorArr:(NSArray *)colorArr
                                           lineSpacing:(CGFloat)spacing
                                             alignment:(NSTextAlignment)alignment;
+
+/**
+ * 格式化电话号码样式
+ */
+- (NSString *)formatPhoneNumStyle:(FormatPhoneStyle)formatStyle;
 
 @end
 
