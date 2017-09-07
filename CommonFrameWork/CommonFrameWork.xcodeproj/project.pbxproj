@@ -175,6 +175,8 @@
 		B5A88C631F5FDBBE00DB7F07 /* NSString+OKPath.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A88C611F5FDBBE00DB7F07 /* NSString+OKPath.m */; };
 		B5BBC7951EE5094A007C8D48 /* UITabBarController+OKSliderApp.h in Headers */ = {isa = PBXBuildFile; fileRef = B5BBC7931EE5094A007C8D48 /* UITabBarController+OKSliderApp.h */; };
 		B5BBC7961EE5094A007C8D48 /* UITabBarController+OKSliderApp.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BBC7941EE5094A007C8D48 /* UITabBarController+OKSliderApp.m */; };
+		B5E761DE1F615A1000ADEF48 /* OkdeerHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = B5E761DC1F615A1000ADEF48 /* OkdeerHUD.h */; };
+		B5E761DF1F615A1000ADEF48 /* OkdeerHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E761DD1F615A1000ADEF48 /* OkdeerHUD.m */; };
 		B5E8BD2F1E2F55DD00D0F73D /* OKReachabilityManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B5E8BD2D1E2F55DD00D0F73D /* OKReachabilityManager.h */; };
 		B5E8BD301E2F55DD00D0F73D /* OKReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E8BD2E1E2F55DD00D0F73D /* OKReachabilityManager.m */; };
 		F742917AA1FF6DFCD98BDDB7 /* libPods-CommonFrameWork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 677F0A896830251DDCBB58F8 /* libPods-CommonFrameWork.a */; };
@@ -352,6 +354,8 @@
 		B5A88C611F5FDBBE00DB7F07 /* NSString+OKPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+OKPath.m"; sourceTree = "<group>"; };
 		B5BBC7931EE5094A007C8D48 /* UITabBarController+OKSliderApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBarController+OKSliderApp.h"; sourceTree = "<group>"; };
 		B5BBC7941EE5094A007C8D48 /* UITabBarController+OKSliderApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBarController+OKSliderApp.m"; sourceTree = "<group>"; };
+		B5E761DC1F615A1000ADEF48 /* OkdeerHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OkdeerHUD.h; sourceTree = "<group>"; };
+		B5E761DD1F615A1000ADEF48 /* OkdeerHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OkdeerHUD.m; sourceTree = "<group>"; };
 		B5E8BD2D1E2F55DD00D0F73D /* OKReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKReachabilityManager.h; sourceTree = "<group>"; };
 		B5E8BD2E1E2F55DD00D0F73D /* OKReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OKReachabilityManager.m; sourceTree = "<group>"; };
 		D75B7CE185F50916618B66A4 /* Pods-CommonFrameWork.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonFrameWork.release.xcconfig"; path = "../Pods/Target Support Files/Pods-CommonFrameWork/Pods-CommonFrameWork.release.xcconfig"; sourceTree = "<group>"; };
@@ -505,6 +509,8 @@
 				B50310EF1E1E607F00C11EC4 /* OKActionSheetView.m */,
 				B5877F221ECB070C00A3A521 /* OKAlertView.h */,
 				B5877F231ECB070C00A3A521 /* OKAlertView.m */,
+				B5E761DC1F615A1000ADEF48 /* OkdeerHUD.h */,
+				B5E761DD1F615A1000ADEF48 /* OkdeerHUD.m */,
 				A30E894E1F4978BD0009951E /* OKAppGuideView.h */,
 				A30E894F1F4978BD0009951E /* OKAppGuideView.m */,
 				A30E89521F49826F0009951E /* OKChooseDateView.h */,
@@ -802,6 +808,7 @@
 				B584C8321E31BEC000CB6C81 /* ZLPhotoPickerAssetsViewController.h in Headers */,
 				B503115B1E1E607F00C11EC4 /* UIView+OKExtension.h in Headers */,
 				B584C80A1E31BEC000CB6C81 /* OKFMDBTool.h in Headers */,
+				B5E761DE1F615A1000ADEF48 /* OkdeerHUD.h in Headers */,
 				B50311381E1E607F00C11EC4 /* NSArray+OKExtention.h in Headers */,
 				A30693521E1E98C30023DE5E /* UITabBar+BadgeView.h in Headers */,
 				B5A88C561F5FD19600DB7F07 /* NSString+OKFormatPrice.h in Headers */,
@@ -950,6 +957,7 @@
 				B584C83D1E31BEC000CB6C81 /* ZLPhotoPickerFooterCollectionReusableView.m in Sources */,
 				B584C8391E31BEC000CB6C81 /* ZLPhotoPickerCollectionView.m in Sources */,
 				B50311621E1E607F00C11EC4 /* OKHttpRequestModel.m in Sources */,
+				B5E761DF1F615A1000ADEF48 /* OkdeerHUD.m in Sources */,
 				B50311341E1E607F00C11EC4 /* Foundation+Log.m in Sources */,
 				B503114A1E1E607F00C11EC4 /* NSString+OKExtention.m in Sources */,
 				B5877F1D1ECB013000A3A521 /* UILabel+OKShortcut.m in Sources */,
