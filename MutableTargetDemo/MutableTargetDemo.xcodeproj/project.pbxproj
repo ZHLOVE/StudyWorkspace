@@ -358,7 +358,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = W222R58V26;
 				GCC_PREFIX_HEADER = MutableTargetDemo/PrefixHeader.pch;
-				GCC_PREPROCESSOR_DEFINITIONS = "Dev02=2";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					"Dev02=2",
+				);
 				INFOPLIST_FILE = MutableTargetDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -423,7 +427,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = W222R58V26;
 				GCC_PREFIX_HEADER = MutableTargetDemo/PrefixHeader.pch;
-				GCC_PREPROCESSOR_DEFINITIONS = "Test04=3";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					"Test04=3",
+				);
 				INFOPLIST_FILE = MutableTargetDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
