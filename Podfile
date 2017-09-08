@@ -8,6 +8,8 @@ project 'CommonFrameWork/CommonFrameWork.xcodeproj'
 project 'TimeLineDemo/TimeLineDemo.xcodeproj'
 
 #步骤2:->添加工程的target, 和xcodeproj文件所在的项目路径
+#=============================================================
+
 target :'ReactiveObjCDemo' do
 #    use_frameworks!
     platform :ios, '8.0'
@@ -15,12 +17,14 @@ target :'ReactiveObjCDemo' do
     project 'ReactiveObjCDemo/ReactiveObjCDemo.xcodeproj'
 end
 
+#=============================================================
 
 target :'PodsDemo' do
     platform :ios, '7.0'
     project 'PodsDemo/PodsDemo.xcodeproj'
 end
 
+#=============================================================
 
 target :'DrawDemo' do
     platform :ios, '7.0'
@@ -28,11 +32,14 @@ target :'DrawDemo' do
     project 'DrawDemo/DrawDemo.xcodeproj'
 end
 
+#=============================================================
+
 target :'TimeLineDemo' do
     platform :ios, '8.0'
     project 'TimeLineDemo/TimeLineDemo.xcodeproj'
 end
 
+#=============================================================
 
 target :'CommonFrameWork' do
     platform :ios, '7.0'

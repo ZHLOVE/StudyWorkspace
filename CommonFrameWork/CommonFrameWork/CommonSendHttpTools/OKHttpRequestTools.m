@@ -298,7 +298,7 @@ static char const * const kRequestUrlKey    = "kRequestUrlKey";
  */
 + (void)printAbsoluteUrl:(NSError *)error
 {
-#if DEBUG
+#ifdef DEBUG
     NSDictionary *errorInfo = error.userInfo;
     if (errorInfo && [errorInfo isKindOfClass:[NSDictionary class]]) {
         NSString *absoluteUrl = errorInfo[@"NSErrorFailingURLStringKey"];

@@ -32,6 +32,9 @@
       location = "group:iOS_MVPDemo/iOS_MVPDemo.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:MutableTargetDemo/MutableTargetDemo.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>
