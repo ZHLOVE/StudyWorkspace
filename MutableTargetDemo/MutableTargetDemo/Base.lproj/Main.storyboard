@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Fbf-yw-hsg">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--一键切换打包环境-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
@@ -21,25 +21,101 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="当前环境" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mqc-7h-lyr" userLabel="当前环境">
+                                <rect key="frame" x="150.5" y="273" width="73.5" height="21.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" red="0.1529411765" green="0.86666666670000003" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App环境" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rMs-nt-tvR">
                                 <rect key="frame" x="111.5" y="309.5" width="152.5" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <scrollView hidden="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tbV-Ju-DBs">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="step-1" translatesAutoresizingMaskIntoConstraints="NO" id="LNr-N5-T8D">
+                                        <rect key="frame" x="-0.5" y="-32" width="375" height="667"/>
+                                    </imageView>
+                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="step-2" translatesAutoresizingMaskIntoConstraints="NO" id="2Hy-wp-dul">
+                                        <rect key="frame" x="374.5" y="-32" width="375" height="667"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstItem="2Hy-wp-dul" firstAttribute="leading" secondItem="LNr-N5-T8D" secondAttribute="trailing" id="JeP-3O-AIy"/>
+                                    <constraint firstItem="LNr-N5-T8D" firstAttribute="centerY" secondItem="tbV-Ju-DBs" secondAttribute="centerY" id="VzN-gk-hDH"/>
+                                    <constraint firstItem="LNr-N5-T8D" firstAttribute="leading" secondItem="tbV-Ju-DBs" secondAttribute="leading" id="ZnC-w4-9eu"/>
+                                    <constraint firstItem="2Hy-wp-dul" firstAttribute="centerY" secondItem="tbV-Ju-DBs" secondAttribute="centerY" id="dXk-rO-jrQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="LNr-N5-T8D" secondAttribute="bottom" constant="-32" id="lQx-0W-PW1"/>
+                                    <constraint firstAttribute="trailing" secondItem="2Hy-wp-dul" secondAttribute="trailing" id="lyk-Yu-zUf"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="rTW-Oy-c0q" appends="YES" id="wfU-WA-2oR"/>
+                                </connections>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="tbV-Ju-DBs" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="4IS-9H-bHc"/>
+                            <constraint firstAttribute="trailing" secondItem="tbV-Ju-DBs" secondAttribute="trailing" id="741-vk-dNl"/>
+                            <constraint firstItem="2Hy-wp-dul" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="BIu-pN-T0b"/>
                             <constraint firstItem="rMs-nt-tvR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="IVL-Yb-kUu"/>
+                            <constraint firstItem="tbV-Ju-DBs" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="U3M-Zm-df3"/>
+                            <constraint firstItem="2Hy-wp-dul" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="UZc-Ug-d8i"/>
+                            <constraint firstItem="LNr-N5-T8D" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="WGe-aX-qsH"/>
+                            <constraint firstItem="mqc-7h-lyr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ytz-eA-HBT"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="tbV-Ju-DBs" secondAttribute="bottom" id="eG9-Ik-Cyn"/>
+                            <constraint firstItem="LNr-N5-T8D" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="i7v-yK-Hxo"/>
+                            <constraint firstItem="rMs-nt-tvR" firstAttribute="top" secondItem="mqc-7h-lyr" secondAttribute="bottom" constant="15" id="pY9-nN-PNM"/>
                             <constraint firstItem="rMs-nt-tvR" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="r48-ml-J5H"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="一键切换打包环境" id="MIf-Dq-2Yu">
+                        <barButtonItem key="rightBarButtonItem" title="步骤" id="pNN-l5-VuZ">
+                            <connections>
+                                <action selector="changeAppAction:" destination="BYZ-38-t0r" id="bWE-QI-EAo"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="scrollView" destination="tbV-Ju-DBs" id="WET-tv-9xu"/>
                         <outlet property="textLabel" destination="rMs-nt-tvR" id="8lR-I4-EaT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="rTW-Oy-c0q">
+                    <connections>
+                        <action selector="tapScrollViewAction:" destination="BYZ-38-t0r" id="RHF-JD-dKr"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
+            <point key="canvasLocation" x="872.79999999999995" y="-561.76911544227892"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="FAS-SX-uTp">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Fbf-yw-hsg" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DHX-s7-zfW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="gqU-6d-Nqk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TRv-hg-msZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="116" y="-560.86956521739137"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="step-1" width="166" height="104"/>
+        <image name="step-2" width="409" height="195"/>
+    </resources>
 </document>

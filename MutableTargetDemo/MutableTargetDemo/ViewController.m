@@ -10,14 +10,13 @@
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *textLabel;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-
     self.textLabel.text = RequestURL;
 }
 
@@ -26,5 +25,21 @@
     CCLog(@"%s",__func__);
 }
 
+/**
+ 显示展示图
+ */
+-(IBAction)changeAppAction:(id)sender
+{
+    self.scrollView.hidden = NO;
+}
+
+
+/**
+ 隐藏展示图
+ */
+- (IBAction)tapScrollViewAction:(id)sender
+{
+    self.scrollView.hidden = YES;
+}
 
 @end

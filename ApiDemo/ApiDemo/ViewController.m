@@ -52,6 +52,8 @@
     
     self.hasChange = !self.hasChange;
 }
+- (IBAction)tapScrollView:(UITapGestureRecognizer *)sender {
+}
 
 
 #pragma mark - /*** UITaleviewDelegate ***/

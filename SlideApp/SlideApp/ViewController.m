@@ -26,6 +26,8 @@
 }
 - (IBAction)buttonAction:(UIButton *)sender {
 }
+- (IBAction)changeAppAction:(UIButton *)sender {
+}
 
 
 @end
