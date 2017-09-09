@@ -12,10 +12,8 @@
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 
-#ifdef  DEBUG
-#define RequestURL    @"DEBUG环境"
-
-#elif   Dev02
+/** 定义打包环境 */
+#ifdef   Dev02
 #define RequestURL    @"Dev02环境"
 
 #elif   Test04
@@ -23,7 +21,13 @@
 
 #else
 #define RequestURL    @"Release环境"
+#endif
 
+//定义开发打印日志
+#if defined(DEBUG) || defined(Dev02) || defined(Test04)
+#define CCLog(fmt, ...) NSLog((@"[函数名:%s] " " [行号:%d] " fmt), __FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+#define CCLog(fmt, ...)
 #endif
 
 #endif /* PrefixHeader_pch */

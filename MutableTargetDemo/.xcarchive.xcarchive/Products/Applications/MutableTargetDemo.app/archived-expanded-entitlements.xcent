@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>application-identifier</key>
+	<string>W222R58V26.com.jhsys.cloudmall</string>
+	<key>keychain-access-groups</key>
+	<array>
+		<string>W222R58V26.com.jhsys.cloudmall</string>
+	</array>
+</dict>
+</plist>

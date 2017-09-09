@@ -1,3 +1,37 @@
+
+#1.工程名
+App_Name="MutableTargetDemo"
+
+#2.打包环境
+Config_Name=$1
+
+if [[ $Config_Name ]] ; then
+    echo "开始打包环境===========${Config_Name}==========="
+else
+    Config_Name="Test04"
+    echo "没有指定打包环境, 开始打包环境===========${Config_Name}==========="
+fi
+
+
+CODE_SIGN_DISTRIBUTION="iPhone Distribution: Shenzhen Okdeer Network Technology Co., Ltd."
+
+#打包环境: DEBUG, Dev02, Test04, Release
+
+#清缓存
+xcodebuild clean -scheme "${App_Name}" -configuration "${Config_Name}"
+
+#archive
+xcodebuild archive -scheme "${App_Name}" -archivePath "./${App_Name}.xcarchive" -configuration "${Config_Name}"
+
+#导出ipa
+xcodebuild -exportArchive -archivePath "./${App_Name}.xcarchive" -exportPath "./" -exportOptionsPlist "./ExportOptionsPlist.plist"
+
+
+echo "打包环境===========${Config_Name}===========完成"
+
+##=========================================================================
+
+
 ## 工程名
 #APP_NAME="MutableTargetDemo"
 #
@@ -51,23 +85,3 @@
 #xcodebuild -exportArchive -configuration Test04 -archivePath "${archive_Path}" -exportPath "${Temp_IAP_PATH}" -exportOptionsPlist "${ExportOptionsPlist_Path}"
 #
 #echo ${IPA_PATH}
-##=========================================================================
-
-
-# 工程名
-APP_NAME="MutableTargetDemo"
-
-CODE_SIGN_DISTRIBUTION="iPhone Distribution: Shenzhen Okdeer Network Technology Co., Ltd."
-
-#打包环境: DEBUG, Dev02, Test04, Release
-
-#清缓存
-xcodebuild clean -scheme "${APP_NAME}" -configuration 'Test04'
-
-#archive
-xcodebuild archive -scheme "${APP_NAME}" -archivePath "./${APP_NAME}.xcarchive" -configuration 'Test04'
-
-#导出ipa
-xcodebuild -exportArchive -archivePath "./${APP_NAME}.xcarchive" -exportPath "./" -exportOptionsPlist "./ExportOptionsPlist.plist"
-
-
