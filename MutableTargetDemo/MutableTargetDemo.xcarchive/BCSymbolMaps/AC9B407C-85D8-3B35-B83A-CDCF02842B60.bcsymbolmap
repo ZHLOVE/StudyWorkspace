@@ -1,13 +1,20 @@
 BCSymbolMap Version: 2.0
 -[ViewController viewDidLoad]
--[ViewController didReceiveMemoryWarning]
+-[ViewController touchesBegan:withEvent:]
+-[ViewController changeAppAction:]
+-[ViewController tapScrollViewAction:]
 -[ViewController textLabel]
 -[ViewController setTextLabel:]
+-[ViewController scrollView]
+-[ViewController setScrollView:]
 -[ViewController .cxx_destruct]
+_OBJC_CLASS_$_ViewController
 _OBJC_IVAR_$_ViewController._textLabel
+_OBJC_IVAR_$_ViewController._scrollView
+_OBJC_METACLASS_$_ViewController
 Apple LLVM version 8.1.0 (clang-802.0.42)
-/Users/1dcq/Downloads/Github克隆项目/StudyWorkspace/MutableTargetDemo/MutableTargetDemo/ViewController.m
-/Users/1dcq/Downloads/Github克隆项目/StudyWorkspace/MutableTargetDemo
+/Users/maowangxin/Documents/GitHub开源项目/StudyWorkspace/MutableTargetDemo/MutableTargetDemo/ViewController.m
+/Users/maowangxin/Documents/GitHub开源项目/StudyWorkspace/MutableTargetDemo
 -[AppDelegate application:didFinishLaunchingWithOptions:]
 -[AppDelegate applicationWillResignActive:]
 -[AppDelegate applicationDidEnterBackground:]
@@ -22,9 +29,11 @@ l_OBJC_PROTOCOL_$_NSObject
 l_OBJC_LABEL_PROTOCOL_$_NSObject
 l_OBJC_PROTOCOL_$_UIApplicationDelegate
 l_OBJC_LABEL_PROTOCOL_$_UIApplicationDelegate
-/Users/1dcq/Downloads/Github克隆项目/StudyWorkspace/MutableTargetDemo/MutableTargetDemo/AppDelegate.m
-/Users/1dcq/Downloads/Github克隆项目/StudyWorkspace/MutableTargetDemo/MutableTargetDemo/AppDelegate.h
-/Users/1dcq/Downloads/Github克隆项目/StudyWorkspace/MutableTargetDemo/MutableTargetDemo/main.m
+_OBJC_METACLASS_$_AppDelegate
+_OBJC_CLASS_$_AppDelegate
+/Users/maowangxin/Documents/GitHub开源项目/StudyWorkspace/MutableTargetDemo/MutableTargetDemo/AppDelegate.m
+/Users/maowangxin/Documents/GitHub开源项目/StudyWorkspace/MutableTargetDemo/MutableTargetDemo/AppDelegate.h
+/Users/maowangxin/Documents/GitHub开源项目/StudyWorkspace/MutableTargetDemo/MutableTargetDemo/main.m
 main
 __ZL15__ARCLite__loadv
 __ZL30add_image_hook_autoreleasepoolPK11mach_headerl

@@ -13,12 +13,12 @@
 		<key>CFBundleVersion</key>
 		<string>1</string>
 		<key>SigningIdentity</key>
-		<string>iPhone Developer: Ruquan Liang (MZQG6ZJU88)</string>
+		<string>iPhone Distribution: Shenzhen Okdeer Network Technology Co., Ltd. (W222R58V26)</string>
 	</dict>
 	<key>ArchiveVersion</key>
 	<integer>2</integer>
 	<key>CreationDate</key>
-	<date>2017-09-08T16:41:50Z</date>
+	<date>2017-09-11T12:46:43Z</date>
 	<key>Name</key>
 	<string>MutableTargetDemo</string>
 	<key>SchemeName</key>

@@ -4,18 +4,43 @@ App_Name="MutableTargetDemo"
 
 #2.打包环境
 Config_Name=$1
+Dev02="Dev02"
+Test04="Test04"
+Release="Release"
 
-if [[ $Config_Name ]] ; then
-    echo "开始打包环境===========${Config_Name}==========="
+if [ $Config_Name ] ; then
+
+    if [ $Config_Name = $Dev02 || $Config_Name = $Test04 || $Config_Name = $Release] ; then
+        echo "开始打包环境===========${Config_Name}==========="
+
+    else
+        echo "错误======"
+    fi
+
 else
-    Config_Name="Test04"
-    echo "没有指定打包环境, 开始打包环境===========${Config_Name}==========="
+    echo "没有指定打包环境, 即将开始打包: \033[41;36m Release \033[0m 环境, 确定吗? y/n --> "
+    read -s -n 1 sure
+
+    echo "\033[41;36m $sure \033[0m"
+
+    if [ $sure = y ] ; then
+        Config_Name="Release"
+        echo "开始打包环境======${Config_Name}======"
+
+    elif [ $sure = n ] ; then
+        echo "您已取消打包..."
+        exit 1
+
+    else
+        echo "输入错误, 打包已终止..."
+        exit 1
+    fi
 fi
 
 
 CODE_SIGN_DISTRIBUTION="iPhone Distribution: Shenzhen Okdeer Network Technology Co., Ltd."
 
-#打包环境: DEBUG, Dev02, Test04, Release
+#打包环境: Dev02, Test04, Release
 
 #清缓存
 xcodebuild clean -scheme "${App_Name}" -configuration "${Config_Name}"
