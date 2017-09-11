@@ -17,6 +17,8 @@ typedef void(^OKAlertViewCallBackBlock)(NSInteger buttonIndex);
 
 @interface OKAlertView : UIView
 
+@property (nonatomic,strong) UIColor *mainColor UI_APPEARANCE_SELECTOR;
+
 /**
  iOS的系统弹框, <已兼容iOS7的UIAlertView>;
  注意:如果有设置cancelButton, 则取消按钮的buttonIndex为:0, 其他otherButton的Index依次加1;

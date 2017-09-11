@@ -25,7 +25,7 @@
 //----------------------规范:全局颜色宏---------------------------
 
 //view背景
-#define Color_BackGround           UIColorFromHex(0xf5f5f5)/*RGB(238, 241, 245)*/
+#define Color_BackGround           UIColorFromHex(0xf5f5f5)
 
 //主色
 #define Color_Main                 UIColorFromHex(0xfe9b00)
@@ -52,9 +52,9 @@
 #define DetailTextLabelColor       (UIColorFromHex(0xa4a4a4))
 
 /** 导航栏字体颜色*/
-#define OKNavBarFontColor           (WhiteColor)
+#define OKNavBarFontColor          (WhiteColor)
 /** 导航栏背景颜色*/
-#define OKNabBarBackColor           (UIColorFromHex(0x282828))
+#define OKNabBarBackColor          (UIColorFromHex(0x282828))
 
 
 //----------------------按钮状态颜色宏---------------------------

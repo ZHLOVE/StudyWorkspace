@@ -14,9 +14,6 @@
 #import "OKAlertView.h"
 #import <objc/runtime.h>
 
-//请求失败后再重复请求的次数
-#define kRepeatRequestTime      3
-
 //重复请求次数key
 static char const * const kRequestTimeCountKey    = "kRequestTimeCountKey";
 
@@ -201,9 +198,10 @@ static char const * const kRequestTimeCountKey    = "kRequestTimeCountKey";
         
     } failure:^(NSError *error) {
         
-        if (requestModel.attemptRequestWhenFail) {
+        //请求失败后再重复请求的次数
+        if (requestModel.tryRequestWhenFailCount>0) {
             NSInteger countNum = [objc_getAssociatedObject(requestModel, kRequestTimeCountKey) integerValue];
-            if (countNum<kRepeatRequestTime) {
+            if (countNum < requestModel.tryRequestWhenFailCount) {
                 countNum++;
                 NSLog(@"⁉️⁉️⁉️请求已失败，尝试第-----%zd-----次请求===%@",countNum,requestModel.requestUrl);
                 

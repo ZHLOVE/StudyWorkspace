@@ -31,8 +31,8 @@ typedef enum : NSUInteger {
 /** 是否在底层提示失败信息 */
 @property (nonatomic, assign) BOOL forbidTipErrorInfo;
 
-/** 是否在失败是尝试3次重新请求*/
-@property (nonatomic, assign) BOOL attemptRequestWhenFail;
+/** 在失败时尝试重新请求次数, 默认:0次*/
+@property (nonatomic, assign) NSInteger tryRequestWhenFailCount;
 
 /** 是否需要在底层缓存当前网络数据 */
 @property (nonatomic, assign) CCRequestCachePolicy requestCachePolicy;

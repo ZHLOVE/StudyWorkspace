@@ -18,10 +18,14 @@
 
 @interface OKTagetSliderView()
 @property (nonatomic, strong) UIView *line;
+@property (nonatomic, strong) UIButton *tempSelectedBtn;
 @end
 
 @implementation OKTagetSliderView
 
+/**
+ * 初始化标签滑动视图
+ */
 - (instancetype)initWithFrame:(CGRect)frame titleArr:(NSArray *)titleArr
 {
     if (self == [super initWithFrame:frame]) {
@@ -35,7 +39,7 @@
     CGFloat btnWidth = self.frame.size.width/titleArr.count;
     for (int index = 0; index < [titleArr count]; index++) {
         UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(index * btnWidth, 0, btnWidth, self.frame.size.height)];
-        btn.titleLabel.font = FONTSYSTEM(14);
+        btn.titleLabel.font = FONTSYSTEM(12);
         btn.tag = kBtnStartTag+index;
         [btn setTitleColor:UIColorFromHex(0x999999) forState:UIControlStateNormal];
         btn.titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -43,12 +47,35 @@
         [btn layoutImageOrTitleEdgeInsets:OKButtonEdgeInsetsStyleTop imageTitleSpace:3];
         [self addSubview:btn];
         [btn addTarget:self action:@selector(subBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+        if (index == 0) {
+            self.tempSelectedBtn = btn;
+        }
     }
     
     UIView *line = [self addLineToPosition:OkDrawLine_bottom lineWidth:2];
     line.backgroundColor = self.lineColor ? : [UIColor whiteColor];
     line.width = btnWidth;
     self.line = line;
+}
+
+/**
+ * 按钮事件
+ */
+- (void)subBtnAction:(UIButton *)sender
+{
+    NSInteger index = sender.tag-kBtnStartTag;
+    if (self.touchBtnBlock) {
+        self.touchBtnBlock(index);
+    }
+    self.line.x = index * sender.width;
+    
+    if (self.showBoldFontWhenSelected) {
+        UIFont *customFont = _textFont ? : FONTSYSTEM(12);
+        
+        self.tempSelectedBtn.titleLabel.font = customFont;
+        sender.titleLabel.font = FONTBOLDSYSTEM(customFont.pointSize);
+        self.tempSelectedBtn = sender;
+    }
 }
 
 - (void)setTextClolr:(UIColor *)textClolr
@@ -60,12 +87,31 @@
             [subBtn setTitleColor:textClolr forState:UIControlStateNormal];
         }
     }
+    //设置默认选中的按钮字体
+    [self setDefaultFirstItemFont];
 }
+
+- (void)setTextFont:(UIFont *)textFont
+{
+    _textFont = textFont;
+    for (int i = 0; i<self.subviews.count; i++) {
+        UIButton *subBtn = [self viewWithTag:(kBtnStartTag+i)];
+        if ([subBtn isKindOfClass:[UIButton class]]) {
+            subBtn.titleLabel.font = textFont;
+        }
+    }
+    //设置默认选中的按钮字体
+    [self setDefaultFirstItemFont];
+}
+
 
 - (void)setLineColor:(UIColor *)lineColor
 {
     _lineColor = lineColor;
     self.line.backgroundColor = lineColor;
+    
+    //设置默认选中的按钮字体
+    [self setDefaultFirstItemFont];
 }
 
 /**
@@ -84,6 +130,8 @@
             [subBtn layoutImageOrTitleEdgeInsets:OKButtonEdgeInsetsStyleTop imageTitleSpace:3];
         }
     }
+    //设置默认选中的按钮字体
+    [self setDefaultFirstItemFont];
 }
 
 /**
@@ -93,6 +141,10 @@
 {
     _imageArr = imageArr;
     for (int i = 0; i<self.subviews.count; i++) {
+        if (i >= imageArr.count) {
+            //CCLog(@"超过范围了self.subviews.count===%ld",self.subviews.count);
+            break;
+        }
         UIImage *image = imageArr[i];
         UIButton *subBtn = [self viewWithTag:(kBtnStartTag+i)];
         
@@ -103,6 +155,19 @@
             [subBtn layoutImageOrTitleEdgeInsets:OKButtonEdgeInsetsStyleTop imageTitleSpace:3];
         }
     }
+    //设置默认选中的按钮字体
+    [self setDefaultFirstItemFont];
+}
+
+/**
+ * 设置默认选中的按钮字体
+ */
+- (void)setDefaultFirstItemFont
+{
+    if (self.showBoldFontWhenSelected) {
+        UIFont *customFont = _textFont ? : FONTBOLDSYSTEM(12);
+        self.tempSelectedBtn.titleLabel.font = FONTBOLDSYSTEM(customFont.pointSize);
+    }
 }
 
 /**
@@ -110,25 +175,16 @@
  */
 - (void)setBadgeAtindex:(NSInteger)index badgeNum:(NSInteger)badgeNum
 {
-    NSLog(@"设置数目===%zd",badgeNum);
     UIButton *subBtn = [self viewWithTag:(kBtnStartTag+index)];
     if (badgeNum>0 && [subBtn isKindOfClass:[UIButton class]]) {
+        subBtn.badgeFont = FONTBOLDSYSTEM(12);
         [subBtn showBadgeWithStyle:WBadgeStyleNumber value:badgeNum];
-        [subBtn setBadgeCenterOffset:CGPointMake(-25, 15)];
+        [subBtn setBadgeCenterOffset:CGPointMake(-11.5, 15)];
         [subBtn layoutImageOrTitleEdgeInsets:OKButtonEdgeInsetsStyleTop imageTitleSpace:3];
     }
-}
-
-/**
- * 按钮事件
- */
-- (void)subBtnAction:(UIButton *)sender
-{
-    NSInteger index = sender.tag-kBtnStartTag;
-    if (self.touchBtnBlock) {
-        self.touchBtnBlock(index);
+    else {
+        [subBtn showBadgeWithStyle:WBadgeStyleNumber value:-1]; //-1为隐藏badge
     }
-    self.line.x = index * sender.width;
 }
 
 @end

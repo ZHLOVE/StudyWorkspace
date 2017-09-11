@@ -13,7 +13,6 @@
 #import "OKPubilcKeyDefiner.h"
 
 static NSMutableArray *globalReqManagerArr_;
-
 static char const * const kRequestUrlKey    = "kRequestUrlKey";
 
 @implementation OKHttpRequestTools
@@ -52,16 +51,15 @@ static char const * const kRequestUrlKey    = "kRequestUrlKey";
     [globalReqManagerArr_ removeAllObjects];
 }
 
-
 /**
  *  创建请求管理者
  */
 + (AFHTTPSessionManager *)afManager
 {
     AFHTTPSessionManager *mgr_ = [AFHTTPSessionManager manager];
-    mgr_.responseSerializer = [AFJSONResponseSerializer serializer];
     mgr_.requestSerializer = [AFJSONRequestSerializer serializer];
-    mgr_.requestSerializer.timeoutInterval = 60;//默认超时时间
+    mgr_.requestSerializer.timeoutInterval = 60;//设置请求默认超时时间
+    mgr_.responseSerializer = [AFJSONResponseSerializer serializer];
     mgr_.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"application/json",nil];
     return mgr_;
 }
@@ -80,13 +78,14 @@ static char const * const kRequestUrlKey    = "kRequestUrlKey";
                                 success:(OKHttpSuccessBlock)successBlock
                                 failure:(OKHttpFailureBlock)failureBlock
 {
-    //失败回调
+    //============失败回调============
     void (^failResultBlock)(NSError *) = ^(NSError *error){
         NSLog(@"\n❌❌❌请求接口基地址= %@\n请求参数= %@\n网络数据失败返回= %@\n",requestModel.requestUrl,requestModel.parameters,error);
+        
         //判断Token状态是否为失效
         if (error.code == kLoginFail) {
             //通知页面需要重新登录
-            [[NSNotificationCenter defaultCenter] postNotificationName:kTokenExpiryNotification object:error.domain];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kTokenExpiryNotification object:error];
         }
         
         //如果不是因为重复请求而失败，就标记为该请求已经结束。否则还是还是保持正在请求的状态
@@ -132,27 +131,29 @@ static char const * const kRequestUrlKey    = "kRequestUrlKey";
         return nil;
     };
     
-    //成功回调
+    //============成功回调============
     void(^succResultBlock)(id responseObject) = ^(id responseObject){
         
         id code = responseObject[kRequestCodeKey];
-        if ([responseObject isKindOfClass:[NSDictionary class]] && /*code && */
+        if ([responseObject isKindOfClass:[NSDictionary class]] && code &&
             ([code integerValue] == kRequestSuccessStatues ||
              [code integerValue] == kRequestTipsStatuesMin))
         {
             NSLog(@"\n✅✅✅请求接口基地址= %@\n请求参数= %@\n网络数据成功返回= %@\n",requestModel.requestUrl,requestModel.parameters,responseObject);
+            
             /** <1>.回调页面请求 */
             if (successBlock) {
                 successBlock(responseObject);
             }
             
         } else { //请求code不正确,走失败
-            NSString *tipMsg = [NSString stringWithFormat:@"%@",responseObject[kRequestMessageKey] ? : @""];
-            failResultBlock([NSError errorWithDomain:tipMsg code:[code integerValue] userInfo:nil]);
+            NSString *tipMsg = [NSString stringWithFormat:@"%@",responseObject[kRequestMessageKey] ? : RequestFailCommomTip];
+            NSError *error = [NSError errorWithDomain:tipMsg code:[code integerValue] userInfo:nil];
+            failResultBlock(error);
             
-            /** 单点登录问题,发送通知.注册相应的通知*/
+            /** 通知页面需要重新登录 */
             if ([code integerValue] == kLoginFail) {
-                [[NSNotificationCenter defaultCenter] postNotificationName:kTokenExpiryNotification object:responseObject[kRequestMessageKey]];
+                [[NSNotificationCenter defaultCenter] postNotificationName:kTokenExpiryNotification object:error];
             }
         }
         requestModel.isRequesting = NO;
@@ -162,20 +163,7 @@ static char const * const kRequestUrlKey    = "kRequestUrlKey";
     };
     
     //根据请求方式发送网络请求
-    NSURLSessionDataTask *sessionDataTask = [self startRequest:requestModel
-                                               succResultBlock:succResultBlock
-                                               failResultBlock:failResultBlock];
-    //添加请求操作对象
-    if (sessionDataTask) {
-        //给sessionDataTask关联一个请求key
-        objc_setAssociatedObject(sessionDataTask, kRequestUrlKey, requestModel.requestUrl, OBJC_ASSOCIATION_COPY_NONATOMIC);
-        if (requestModel.sessionDataTaskArr) {
-            [requestModel.sessionDataTaskArr addObject:sessionDataTask];
-        } else {
-            [globalReqManagerArr_ addObject:sessionDataTask];
-        }
-    }
-    return sessionDataTask;
+    return [self startRequest:requestModel succResultBlock:succResultBlock failResultBlock:failResultBlock];
 }
 
 /**
@@ -250,6 +238,16 @@ static char const * const kRequestUrlKey    = "kRequestUrlKey";
                             }];
     }
     
+    //添加请求操作对象
+    if (sessionDataTask) {
+        //给sessionDataTask关联一个请求key
+        objc_setAssociatedObject(sessionDataTask, kRequestUrlKey, requestModel.requestUrl, OBJC_ASSOCIATION_COPY_NONATOMIC);
+        if (requestModel.sessionDataTaskArr) {
+            [requestModel.sessionDataTaskArr addObject:sessionDataTask];
+        } else {
+            [globalReqManagerArr_ addObject:sessionDataTask];
+        }
+    }
     return sessionDataTask;
 }
 

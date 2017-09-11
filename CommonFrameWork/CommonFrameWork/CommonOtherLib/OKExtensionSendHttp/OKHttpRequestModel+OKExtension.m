@@ -9,12 +9,12 @@
 #import "OKHttpRequestModel+OKExtension.h"
 #import <objc/runtime.h>
 
-static char const * const kLoadViewKey              = "kLoadViewKey";
-static char const * const kDataTableViewKey         = "kDataTableViewKey";
-static char const * const kForbidTipErrorInfoKey    = "kForbidTipErrorInfoKey";
-static char const * const kAttemptRequestWhenFail   = "kAttemptRequestWhenFail";
-static char const * const kRequestCachePolicyKey    = "kRequestCachePolicyKey";
-static char const * const kIsCacheDataKey           = "kIsCacheDataKey";
+static char const * const kLoadViewKey                  = "kLoadViewKey";
+static char const * const kDataTableViewKey             = "kDataTableViewKey";
+static char const * const kForbidTipErrorInfoKey        = "kForbidTipErrorInfoKey";
+static char const * const kTryRequestWhenFailCountkey   = "kTryRequestWhenFailCountkey";
+static char const * const kRequestCachePolicyKey        = "kRequestCachePolicyKey";
+static char const * const kIsCacheDataKey               = "kIsCacheDataKey";
 
 
 @implementation OKHttpRequestModel (OKExtension)
@@ -57,17 +57,17 @@ static char const * const kIsCacheDataKey           = "kIsCacheDataKey";
     return [value boolValue];
 }
 
-#pragma mark - ========== 是否在失败是尝试重新请求，(如果尝试则3次) ==========
+#pragma mark - ========== 在失败时尝试重新请求次数 ==========
 
-- (void)setAttemptRequestWhenFail:(BOOL)attemptRequestWhenFail
+- (void)setTryRequestWhenFailCount:(NSInteger)tryRequestWhenFailCount
 {
-    objc_setAssociatedObject(self, kAttemptRequestWhenFail, @(attemptRequestWhenFail), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, kTryRequestWhenFailCountkey, @(tryRequestWhenFailCount), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (BOOL)attemptRequestWhenFail
+- (NSInteger)tryRequestWhenFailCount
 {
-    id value = objc_getAssociatedObject(self, kAttemptRequestWhenFail);
-    return [value boolValue];
+    id value = objc_getAssociatedObject(self, kTryRequestWhenFailCountkey);
+    return [value integerValue];
 }
 
 #pragma mark - ========== 请求缓存策略 ==========
