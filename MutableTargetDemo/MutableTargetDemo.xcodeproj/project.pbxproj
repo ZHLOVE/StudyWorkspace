@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A38877771F683F9B003C9086 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A38877761F683F9B003C9086 /* WebViewController.m */; };
 		B5727CC41F62AAA500F278BA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5727CC31F62AAA500F278BA /* main.m */; };
 		B5727CC71F62AAA500F278BA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B5727CC61F62AAA500F278BA /* AppDelegate.m */; };
 		B5727CCA1F62AAA500F278BA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5727CC91F62AAA500F278BA /* ViewController.m */; };
@@ -16,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A38877751F683F9B003C9086 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		A38877761F683F9B003C9086 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		B5727CBF1F62AAA500F278BA /* MutableTargetDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MutableTargetDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5727CC31F62AAA500F278BA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B5727CC51F62AAA500F278BA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -63,6 +66,8 @@
 				B5727CC61F62AAA500F278BA /* AppDelegate.m */,
 				B5727CC81F62AAA500F278BA /* ViewController.h */,
 				B5727CC91F62AAA500F278BA /* ViewController.m */,
+				A38877751F683F9B003C9086 /* WebViewController.h */,
+				A38877761F683F9B003C9086 /* WebViewController.m */,
 				B5727CCB1F62AAA500F278BA /* Main.storyboard */,
 				B5727CCE1F62AAA500F278BA /* Assets.xcassets */,
 				B5727CD01F62AAA500F278BA /* LaunchScreen.storyboard */,
@@ -156,6 +161,7 @@
 				B5727CCA1F62AAA500F278BA /* ViewController.m in Sources */,
 				B5727CC71F62AAA500F278BA /* AppDelegate.m in Sources */,
 				B5727CC41F62AAA500F278BA /* main.m in Sources */,
+				A38877771F683F9B003C9086 /* WebViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -75,11 +76,18 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="一键切换打包环境" id="MIf-Dq-2Yu">
-                        <barButtonItem key="rightBarButtonItem" title="步骤" id="pNN-l5-VuZ">
-                            <connections>
-                                <action selector="changeAppAction:" destination="BYZ-38-t0r" id="bWE-QI-EAo"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="更新" id="Mvm-ca-8eG">
+                                <connections>
+                                    <segue destination="3o9-Uq-ZgM" kind="show" id="bJB-eH-eyB"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="步骤" id="pNN-l5-VuZ">
+                                <connections>
+                                    <action selector="changeAppAction:" destination="BYZ-38-t0r" id="bWE-QI-EAo"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="scrollView" destination="tbV-Ju-DBs" id="WET-tv-9xu"/>
@@ -93,7 +101,60 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="872.79999999999995" y="-561.76911544227892"/>
+            <point key="canvasLocation" x="903" y="-587"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="qjM-qx-pXE">
+            <objects>
+                <viewController id="3o9-Uq-ZgM" customClass="WebViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Od8-Bb-xW8"/>
+                        <viewControllerLayoutGuide type="bottom" id="Gsm-mW-Xik"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="d7W-f6-JE1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Yh-Yr-ykp">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="3o9-Uq-ZgM" id="XSA-h9-dnn"/>
+                                </connections>
+                            </webView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="7TN-K9-Zq9">
+                                <rect key="frame" x="169" y="315.5" width="37" height="37"/>
+                                <color key="color" red="0.86666666670000003" green="0.1529411765" blue="0.1529411765" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yPs-Oj-I5L">
+                                <rect key="frame" x="142.5" y="368" width="90" height="30"/>
+                                <state key="normal" title="拼命加载中..."/>
+                                <connections>
+                                    <action selector="loadingWebView" destination="3o9-Uq-ZgM" eventType="touchUpInside" id="ITI-UE-ejQ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="1Yh-Yr-ykp" secondAttribute="trailing" id="0z1-1t-1Yg"/>
+                            <constraint firstItem="1Yh-Yr-ykp" firstAttribute="top" secondItem="Od8-Bb-xW8" secondAttribute="bottom" id="QLr-lI-7Lz"/>
+                            <constraint firstItem="1Yh-Yr-ykp" firstAttribute="leading" secondItem="d7W-f6-JE1" secondAttribute="leading" id="U0L-aZ-g7q"/>
+                            <constraint firstItem="Gsm-mW-Xik" firstAttribute="top" secondItem="1Yh-Yr-ykp" secondAttribute="bottom" id="Zcy-pj-Uau"/>
+                            <constraint firstItem="yPs-Oj-I5L" firstAttribute="centerX" secondItem="d7W-f6-JE1" secondAttribute="centerX" id="wHq-mq-8hl"/>
+                            <constraint firstItem="7TN-K9-Zq9" firstAttribute="centerX" secondItem="d7W-f6-JE1" secondAttribute="centerX" id="woZ-Hn-gRg"/>
+                            <constraint firstItem="yPs-Oj-I5L" firstAttribute="top" secondItem="7TN-K9-Zq9" secondAttribute="bottom" constant="15.5" id="xI0-gp-ph9"/>
+                            <constraint firstItem="7TN-K9-Zq9" firstAttribute="centerY" secondItem="d7W-f6-JE1" secondAttribute="centerY" id="xie-3l-6ij"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="activityView" destination="7TN-K9-Zq9" id="02x-Tf-3Bp"/>
+                        <outlet property="loadingBtn" destination="yPs-Oj-I5L" id="V4c-iN-Ylx"/>
+                        <outlet property="webView" destination="1Yh-Yr-ykp" id="E0r-U3-THP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hjn-KA-k7z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1820" y="-588"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="FAS-SX-uTp">
