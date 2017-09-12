@@ -35,6 +35,12 @@ typedef enum : NSUInteger {
                borderWidth:(CGFloat)borderWidth;
 
 /**
+ * 设置UI指定方向的圆角
+ */
+- (void)ok_setRectCorner:(UIRectCorner)rectCorner
+             cornerRadii:(CGSize)cornerRadii;
+
+/**
  * 设置圆角
  */
 - (void)ok_setCornerRadius:(CGFloat)radius;

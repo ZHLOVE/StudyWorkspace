@@ -121,16 +121,39 @@
     }
     self.params = info;
     
-    kRequestCodeKey = @"errorCode";
-    kRequestListkey = @"postList";
-    
     OKHttpRequestModel *model = [OKHttpRequestModel new];
     model.requestType = HttpRequestTypeGET;
     model.requestUrl = Url_DocList;
     model.parameters = info;
 //    model.dataTableView = self.plainTableView;//sendExtensionRequest
-
+    
     [OKHttpRequestTools sendOKRequest:model success:^(id returnValue) {
+        [self refreshUIByData:returnValue parameters:info isFirst:firstPage];
+        
+    } failure:^(NSError *error) {
+        //为什么在错误回调用调用刷新数据方法,因为底层判断请求失败的key在Demo上不统一
+        if (error.userInfo[@"postList"]) {
+            [self refreshUIByData:error.userInfo parameters:info isFirst:firstPage];
+        } else {
+            [self refreshUIByData:error parameters:info isFirst:firstPage];
+        }
+    }];
+}
+
+/**
+ * 刷新UI
+ */
+- (void)refreshUIByData:(id)returnValue parameters:(NSDictionary *)info isFirst:(BOOL)firstPage
+{
+    if ([returnValue isKindOfClass:[NSError class]]) { //成功
+        
+        if (!firstPage) self.pageNum --;
+        [self.plainTableView showRequestTip:returnValue];
+        if (self.tableDataArr.count>0) {
+            ShowAlertWithError(returnValue, RequestFailCommomTip);
+        }
+        
+    } else if ([returnValue isKindOfClass:[NSDictionary class]]) { //失败
         if (self.params != info) return;
         if (firstPage) {
             [self.tableDataArr removeAllObjects];
@@ -143,14 +166,7 @@
         dic[kTotalPageKey] = @"100";//总页数
         dic[kCurrentPageKey] = @(self.pageNum);//当前页数
         [self.plainTableView showRequestTip:dic];
-        
-    } failure:^(NSError *error) {
-        if (!firstPage) self.pageNum --;
-        [self.plainTableView showRequestTip:error];
-        if (self.tableDataArr.count>0) {
-            ShowAlertWithError(error, RequestFailCommomTip);
-        }
-    }];
+    }
 }
 
 /**

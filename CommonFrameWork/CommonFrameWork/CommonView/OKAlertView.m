@@ -490,7 +490,7 @@ void ShowAlertWithError(NSError *error, id msg) {
         ShowAlertToastByTitle(@"提示", errorMsg);
     }
     else if (msg){
-        if (code != kLoginFail) {
+        if (code != [kLoginFail integerValue]) {
             ShowAlertToastByTitle(@"提示", msg);
         }
     }

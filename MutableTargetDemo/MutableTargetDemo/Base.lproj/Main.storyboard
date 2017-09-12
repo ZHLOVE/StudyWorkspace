@@ -89,7 +89,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="rTW-Oy-c0q">
                     <connections>
-                        <action selector="tapScrollViewAction:" destination="BYZ-38-t0r" id="RHF-JD-dKr"/>
+                        <action selector="changeAppAction:" destination="BYZ-38-t0r" id="DxG-g0-JRs"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

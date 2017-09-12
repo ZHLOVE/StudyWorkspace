@@ -382,54 +382,54 @@
  */
 + (NSString *) getweekDayStringWithDate:(NSDate *) date
 {
-    NSCalendar * calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar]; // 指定日历的算法
-    NSDateComponents *comps = [calendar components:NSWeekdayCalendarUnit fromDate:date];
+    NSCalendar * calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian]; // 指定日历的算法
+    NSDateComponents *comps = [calendar components:NSCalendarUnitWeekday fromDate:date];
     
     // 1 是周日，2是周一 3.以此类推
     
     NSNumber * weekNumber = @([comps weekday]);
     NSInteger weekInt = [weekNumber integerValue];
-    NSString *weekDayString = @"(周一)";
+    NSString *weekDayString = @"(星期一)";
     switch (weekInt) {
         case 1:
         {
-            weekDayString = @"(周日)";
+            weekDayString = @"(星期日)";
         }
             break;
             
         case 2:
         {
-            weekDayString = @"(周一)";
+            weekDayString = @"(星期一)";
         }
             break;
             
         case 3:
         {
-            weekDayString = @"(周二)";
+            weekDayString = @"(星期二)";
         }
             break;
             
         case 4:
         {
-            weekDayString = @"(周三)";
+            weekDayString = @"(星期三)";
         }
             break;
             
         case 5:
         {
-            weekDayString = @"(周四)";
+            weekDayString = @"(星期四)";
         }
             break;
             
         case 6:
         {
-            weekDayString = @"(周五)";
+            weekDayString = @"(星期五)";
         }
             break;
             
         case 7:
         {
-            weekDayString = @"(周六)";
+            weekDayString = @"(星期六)";
         }
             break;
             

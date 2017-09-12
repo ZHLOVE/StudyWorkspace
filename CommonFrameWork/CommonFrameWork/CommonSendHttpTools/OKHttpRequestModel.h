@@ -19,16 +19,14 @@
 /** 请求转圈的统一提示*/
 #define RequestLoadingTip                       @"正在拼命加载中..."
 
-//#warning 这里有几个key暂时不写const，因为在其他测试Demo中的请求回调可以不统一
-
-static NSString * kRequestCodeKey               = @"code";                      /**< 请求code 的key */
+static NSString *const kRequestCodeKey          = @"code";                      /**< 请求code 的key */
 static NSString *const kRequestMessageKey       = @"message";                   /**< 请求message 的key */
 static NSString *const kRequestDataKey          = @"data";                      /**< 请求data 的key */
-static NSString * kRequestListkey               = @"list";                      /**< 请求list 的key */
-static NSInteger const kRepeatRequest           = -1;                           /**< 重复请求的标志 */
-static NSInteger const kRequestSuccessStatues   = 0;                            /**< 请求成功的code */
-static NSInteger const kLoginFail               = 4;                            /**< 需要重新登录标志 */
-static NSInteger const kServiceErrorStatues     = 9;                            /**< 请求失败的标志 */
+static NSString *const kRequestListkey          = @"list";                      /**< 请求list 的key */
+static NSString *const kRepeatRequest           = @"-1";                        /**< 重复请求的标志 */
+static NSString *const kLoginFail               = @"4";                         /**< 需要重新登录标志 */
+static NSString *const kServiceErrorStatues     = @"9";                         /**< 请求失败的标志 */
+static NSString *const kRequestSuccessStatues   = @"0";                         /**< 请求成功的code */
 static NSInteger const kRequestTipsStatuesMin   = 200;                          /**< 提示后台的code最小值 */
 static NSInteger const kRequestTipsStatuesMax   = 500;                          /**< 提示后台的code最大值 */
 static NSString *const kTokenExpiryNotification = @"kTokenExpiryNotification";  /**< token实效的通知名称 */

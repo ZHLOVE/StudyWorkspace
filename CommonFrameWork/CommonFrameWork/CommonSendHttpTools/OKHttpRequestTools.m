@@ -83,13 +83,13 @@ static char const * const kRequestUrlKey    = "kRequestUrlKey";
         NSLog(@"\n❌❌❌请求接口基地址= %@\n请求参数= %@\n网络数据失败返回= %@\n",requestModel.requestUrl,requestModel.parameters,error);
         
         //判断Token状态是否为失效
-        if (error.code == kLoginFail) {
+        if (error.code == [kLoginFail integerValue]) {
             //通知页面需要重新登录
             [[NSNotificationCenter defaultCenter] postNotificationName:kTokenExpiryNotification object:error];
         }
         
         //如果不是因为重复请求而失败，就标记为该请求已经结束。否则还是还是保持正在请求的状态
-        if (error.code != kRepeatRequest) {
+        if (error.code != [kRepeatRequest integerValue]) {
             requestModel.isRequesting = NO;
         }
         //每个请求完成后,从队列中移除当前请求任务
@@ -115,7 +115,7 @@ static char const * const kRequestUrlKey    = "kRequestUrlKey";
     //已经在请求了,不再请求
     if (requestModel.isRequesting) {
         if (failResultBlock) {
-            failResultBlock([NSError errorWithDomain:RequestRepeatFailTip code:kRepeatRequest userInfo:nil]);
+            failResultBlock([NSError errorWithDomain:RequestRepeatFailTip code:[kRepeatRequest integerValue] userInfo:nil]);
         }
         return nil;
     } else {
@@ -126,7 +126,7 @@ static char const * const kRequestUrlKey    = "kRequestUrlKey";
     //请求地址为空则不请求
     if (!requestModel.requestUrl) {
         if (failResultBlock) {
-            failResultBlock([NSError errorWithDomain:RequestFailCommomTip code:kServiceErrorStatues userInfo:nil]);
+            failResultBlock([NSError errorWithDomain:RequestFailCommomTip code:[kServiceErrorStatues integerValue] userInfo:nil]);
         }
         return nil;
     };
@@ -152,7 +152,7 @@ static char const * const kRequestUrlKey    = "kRequestUrlKey";
             failResultBlock(error);
             
             /** 通知页面需要重新登录 */
-            if ([code integerValue] == kLoginFail) {
+            if ([code isEqualToString:kLoginFail]) {
                 [[NSNotificationCenter defaultCenter] postNotificationName:kTokenExpiryNotification object:error];
             }
         }

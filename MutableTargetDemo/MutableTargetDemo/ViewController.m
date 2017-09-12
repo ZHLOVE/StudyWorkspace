@@ -25,7 +25,7 @@
 {
     CCLog(@"%s",__func__);
     //测试
-    [self setBezierPathCorner];
+    [self exitApplication];
 }
 
 /**
@@ -60,31 +60,14 @@
     maskLayer.frame = view2.bounds;
     maskLayer.path = maskPath.CGPath;
     view2.layer.mask = maskLayer;
-    //其中，
-//    byRoundingCorners:UIRectCornerBottomLeft | UIRectCornerBottomRight
-//    //指定了需要成为圆角的角。该参数是UIRectCorner类型的，可选的值有：
-//    * UIRectCornerTopLeft
-//    * UIRectCornerTopRight
-//    * UIRectCornerBottomLeft
-//    * UIRectCornerBottomRight
-//    * UIRectCornerAllCorners
 }
 
 /**
- 显示展示图
+ 显示\隐藏展示图
  */
 -(IBAction)changeAppAction:(id)sender
 {
-    self.scrollView.hidden = NO;
-}
-
-
-/**
- 隐藏展示图
- */
-- (IBAction)tapScrollViewAction:(id)sender
-{
-    self.scrollView.hidden = YES;
+    self.scrollView.hidden = !self.scrollView.hidden;
 }
 
 @end

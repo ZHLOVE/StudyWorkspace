@@ -73,6 +73,19 @@
 }
 
 /**
+ * 设置UI指定方向的圆角
+ */
+- (void)ok_setRectCorner:(UIRectCorner)rectCorner
+             cornerRadii:(CGSize)cornerRadii
+{
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds byRoundingCorners:rectCorner cornerRadii:cornerRadii];
+    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+    maskLayer.frame = self.bounds;
+    maskLayer.path = maskPath.CGPath;
+    self.layer.mask = maskLayer;
+}
+
+/**
  * 设置圆角
  */
 - (void)ok_setCornerRadius:(CGFloat)radius {
