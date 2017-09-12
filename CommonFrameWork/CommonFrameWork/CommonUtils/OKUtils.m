@@ -377,4 +377,67 @@
     return  result;
 }
 
+/**
+ * 获取今天是星期几
+ */
++ (NSString *) getweekDayStringWithDate:(NSDate *) date
+{
+    NSCalendar * calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar]; // 指定日历的算法
+    NSDateComponents *comps = [calendar components:NSWeekdayCalendarUnit fromDate:date];
+    
+    // 1 是周日，2是周一 3.以此类推
+    
+    NSNumber * weekNumber = @([comps weekday]);
+    NSInteger weekInt = [weekNumber integerValue];
+    NSString *weekDayString = @"(周一)";
+    switch (weekInt) {
+        case 1:
+        {
+            weekDayString = @"(周日)";
+        }
+            break;
+            
+        case 2:
+        {
+            weekDayString = @"(周一)";
+        }
+            break;
+            
+        case 3:
+        {
+            weekDayString = @"(周二)";
+        }
+            break;
+            
+        case 4:
+        {
+            weekDayString = @"(周三)";
+        }
+            break;
+            
+        case 5:
+        {
+            weekDayString = @"(周四)";
+        }
+            break;
+            
+        case 6:
+        {
+            weekDayString = @"(周五)";
+        }
+            break;
+            
+        case 7:
+        {
+            weekDayString = @"(周六)";
+        }
+            break;
+            
+        default:
+            break;
+    }
+    return weekDayString;
+    
+}
+
 @end

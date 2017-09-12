@@ -134,10 +134,9 @@ static char const * const kRequestUrlKey    = "kRequestUrlKey";
     //============成功回调============
     void(^succResultBlock)(id responseObject) = ^(id responseObject){
         
-        id code = responseObject[kRequestCodeKey];
-        if ([responseObject isKindOfClass:[NSDictionary class]] && code &&
-            ([code integerValue] == kRequestSuccessStatues ||
-             [code integerValue] == kRequestTipsStatuesMin))
+        NSString *code = [NSString stringWithFormat:@"%@",responseObject[kRequestCodeKey]];
+        if ([responseObject isKindOfClass:[NSDictionary class]] &&
+            [code isEqualToString:kRequestSuccessStatues])
         {
             NSLog(@"\n✅✅✅请求接口基地址= %@\n请求参数= %@\n网络数据成功返回= %@\n",requestModel.requestUrl,requestModel.parameters,responseObject);
             
@@ -148,7 +147,8 @@ static char const * const kRequestUrlKey    = "kRequestUrlKey";
             
         } else { //请求code不正确,走失败
             NSString *tipMsg = [NSString stringWithFormat:@"%@",responseObject[kRequestMessageKey] ? : RequestFailCommomTip];
-            NSError *error = [NSError errorWithDomain:tipMsg code:[code integerValue] userInfo:nil];
+            NSDictionary *userInfo = [responseObject isKindOfClass:[NSDictionary class]] ? responseObject : nil;
+            NSError *error = [NSError errorWithDomain:tipMsg code:[code integerValue] userInfo:userInfo];
             failResultBlock(error);
             
             /** 通知页面需要重新登录 */

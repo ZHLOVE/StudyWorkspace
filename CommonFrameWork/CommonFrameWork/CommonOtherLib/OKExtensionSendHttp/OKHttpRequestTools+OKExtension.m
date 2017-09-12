@@ -154,10 +154,9 @@ static char const * const kRequestTimeCountKey    = "kRequestTimeCountKey";
         [self showReqLoadingView:requestModel show:NO];
         
         //请求状态码为0表示成功，否则失败
-        id code = responseObject[kRequestCodeKey];
-        if ([responseObject isKindOfClass:[NSDictionary class]] && code &&
-            ([code integerValue] == kRequestSuccessStatues ||
-             [code integerValue] == kRequestTipsStatuesMin))
+        NSString *code = [NSString stringWithFormat:@"%@",responseObject[kRequestCodeKey]];
+        if ([responseObject isKindOfClass:[NSDictionary class]] &&
+            [code isEqualToString:kRequestSuccessStatues])
         {
             /** <1>.回调页面请求 */
             if (successBlock) {
@@ -175,7 +174,9 @@ static char const * const kRequestTimeCountKey    = "kRequestTimeCountKey";
             
         } else { //请求code不正确,走失败
             NSString *tipMsg = [NSString stringWithFormat:@"%@",responseObject[kRequestMessageKey] ? : @""];
-            failResultBlock([NSError errorWithDomain:tipMsg code:[code integerValue] userInfo:nil]);
+            NSDictionary *userInfo = [responseObject isKindOfClass:[NSDictionary class]] ? responseObject : nil;
+            //失败回调页面
+            failResultBlock([NSError errorWithDomain:tipMsg code:[code integerValue] userInfo:userInfo]);
         }
     };
     

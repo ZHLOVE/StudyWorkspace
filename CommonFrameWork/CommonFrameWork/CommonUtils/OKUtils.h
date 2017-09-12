@@ -102,5 +102,9 @@
  */
 + (NSString *)compareCurrentTime:(NSString *)str;
 
+/**
+ * 获取今天是星期几
+ */
++ (NSString *) getweekDayStringWithDate:(NSDate *) date;
 
 @end

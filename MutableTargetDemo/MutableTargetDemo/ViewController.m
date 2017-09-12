@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "AppDelegate.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *textLabel;
@@ -23,6 +24,50 @@
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
     CCLog(@"%s",__func__);
+    //测试
+    [self setBezierPathCorner];
+}
+
+/**
+ * 调用代码使APP进入后台，达到点击Home键的效果。（私有API）
+ */
+- (void)suspendApp
+{
+    [[UIApplication sharedApplication] performSelector:@selector(suspend)];
+}
+
+- (void)exitApplication {
+    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    UIWindow *window = app.window;
+    [UIView animateWithDuration:1.0f animations:^{
+        window.alpha = 0;
+    } completion:^(BOOL finished) {
+        exit(0);
+    }];
+}
+
+/**
+ * 设置UI圆角
+ */
+- (void)setBezierPathCorner
+{
+    UIView *view2 = [[UIView alloc] initWithFrame:CGRectMake(120, 100, 80, 80)];
+    view2.backgroundColor = [UIColor redColor];
+    [self.view addSubview:view2];
+    
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:view2.bounds byRoundingCorners:UIRectCornerBottomLeft | UIRectCornerBottomRight cornerRadii:CGSizeMake(10, 10)];
+    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+    maskLayer.frame = view2.bounds;
+    maskLayer.path = maskPath.CGPath;
+    view2.layer.mask = maskLayer;
+    //其中，
+//    byRoundingCorners:UIRectCornerBottomLeft | UIRectCornerBottomRight
+//    //指定了需要成为圆角的角。该参数是UIRectCorner类型的，可选的值有：
+//    * UIRectCornerTopLeft
+//    * UIRectCornerTopRight
+//    * UIRectCornerBottomLeft
+//    * UIRectCornerBottomRight
+//    * UIRectCornerAllCorners
 }
 
 /**
