@@ -34,9 +34,28 @@
 {
     self.view.window.tintColor = nil;
     self.view.tintColor = nil;
-    
 }
 
+/**
+ * 调用代码使APP进入后台，达到点击Home键的效果。（私有API）
+ */
+- (void)suspendApp
+{
+    [[UIApplication sharedApplication] performSelector:@selector(suspend)];
+}
+
+/**
+ * 调用代码使APP进入后台，达到点击Home键的效果。（私有API）
+ */
+- (void)exitApplication {
+    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    UIWindow *window = app.window;
+    [UIView animateWithDuration:1.0f animations:^{
+        window.alpha = 0;
+    } completion:^(BOOL finished) {
+        exit(0);
+    }];
+}
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self.view endEditing:YES];
