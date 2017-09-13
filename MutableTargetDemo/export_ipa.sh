@@ -97,6 +97,10 @@ echo "恭喜: 🎉 🎉 🎉   \033[41;36m ${Config_Name} \033[0m 环境, 打包
 echo
 echo "\033[41;36m ===========================打包结束, 开始重签名 start========================= \033[0m"
 
+
+#重签名参考地址: http://www.jianshu.com/p/f4cfac861aac
+
+
 entitlements_full_Path="./entitlements_full.plist"
 # mobileprovision生成plist的路径
 entitlements_Path="./entitlements.plist"
@@ -135,6 +139,13 @@ fir login -T $Fir_API_Token
 fir publish "./new.ipa"
 
 echo "\033[41;36m 恭喜！！！🎉 🎉 🎉  上传fir.im成功！, 请到App内部点击安装最新版App. \033[0m "
+
+#ipa包下载地址: http://fir.im/vlpc
+echo "ipa下载地址: \033[31m http://fir.im/vlpc \033[0m"
+
+open http://fir.im/vlpc
+
+
 
 
 #echo "-------------- 重签名 end --------------"
