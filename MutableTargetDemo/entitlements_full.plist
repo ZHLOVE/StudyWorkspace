@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AppIDName</key>
+	<string>lukeTest</string>
+	<key>ApplicationIdentifierPrefix</key>
+	<array>
+	<string>YKA3Z85KP7</string>
+	</array>
+	<key>CreationDate</key>
+	<date>2017-09-13T06:41:36Z</date>
+	<key>Platform</key>
+	<array>
+		<string>iOS</string>
+	</array>
+	<key>DeveloperCertificates</key>
+	<array>
+		<data>MIIFxjCCBK6gAwIBAgIIZsW7bGaidVYwDQYJKoZIhvcNAQEFBQAwgZYxCzAJBgNVBAYTAlVTMRMwEQYDVQQKDApBcHBsZSBJbmMuMSwwKgYDVQQLDCNBcHBsZSBXb3JsZHdpZGUgRGV2ZWxvcGVyIFJlbGF0aW9uczFEMEIGA1UEAww7QXBwbGUgV29ybGR3aWRlIERldmVsb3BlciBSZWxhdGlvbnMgQ2VydGlmaWNhdGlvbiBBdXRob3JpdHkwHhcNMTcwOTEzMDYyNzA2WhcNMjAwOTEyMDYyNzA2WjCBxzEaMBgGCgmSJomT8ixkAQEMCllLQTNaODVLUDcxTTBLBgNVBAMMRGlQaG9uZSBEaXN0cmlidXRpb246IFNoZW56aGVuIEh1YXlpdG9uZyBOZXR3b3JrIFRlY2hub2xvZ3kgQ28uLCBMdGQuMRMwEQYDVQQLDApZS0EzWjg1S1A3MTgwNgYDVQQKDC9TaGVuemhlbiBIdWF5aXRvbmcgTmV0d29yayBUZWNobm9sb2d5IENvLiwgTHRkLjELMAkGA1UEBhMCVVMwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCx5WkqfaAd8RcWJVkj6L/Y2QtFyEJKwDVnqL+4GwgUjkJuhJtqHWcmPfzsDwnzWTfZRiNwtTlvJxQ1Lue7V0hk+wtFA+pQLWVqW/QeieUGDT3w2cEgNixKCvPJQB2L9+JRwtC9Lq8oGWqzgUXPxExAIyE+f8WUbxH9f4X4oAwAUMn2/1q+eLcwTCrhyHh9H350bZfWixk8zIfkAQu2fW89eaXyx/3kfyIrk0hct6+u4j/UU5M31cFa5s9K51L0OmvXZdvGGmQ1AmwFxPeHcXKsiYHd++rwihdrMpklGUku8OFxnqO0j+m2Ud2bGhyVBhwRNLaHsJYh4UBR0jrIRCe3AgMBAAGjggHjMIIB3zA/BggrBgEFBQcBAQQzMDEwLwYIKwYBBQUHMAGGI2h0dHA6Ly9vY3NwLmFwcGxlLmNvbS9vY3NwMDItd3dkcjAxMB0GA1UdDgQWBBS+uG0yoPZxyDvYRIaviQsGNAurCjAMBgNVHRMBAf8EAjAAMB8GA1UdIwQYMBaAFIgnFwmpthhgi+zruvZHWcVSVKO3MIIBDwYDVR0gBIIBBjCCAQIwgf8GCSqGSIb3Y2QFATCB8TCBwwYIKwYBBQUHAgIwgbYMgbNSZWxpYW5jZSBvbiB0aGlzIGNlcnRpZmljYXRlIGJ5IGFueSBwYXJ0eSBhc3N1bWVzIGFjY2VwdGFuY2Ugb2YgdGhlIHRoZW4gYXBwbGljYWJsZSBzdGFuZGFyZCB0ZXJtcyBhbmQgY29uZGl0aW9ucyBvZiB1c2UsIGNlcnRpZmljYXRlIHBvbGljeSBhbmQgY2VydGlmaWNhdGlvbiBwcmFjdGljZSBzdGF0ZW1lbnRzLjApBggrBgEFBQcCARYdaHR0cDovL3d3dy5hcHBsZS5jb20vYXBwbGVjYS8wDgYDVR0PAQH/BAQDAgeAMBYGA1UdJQEB/wQMMAoGCCsGAQUFBwMDMBMGCiqGSIb3Y2QGAQQBAf8EAgUAMA0GCSqGSIb3DQEBBQUAA4IBAQBTH5icYc6S7JoV3mpZSWTIwt7Wl7CAjbKWSU20h6Mp4aEAjD1GN/b8kVyNaiqZHb7a4rSZAQJpn0dMYf+36DHsGziQE4OtHwWpJOTpOmoXf6vb/coRnzVJIx5b0wHF8dloz2E2AwEbpMWbu5hpVkTcNpJEV5dATzLaN13jaj2K325CMw00oOdyR80Fb39spqbYCyOH5X7vm1eHpAhQNH8gkSleKFKIsWw5tkgWYUqsUYbzg+tybpmHY/yIReoYkObCvI6m4HYualZfvwt8A73HSmmLNJ5YVTSS7LLhHmpxTLKkeLEuYQbNxKr6cn/CIjRYR97R01ktA1p86Uk6pKIw</data>
+	</array>
+	<key>Entitlements</key>
+	<dict>
+		<key>keychain-access-groups</key>
+		<array>
+			<string>YKA3Z85KP7.*</string>		
+		</array>
+		<key>get-task-allow</key>
+		<false/>
+		<key>application-identifier</key>
+		<string>YKA3Z85KP7.com.handlink.lukeTest</string>
+		<key>com.apple.developer.team-identifier</key>
+		<string>YKA3Z85KP7</string>
+		<key>aps-environment</key>
+		<string>production</string>
+	</dict>
+	<key>ExpirationDate</key>
+	<date>2018-09-13T06:41:36Z</date>
+	<key>Name</key>
+	<string>lukeInHouse</string>
+	<key>ProvisionsAllDevices</key>
+	<true/>
+	<key>TeamIdentifier</key>
+	<array>
+		<string>YKA3Z85KP7</string>
+	</array>
+	<key>TeamName</key>
+	<string>Shenzhen Huayitong Network Technology Co., Ltd.</string>
+	<key>TimeToLive</key>
+	<integer>365</integer>
+	<key>UUID</key>
+	<string>62059c70-85ae-4f12-afce-2e1f101fc05c</string>
+	<key>Version</key>
+	<integer>1</integer>
+</dict>
+</plist>

@@ -25,17 +25,6 @@
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
     CCLog(@"%s",__func__);
-    //测试
-    [self pushToWebVC];
-}
-
-/**
- *  更新App
- */
-- (void)pushToWebVC
-{
-    WebViewController *webVC = [[WebViewController alloc] init];
-    [self.navigationController pushViewController:webVC animated:YES];
 }
 
 /**
