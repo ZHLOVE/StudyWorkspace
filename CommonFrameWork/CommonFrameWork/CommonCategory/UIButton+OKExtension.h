@@ -35,7 +35,7 @@ typedef void (^TouchedBlock)(UIButton *btn);
                      selectedTitle:(NSString *)selTitle
                        normalColor:(UIColor *)norColor
                      selectedColor:(UIColor *)selColor
-                     completeBlock:(void(^)())blcok;
+                     completeBlock:(void(^)(void))blcok;
 
 
 /**

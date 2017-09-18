@@ -20,6 +20,6 @@
 @property (nonatomic, strong) NSString *rightBtnTitle;
 
 /** 右侧按钮点击回调 */
-@property (nonatomic, copy) void (^rightBtnBlock)();
+@property (nonatomic, copy) void (^rightBtnBlock)(void);
 
 @end

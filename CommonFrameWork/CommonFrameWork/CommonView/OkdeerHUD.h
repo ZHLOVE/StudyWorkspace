@@ -14,7 +14,7 @@
 /**
  在window上显示HUD (不会自动消失)
  */
-void showLoadingToWindow();
+void showLoadingToWindow(void);
 
 /**
  在window上显示HUD (不会自动消失)
@@ -43,12 +43,12 @@ void showLoadingToViewWithText(UIView *addView, NSString *text);
 
  @param image 需要显示的图片
  */
-void showToastImageToWindow(UIImage *image, NSTimeInterval duration, void(^hideBlock)());
+void showToastImageToWindow(UIImage *image, NSTimeInterval duration, void(^hideBlock)(void));
 
 /**
  隐藏window上创建的HUD
  */
-bool hideLoadingFromWindow();
+bool hideLoadingFromWindow(void);
 
 /**
  延迟隐藏Window上的HUD
@@ -56,7 +56,7 @@ bool hideLoadingFromWindow();
  @param duration 秒
  @param hideBlock 回调
  */
-void hideWindowLoadingDelay(NSTimeInterval duration, void(^hideBlock)());
+void hideWindowLoadingDelay(NSTimeInterval duration, void(^hideBlock)(void));
 
 /**
  隐藏指定view上创建的HUD
@@ -71,6 +71,6 @@ bool hideLoadingFromView(UIView *view);
  @param duration 秒
  @param hideBlock 回调
  */
-void hideViewLoadingDelay(UIView *view, NSTimeInterval duration, void(^hideBlock)());
+void hideViewLoadingDelay(UIView *view, NSTimeInterval duration, void(^hideBlock)(void));
 
 @end

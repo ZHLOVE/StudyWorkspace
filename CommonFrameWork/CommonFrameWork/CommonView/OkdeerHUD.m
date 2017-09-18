@@ -71,7 +71,7 @@ void showLoadingToViewWithText(UIView *addView, NSString *text){
  
  @param image 需要显示的图片
  */
-void showToastImageToWindow(UIImage *image, NSTimeInterval duration, void(^hideBlock)()){
+void showToastImageToWindow(UIImage *image, NSTimeInterval duration, void(^hideBlock)(void)){
     UIView *window = [OkdeerHUD fetchHudWindow];
     [OkdeerHUD createHUDView:[UIScreen mainScreen].bounds superView:window tipText:nil tipimage:image];
     //隐藏
@@ -92,7 +92,7 @@ bool hideLoadingFromWindow(){
  @param duration 秒
  @param hideBlock 回调
  */
-void hideWindowLoadingDelay(NSTimeInterval duration, void(^hideBlock)()) {
+void hideWindowLoadingDelay(NSTimeInterval duration, void(^hideBlock)(void)) {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(duration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         UIView *window = [OkdeerHUD fetchHudWindow];
         BOOL hasHide =  [OkdeerHUD hideLoadingFromView:window];
@@ -117,7 +117,7 @@ bool hideLoadingFromView(UIView *view){
  @param duration 秒
  @param hideBlock 回调
  */
-void hideViewLoadingDelay(UIView *view, NSTimeInterval duration, void(^hideBlock)()){
+void hideViewLoadingDelay(UIView *view, NSTimeInterval duration, void(^hideBlock)(void)){
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(duration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         BOOL hasHide = [OkdeerHUD hideLoadingFromView:view];
         if (hasHide && hideBlock) {

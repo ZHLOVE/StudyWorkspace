@@ -31,7 +31,7 @@ typedef void(^OKActionSheetCallBackBlock)(NSInteger buttonIndex);
  *  @return 返回自定义的ActionSheet实例
  */
 + (instancetype)actionSheetByBottomSquare:(OKActionSheetCallBackBlock)buttonBlock
-                              cancelBlock:(void (^)())cancelBlock
+                              cancelBlock:(void (^)(void))cancelBlock
                                 WithTitle:(id)title
                         cancelButtonTitle:(id)cancelButtonTitle
                       otherButtonTitleArr:(NSArray *)otherButtonTitleArr;
@@ -52,7 +52,7 @@ typedef void(^OKActionSheetCallBackBlock)(NSInteger buttonIndex);
  *  @return 返回自定义的ActionSheet实例
  */
 + (instancetype)actionSheetByBottomCornerRadius:(OKActionSheetCallBackBlock)buttonBlock
-                                    cancelBlock:(void (^)())cancelBlock
+                                    cancelBlock:(void (^)(void))cancelBlock
                                       WithTitle:(id)title
                               cancelButtonTitle:(id)cancelButtonTitle
                             otherButtonTitleArr:(NSArray *)otherButtonTitleArr;

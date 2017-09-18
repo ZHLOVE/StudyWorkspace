@@ -14,7 +14,7 @@
 #define kListKey                                    @"list"
 
 /** 进入刷新状态的回调 */
-typedef void (^OKRefreshingBlock)();
+typedef void (^OKRefreshingBlock)(void);
 
 typedef enum : NSUInteger {
     RequestNormalStatus,    //0 正常状态

@@ -22,6 +22,6 @@
 + (instancetype)showPickerViewWithTitle:(id)title
                             pickDataArr:(NSArray *)pickDataArr
                               sureBlock:(void(^)(NSInteger rowIndex))sureBlock
-                            cancelBlock:(void (^)())cancelBlock;
+                            cancelBlock:(void (^)(void))cancelBlock;
 
 @end

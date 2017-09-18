@@ -54,7 +54,7 @@
 
 
 @interface OKCommonTipView ()
-@property (nonatomic, copy) void(^block)();
+@property (nonatomic, copy) void(^block)(void);
 @end
 
 @implementation OKCommonTipView

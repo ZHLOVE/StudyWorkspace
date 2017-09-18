@@ -544,7 +544,7 @@ void ShowAlertWithError(NSError *error, id msg) {
                                cancelTitle:(NSString *)cancelTitle
                                 otherTitle:(NSString *)otherTitle
                                buttonBlock:(void (^)(NSString *inputText))otherBlock
-                               cancelBlock:(void (^)())cancelBlock
+                               cancelBlock:(void (^)(void))cancelBlock
 {
     
     if (![OKAlertView appearance].mainColor) {

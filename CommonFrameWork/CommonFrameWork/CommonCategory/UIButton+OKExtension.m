@@ -78,7 +78,7 @@ static const void *UIButtonBlockKey = &UIButtonBlockKey;
         selectedTitle:(NSString *)selTitle
           normalColor:(UIColor *)norColor
         selectedColor:(UIColor *)selColor
-        completeBlock:(void(^)())blcok
+        completeBlock:(void(^)(void))blcok
 {
     __block NSInteger timeOut = time;
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);

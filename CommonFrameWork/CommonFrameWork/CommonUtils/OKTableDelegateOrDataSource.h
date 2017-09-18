@@ -22,13 +22,13 @@ typedef void (^TableViewCellConfigureBlock) (id cell, id rowData, NSIndexPath *i
 
 
 /** 获取UITableViewStyleGrouped表格Section数目 */
-@property (nonatomic, copy) NSInteger (^groupTabNumberOfSections)();
+@property (nonatomic, copy) NSInteger (^groupTabNumberOfSections)(void);
 
 /** 获取UITableViewStyleGrouped表格每个section的数据源 */
 @property (nonatomic, copy) NSArray* (^groupTabDataOfSections)(NSInteger section);
 
 /** 获取UITableViewStylePlain表格所有row数据源 */
-@property (nonatomic, copy) NSArray* (^plainTabDataArrBlcok)();
+@property (nonatomic, copy) NSArray* (^plainTabDataArrBlcok)(void);
 
 /** 获取Row高度Block */
 @property (nonatomic, copy) CGFloat (^heightForRowBlcok)(id rowData, NSIndexPath *indexPath);

@@ -22,17 +22,17 @@ UIImage* ImageFromBundleWithName(NSString *name);
 /**
  *  产生随机颜色
  */
-UIColor* randomColor();
+UIColor* randomColor(void);
 
 /**
  *  获取应用版本号
  */
-NSString* currentVersion();
+NSString* currentVersion(void);
 
 /**
  *  获取应用使用语音
  */
-NSString* userLanguage();
+NSString* userLanguage(void);
 
 /**
  * 设置应用使用语音

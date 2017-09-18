@@ -20,7 +20,7 @@
 
 @property (nonatomic, strong) UIView   *contentView;
 @property (nonatomic, copy) void(^sureBlock)(NSInteger rowIndex);
-@property (nonatomic, copy) void(^cancelBlock)();
+@property (nonatomic, copy) void(^cancelBlock)(void);
 @property (nonatomic, strong) NSArray *pickDataArr;
 @property (nonatomic, assign) NSInteger selectedRowIndex;
 @end
@@ -40,7 +40,7 @@
 + (instancetype)showPickerViewWithTitle:(id)title
                             pickDataArr:(NSArray *)pickDataArr
                               sureBlock:(void(^)(NSInteger rowIndex))sureBlock
-                            cancelBlock:(void (^)())cancelBlock
+                            cancelBlock:(void (^)(void))cancelBlock
 {
     //按钮至少要有一个
     if(pickDataArr.count == 0) return nil;

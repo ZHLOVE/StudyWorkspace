@@ -62,7 +62,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, copy) OKActionSheetCallBackBlock buttonBlock;
 
 /** ActionSheet取消按钮点击回调 */
-@property (nonatomic, copy) void(^cancelBlock)();
+@property (nonatomic, copy) void(^cancelBlock)(void);
 
 @property (nonatomic, assign)CGPoint showTopPosition;
 @end
@@ -76,7 +76,7 @@ typedef enum : NSUInteger {
  * 从底部弹出直角的ActionSheet
  */
 + (instancetype)actionSheetByBottomSquare:(OKActionSheetCallBackBlock)buttonBlock
-                              cancelBlock:(void (^)())cancelBlock
+                              cancelBlock:(void (^)(void))cancelBlock
                                 WithTitle:(id)title
                         cancelButtonTitle:(id)cancelButtonTitle
                       otherButtonTitleArr:(NSArray *)otherButtonTitleArr
@@ -105,7 +105,7 @@ typedef enum : NSUInteger {
  * 从底部弹出带圆角的ActionSheet
  */
 + (instancetype)actionSheetByBottomCornerRadius:(OKActionSheetCallBackBlock)buttonBlock
-                                    cancelBlock:(void (^)())cancelBlock
+                                    cancelBlock:(void (^)(void))cancelBlock
                                       WithTitle:(id)title
                               cancelButtonTitle:(id)cancelButtonTitle
                             otherButtonTitleArr:(NSArray *)otherButtonTitleArr

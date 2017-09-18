@@ -48,6 +48,6 @@
                            tipImage:(UIImage *)image
                             tipText:(id)text
                         actionTitle:(id)title
-                        actionBlock:(void(^)())block;
+                        actionBlock:(void(^)(void))block;
 
 @end

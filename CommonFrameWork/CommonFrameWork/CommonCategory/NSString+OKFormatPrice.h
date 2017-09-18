@@ -15,7 +15,7 @@
 /**
  * 返回人民币符号 "￥"
  */
-NSString * rmbSymbol();
+NSString * rmbSymbol(void);
 
 
 /**

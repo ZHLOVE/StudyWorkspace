@@ -336,13 +336,13 @@ static char const * const kActionSELKey             = "kActionSELKey";
     [self showTableFootView:NO];
     
     WEAKSELF
-    void (^removeTipViewBlock)() = ^(){
+    void (^removeTipViewBlock)(void) = ^(){
         STRONGSELF
         //移除提示视图,重新请求
         [strongSelf removeTipViewAndRefresh];
     };
     
-    void (^targetActionBlock)() = ^(){
+    void (^targetActionBlock)(void) = ^(){
         STRONGSELF
         //如果额外设置了按钮事件
         if ([strongSelf.customActionTarget respondsToSelector:strongSelf.customActionSEL]) {
@@ -360,7 +360,7 @@ static char const * const kActionSELKey             = "kActionSELKey";
     NSString *tipString = nil;
     UIImage *tipImage = nil;
     NSString *actionTitle = nil;
-    void (^block)() = nil;
+    void (^block)(void) = nil;
     BOOL needToSelector = [self.customActionTarget respondsToSelector:self.customActionSEL];
     
     if (state == RequesNoNetWorkStatus) {//没有网络
