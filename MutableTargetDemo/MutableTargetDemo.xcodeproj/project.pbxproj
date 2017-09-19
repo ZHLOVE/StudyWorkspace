@@ -14,6 +14,7 @@
 		B5727CCD1F62AAA500F278BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5727CCB1F62AAA500F278BA /* Main.storyboard */; };
 		B5727CCF1F62AAA500F278BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5727CCE1F62AAA500F278BA /* Assets.xcassets */; };
 		B5727CD21F62AAA500F278BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5727CD01F62AAA500F278BA /* LaunchScreen.storyboard */; };
+		B5B17AAB1F70B54A00E3C98D /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5B17AAA1F70B54900E3C98D /* UserNotifications.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,8 @@
 		B5727CD11F62AAA500F278BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B5727CD31F62AAA500F278BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5727CDD1F62AEB100F278BA /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		B5B17AA81F70B2DE00E3C98D /* MutableTargetDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MutableTargetDemo.entitlements; sourceTree = "<group>"; };
+		B5B17AAA1F70B54900E3C98D /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5B17AAB1F70B54A00E3C98D /* UserNotifications.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,6 +52,7 @@
 			children = (
 				B5727CC11F62AAA500F278BA /* MutableTargetDemo */,
 				B5727CC01F62AAA500F278BA /* Products */,
+				B5B17AA91F70B54900E3C98D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,6 +67,7 @@
 		B5727CC11F62AAA500F278BA /* MutableTargetDemo */ = {
 			isa = PBXGroup;
 			children = (
+				B5B17AA81F70B2DE00E3C98D /* MutableTargetDemo.entitlements */,
 				B5727CC51F62AAA500F278BA /* AppDelegate.h */,
 				B5727CC61F62AAA500F278BA /* AppDelegate.m */,
 				B5727CC81F62AAA500F278BA /* ViewController.h */,
@@ -84,6 +90,14 @@
 				B5727CC31F62AAA500F278BA /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B5B17AA91F70B54900E3C98D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B5B17AAA1F70B54900E3C98D /* UserNotifications.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -119,6 +133,11 @@
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = W222R58V26;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -241,6 +260,7 @@
 				APP_DISPLAY_NAME = "Release包";
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Release";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-Release";
+				CODE_SIGN_ENTITLEMENTS = MutableTargetDemo/MutableTargetDemo.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = W222R58V26;
 				GCC_PREFIX_HEADER = MutableTargetDemo/PrefixHeader.pch;
@@ -314,6 +334,7 @@
 				APP_DISPLAY_NAME = "Dev02包";
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Dev02";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-Dev02";
+				CODE_SIGN_ENTITLEMENTS = MutableTargetDemo/MutableTargetDemo.entitlements;
 				DEVELOPMENT_TEAM = W222R58V26;
 				GCC_PREFIX_HEADER = MutableTargetDemo/PrefixHeader.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "Dev02=1";
@@ -387,6 +408,7 @@
 				APP_DISPLAY_NAME = "Test04包";
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Test04";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-Test04";
+				CODE_SIGN_ENTITLEMENTS = MutableTargetDemo/MutableTargetDemo.entitlements;
 				DEVELOPMENT_TEAM = W222R58V26;
 				GCC_PREFIX_HEADER = MutableTargetDemo/PrefixHeader.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "Test04=2";

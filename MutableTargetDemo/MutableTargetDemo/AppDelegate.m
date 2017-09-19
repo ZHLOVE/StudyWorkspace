@@ -7,45 +7,119 @@
 //
 
 #import "AppDelegate.h"
+#import <UserNotifications/UserNotifications.h>
 
-@interface AppDelegate ()
+#define iOS8UP      ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
+#define iOS10UP     ([[[UIDevice currentDevice] systemVersion] floatValue] >= 10.0)
 
+@interface AppDelegate ()<UNUserNotificationCenterDelegate>
 @end
 
 @implementation AppDelegate
 
-
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    //注册远程通知
+    [self registRemoteNotification:application];
     return YES;
 }
 
-
-- (void)applicationWillResignActive:(UIApplication *)application {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+/**
+ * 获取 iphoneToken
+ */
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    //推送分类中的方法保存Token
+    [self saveDeviceToken:deviceToken];
 }
 
-
-- (void)applicationDidEnterBackground:(UIApplication *)application {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    CCLog(@"获取token失败，开发调试的时候需要关注，必要的情况下将其上传到异常统计");
 }
 
-
-- (void)applicationWillEnterForeground:(UIApplication *)application {
-    // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+/**
+ * iOS10UP 代理回调方法，通知即将展示的时候
+ */
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center
+       willPresentNotification:(UNNotification *)notification
+         withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler{
+    
+    UNNotificationRequest *request = notification.request; // 原始请求
+    NSDictionary * userInfo = notification.request.content.userInfo;//userInfo数据
+    CCLog(@"通知即将展示的时候===\n%@===\n%@===\n%@===\n%@",request,center,notification.request.content,userInfo);
+    
+    // 回调block，将设置传入
+    completionHandler(UNNotificationPresentationOptionBadge|UNNotificationPresentationOptionSound|UNNotificationPresentationOptionAlert);
 }
 
-
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+/**
+ * iOS10UP 用户与通知进行交互后的response，比如说用户直接点开通知打开App、用户点击通知的按钮或者进行输入文本框的文本
+ */
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center
+didReceiveNotificationResponse:(UNNotificationResponse *)response
+         withCompletionHandler:(void(^)(void))completionHandler{
+    
+    UNNotificationRequest *request = response.notification.request; // 原始请求
+    NSDictionary * userInfo = response.notification.request.content.userInfo;//userInfo数据
+    CCLog(@"用户与通知进行交互后===\n%@===\n%@===\n%@",request,request.content,userInfo);
 }
 
-
-- (void)applicationWillTerminate:(UIApplication *)application {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+/**
+ *  注册远程通知
+ */
+- (void)registRemoteNotification:(UIApplication *)application
+{
+    if (iOS8UP) {
+        if (iOS10UP) { // ios_version >= 10.0
+            //系统大于10.0注册推送
+            [self registerrNotificationFromiOS10UP:application];
+            
+        } else { // 8.0 <= ios_version < 10.0
+            UIUserNotificationSettings *notiSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert categories:nil];
+            [[UIApplication sharedApplication] registerUserNotificationSettings:notiSettings];
+            [[UIApplication sharedApplication] registerForRemoteNotifications];
+        }
+        
+    } else{ // ios_version < 8.0
+        [application registerForRemoteNotificationTypes:
+         UIRemoteNotificationTypeBadge |
+         UIRemoteNotificationTypeAlert |
+         UIRemoteNotificationTypeSound];
+    }
 }
 
+#pragma mark -===========处理iOS 10.0推送===========/** * 系统大于10.0注册推送 */
+
+/**
+ * 系统大于10.0注册推送
+ */
+- (void)registerrNotificationFromiOS10UP:(UIApplication *)application
+{
+    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+    // 必须写代理，不然无法监听通知的接收与点击
+    center.delegate = self;
+    
+    [center requestAuthorizationWithOptions:(UNAuthorizationOptionAlert | UNAuthorizationOptionBadge | UNAuthorizationOptionSound) completionHandler:^(BOOL granted, NSError * _Nullable error) {
+        if (granted) {
+            CCLog(@"用户授权向APNs注册，获取deviceToken");
+            [application registerForRemoteNotifications];
+        } else {
+            CCLog(@"用户拒绝推送消息，注册通知失败==%@",error);
+        }
+    }];
+}
+
+#pragma mark -===========保存远程推送deviceToken===========
+
+/**
+ * 保存deviceToken
+ */
+- (void)saveDeviceToken:(NSData *)deviceToken {
+    NSString *descToken = [deviceToken description];
+    NSString *replaceLeftChar = [descToken stringByReplacingOccurrencesOfString:@"<" withString:@""];
+    NSString *replaceRightChar = [replaceLeftChar stringByReplacingOccurrencesOfString:@">" withString:@""];
+    NSString *factToken = [replaceRightChar stringByReplacingOccurrencesOfString:@" " withString:@""];
+    CCLog(@"远程推送deviceToken=====%@",factToken);
+}
 
 @end

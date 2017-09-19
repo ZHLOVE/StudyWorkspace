@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-#import "WebViewController.h"
 #import "AppDelegate.h"
 
 @interface ViewController ()
@@ -30,8 +29,7 @@
 /**
  显示\隐藏展示图
  */
--(IBAction)changeAppAction:(id)sender
-{
+-(IBAction)changeAppAction:(id)sender {
     self.scrollView.hidden = !self.scrollView.hidden;
 }
 

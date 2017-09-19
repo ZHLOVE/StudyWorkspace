@@ -65,15 +65,14 @@ Ipa_Path="./${Date}_ipa/${Config_Name}_${Time}.ipa"
 #Plist文件路径
 Plist_Path="./ExportOptionsPlist.plist"
 
-if [ $Config_Name == Release ] ; then
+if [ $Config_Name == $Release ] ; then
 #签名证书
-CodeSignIdentity="iPhone Distribution: Shenzhen Okdeer Network Technology Co., Ltd."
+CodeSignIdentity="iPhone Distribution: Shenzhen Okdeer Network Technology Co., Ltd. (W222R58V26)"
 #UDID: okdeerMallAdHoc
 AppStoreProvisioningProfile="3e37a002-63b3-41ab-bd9d-cfb2fc52c273"
-#UDID: okdeerMallDevelopment: "2b34bd26-178b-4996-8176-aa03a0e15412";
 else
 #签名证书
-CodeSignIdentity="Apple Development IOS Push Services: com.jhsys.cloudmall"
+CodeSignIdentity="iPhone Developer: Ruquan Liang (MZQG6ZJU88)"
 #UDID: okdeerMallDevelopment:
 AppStoreProvisioningProfile="2b34bd26-178b-4996-8176-aa03a0e15412";
 fi
@@ -115,7 +114,7 @@ echo
 
 
 
-
+#==============================开始重签名为企业包 Start==============================
 
 
 
@@ -130,11 +129,11 @@ mobileprovision_Path="./handlink_cer/lukeInHouse.mobileprovision"
 # 重签名证书名称
 Re_CODE_SIGN_DISTRIBUTION="iPhone Distribution: Shenzhen Huayitong Network Technology Co., Ltd."
 # 重签名ipa包路径
-Re_IpaName="./${Date}_ipa/${Config_Name}_${Time}_reSign.ipa"
+Re_Ipa_Path="./${Date}_ipa/${Config_Name}_${Time}_reSign.ipa"
 #ipa包路径
 Export_Path="./${Date}_ipa/"
 # 重签名ipa文件存放路径
-Re_IPA_PATH="$HOME/Documents/saveOkdeerAppIpa/${App_Name}/${bundleShortVersion}/${DATE}/${Re_IpaName}"
+Re_IPA_PATH="$HOME/Documents/saveOkdeerAppIpa/${App_Name}/${bundleShortVersion}/${DATE}/${Re_Ipa_Path}"
 
 # 生成plist文件
 security cms -D -i ${mobileprovision_Path} > ${entitlements_full_Path}
@@ -154,12 +153,12 @@ Payload/MutableTargetDemo.app/
 #压缩文件
 zip -r re_sign.ipa Payload
 #按日志格式重命名ipa包
-mv "./re_sign.ipa" "${Re_IpaName}"
+mv "./re_sign.ipa" "${Re_Ipa_Path}"
 #删除Payload解压文件夹
 rm -r -f ./Payload
 
 
-
+#==============================开始上传fir.im内测平台 Start==============================
 
 echo "\033[41;36m ========================重签名结束, 开始上传fir.im内测平台======================== \033[0m"
 
@@ -168,7 +167,7 @@ fir_token="0f5fadc120ba74da84724e55434b28fb"
 #版本更新信息 (Upgrade_describe.txt 此文件为版本更新的描述,需要放在项目的.xcodeproj的同一级)
 UpgradeDesc=$(<Upgrade_describe.txt)
 #上传到fir
-fir publish "${Re_IpaName}" -T "${fir_token}" -c "${UpgradeDesc}"
+fir publish "${Ipa_Path}" -T "${fir_token}" -c "${UpgradeDesc}"
 
 #弹框通知提示验证ipa包结果状态
 if [ $? == 0 ] ; then
@@ -182,6 +181,7 @@ exit 1
 fi
 
 
+#==============================开始发布到iTunesConnect ==============================
 
 echo
 #学习上传命令: http://help.apple.com/itc/apploader/#/apdATD1E53-D1E1A1303-D1E53A1126
