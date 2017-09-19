@@ -61,8 +61,8 @@ AppVersion=$(/usr/libexec/PlistBuddy -c "print CFBundleShortVersionString" "${Pr
 #归档路径
 Archive_Path="./${App_Name}.xcarchive"
 #ipa包路径
-Export_Path="./${Date}_ipa" #打包放在工程目录下
-#Export_Path="$HOME/Documents/ExportIpa/${App_Name}/${Date}_ipa" #打包放在Documents目录下
+#Export_Path="./${Date}_ipa" #打包放在工程目录下
+Export_Path="$HOME/Documents/ExportIpa/${App_Name}/${Date}_ipa" #打包放在Documents目录下
 #ipa包路径
 Temp_Ipa_Path="${Export_Path}/${App_Name}.ipa"
 #改变包名称
@@ -114,7 +114,7 @@ clear
 open $Export_Path
 
 echo
-echo "\033[41;36m 恭喜: 🎉 🎉 🎉${Config_Name}环境打包完成, 路径为:${Ipa_Path} \033[0m"
+echo "\033[41;36m 恭喜: 🎉 🎉 🎉 ${Config_Name} 环境打包完成, 路径为:${Ipa_Path} \033[0m"
 echo
 
 
