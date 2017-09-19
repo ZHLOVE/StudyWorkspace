@@ -54,15 +54,19 @@ fi
 Date="$(date +%Y%m%d)"
 #打包时间
 Time="$(date +%Y%m%d%H%M%S)"
+#工程info.plist路径
+Project_Infoplist_Path="./${App_Name}/Info.plist"
+#App版本号
+AppVersion=$(/usr/libexec/PlistBuddy -c "print CFBundleShortVersionString" "${Project_Infoplist_Path}")
 #归档路径
 Archive_Path="./${App_Name}.xcarchive"
 #ipa包路径
-#Export_Path="./${Date}_ipa/"
-Export_Path="$HOME/Documents/ExportIpa/${App_Name}/${Date}_ipa"
+Export_Path="./${Date}_ipa" #打包放在工程目录下
+#Export_Path="$HOME/Documents/ExportIpa/${App_Name}/${Date}_ipa" #打包放在Documents目录下
 #ipa包路径
 Temp_Ipa_Path="${Export_Path}/${App_Name}.ipa"
 #改变包名称
-Ipa_Path="${Export_Path}/${Config_Name}_${Time}.ipa"
+Ipa_Path="${Export_Path}/${App_Name}_V${AppVersion}_${Config_Name}_${Time}.ipa"
 #Plist文件路径
 Plist_Path="./ExportOptionsPlist.plist"
 
@@ -130,7 +134,7 @@ mobileprovision_Path="./handlink_cer/lukeInHouse.mobileprovision"
 # 重签名证书名称
 Re_CODE_SIGN_DISTRIBUTION="iPhone Distribution: Shenzhen Huayitong Network Technology Co., Ltd."
 # 重签名ipa包存放路径
-Re_Ipa_Path="${Export_Path}/${Config_Name}_${Time}_reSign.ipa"
+Re_Ipa_Path="${Export_Path}/${App_Name}_V${AppVersion}_${Config_Name}_${Time}_reSign.ipa"
 
 # 生成plist文件
 security cms -D -i ${mobileprovision_Path} > ${entitlements_full_Path}
