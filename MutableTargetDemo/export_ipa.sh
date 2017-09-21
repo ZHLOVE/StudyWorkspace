@@ -228,10 +228,14 @@ else
 
     #弹框通知提示验证ipa包结果状态
     if [ $? == 0 ] ; then
-        echo "\033[41;36m 🎉 🎉 🎉 恭喜: 上传fir.im成功！请到App内部点击安装或从Web端(http://fir.im/vlpc)下载最新版App \033[0m "
-        #打开web下载页面
+        echo "\033[41;36m 🎉 🎉 🎉 恭喜: 上传fir.im成功！请到App内部点击安装或从Web端(http://fir.im/vlpc)扫码下载最新版App \033[0m "
+        #打开web扫码下载页面
         open http://fir.im/vlpc
         echo "==========脚本执行结束，正常退出，此次打包环境：${Config_Name}，路径为:${Export_Path}=========="
+
+        #发送邮件
+        sh sendEmail.sh
+
     else
         say '糟糕, 上传fir.im失败!!!'
         osascript -e 'display notification "😰😰😰 糟糕, 上传fir.im失败!!!" with title "提示"'
