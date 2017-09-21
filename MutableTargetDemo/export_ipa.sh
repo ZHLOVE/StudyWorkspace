@@ -132,39 +132,41 @@ echo
 
 if [ $Config_Name == $Release ] ; then
 
-    #==============================开始发布到iTunesConnect ==============================
+    #==============================发布到iTunesConnect分两步 ==============================
     #学习上传命令: http://help.apple.com/itc/apploader/#/apdATD1E53-D1E1A1303-D1E53A1126
-    echo "\033[41;36m ================= 开始上传到iTunesConnect =================\033[0m"
+    echo "\033[41;36m ================= 正在iTunesConnect中验证ipa。。。 =================\033[0m"
 
     #altool工具路径 (这个是系统altool路径,是固定的)
     AltoolPath="/Applications/Xcode.app/Contents/Applications/Application Loader.app/Contents/Frameworks/ITunesSoftwareService.framework/Versions/A/Support/altool"
     #需要上传至iTunes Connect的本地ipa包地址, -->上传的是未重签名之前的包
     Upload_IpaPath="${Ipa_Path}"
     #开发者账号（邮箱）
-    appleId="app01@kingser.com"
+    AppleId="app01@kingser.com"
     #开发者账号的密码
     ApplePassword="okdeerYsc.2312"
 
-    #======1.验证ipa包是否成功======
-    "$AltoolPath" --validate-app -f "${Upload_IpaPath}" -u "${appleId}" -p "${ApplePassword}" --output-format xml
+    #======1、验证ipa包是否成功======
+    "$AltoolPath" --validate-app -f "${Upload_IpaPath}" -u "${AppleId}" -p "${ApplePassword}" --output-format xml
 
     #弹框通知提示验证ipa包结果状态
     if [ $? == 0 ] ; then
         echo "\033[41;36m ============ 验证ipa包成功, 开始上传至iTunes Connect============ \033[0m"
     else
-        say '上传iTunes Connect时验证ipa包失败!'
+        say '糟糕, iTunes Connect验证ipa包失败!'
         osascript -e 'display notification "😰😰😰 糟糕, 验证ipa包失败!!!" with title "提示"'
         exit 1
     fi
 
+
     ##======2.上传ipa包到iTunes Connect======
-    #"$AltoolPath" --upload-app -f "${Upload_IpaPath}" -u "${appleId}" -p "${ApplePassword}" --output-format xml
+    #echo "\033[41;36m ================= 验证成功，正在往iTunesConnect上传。。。 =================\033[0m"
+    #"$AltoolPath" --upload-app -f "${Upload_IpaPath}" -u "${AppleId}" -p "${ApplePassword}" --output-format xml
     #
     ##弹框通知提示上传结果状态
     #if [ $? == 0 ] ; then
         #say '恭喜,上传iTunes Connect成功!'
         #osascript -e 'display notification "🎉🎉🎉 恭喜,上传iTunes Connect成功!!!" with title "提示"'
-        #echo "==========脚本执行结束啦，正常退出=========="
+        #echo "==========脚本执行结束啦，正常退出，此次打包环境：${Config_Name}，路径为:${Ipa_Path}=========="
     #else
         #say '糟糕, 上传iTunes Connect失败!'
         #osascript -e 'display notification "😰😰😰 糟糕, 上传iTunes Connect失败!!!" with title "提示"'
@@ -176,29 +178,29 @@ else
     #企业包重签名参考地址: http://www.jianshu.com/p/f4cfac861aac
     echo "\033[41;36m =========================== 开始重签名为企业包 ========================= \033[0m"
 
-    entitlements_full_Path="./entitlements_full.plist"
+    Entitlements_full_Path="./entitlements_full.plist"
     # mobileprovision生成plist的路径
-    entitlements_Path="./entitlements.plist"
+    Entitlements_Path="./entitlements.plist"
     # 配置文件的路径
-    mobileprovision_Path="./handlink_cer/lukeInHouse.mobileprovision"
+    Mobileprovision_Path="./handlink_cer/lukeInHouse.mobileprovision"
     # 企业重签名证书名称
     Re_CODE_SIGN_DISTRIBUTION="iPhone Distribution: Shenzhen Huayitong Network Technology Co., Ltd."
     # 重签名ipa包存放路径
     Re_Ipa_Path="${Export_Path}/${App_Name}_V${AppVersion}_${Config_Name}_${Time}_reSign.ipa"
 
     # 生成plist文件
-    security cms -D -i ${mobileprovision_Path} > ${entitlements_full_Path}
-    /usr/libexec/PlistBuddy -x -c 'Print:Entitlements' ${entitlements_full_Path} > ${entitlements_Path}
+    security cms -D -i ${Mobileprovision_Path} > ${Entitlements_full_Path}
+    /usr/libexec/PlistBuddy -x -c 'Print:Entitlements' ${Entitlements_full_Path} > ${Entitlements_Path}
 
     # 解压文件
     unzip "${Ipa_Path}"
     #拷贝配置文件到文件中
-    cp "${mobileprovision_Path}" \
+    cp "${Mobileprovision_Path}" \
     Payload/MutableTargetDemo.app/embedded.mobileprovision
 
     # 进行重签名
     codesign -f -s "${Re_CODE_SIGN_DISTRIBUTION}" \
-    --entitlements "${entitlements_Path}" \
+    --entitlements "${Entitlements_Path}" \
     Payload/MutableTargetDemo.app/
 
     #压缩文件
@@ -214,23 +216,22 @@ else
 
 
     #============================== 开始上传fir.im内测平台 ==============================
-
-    echo "\033[41;36m ========================重签名结束, 开始上传fir.im内测平台======================== \033[0m"
+    #fir学习地址：https://github.com/FIRHQ/fir-cli
+    echo "\033[41;36m ======================== 重签名结束, 正在上传到fir.im内测平台 ======================== \033[0m"
 
     #Fir内测平台Token
-    fir_token="0f5fadc120ba74da84724e55434b28fb"
+    Fir_token="0f5fadc120ba74da84724e55434b28fb"
     #版本更新信息 (Upgrade_desc.txt 此文件为版本的更新描述,需要放在项目的.xcodeproj的同一级)
     UpgradeDesc=$(<Upgrade_desc.txt)
     #上传到fir, -->上传的是重签名之后的包
-    fir publish "${Re_Ipa_Path}" -T "${fir_token}" -c "${UpgradeDesc}"
+    fir publish "${Re_Ipa_Path}" -T "${Fir_token}" -c "${UpgradeDesc}"
 
     #弹框通知提示验证ipa包结果状态
     if [ $? == 0 ] ; then
-        #ipa包fir下载地址: http://fir.im/vlpc
         echo "\033[41;36m 🎉 🎉 🎉 恭喜: 上传fir.im成功！请到App内部点击安装或从Web端(http://fir.im/vlpc)下载最新版App \033[0m "
         #打开web下载页面
         open http://fir.im/vlpc
-        echo "==========脚本执行结束正常退出=========="
+        echo "==========脚本执行结束，正常退出，此次打包环境：${Config_Name}，路径为:${Export_Path}=========="
     else
         say '糟糕, 上传fir.im失败!!!'
         osascript -e 'display notification "😰😰😰 糟糕, 上传fir.im失败!!!" with title "提示"'
