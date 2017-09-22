@@ -9,7 +9,7 @@ SendUserName="18676730583@163.com"
 #发件人邮箱
 SendAddress="18676730583@163.com"
 #发件人邮箱密码
-SendAddressPwd="132465"
+SendAddressPwd="123456"
 #发件人邮箱的smtp服务器:email.okdeer.com （smtp.163.com）
 EmailServer="smtp.163.com"
 #收件箱
@@ -28,8 +28,15 @@ $EmailTitle`
 
 #邮件的具体内容
 EmailContent="我是邮件的具体内容"
-#附件地址
-Attachment_path="./Upgrade_desc.txt"
+
+#脚本参数传入附件地址
+Ipa_path=$1
+if [ $Ipa_path ] ; then
+    Attachment_path=$Ipa_path
+else
+    Attachment_path="./Upgrade_desc.txt"
+fi
+
 
 /usr/local/bin/sendEmail \
 -xu "${SendUserName}" \
