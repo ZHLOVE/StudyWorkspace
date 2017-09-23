@@ -9,7 +9,7 @@ SendUserName="18676730583@163.com"
 #发件人邮箱
 SendAddress="18676730583@163.com"
 #发件人邮箱密码
-SendAddressPwd="123456"
+SendAddressPwd="******"
 #发件人邮箱的smtp服务器:email.okdeer.com （smtp.163.com）
 EmailServer="smtp.163.com"
 #收件箱
