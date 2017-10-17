@@ -35,6 +35,13 @@
     
     self.webView.scrollView.customActionTarget = self;
     self.webView.scrollView.customActionSEL = @selector(loadWebViewData);
+
+    //设配iOS11
+    if (@available(iOS 11.0, *)) {
+        self.htmlWebView.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    } else {
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
     
     //加载Webview
     [self loadWebViewData];

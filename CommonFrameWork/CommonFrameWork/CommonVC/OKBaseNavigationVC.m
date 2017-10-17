@@ -21,6 +21,13 @@
 
 + (void)initialize
 {
+    //设配iOS11, 
+    if (@available(iOS 11.0, *)) {
+        //警告：webview中的ScrollView使用appearance设置无效，需要单独设置
+        [UIScrollView appearance].contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        [UITableView appearance].contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
+
     // 设置导航栏标题文字
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     dict[NSFontAttributeName] = FontSystemSize(18);
