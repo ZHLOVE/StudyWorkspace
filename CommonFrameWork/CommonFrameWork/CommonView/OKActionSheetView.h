@@ -72,7 +72,7 @@ typedef void(^OKActionSheetCallBackBlock)(NSInteger buttonIndex);
  @return                返回自定义的ActionSheet实例
  */
 + (instancetype)actionSheetByTopSquare:(OKActionSheetCallBackBlock)buttonBlock
-                           cancelBlock:(void (^)())cancelBlock
+                           cancelBlock:(void (^)(void))cancelBlock
                              superView:(UIView *)superView
                               position:(CGPoint)position
                         buttonTitleArr:(NSArray *)buttonTitleArr

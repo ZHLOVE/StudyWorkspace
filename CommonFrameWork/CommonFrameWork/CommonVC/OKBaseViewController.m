@@ -39,6 +39,16 @@
     [super viewDidLoad];
     //父类控制器一定要设置背景色，否则push会有拖影效果
     self.view.backgroundColor = [UIColor whiteColor];
+
+    //iOS11.0以后改属性被废弃
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 11.0) {
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
+
+    //设置布局起始位置
+    if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)]) {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
     
     //添加全屏右滑动返回
     [self addScreenEdgePanGesture];

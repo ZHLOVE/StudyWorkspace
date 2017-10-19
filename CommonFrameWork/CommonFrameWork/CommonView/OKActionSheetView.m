@@ -133,7 +133,7 @@ typedef enum : NSUInteger {
  * 从顶部弹出带圆角的ActionSheet
  */
 + (instancetype)actionSheetByTopSquare:(OKActionSheetCallBackBlock)buttonBlock
-                           cancelBlock:(void (^)())cancelBlock
+                           cancelBlock:(void (^)(void))cancelBlock
                              superView:(UIView *)superView
                               position:(CGPoint)position
                         buttonTitleArr:(NSArray *)buttonTitleArr
@@ -167,7 +167,7 @@ typedef enum : NSUInteger {
                buttonTitleArr:(NSArray *)buttonTitleArr
                buttonImageArr:(NSArray *)buttonImageArr
                         block:(OKActionSheetCallBackBlock)callBackBlock
-                  cancelBlock:(void (^)())cancelBlock
+                  cancelBlock:(void (^)(void))cancelBlock
          actionSheetStyleType:(CCActionSheetStyleType)styleType
 {
     if (superView) {

@@ -659,14 +659,14 @@ static char const * const kActionSELKey             = "kActionSELKey";
 +(void)load
 {
     //交换刷新表格方法
-    [self ok_exchangeInstanceMethod:@selector(reloadData)
-                      otherSelector:@selector(ok_reloadData)];
-    //交换删除表格方法
-    [self ok_exchangeInstanceMethod:@selector(deleteRowsAtIndexPaths:withRowAnimation:)
-                      otherSelector:@selector(ok_deleteRowsAtIndexPaths:withRowAnimation:)];
-    //交换刷新表格Sections方法
-    [self ok_exchangeInstanceMethod:@selector(reloadSections:withRowAnimation:)
-                      otherSelector:@selector(ok_reloadSections:withRowAnimation:)];
+//    [self ok_exchangeInstanceMethod:@selector(reloadData)
+//                      otherSelector:@selector(ok_reloadData)];
+//    //交换删除表格方法
+//    [self ok_exchangeInstanceMethod:@selector(deleteRowsAtIndexPaths:withRowAnimation:)
+//                      otherSelector:@selector(ok_deleteRowsAtIndexPaths:withRowAnimation:)];
+//    //交换刷新表格Sections方法
+//    [self ok_exchangeInstanceMethod:@selector(reloadSections:withRowAnimation:)
+//                      otherSelector:@selector(ok_reloadSections:withRowAnimation:)];
 }
 
 - (void)ok_reloadData
@@ -709,20 +709,20 @@ static char const * const kActionSELKey             = "kActionSELKey";
  */
 + (void)load
 {
-    [self ok_exchangeInstanceMethod:@selector(reloadData)
-                      otherSelector:@selector(ok_reloadData)];
-    
-    [self ok_exchangeInstanceMethod:@selector(deleteSections:)
-                      otherSelector:@selector(ok_deleteSections:)];
-    
-    [self ok_exchangeInstanceMethod:@selector(reloadSections:)
-                      otherSelector:@selector(ok_reloadSections:)];
-    
-    [self ok_exchangeInstanceMethod:@selector(deleteItemsAtIndexPaths:)
-                      otherSelector:@selector(ok_deleteItemsAtIndexPaths:)];
-    
-    [self ok_exchangeInstanceMethod:@selector(reloadItemsAtIndexPaths:)
-                      otherSelector:@selector(ok_reloadItemsAtIndexPaths:)];
+//    [self ok_exchangeInstanceMethod:@selector(reloadData)
+//                      otherSelector:@selector(ok_reloadData)];
+//
+//    [self ok_exchangeInstanceMethod:@selector(deleteSections:)
+//                      otherSelector:@selector(ok_deleteSections:)];
+//
+//    [self ok_exchangeInstanceMethod:@selector(reloadSections:)
+//                      otherSelector:@selector(ok_reloadSections:)];
+//
+//    [self ok_exchangeInstanceMethod:@selector(deleteItemsAtIndexPaths:)
+//                      otherSelector:@selector(ok_deleteItemsAtIndexPaths:)];
+//
+//    [self ok_exchangeInstanceMethod:@selector(reloadItemsAtIndexPaths:)
+//                      otherSelector:@selector(ok_reloadItemsAtIndexPaths:)];
 }
 
 - (void)ok_reloadData
@@ -773,8 +773,8 @@ static char const * const kActionSELKey             = "kActionSELKey";
  */
 + (void)load
 {
-    [self ok_exchangeInstanceMethod:@selector(reload)
-                      otherSelector:@selector(ok_reload)];
+//    [self ok_exchangeInstanceMethod:@selector(reload)
+//                      otherSelector:@selector(ok_reload)];
 }
 
 - (void)ok_reload

@@ -73,7 +73,7 @@
                            tipImage:(UIImage *)image
                             tipText:(id)text
                         actionTitle:(id)title
-                        actionBlock:(void(^)())block
+                        actionBlock:(void(^)(void))block
 {
     OKCommonTipView *tipView = [[OKCommonTipView alloc] initWithFrame:frame
                                                              tipImage:image
@@ -89,7 +89,7 @@
                      tipImage:(UIImage *)image
                       tipText:(id)text
                   actionTitle:(id)title
-                  actionBlock:(void(^)())block
+                  actionBlock:(void(^)(void))block
 {
     self = [super initWithFrame:frame];
     if(self){
