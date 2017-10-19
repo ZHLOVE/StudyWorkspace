@@ -23,17 +23,17 @@ typedef void(^OKAlertViewCallBackBlock)(NSInteger buttonIndex);
  iOS的系统弹框, <已兼容iOS7的UIAlertView>;
  注意:如果有设置cancelButton, 则取消按钮的buttonIndex为:0, 其他otherButton的Index依次加1;
  
- @param alertViewCallBackBlock 点击按钮回调Block
+ @param alertWithCallBlock     点击按钮回调Block
  @param title                  弹框标题->(支持 NSString、NSAttributedString)
  @param message                弹框描述->(支持 NSString、NSAttributedString)
- @param cancelButtonName       取消按钮标题->(支持 NSString、NSAttributedString)
+ @param cancelButtonTitle      取消按钮标题->(支持 NSString、NSAttributedString)
  @param otherButtonTitles      其他按钮标题->(支持 NSString、NSAttributedString)
  */
-+ (instancetype)alertWithCallBackBlock:(OKAlertViewCallBackBlock)alertViewCallBackBlock
-                                 title:(id)title
-                               message:(id)message
-                      cancelButtonName:(id)cancelButtonName
-                     otherButtonTitles:(id)otherButtonTitles, ...NS_REQUIRES_NIL_TERMINATION;
++ (instancetype)alertWithCallBlock:(OKAlertViewCallBackBlock)alertWithCallBlock
+                             title:(id)title
+                           message:(id)message
+                 cancelButtonTitle:(id)cancelButtonTitle
+                 otherButtonTitles:(id)otherButtonTitles, ...NS_REQUIRES_NIL_TERMINATION;
 
 /**
  *  获取OKAlertView上的指定按钮
@@ -47,6 +47,7 @@ typedef void(^OKAlertViewCallBackBlock)(NSInteger buttonIndex);
  *  注意:index为所有按钮数组的角标(cancelButton的角标为0 ,其他依次加1)
  */
 - (void)setButtonTitleToIndex:(NSInteger)index title:(id)title enable:(BOOL)enable;
+
 
 /**
  *  2秒自动消失的系统Alert弹框
