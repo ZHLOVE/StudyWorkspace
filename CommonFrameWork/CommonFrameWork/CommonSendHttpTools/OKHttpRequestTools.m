@@ -80,6 +80,12 @@ static char const * const kRequestUrlKey    = "kRequestUrlKey";
 {
     //============失败回调============
     void (^failResultBlock)(NSError *) = ^(NSError *error){
+        
+        //包装请求超时NSError
+        if (error.code == kCFURLErrorTimedOut) {
+            error = [NSError errorWithDomain:RequestTimedOutTip code:[kTimedOutCode integerValue] userInfo:nil];
+        }
+        
         NSLog(@"\n❌❌❌请求接口基地址= %@\n请求参数= %@\n网络数据失败返回= %@\n",requestModel.requestUrl,requestModel.parameters,error);
         
         //判断Token状态是否为失效

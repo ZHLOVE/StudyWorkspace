@@ -12,6 +12,8 @@
 
 /** 网络连接失败 */
 #define NetworkConnectFailTip                   @"网络开小差, 请稍后再试"
+/** 请求超时 */
+#define RequestTimedOutTip                      @"请求超时,请稍后重试"
 /** 重复请求 */
 #define RequestRepeatFailTip                    @"重复请求!"
 /** 错误码在200-500以外的失败统一提示 */
@@ -25,6 +27,7 @@ static NSString *const kRequestDataKey          = @"data";                      
 static NSString *const kRequestListkey          = @"list";                      /**< 请求list 的key */
 static NSString *const kRepeatRequest           = @"-1";                        /**< 重复请求的标志 */
 static NSString *const kLoginFail               = @"4";                         /**< 需要重新登录标志 */
+static NSString *const kTimedOutCode            = @"444";                       /**< 请求超时标志 */
 static NSString *const kServiceErrorStatues     = @"9";                         /**< 请求失败的标志 */
 static NSString *const kRequestSuccessStatues   = @"0";                         /**< 请求成功的code */
 static NSInteger const kRequestTipsStatuesMin   = 200;                          /**< 提示后台的code最小值 */

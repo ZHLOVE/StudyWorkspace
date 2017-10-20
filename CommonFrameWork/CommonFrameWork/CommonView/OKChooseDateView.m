@@ -297,7 +297,7 @@
         {
             if ([compareDate compare:dateFromString(dateString(sender.date))]==NSOrderedAscending || ([dateFromString(dateString(sender.date)) compare:compareDate] ==NSOrderedSame && self.isSame))
             {
-                ShowAlertToast(@"结束时间需大于开始时间");
+                showAlertToast(@"结束时间需大于开始时间");
                 EnsureBtn.enabled = NO;
                 _startDate = nil;
                 
@@ -317,7 +317,7 @@
         {
             if ([dateFromString(dateString(sender.date)) compare:compareDate]==NSOrderedAscending || ([dateFromString(dateString(sender.date)) compare:compareDate] ==NSOrderedSame && self.isSame))
             {
-                ShowAlertToast(@"结束时间需大于开始时间");
+                showAlertToast(@"结束时间需大于开始时间");
                 EnsureBtn.enabled = NO;
                 _endDate = nil;
                 

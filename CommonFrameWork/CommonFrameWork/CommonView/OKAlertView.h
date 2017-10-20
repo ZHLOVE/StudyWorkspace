@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 /** 单个按钮提示Alert弹框, 没有事件只做提示使用 */
-#define OKAlertSingleBtnView(titleStr,messageStr,cancelTitle) [OKAlertView alertWithCallBackBlock:nil title:titleStr message:messageStr cancelButtonName:cancelTitle otherButtonTitles: nil];
+#define OKAlertSingleBtnView(titleStr,messageStr,cancelTitle) [OKAlertView alertWithCallBackBlock:nil title:titleStr message:messageStr cancelButtonTitle:cancelTitle otherButtonTitles: nil];
 
 
 typedef void(^OKAlertViewCallBackBlock)(NSInteger buttonIndex);
@@ -20,7 +20,7 @@ typedef void(^OKAlertViewCallBackBlock)(NSInteger buttonIndex);
 @property (nonatomic,strong) UIColor *mainColor UI_APPEARANCE_SELECTOR;
 
 /**
- iOS的系统弹框, <已兼容iOS7的UIAlertView>;
+ 自定义的UIAlertView弹框
  注意:如果有设置cancelButton, 则取消按钮的buttonIndex为:0, 其他otherButton的Index依次加1;
  
  @param alertWithCallBlock     点击按钮回调Block
@@ -34,6 +34,20 @@ typedef void(^OKAlertViewCallBackBlock)(NSInteger buttonIndex);
                            message:(id)message
                  cancelButtonTitle:(id)cancelButtonTitle
                  otherButtonTitles:(id)otherButtonTitles, ...NS_REQUIRES_NIL_TERMINATION;
+
+
+/**
+ 使用方式同上个方法, (效果和上面的方法一样,c函数的方式调用代码量更少)
+
+ @param title 弹框标题->(支持 NSString、NSAttributedString)
+ @param message 弹框描述->(支持 NSString、NSAttributedString)
+ @param cancelButtonTitle 取消按钮标题->(支持 NSString、NSAttributedString)
+ @param otherButtonTitles 其他按钮标题->(支持 NSString、NSAttributedString)
+ @param alertWithCallBlock 点击按钮回调Block
+ @return 弹框实例对象
+ */
+OKAlertView* showAlertView(id title, id message, id cancelButtonTitle, NSArray *otherButtonTitles, OKAlertViewCallBackBlock alertWithCallBlock);
+
 
 /**
  *  获取OKAlertView上的指定按钮
@@ -54,7 +68,7 @@ typedef void(^OKAlertViewCallBackBlock)(NSInteger buttonIndex);
  *
  *  @msg 提示标题->(支持 NSString、NSAttributedString)
  */
-void ShowAlertToast(id msg);
+void showAlertToast(id msg);
 
 
 /**
@@ -63,14 +77,15 @@ void ShowAlertToast(id msg);
  * @param title 提示标题->(支持 NSString、NSAttributedString)
  * @param msg   提示信息->(支持 NSString、NSAttributedString)
  */
-void ShowAlertToastByTitle(id title, id msg);
+void showAlertToastByTitle(id title, id msg);
 
 
 /**
  * 显示请求的错误提示信息
+ * @param error 请求错误的对象,内部会根据错误码(200-500之间)来提示
  * @param msg   提示信息->(支持 NSString、NSAttributedString)
  */
-void ShowAlertWithError(NSError *error, id msg);
+void showAlertToastByError(NSError *error, id msg);
 
 
 #pragma mark - 带输入框的系统弹框

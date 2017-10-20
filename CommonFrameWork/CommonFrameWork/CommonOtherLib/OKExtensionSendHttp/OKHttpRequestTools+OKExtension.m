@@ -78,7 +78,7 @@ static char const * const kRequestTimeCountKey    = "kRequestTimeCountKey";
 {
     if (!requestModel.forbidTipErrorInfo && !requestModel.dataTableView) {
         //错误码在200-500以内,则按照服务端的错误信息提示
-        ShowAlertWithError(error, RequestFailCommomTip);
+        showAlertToastByError(error, RequestFailCommomTip);
     }
 }
 

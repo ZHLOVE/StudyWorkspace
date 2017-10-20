@@ -84,8 +84,9 @@
 
 @implementation OKAlertView
 
+
 /**
- iOS的系统弹框, <已兼容iOS7的UIAlertView>;
+ 自定义的UIAlertView弹框
  注意:如果有设置cancelButton, 则取消按钮的buttonIndex为:0, 其他otherButton的Index依次加1;
  
  @param alertWithCallBlock     点击按钮回调Block
@@ -100,24 +101,8 @@
                  cancelButtonTitle:(id)cancelButtonTitle
                  otherButtonTitles:(id)otherButtonTitles, ...NS_REQUIRES_NIL_TERMINATION
 {
-    if(!title && !message){
-        return nil;
-    }
-    
-    if (title && ![title isKindOfClass:[NSString class]] &&
-        ![title isKindOfClass:[NSAttributedString class]]){
-        return nil;
-    }
-    
-    if (message && ![message isKindOfClass:[NSString class]] &&
-        ![message isKindOfClass:[NSAttributedString class]]){
-        return nil;
-    }
-    
-    if (cancelButtonTitle && ![cancelButtonTitle isKindOfClass:[NSString class]] &&
-        ![cancelButtonTitle isKindOfClass:[NSAttributedString class]]){
-        return nil;
-    }
+    BOOL canShow = [self judgeCanShowAlert:cancelButtonTitle message:message title:title];
+    if(!canShow) return nil;
     
     //包装按钮标题数组
     NSMutableArray *otherTitleArr = [NSMutableArray array];
@@ -137,6 +122,58 @@
                             cancelButtonTitle:cancelButtonTitle
                             otherButtonTitles:otherTitleArr
                                 callBackBlock:alertWithCallBlock];
+}
+
+
+/**
+ 使用方式同上个方法, (效果和上面的方法一样,c函数的方式调用代码量更少)
+ 
+ @param title 弹框标题->(支持 NSString、NSAttributedString)
+ @param message 弹框描述->(支持 NSString、NSAttributedString)
+ @param cancelButtonTitle 取消按钮标题->(支持 NSString、NSAttributedString)
+ @param otherButtonTitles 其他按钮标题->(支持 NSString、NSAttributedString)
+ @param alertWithCallBlock 点击按钮回调Block
+ @return 弹框实例对象
+ */
+OKAlertView* showAlertView(id title, id message, id cancelButtonTitle, NSArray *otherButtonTitles,  OKAlertViewCallBackBlock alertWithCallBlock)
+{
+    BOOL canShow = [OKAlertView judgeCanShowAlert:cancelButtonTitle message:message title:title];
+    if(!canShow) return nil;
+    
+    CGRect rect = [UIScreen mainScreen].bounds;
+    return [[OKAlertView alloc] initWithFrame:rect
+                                        title:title
+                                      message:message
+                            cancelButtonTitle:cancelButtonTitle
+                            otherButtonTitles:otherButtonTitles
+                                callBackBlock:alertWithCallBlock];
+    
+}
+
+/**
+ 根据条件判断能否显示弹框
+ */
++ (BOOL)judgeCanShowAlert:(id)cancelButtonTitle message:(id)message title:(id)title
+{
+    if(!title && !message){
+        return NO;
+    }
+    
+    if (title && ![title isKindOfClass:[NSString class]] &&
+        ![title isKindOfClass:[NSAttributedString class]]){
+        return NO;
+    }
+    
+    if (message && ![message isKindOfClass:[NSString class]] &&
+        ![message isKindOfClass:[NSAttributedString class]]){
+        return NO;
+    }
+    
+    if (cancelButtonTitle && ![cancelButtonTitle isKindOfClass:[NSString class]] &&
+        ![cancelButtonTitle isKindOfClass:[NSAttributedString class]]){
+        return NO;
+    }
+    return YES;
 }
 
 #pragma mark - 初始化自定义OKAlertView
@@ -430,8 +467,8 @@
  *
  *  @msg 提示标题->(支持 NSString、NSAttributedString)
  */
-void ShowAlertToast(id msg) {
-    ShowAlertToastByTitle(nil, msg);
+void showAlertToast(id msg) {
+    showAlertToastByTitle(nil, msg);
 }
 
 
@@ -441,7 +478,7 @@ void ShowAlertToast(id msg) {
  * @param title 提示标题->(支持 NSString、NSAttributedString)
  * @param msg   提示信息->(支持 NSString、NSAttributedString)
  */
-void ShowAlertToastByTitle(id title, id msg) {
+void showAlertToastByTitle(id title, id msg) {
     
     if (!title && !msg) return;
     
@@ -451,18 +488,19 @@ void ShowAlertToastByTitle(id title, id msg) {
 
 /**
  * 显示请求的错误提示信息
+ * @param error 请求错误的对象,内部会根据错误码(200-500之间)来提示
  * @param msg   提示信息->(支持 NSString、NSAttributedString)
  */
-void ShowAlertWithError(NSError *error, id msg) {
+void showAlertToastByError(NSError *error, id msg) {
     
     NSString *errorMsg = error.domain;
     NSInteger code = error.code;
     if (code > kRequestTipsStatuesMin && code < kRequestTipsStatuesMax && errorMsg.length) {
-        ShowAlertToastByTitle(@"提示", errorMsg);
+        showAlertToastByTitle(@"提示", errorMsg);
     }
     else if (msg){
         if (code != [kLoginFail integerValue]) {
-            ShowAlertToastByTitle(@"提示", msg);
+            showAlertToastByTitle(@"提示", msg);
         }
     }
 }

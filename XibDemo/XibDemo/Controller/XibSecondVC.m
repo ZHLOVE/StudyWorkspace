@@ -7,6 +7,7 @@
 //
 
 #import "XibSecondVC.h"
+#import <OKAlertView.h>
 
 @interface XibSecondVC ()
 
@@ -19,9 +20,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-//    tabBar.tintColor
-//    self.navigationController.navigationBar.tintColor
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    showAlertView(@"标题", @"我是提示信息哦", @"取消", @[@"确定"], ^(NSInteger buttonIndex) {
+        NSLog(@"选择了第%zd个按钮",buttonIndex);
+    });
 }
 
 /**

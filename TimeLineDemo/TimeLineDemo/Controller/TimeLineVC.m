@@ -150,7 +150,7 @@
         if (!firstPage) self.pageNum --;
         [self.plainTableView showRequestTip:returnValue];
         if (self.tableDataArr.count>0) {
-            ShowAlertWithError(returnValue, RequestFailCommomTip);
+            showAlertToastByError(returnValue, RequestFailCommomTip);
         }
         
     } else if ([returnValue isKindOfClass:[NSDictionary class]]) { //失败

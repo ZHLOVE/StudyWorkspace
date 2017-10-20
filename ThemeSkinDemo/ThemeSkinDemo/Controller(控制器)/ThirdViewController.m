@@ -197,7 +197,7 @@
         [self endRefreshStyle:refreshControl];
         
     } failure:^(NSError *error) {
-        ShowAlertToast(error.domain);
+        showAlertToast(error.domain);
         // 刷新状态
         [self endRefreshStyle:refreshControl];
     }];

@@ -90,10 +90,10 @@
     //model.requestCachePolicy = RequestStoreCacheData; //需要保存底层网络数据
     
     NSURLSessionDataTask *task = [OKHttpRequestTools sendExtensionRequest:model success:^(id returnValue) {
-        ShowAlertToast(@"请求成功,请查看打印日志");
+        showAlertToast(@"请求成功,请查看打印日志");
         
     } failure:^(NSError *error) {
-        ShowAlertToast(@" 悲剧哦, 请求失败了");
+        showAlertToast(@" 悲剧哦, 请求失败了");
     }];
     
     NSLog(@"发送请求中===%zd===%@",tag,task);
@@ -115,10 +115,10 @@
     model.requestUrl = TestRequestUrl1;
     
     NSURLSessionDataTask *task = [OKHttpRequestTools sendOKRequest:model success:^(id returnValue) {
-        ShowAlertToast(@"请求成功,请查看打印日志");
+        showAlertToast(@"请求成功,请查看打印日志");
         
     } failure:^(NSError *error) {
-        ShowAlertToast(@" 悲剧哦, 请求失败了");
+        showAlertToast(@" 悲剧哦, 请求失败了");
     }];
     
     NSLog(@"测试发送普通请求===%@",task);

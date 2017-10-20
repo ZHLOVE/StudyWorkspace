@@ -26,7 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    ShowAlertToast(@"查看控制台打印日志");
+    showAlertToast(@"查看控制台打印日志");
     
     //NSInvocation的使用
     [self testNSInvocation];

@@ -51,7 +51,7 @@
                 [subscriber sendCompleted];
                 
             } failure:^(NSError *error) {
-                ShowAlertWithError(error, @"😔 请求失败了哦");
+                showAlertToastByError(error, @"😔 请求失败了哦");
                 
                 //结束发送订阅
                 [subscriber sendCompleted];
