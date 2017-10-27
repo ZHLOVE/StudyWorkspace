@@ -27,9 +27,9 @@
 #define  FONTDEFAULT(fontSize)                  ([UIFont systemFontOfSize:fontSize])
 #endif
 
-//全局主色调颜色
+//取消按钮主色调颜色
 #ifndef  OKAlertView_MainColor
-#define  OKAlertView_MainColor                  ColorFromHex(0x8CC63F)
+#define  OKAlertView_MainColor                 [UIColor redColor]
 #endif
 
 //按钮普通状态字体颜色
@@ -530,7 +530,7 @@ void showAlertToastByError(NSError *error, id msg) {
 - (void)showOKAlertView
 {
     self.alpha = 0.0;
-    self.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.4];
+    self.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.3];
 
     //添加AlertView到窗口上
     UIWindow *window = [[UIApplication sharedApplication] keyWindow];
