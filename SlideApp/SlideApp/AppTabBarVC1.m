@@ -7,6 +7,7 @@
 //
 
 #import "AppTabBarVC1.h"
+#import "AppDelegate.h"
 
 @interface AppTabBarVC1 ()
 @property (weak, nonatomic) IBOutlet UILabel *textLabel;

@@ -9,8 +9,7 @@
 #import <UIKit/UIKit.h>
 
 /** 单个按钮提示Alert弹框, 没有事件只做提示使用 */
-#define OKAlertSingleBtnView(titleStr,messageStr,cancelTitle) [OKAlertView alertWithCallBackBlock:nil title:titleStr message:messageStr cancelButtonTitle:cancelTitle otherButtonTitles: nil];
-
+#define OKAlertSingleBtnView(titleStr,messageStr,cancelTitle) [OKAlertView alertWithCallBlock:nil title:titleStr message:messageStr cancelButtonTitle:cancelTitle otherButtonTitles: nil];
 
 typedef void(^OKAlertViewCallBackBlock)(NSInteger buttonIndex);
 
@@ -20,7 +19,7 @@ typedef void(^OKAlertViewCallBackBlock)(NSInteger buttonIndex);
 @property (nonatomic,strong) UIColor *mainColor UI_APPEARANCE_SELECTOR;
 
 /**
- 自定义的UIAlertView弹框
+ 自定义的AlertView弹框
  注意:如果有设置cancelButton, 则取消按钮的buttonIndex为:0, 其他otherButton的Index依次加1;
  
  @param alertWithCallBlock     点击按钮回调Block
@@ -78,6 +77,17 @@ void showAlertToast(id msg);
  * @param msg   提示信息->(支持 NSString、NSAttributedString)
  */
 void showAlertToastByTitle(id title, id msg);
+
+
+/**
+ * 指定时间消失Alert弹框
+
+ * @param title         提示标题->(支持 NSString、NSAttributedString)
+ * @param msg           提示信息->(支持 NSString、NSAttributedString)
+ * @param duration      指定消失时间
+ * @param dismissBlock  消失回调
+ */
+void showAlertToastDelay(id title, id msg, NSTimeInterval duration, void(^dismissBlock)(void));
 
 
 /**

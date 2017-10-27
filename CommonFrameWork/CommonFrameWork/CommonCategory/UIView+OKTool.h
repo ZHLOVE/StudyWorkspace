@@ -72,3 +72,13 @@ typedef enum : NSUInteger {
 - (void)registerXib:(Class)className cellId:(NSString *)identifier;
 
 @end
+
+
+@interface UITableViewCell (LayoutLineMargins)
+
+/**
+ * 设置表格左侧边距为0
+ */
+- (void)layoutLeftLineMargins;
+
+@end

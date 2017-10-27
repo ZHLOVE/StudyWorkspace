@@ -44,7 +44,7 @@ static NSString *cellID         = @"ListDataCell";
  */
 - (void)requestData
 {
-    kRequestCodeKey = @"subcateId";//此接口在请求时底层用这个字段判断请求状态
+//    kRequestCodeKey = @"subcateId";//此接口在请求时底层用这个字段判断请求状态
     self.tableView.tableFooterView = [UIView new];
     WEAKSELF(weakSelf)
     [self.tableView addheaderRefresh:^{

@@ -80,10 +80,13 @@
 @property (nonatomic, copy) OKAlertViewCallBackBlock alertCallBackBlock;
 /** 取消按钮标题 */
 @property (nonatomic, strong) NSString *cancelTitle;
+/** AlertView消失时间 */
+@property (nonatomic, assign) NSTimeInterval dismissDuration;
+/** AlertView消失回调 */
+@property (nonatomic, copy) void (^dismissBlock)(void);
 @end
 
 @implementation OKAlertView
-
 
 /**
  自定义的UIAlertView弹框
@@ -216,8 +219,9 @@ OKAlertView* showAlertView(id title, id message, id cancelButtonTitle, NSArray *
             //3.布局所有弹框按钮
             [self layoutMutableBtnUI:allTitleArr contentView:self.contentView lastUImaxY:lastLabMaxY];
 
-        } else { //没有设置按钮就直接延迟2秒退出弹框
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(OKAlertView_ToastDismissTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        } else { //没有设置按钮就默认直接延迟2秒退出弹框
+            NSInteger dismissTime = self.dismissDuration>0 ? self.dismissDuration : OKAlertView_ToastDismissTime;
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(dismissTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [self dismissOKAlertView:nil];
             });
         }
@@ -444,7 +448,6 @@ OKAlertView* showAlertView(id title, id message, id cancelButtonTitle, NSArray *
     if (self.alertCallBackBlock) {
         self.alertCallBackBlock(actionBtn.tag);
     }
-    
     //退出弹框
     [self dismissOKAlertView:nil];
 }
@@ -479,12 +482,26 @@ void showAlertToast(id msg) {
  * @param msg   提示信息->(支持 NSString、NSAttributedString)
  */
 void showAlertToastByTitle(id title, id msg) {
-    
+
     if (!title && !msg) return;
-    
     [OKAlertView alertWithCallBlock:nil title:title message:msg cancelButtonTitle:nil otherButtonTitles: nil];
 }
 
+/**
+ * 指定时间消失Alert弹框
+
+ * @param title         提示标题->(支持 NSString、NSAttributedString)
+ * @param msg           提示信息->(支持 NSString、NSAttributedString)
+ * @param duration      消失时间
+ * @param dismissBlock  消失回调
+ */
+void showAlertToastDelay(id title, id msg, NSTimeInterval duration, void(^dismissBlock)(void)){
+
+    if (!title && !msg) return;
+    OKAlertView *alertView = [OKAlertView alertWithCallBlock:nil title:title message:msg cancelButtonTitle:nil otherButtonTitles: nil];
+    alertView.dismissDuration = duration;
+    alertView.dismissBlock = dismissBlock;
+}
 
 /**
  * 显示请求的错误提示信息
@@ -536,6 +553,9 @@ void showAlertToastByError(NSError *error, id msg) {
         self.alpha = 0.0;
         self.contentView.transform = CGAffineTransformMakeScale(0.8, 0.8);
     } completion:^(BOOL finished) {
+        if (self.dismissBlock) {
+            self.dismissBlock();
+        }
         [self removeFromSuperview];
     }];
 }

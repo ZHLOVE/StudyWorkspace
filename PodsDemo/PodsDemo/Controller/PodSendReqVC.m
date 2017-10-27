@@ -74,7 +74,7 @@
     
     model.loadView = self.view;
     model.dataTableView = self.plainTableView;
-    model.attemptRequestWhenFail = YES;
+//    model.tryRequestWhenFailCount = 3;
 //    model.sessionDataTaskArr = self.sessionDataTaskArr;
 //    model.requestCachePolicy = RequestStoreCacheData;
     

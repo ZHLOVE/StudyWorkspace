@@ -33,9 +33,9 @@
     self.requesViewModel.tableView = self.plainTableView;
     self.plainTableView.netErrorTipString = @"运营商的网络有问题哦";
     self.plainTableView.reqFailTipString = @"尼玛后台又出问题了啊";
-    self.plainTableView.emptyDataBtnTitle = @"再试一次吧";
-    self.plainTableView.emptyDataActionTarget = self;
-    self.plainTableView.emptyDataActionSEL = @selector(refreshData);
+    self.plainTableView.customBtnTitle = @"再试一次吧";
+    self.plainTableView.customActionTarget = self;
+    self.plainTableView.customActionSEL = @selector(refreshData);
     
     self.requesViewModel.vcView = self.view;
     
@@ -43,7 +43,7 @@
     [self refreshData];
     
     //刷新数据
-    [self addRightBarButtonItem:@"刷新" target:self selector:@selector(refreshData)];
+    [self addRightBarButtonItem:@"刷新" titleColor:nil target:self selector:@selector(refreshData)];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

@@ -140,4 +140,22 @@
                                      bundle:[NSBundle mainBundle]] forCellReuseIdentifier:identifier];
 }
 
+
+@end
+
+@implementation UITableViewCell (LayoutLineMargins)
+
+/**
+ * 设置表格左侧边距为0
+ */
+- (void)layoutLeftLineMargins
+{
+    if ([self respondsToSelector:@selector(setLayoutMargins:)]) {
+        self.layoutMargins = UIEdgeInsetsZero;
+    }
+    if ([self respondsToSelector:@selector(setSeparatorInset:)]) {
+        self.separatorInset = UIEdgeInsetsZero;
+    }
+}
+
 @end

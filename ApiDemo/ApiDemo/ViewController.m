@@ -8,23 +8,39 @@
 
 #import "ViewController.h"
 #import <UIViewController+OKExtension.h>
-#import "UITableView+OKExtension.h"
+#import <UIView+OKTool.h>
+#import <OKAlertView.h>
+
+#define HEIGHT_REFRESH  60
 
 @interface ViewController ()
-@property (nonatomic, assign) BOOL hasChange;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.plainTableView.automaticShowTipView = YES;
+//    self.plainTableView.automaticShowTipView = YES;
+
     self.plainTableView.rowHeight = 60;
+
+    //要添加测试的VC
     [self refreshTableData];
-    
-    //删除数据
-    [self addRightBarButtonItem:@"刷新数据" target:self selector:@selector(refreshTableData)];
+
+    //添加系统下拉控件
+    [self addTableViewRefreshControl];
+}
+
+/**
+ * 添加系统下拉控件
+ */
+- (void)addTableViewRefreshControl
+{
+    _refreshControl = [[UIRefreshControl alloc] init];
+    _refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"下拉刷新"];
+    [_refreshControl addTarget:self action:@selector(refreshTableData) forControlEvents:UIControlEventValueChanged];
+    self.plainTableView.refreshControl = _refreshControl;
 }
 
 /**
@@ -32,29 +48,48 @@
  */
 - (void)refreshTableData
 {
-    if (!self.hasChange) {
-        [self.tableDataArr removeAllObjects];
-        [self.tableDataArr addObjectsFromArray:@[@{@"StudyInvocationVC":@"NSInvocation的使用"},
-                                                 @{@"StudyMessageSendVC":@"OC消息转发机制"},
-                                                 ]];
-        
-        [self.plainTableView reloadData];
-        
-    } else {
-        //刷新方式一:
-//        [self.tableDataArr removeAllObjects];
-//        [self.plainTableView reloadData];
-        
-        //刷新方式二:
-        [self.tableDataArr removeObjectsInRange:NSMakeRange(0, 2)];
-        [self.plainTableView reloadSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, 1)] withRowAnimation:UITableViewRowAnimationNone];
-    }
-    
-    self.hasChange = !self.hasChange;
-}
-- (IBAction)tapScrollView:(UITapGestureRecognizer *)sender {
+    [self.tableDataArr removeAllObjects];
+    [self.tableDataArr addObjectsFromArray:@[@{@"StudyInvocationVC":@"NSInvocation的使用"},
+                                             @{@"StudyMessageSendVC":@"OC消息转发机制"},
+                                             @{@"StudyUserDefaultVC":@"UserDefault研究"},
+                                             ]];
+    [self.plainTableView reloadData];
+
 }
 
+// 设置刷新状态
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    decelerate = YES;
+    if (scrollView.contentOffset.y < HEIGHT_REFRESH) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            _refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"正在刷新"];
+        });
+        [_refreshControl beginRefreshing];
+
+        [self refreshTableData];
+
+        // 结束刷新
+        showAlertToastDelay(nil, @"刷新成功", 2, ^{
+            [_refreshControl endRefreshing];
+        });
+    }
+}
+
+// 设置刷新状态
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (scrollView.contentOffset.y >= HEIGHT_REFRESH) {
+        _refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"下拉刷新"];
+    }
+    else if (!scrollView.decelerating) {
+        _refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"松开刷新"];
+    }
+}
+
+- (IBAction)tapScrollView:(UITapGestureRecognizer *)sender {
+    NSLog(@"tapScrollView");
+}
 
 #pragma mark - /*** UITaleviewDelegate ***/
 
@@ -64,12 +99,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellId];
-        if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
-            cell.layoutMargins = UIEdgeInsetsZero;
-        }
-        if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
-            cell.separatorInset = UIEdgeInsetsZero;
-        }
+        [cell layoutLeftLineMargins];
     }
     NSDictionary *celLDic = [self.tableDataArr objectAtIndex:indexPath.row];
     NSString *className = celLDic.allKeys[0];

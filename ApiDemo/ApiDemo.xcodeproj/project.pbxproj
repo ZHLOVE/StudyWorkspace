@@ -17,6 +17,7 @@
 		B552B87C1EEE87F20095D992 /* CommonFrameWork.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B552B87A1EEE87F20095D992 /* CommonFrameWork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B552B8841EEE8B370095D992 /* StudyInvocationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B552B8831EEE8B370095D992 /* StudyInvocationVC.m */; };
 		B552B8871EEE90720095D992 /* StudyMessageSendVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B552B8861EEE90720095D992 /* StudyMessageSendVC.m */; };
+		B5CF491E1FA2C8B9004C2566 /* StudyUserDefaultVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CF491D1FA2C8B9004C2566 /* StudyUserDefaultVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -49,6 +50,8 @@
 		B552B8831EEE8B370095D992 /* StudyInvocationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudyInvocationVC.m; sourceTree = "<group>"; };
 		B552B8851EEE90720095D992 /* StudyMessageSendVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudyMessageSendVC.h; sourceTree = "<group>"; };
 		B552B8861EEE90720095D992 /* StudyMessageSendVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudyMessageSendVC.m; sourceTree = "<group>"; };
+		B5CF491C1FA2C8B9004C2566 /* StudyUserDefaultVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StudyUserDefaultVC.h; sourceTree = "<group>"; };
+		B5CF491D1FA2C8B9004C2566 /* StudyUserDefaultVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StudyUserDefaultVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +115,8 @@
 				B552B8831EEE8B370095D992 /* StudyInvocationVC.m */,
 				B552B8851EEE90720095D992 /* StudyMessageSendVC.h */,
 				B552B8861EEE90720095D992 /* StudyMessageSendVC.m */,
+				B5CF491C1FA2C8B9004C2566 /* StudyUserDefaultVC.h */,
+				B5CF491D1FA2C8B9004C2566 /* StudyUserDefaultVC.m */,
 			);
 			path = ApiClass;
 			sourceTree = "<group>";
@@ -194,6 +199,7 @@
 				B552B8841EEE8B370095D992 /* StudyInvocationVC.m in Sources */,
 				B552B8871EEE90720095D992 /* StudyMessageSendVC.m in Sources */,
 				B552B8651EEE87410095D992 /* main.m in Sources */,
+				B5CF491E1FA2C8B9004C2566 /* StudyUserDefaultVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,6 +334,7 @@
 				DEVELOPMENT_TEAM = P8FFNR95EQ;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/../CommonFrameWork/**";
 				INFOPLIST_FILE = ApiDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.luke.ApiDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -341,6 +348,7 @@
 				DEVELOPMENT_TEAM = P8FFNR95EQ;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/../CommonFrameWork/**";
 				INFOPLIST_FILE = ApiDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.luke.ApiDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
