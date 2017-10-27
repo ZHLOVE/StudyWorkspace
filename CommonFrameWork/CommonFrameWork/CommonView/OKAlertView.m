@@ -29,7 +29,7 @@
 
 //取消按钮主色调颜色
 #ifndef  OKAlertView_MainColor
-#define  OKAlertView_MainColor                 [UIColor redColor]
+#define  OKAlertView_MainColor                  ColorFromHex(0x2F7AFF)
 #endif
 
 //按钮普通状态字体颜色
@@ -68,6 +68,8 @@
 #define  OKAlertView_LineHeight                 (1/[UIScreen mainScreen].scale)
 //线条颜色
 #define  OKAlertView_LineColor                  ColorFromHex(0xe2e2e2)
+//文本颜色
+#define  OKAlertView_LabelColor                 [UIColor blackColor]
 
 
 @interface OKAlertView ()
@@ -256,9 +258,9 @@ OKAlertView* showAlertView(id title, id message, id cancelButtonTitle, NSArray *
     if (title) {
         titleLab = [[UILabel alloc] init];
         titleLab.backgroundColor = [UIColor clearColor];
-        [titleLab setTextColor:OKAlertView_BtnTitleNorColor];
+        [titleLab setTextColor:OKAlertView_LabelColor];
         [titleLab setTextAlignment:NSTextAlignmentCenter];
-        [titleLab setFont:[UIFont boldSystemFontOfSize:16]];
+        [titleLab setFont:[UIFont boldSystemFontOfSize:17]];
         [contentView addSubview:titleLab];
         titleLab.numberOfLines = 0;
 
@@ -274,16 +276,16 @@ OKAlertView* showAlertView(id title, id message, id cancelButtonTitle, NSArray *
     if (message) {
         messageLab = [[UILabel alloc] init];
         messageLab.backgroundColor = [UIColor clearColor];
-        [messageLab setTextColor:OKAlertView_BtnTitleNorColor];
+        [messageLab setTextColor:OKAlertView_LabelColor];
         [messageLab setTextAlignment:NSTextAlignmentCenter];
-        [messageLab setFont:FONTDEFAULT(14)];
+        [messageLab setFont:FONTDEFAULT(13)];
         [contentView addSubview:messageLab];
         messageLab.numberOfLines = 0;
 
         //赋值文本详细信息
         [self setTextStyle:messageLab textString:message];
         CGFloat msgHeight = [message heightWithFont:messageLab.font constrainedToWidth:labelWidth];
-        CGFloat messageLabY = title ? (lastLabMaxY+OKAlertView_KitMargin*0.4) : OKAlertView_KitMargin;
+        CGFloat messageLabY = title ? (lastLabMaxY+OKAlertView_KitMargin*0.2) : OKAlertView_KitMargin;
         messageLab.frame = CGRectMake(OKAlertView_KitMargin, messageLabY, labelWidth, msgHeight);
         lastLabMaxY = CGRectGetMaxY(messageLab.frame)+OKAlertView_KitMargin;
     }
@@ -530,7 +532,7 @@ void showAlertToastByError(NSError *error, id msg) {
 - (void)showOKAlertView
 {
     self.alpha = 0.0;
-    self.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.3];
+    self.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.4];
 
     //添加AlertView到窗口上
     UIWindow *window = [[UIApplication sharedApplication] keyWindow];
